@@ -1,0 +1,82 @@
+<@base.bookheader title="编辑日记">
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: 宋体;
+	font-size: 9pt;
+}
+-->
+</style>
+<link href="diary.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style>
+</@base.bookheader>
+<@base.bookBody>
+<form name="form1" method="post" action="edit_Diary_do.yws">
+<table width="469"  border="0" align="center" cellspacing="0" bordercolor="#CCCCCC" style="border-collapse:collapse">
+  <tr>
+    <td width="467" height="25" align="center" class="uline">签写日记<br/><font color="red" style="font-size: 10px;">${validMsg}</font></td>
+    </tr>
+  <tr>
+    <td class="uline"><table width="100%" border="0" align="center" cellspacing="0">
+      <tr>
+        <td width="7%">标题 </td>
+        <td width="51%"><input name="title" type="text" class="title_input" id="title" value="${diary.title?default("")}"></td>
+        <td width="7%">天气</td>
+        <td width="14%"><select name="weather" class="weather" id="weather">
+          <option value="${diary.weather}"><#if diary.weather=1>晴朗<#elseif diary.weather=2>多云<#elseif diary.weather=3>阴天<#elseif diary.weather=4>小雨<#else>大雨</#if></option>
+          <option value="1">晴朗</option>
+          <option value="2">多云</option>
+          <option value="3">阴天</option>
+          <option value="4">小雨</option>
+		  <option value="5">大雨</option>
+        </select></td>
+        <td width="7%">心情</td>
+        <td width="14%"><select name="humor" class="weather" id="humor">
+          <option value="${diary.humor}"><#if diary.humor==1>开心<#elseif diary.humor==2>甜蜜<#elseif diary.humor==3>郁闷<#elseif diary.humor==4>感伤<#elseif diary.humor==5>苦涩<#else>沧桑</#if></option>
+          <option value="1">开心</option>
+		  <option value="2">甜蜜</option>
+          <option value="3">郁闷</option>
+          <option value="4">感伤</option>
+          <option value="5">苦涩</option>
+          <option value="6">沧桑</option>
+        </select></td>
+      </tr>
+    </table></td>
+    </tr>
+   <tr>
+    <td height="2"></td>
+    </tr>
+  <tr>
+    <td class="uline"><textarea name="content" cols="60" rows="18" class="write_diary" id="content">${diary.content?default("")}</textarea></td>
+    </tr>
+  <tr>
+    <td class="uline"><table width="100%" border="0" cellspacing="0">
+      <tr>
+        <td width="16%" align="left">上锁状态：          </td>
+        <td width="6%" align="left"><#if diary.lockedType==1><input name="lockedType" type="radio" value="1" checked><#else><input name="lockedType" type="radio" value="1"></#if></td>
+        <td width="8%" align="left">公开</td>
+        <td width="5%" align="left"><#if diary.lockedType==2><input type="radio" name="lockedType" value="2" checked><#else><input type="radio" name="lockedType" value="2"></#if></td>
+        <td width="9%" align="left">上锁 </td>
+        <td width="5%" align="left"><#if diary.lockedType==3><input type="radio" name="lockedType" value="3" checked><#else><input type="radio" name="lockedType" value="3"></#if></td>
+        <td width="32%" align="left">阅读密码可读</td>
+        <td width="6%" align="right"><#if diary.lockedType==1><input name="allowcomment" type="checkbox" id="allowcomment" value="1" checked><#else><input name="allowcomment" type="checkbox" id="allowcomment" value="0"></#if></td>
+        <td width="13%" align="right">允许评论</td>
+      </tr>
+    </table></td>
+    </tr>
+    <input name="id" type="hidden" value="${diary.id}"/>
+  <tr align="center">
+    <td class="uline"><input name="Submit" type="submit" class="short_submit" value="发表日记"></td>
+  </tr>
+</table> 
+</form>
+</@base.bookBody>

@@ -1,0 +1,44 @@
+银行行长: <#list bankAdmins as ba>
+							${ba.nick},
+					</#list>
+			<br>
+			银行简介: 实际资本 ${bank.bankroll} ,银行存款 ${bank.deposit} ,用户数量 ${bank.userNumber}  <br>
+			<br>
+			业务介绍 <br>
+			<#setting number_format="0">
+			<form name="form1" method="post" action="bankModify.yws">
+			开户费用: <input name="openCost" type="text" value="${bank.openCost}"
+			onkeyup="if(/^\d+(\.)?(\d+)?$/.test(this.value)==false){alert('请输入数字！');this.value='';}"/> <br>
+			活期利率: <input name="currentRate" type="text" value="${bank.currentRate*1000}"
+			onkeyup="if(/^\d+(\.)?(\d+)?$/.test(this.value)==false){alert('请输入数字！');this.value='';}"/>‰<br>
+			定期利率: <input name="fixedRate" type="text" value="${bank.fixedRate*1000}"
+			onkeyup="if(/^\d+(\.)?(\d+)?$/.test(this.value)==false){alert('请输入数字！');this.value='';}"/>‰<br>
+			贷款利率: <input name="loanRate" type="text" value="${bank.loanRate*1000}"
+			onkeyup="if(/^\d+(\.)?(\d+)?$/.test(this.value)==false){alert('请输入数字！');this.value='';}"/>‰<br>
+			转帐手续费率:<input name="virementRate" type="text" value="${bank.virementRate*1000}"
+			onkeyup="if(/^\d+(\.)?(\d+)?$/.test(this.value)==false){alert('请输入数字！');this.value='';}"/>‰<br>
+			<input name="submit" type="submit" value="修改"/>
+			</form>
+			<br><br>
+			
+			<table>
+			<a href="?type=1">申请列表</a>
+			<a href="?type=2">取消列表</a>
+			<a href="?type=3">批准列表</a>
+			<a href="?type=4">拒绝列表</a>
+			<a href="?type=5">偿还列表</a>
+			<tr>
+			<td>用户名</td><td>金额</td><td>贷款利率</td>
+			<td>申请时间</td><td>贷款天数</td>
+			</tr>
+		<#list applyLoans as al>
+			<tr>
+			<td>${al.user.nick}</td><td>${al.money}</td><td>${al.loanRate*1000}‰</td>
+			<td>${al.applyTime}</td><td>${al.days}</td>
+			<#if al.status==1>
+			<td><a href="loanApproach.yws?id=${al.id}">批准</a></td>
+			<td><a href="loanDeny.yws?id=${al.id}">拒绝</a></td>
+			</#if>
+			</tr>
+					</#list>
+			</table>

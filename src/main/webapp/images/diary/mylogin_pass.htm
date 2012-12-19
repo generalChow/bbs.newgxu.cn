@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0044)http://diary.yinsha.com/php/mylogin_pass.php -->
+<HTML><HEAD><TITLE>心情日记_碧海银沙</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312"><LINK 
+href="mylogin_pass.files/index_diary.css" type=text/css rel=stylesheet>
+<META content="MSHTML 6.00.2900.2722" name=GENERATOR></HEAD>
+<BODY leftMargin=0 topMargin=0 marginwidth="0" marginheight="0">
+<TABLE cellSpacing=0 cellPadding=0 width=190 align=center border=0>
+  <SCRIPT language=javascript>
+function trim(string) {
+   var tmpchar, i, j, result;
+   i = 0;
+   tmpchar = string.charAt(i);
+   while (tmpchar == ' ') {
+      i++;
+      tmpchar = string.charAt(i);
+   }
+
+   j = string.length - 1;
+   tmpchar = string.charAt(j);
+   while (tmpchar == ' ') {
+      j --;
+      tmpchar = string.charAt (j);
+   }
+   if ( i <= j)
+      result = string.substring(i,j+1);
+   else
+      result = "";
+   return result;
+}
+
+
+function validpassword(fieldname,string,len){
+	string.value=trim(string.value);
+	if (string.value.length <len) {
+		alert(fieldname+"应大于等于"+len+"位!");
+		string.focus();
+      		return false;
+	}
+	for (var i=0; i<string.value.length;i++) {
+		if (((string.value.charAt(i)>='0')&&(string.value.charAt(i)<='9'))||((string.value.charAt(i)>='A')&&(string.value.charAt(i)<='Z'))||((string.value.charAt(i)>='a')&&(string.value.charAt(i)<='z'))||(string.value.charAt(i)=='_')) {
+		} else{
+			alert("密码含有非法字符!只能是字符 'a - z , A-Z' 及 '_' 为有效字符。");
+			string.focus();
+			return false;
+		}
+	}
+	return true
+}
+              
+function notNull(fieldname,string){
+   string.value=trim(string.value);
+   if (string.value == "") {
+      alert(fieldname+"不能为空");
+      string.focus();
+      return false;
+                    }
+  else 
+   return true;
+}
+function validform(theform){
+	if(notNull("通行证或者碧聊昵称",theform.name)&&notNull("通行证密码或者碧聊密码",theform.passwd)&&notNull("验证码",theform.passcode)&&validpassword("密码",theform.passwd,3)&&validpassword("验证码",theform.passcode,4)) return true;
+	return false;
+}
+</SCRIPT>
+
+<FORM name=myform onsubmit="return validform(this)" 
+  action=http://passport.bliao.com/checkvalid.php method=post target=_top>
+  <TBODY></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=190 border=0>
+  <TBODY>
+  <TR>
+    <TD class=s3 vAlign=center align=middle colSpan=2 height=35>
+      <DIV align=center><B><FONT color=#aa5555>—会 员 登 录—</FONT></B></DIV></TD></TR>
+  <TR>
+    <TD class=s3 vAlign=bottom height=22>
+      <DIV align=center>通行证：</DIV></TD>
+    <TD><FONT color=#ffffff><INPUT title=此处填写通行证（登录社区）或者碧聊昵称（升级） 
+      style="BORDER-RIGHT: #9a9a9a 1px solid; BORDER-TOP: #9a9a9a 1px solid; BORDER-LEFT: #9a9a9a 1px solid; BORDER-BOTTOM: #9a9a9a 1px solid" 
+      tabIndex=1 maxLength=40 size=12 name=name> </FONT>
+      <DIV></DIV></TD></TR>
+  <TR>
+    <TD class=s3 height=22>
+      <DIV align=center>密　码：</DIV></TD>
+    <TD><FONT color=#ffffff><INPUT 
+      style="BORDER-RIGHT: #9a9a9a 1px solid; BORDER-TOP: #9a9a9a 1px solid; BORDER-LEFT: #9a9a9a 1px solid; BORDER-BOTTOM: #9a9a9a 1px solid" 
+      tabIndex=1 type=password maxLength=16 size=12 name=passwd> </FONT>
+      <DIV></DIV></TD></TR>
+  <TR height=10>
+    <TD colSpan=2></TD></TR><INPUT type=hidden value=diary name=targetchannel> 
+  <INPUT type=hidden value=chat name=channel> <INPUT type=hidden value=upgrade 
+  name=mode> <INPUT type=hidden value=lock name=loginmode> 
+  <TR>
+    <TD vAlign=bottom align=middle colSpan=2><INPUT title=输入银沙通行证帐密，登录畅游银沙社区！ 
+      type=image src="mylogin_pass.files/anniu001.gif"> <A 
+      title=注册为银沙通行证用户，一证畅游银沙社区所有加盟频道！ href="javascript:myform2.submit()"><IMG 
+      src="mylogin_pass.files/anniu002.gif" border=0></A> </TD></TR>
+  <TR>
+    <TD colSpan=2 height=20>
+      <DIV class=s3 align=center><SPAN class=s2><A class=a2 
+      href="http://passport.yinsha.com/" target=_blank>会员中心</A></SPAN> | <A 
+      class=a3 title=取回通行证密码 href="http://passport.yinsha.com/get_passwd.php" 
+      target=_blank>忘记密码</A></DIV></TD></TR></TBODY></TABLE>
+<FORM name=myform2 action=http://passport.yinsha.com/register.php method=post 
+target=_blank><INPUT type=hidden value=chat name=targetchannel> <INPUT 
+type=hidden value=diary name=targetchannel2> <INPUT type=hidden value=new2 
+name=mode> </FORM></BODY></HTML>

@@ -1,0 +1,31 @@
+* { font-family: verdana, arial, helvetica, sans-serif;}
+body {width:100%; margin:0px auto;font-family: verdana, arial, helvetica, sans-serif; color:#000000;}
+
+.header {width:1004px; height:80px; background-color:3d7ee8; line-height:80px; font-weight:1000;}
+
+.main { width:1004px; margin:0px auto;font-size:10px;}
+.calendar { width:700px; float:left; margin:0px auto;}
+.calendar th {width:14%;}
+.calendar #year_div {padding:0 20px 4px 10px; background-color:#5e5b59;}
+.calendar .month_ul {}
+.calendar .month_ul a {display:inline-block; width:35px;  text-align:center; font-size:12px; margin:0 3px 0 3px;text-decoration:none; color:#92bf28;}
+.calendar .month_ul a:hover {font-weight:bold;}
+.calendar .month_ul .currentMonth {font-weight:bold;color:#f2f3f4;background-color:#92bf28;}
+.calendar #current_calendar {width:100%; }
+.calendar #current_calendar td {height:60px;background-color:#f1f1f2; text-align:center; font-size:24px; cursor:pointer;}
+.calendar #current_calendar .hover {background-color:#fffab0;}
+.calendar #current_calendar .current_day {background-color:#3d7ee8; color:#f2f3f4; font-size:25px; font-weight:bold;}
+.calendar .fix_day {font-size:15px; line-height:15px; text-align:left;}
+.calendar .user_day {font-size:12px; color:#a50100; font-weight:normal;}
+#info_div {width:300px; float:right;}
+.title {background-color:#f1f1f0; border:1px solid #92cf28; margin-top:4px;}
+
+#day_div {text-align:left; font-size:13px;min-height:250px;}
+#day_div p {margin:1px; padding:1px;}
+#day_div .holiday {border-bottom:1px solid #92bf28;}
+#day_div p.content {margin:4px 0px 2px 20px;background-color:f2f3f4;}
+#day_div .fix_day {font-size:18px; line-height:18px; text-align:left;}
+
+/**************************************
+ * 用户节日列表
+ */

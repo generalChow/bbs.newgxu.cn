@@ -1,0 +1,161 @@
+<@base.diaryheader title="心情日记主页">
+<link href="css/diary.css" rel="stylesheet" type="text/css">
+<link href="css/global.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.border-green {
+	font-family: "宋体";
+	font-size: 9pt;
+	border: 1px solid #92D003;
+}
+body,td,th {
+	font-family: 宋体;
+	font-size: 9pt;
+	color: #333333;
+}
+.login_input {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+	background-color: #DEF4AB;
+	height: 18px;
+	width: 100.px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #DEF4AB;
+	border-right-color: #DEF4AB;
+	border-bottom-color: #477920;
+	border-left-color: #DEF4AB;
+	width: 100px;
+}
+.login_rand_input {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+	background-color: #DEF4AB;
+	height: 18px;
+	width: 40px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #DEF4AB;
+	border-right-color: #DEF4AB;
+	border-bottom-color: #477920;
+	border-left-color: #DEF4AB;
+}
+.login_submit {
+	font-family: "宋体";
+	font-size: 9pt;
+	line-height: normal;
+	background-color: #DEF4AB;
+	border: 1px solid #228119;
+}
+-->
+</style>
+<script src="/js/diary.js"></script>
+<script src="/js/jquery-1.4.2.js" type="text/javascript"></script>
+<script src="/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+<style type="text/css">
+<!--
+a:link {
+	text-decoration: none;
+	color: #333333;
+}
+a:visited {
+	text-decoration: none;
+	color: #333333;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
+.STYLE1 {color: #000000}
+-->
+</style>
+<style type="text/css">
+<!--
+body {
+	background-color: #DEF4AB;
+}
+-->
+</style>
+</@base.diaryheader>
+<script type="text/JavaScript">
+ function deleteDiary(id){
+ if(confirm("您确定要删除该日记吗？")){
+   var tdid="#del"+id;
+   var trid="#tr"+id;
+   var url="/diary/deleteDiaryByAdmin.yws?id="+id;
+        $.ajax({
+            type: "post",
+            url: url,
+            beforeSend: function(){
+                $(tdid).html("正在删除数据...");
+            },
+            success: function(responseText){
+                 $(trid).css('display','none'); 
+            }
+        });
+    }
+} 
+</script>
+<@base.diaryBody>
+<TABLE width=466 height="163" border=0 align="center" cellPadding=0 cellSpacing=0>
+  <TBODY>
+    <TR>
+      <TD width="7">&nbsp;</TD>
+      <TD width="239" 
+          height=132 vAlign=top><TABLE cellSpacing=0 cellPadding=0 width="92%" align=center 
+border=0>
+        <TBODY>
+          <TR>
+            <TD height=8>&nbsp;</TD>
+          </TR>
+          <TR>
+            <TD height=40><strong> &nbsp;&nbsp;最新日记</strong></TD>
+          </TR>
+          <TR>
+            <TD height=30><table width="381" border="0" cellspacing="0" cellpadding="0">
+            <#list diarys as d>
+            <tr id="tr${d.id}">
+                <td   height="18"  width="75%">・<A href="view_Diary.yws?id=${d.id}" target=_blank>${d.title}<#if d.lockedType==2><img src="/images/diary/locked.gif" border="0"><#elseif d.lockedType==3><img src="/images/diary/locked2.gif" border="0"><#else></#if></A></td>
+                <td align="right" width="15%"><a href="">${d.user.nick}</a></td>
+                  <#if status.login>
+                  <#if user.groupTypeId gt 2>
+                  <td align="right" width="15%" id="del${d.id}"><a href="javascript:deleteDiary('${d.id}');">删除</a></td>
+                  </#if>
+                </#if>
+              </tr>
+             </#list>
+            </table></TD>
+          </TR>
+          <TR>
+            <TD></TD>
+          </TR>
+        </TBODY>
+      </TABLE></TD>
+    </TR>
+    <TR>
+      <TD>&nbsp;</TD>
+      <TD align="right"><span class="left pages">共${pagination.recordSize}篇日记${model.pagination}</span></TD>
+    </TR>
+    <TR>
+      <TD>&nbsp;</TD>
+      <TD>&nbsp;</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</@base.diaryBody>

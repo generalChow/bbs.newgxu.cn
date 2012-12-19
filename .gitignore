@@ -1,0 +1,11 @@
+target/*
+src/test/resources/logs/*
+src/main/webapp/upload/*
+.settings/*
+.classpath
+.project
+*.[oa]
+*~
+*swp
+*.~
+*.swp

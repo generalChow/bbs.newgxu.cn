@@ -1,0 +1,88 @@
+.shadow1 { 
+ cursor:hand; position:absolute; top:151px;  left:628px; width: 340px; height:20px; filter: dropshadow(color="#aaaaaa", offx=5, offy=5, positive=1) Alpha(Opacity=80);
+}
+.shadow2 {
+ cursor:hand; position:absolute; top:200px; left:50px; width: 120px; height:120px; filter: shadow(color=#aaaaaa,direction:135) Alpha(Opacity=80);
+}
+.shadow3 {
+ cursor:hand; position:absolute; top:66px; left:54px; width: 207px; height:159px; filter: Alpha(Opacity=70);
+}
+#musicPlayer {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:1;
+	left: 604px;
+	top: 245px;
+}
+#manager {
+	position:absolute;
+	width:345px;
+	height:20px;
+	z-index:2;
+	left: <%=diy.getManagerLeft()%>;
+	top: <%=diy.getManagerTop()%>;
+	left: 154px;
+	top: 46px;
+}
+#face {
+	position:absolute;
+	width:125px;
+	height:125px;
+	z-index:3;
+	left: <%=diy.getFaceLeft()%>;
+	top: <%=diy.getFaceTop()%>;
+}
+#diaryLogo {
+	position:absolute;
+	width:95px;
+	height:52px;
+	z-index:4;
+	left: <%=diy.getDiaryLogoLeft()%>;
+	top: <%=diy.getDiaryLogoTop()%>;
+}
+#bookName {
+	position:absolute;
+	width:122px;
+	height:20px;
+	z-index:5;
+	top: <%=diy.getBookNameTop()%>;
+	left: <%=diy.getBookNameLeft()%>;
+	visibility: visible;
+	left: 356px;
+	top: 144px;
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+#userNick {
+	position:absolute;
+	width:100px;
+	height:20px;
+	z-index:6;
+	top: <%=diy.getUserNickTop()%>;
+	left:<%=diy.getUserNickLeft()%>;
+	left: 358px;
+	top: 109px;
+}
+#rijishouyu {
+	position:absolute;
+	width:215px;
+	height:81px;
+	z-index:7;
+	top: <%=diy.getrijishouyuTop()%>;
+	left: <%=diy.getrijishouyuLeft()%>;
+	left: 256px;
+	top: 138px;
+}
+#Layer1 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:8;
+	left: 63px;
+	top: 82px;
+}

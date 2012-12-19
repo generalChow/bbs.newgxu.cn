@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>login</title>
+<link href="/css/default.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div>
+<form id="login" name="login" method="post" action="/accounts/login_do.yws">
+${validMsg}
+  <table width="500" height="300" align="center" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td height="30" colspan="2"><div align="center">登录</div></td>
+    </tr>
+    <tr>
+      <td width="100" height="30"><div align="right">用户名：</div></td>
+      <td height="30" align="left"><label for="textfield"></label>
+      <input type="text" name="username" id="username" /></td>
+    </tr>
+    <tr>
+      <td height="30"><div align="right">密码：</div></td>
+      <td height="30" align="left"><label for="textfield"></label>
+      <input type="password" name="password" id="password" /></td>
+    </tr>
+    <tr>
+      <td height="30"><div align="right">验证码：</div></td>
+      <td height="30" align="left"><input name="validCode" type="text" id="validCode" size="6" class="input_rand" autocomplete="off" />&nbsp;<img src="/validImage_servlet" /></td>
+    </tr>
+	<tr>
+      <td height="30"><div align="right">自动登录：</div></td>
+      <td height="30" align="left"><input type="checkbox" name="autoLogin" value="true" id="autoLogin" /><label for="autoLogin">自动登录</label>
+	  </td>
+    </tr>
+    <tr>
+      <td height="30" colspan="2"><div align="center">
+        <input type="submit" name="Submit" value="提交" id="Submit" />
+        <input type="reset" name="Submit2" value="重置" id="label" />
+      </div></td>
+    </tr>
+  </table>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<@base.bookheader title="心情空间">
+<style type="text/css">
+<!--
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
+body,td,th {
+	font-family: 宋体;
+	font-size: 9pt;
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style>
+<SCRIPT language=JavaScript>
+var focusok=false;
+if (navigator.appName == "Netscape") {
+	focusok=true;
+}
+vers = navigator.appVersion;
+if (navigator.appName == "Microsoft Internet Explorer") {
+	pos = vers.lastIndexOf('.'); 
+	vers = vers.substring(pos-1,vers.length); 
+}
+proper_version = parseFloat(vers); 
+if(proper_version>=5){
+	focusok=true;
+}
+function launchemote(htmlurl) {
+	var stock = window.open(htmlurl,"essay","top=10,left=150,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=600,height=600");
+	if(focusok){
+		stock.focus();
+	}
+	return true;
+}
+function viewessay(essayno){
+	document.viewform.essayno.value=essayno;
+	launchemote("")
+	document.viewform.submit();
+}
+function viewdiary(startno){
+	document.view.startno.value=startno;
+	document.view.submit();
+}
+//function delRow(id){
+ //if(confirm('删除后不可恢复，确定要删除吗?')){
+   // var tableBody = document.getElementsByTagName('tbody')[1];
+   // alert(tableBody);
+   // var delRow = document.getElementById(id);
+   // tableBody.removeChild(delRow);
+ //}
+  
+//}
+</SCRIPT>
+</@base.bookheader>
+<@base.bookBody>
+<TABLE cellSpacing=0 cellPadding=1 width=500 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE class=p cellSpacing=0 cellPadding=3 width=100% border=0 id="diaryview">
+        <TBODY>
+        <TR>
+          <TD colSpan=5>日记篇数： ${diaryBook.diaryNum}</TD></TR>
+        <#list diarys as d>
+        <TR>
+          <TD width=293><A href="view_Diary.yws?id=${d.id}" target="_blank"><#if d.title?length lt 10>${d.title?default("")}<#else>${d.title[0..9]}...</#if><#if d.lockedType==2><img src="/images/diary/locked.gif" border="0"><#elseif d.lockedType==3><img src="/images/diary/locked2.gif" border="0"><#else></#if></A></TD>
+          <#if status.nick==d.user.nick>
+          <TD width="20" align="center"><a href="edit_Diary.yws?id=${d.id}"><img src="/images/diary/b_edit.png" width="16" height="15" border="0"></a></TD>
+		  <TD width="16" align="center"><a href="del_Diary.yws?id=${d.id}" onClick="return confirm('删除后不可恢复，确定要删除吗?')"><img src="/images/diary/b_drop.png" width="16" height="15" border="0"></a></TD>
+          </#if>
+          <TD width="145" align="right">${d.addDate?default("")}</TD>
+          </TR>
+        <TR>
+          <TD colspan="4" class="uline"></TD>
+          </TR>
+          </#list>
+        </TBODY>
+        </TABLE>
+     </TD>
+  </TR>
+  <input type="hidden" name="diaryUserId" id="diaryUserId" value="${diaryBook.user.id}">
+  <TR>
+    <TD align="right"><span class="left pages">共${model.pagination.maxPage}页${model.pagination}</span></TD>
+  </TR>
+</TBODY></TABLE>
+</@base.bookBody>

@@ -1,0 +1,88 @@
+<@base.header title="更换头像">
+</@base.header>
+<@base.body location="个人服务区&nbsp;－&gt;&nbsp;更换头像">
+	<@base.main location="个人服务区&nbsp;－&gt;&nbsp;更换头像">
+		<@base.service_content>
+<script type="text/javascript" language="JavaScript">
+  function startStatusCheck(){
+    $('status').innerHTML = '<div><img src="/images/waiting.gif" />&nbsp;上传中，请等待...</div>'
+  }
+  function killUpdate(message)
+  { 
+    $('status').innerHTML = '<div class="error"><b><font color ="red">' + message + '</font></b></div>';
+  }
+  function PreviewImg(obj){
+  var div = document.getElementById("img");
+  if(obj.value=="" || div.childNodes.length>0){
+    div.removeChild(div.firstChild);
+    if(obj.value=="")return;
+  }
+  var postfix = obj.value.substring(obj.value.lastIndexOf(".")+1);
+  if((postfix!="jpg")&&(postfix !="png")&&(postfix !="gif")){
+    alert("系统只支持jpg，png，gif格式的文件，请重新选择！");
+  } 
+}
+  </script>
+<iframe id='target_upload' name='target_upload' src='' style='display: none'></iframe>
+<form action="/FaceUpload_servlet" method="post" name="fileform" id="fileform" enctype="multipart/form-data" onsubmit="return startStatusCheck();" target="target_upload">
+<table border="0" align="center" cellpadding="5" cellspacing="0" class="tableBorder1">
+    <tr class="trBorder1">
+      <td height="30" colspan="2" align="center" class="strong_uline">修改头像</td>
+    </tr>
+    <tr class="trBorder2">
+      <td colspan="2" bgcolor="#FFFDF1"><div align="center">
+        <table width="300" border="0" cellpadding="1" cellspacing="1">
+          <tr>
+            <td height="10">&nbsp;</td>
+          </tr>
+          <tr>
+          <td><div align="center" id="img">
+              
+            </div></td>
+            <td><div align="center">
+              <input name="importFile" type="file" class="tstyle" size="30" onchange="PreviewImg(this)"/>
+            </div></td>
+          </tr>
+        </table>
+      </div></td>
+    </tr>
+    <tr class="trBorder2">
+      <td colspan="2" bgcolor="#FFFDF1"><div align="center"> &nbsp;&nbsp;
+              <input id="submitButton" name="Submit2" type="submit" class="submit_style" value="上传头像" />
+        &nbsp;&nbsp;
+        <input name="Button" type="button" class="submit_style" onclick="history.go(-1)" value="返回前页" />
+      </div></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div id="status"></div></td>
+    </tr>
+    <tr class="trBorder2">
+      <td colspan="2"><table cellspacing="0" cellpadding="3" width="100%" align="center" 
+              border="0">
+        <tbody>
+          <tr bgcolor="#fafafa">
+            <td width="444" align="left" class="uline"><img height="20" src="/images/bullet4.gif" width="20" 
+                  align="absmiddle" /> <b>提示说明</b></td>
+          </tr>
+          <tr>
+            <td height="1" align="left" background="/images/dotline.gif"></td>
+          </tr>
+          <tr>
+            <td align="left">・只允许上传 <font color="#FF0000">JPG 
+              GIF PNG </font>格式的文件。</td>
+          </tr>
+          <tr>
+            <td align="left">・文件要求：<font color="#FF0000">宽(125),高(125) size(200K) 以内</font></td>
+          </tr>
+          <tr>
+            <td align="left">&nbsp;</td>
+          </tr>
+        </tbody>
+      </table></td>
+    </tr>
+</table>
+<div align="center" id="status" style=""></div>
+ </form>
+		</@base.service_content>
+	</@base.main>
+</@base.body>

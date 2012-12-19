@@ -1,0 +1,26 @@
+﻿这个html文件夹是用于存放生成的 静态文件，不过也算是真正的静态文件，只是一部份静态化。
+
+说拿首页来说吧， 用户模块是没有静态化的，因为那是随时变化，静态化没意思。
+
+关于首页的静态化，现在的想法是这样的，静态化用户模块的全部内容，然后hitcounts 增加到一定量，比如增加了100 那么就再次生成html文件。
+
+在html下的ftl文件夹，放置了 模版文件
+
+修改：
+IndexAction.java   修改了 execute 方法，添加了  html 方法，可以外界调用
+xwork.xml   中对于index 这个action的result定义
+添加了包：cn.newgxu.bbs.common.staticHtml
+cn.newgxu.bbs.web.servlet.HitCounterFilter  中的 doFilter 方法，添加了 StaticService 方法的调用，每次有人访问，就执行
+添加了文件夹： webapp/template/html
+spring-base.xml   添加了 staticManager 这个 bean ，这个pojo 实现了 ServletContextAware 接口，可以获取 ServletContext，方便使用，主要是获取Servlet的目录路径
+
+10:18 2011-6-4
+
+
+上次作的静态化，首页是正常的，可是其他页面的 底部的访问人数信息不能正常显示
+这是为什么呢，因为 AbstractBaseAction 是一个单例，在index时，加载了
+		UserStatus userStatus = super.getStatus();
+		userStatus.setTotalHicount(HitsCounter.getTotalHitsCounter());
+		userStatus.setTodayHicount(HitsCounter.getTodayHitsCounter());
+		super.setStats(userStatus);
+这个一直保存着数据的静态化。所以一直是0;

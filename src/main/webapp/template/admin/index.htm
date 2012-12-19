@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>雨无声论坛管理系统--2011版|雨无声十周年</title>
+
+<link href="/css/constant.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/css/admin/admin.css"/>
+<link href="/component/dwz/themes/default/style.css" rel="stylesheet" type="text/css" />
+<link href="/component/dwz/themes/css/core.css" rel="stylesheet" type="text/css" />
+<link href="/component/dwz/uploadify/css/uploadify.css" rel="stylesheet" type="text/css" />
+<!--[if IE]>
+<link href="/component/dwz/themes/css/ieHack.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+<script src="/component/dwz/js/speedup.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
+<script src="/component/dwz/js/jquery.cookie.js" type="text/javascript"></script>
+<script src="/component/dwz/js/jquery.validate.js" type="text/javascript"></script>
+<script src="/component/dwz/js/jquery.bgiframe.js" type="text/javascript"></script>
+<script src="/component/dwz/xheditor/xheditor-1.1.9-zh-cn.min.js" type="text/javascript"></script>
+<script src="/component/dwz/uploadify/scripts/swfobject.js" type="text/javascript"></script>
+<script src="/component/dwz/uploadify/scripts/jquery.uploadify.v2.1.0.js" type="text/javascript"></script>
+
+<script src="/component/dwz/bin/dwz.newgxu.js" type="text/javascript"></script>
+<!--<script src="/component/dwz/bin/dwz.min.js" type="text/javascript"></script>-->
+<script src="/component/dwz/js/dwz.regional.zh.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(function(){
+	DWZ.init("/component/dwz/dwz.frag.xml", {
+		loginUrl:"login_dialog.html", loginTitle:"登录",	// 弹出登录对话框
+//		loginUrl:"login.html",	// 跳到登录页面
+		statusCode:{ok:200, error:300, timeout:301}, //【可选】
+		pageInfo:{pageNum:"pageNum", numPerPage:"numPerPage", orderField:"orderField", orderDirection:"orderDirection"}, //【可选】
+		debug:false,	// 调试模式 【true|false】
+		callback:function(){
+			initEnv();
+			$("#themeList").theme({themeBase:"/component/dwz/themes"}); // themeBase 相对于index页面的主题base路径
+		}
+	});
+});
+</script>
+<style>
+	form {margin:0px; padding:0px;}
+	.grid .gridTbody td div { height: auto;
+    line-height: 21px;
+    overflow:auto;
+    white-space:normal;}
+	.grid .hover {background: none repeat scroll 0 0 #fffbe0;}
+	.grid .gridTbody .hover {background: none repeat scroll 0 0 #fffbe0;}
+</style>
+</head>
+
+<body style="font-family: Verdana,Arial,sans-serif;font-size: 0.9em;">
+	<div id="layout">
+		<div id="header">
+			<div class="headerNav">
+				<a class="logo" href="http://www.newgxu.cn" title="雨无声论坛管理系统--2011版|雨无声十周年">雨无声论坛管理系统--2011版|雨无声十周年</a>
+				<ul class="nav">
+					<li><a href="changepwd.html" target="dialog" width="600">设置</a></li>
+					<li><a href="http://t.newgxu.cn" target="_blank">微博</a></li>
+					<li><a href="http://bbs.newgxu.cn" target="_blank">论坛</a></li>
+					<li><a href="logout.yws">退出</a></li>
+				</ul>
+				<ul class="themeList" id="themeList">
+					<li theme="default"><div class="selected">蓝色</div></li>
+					<li theme="green"><div>绿色</div></li>
+					<li theme="purple"><div>紫色</div></li>
+					<li theme="silver"><div>银色</div></li>
+					<li theme="azure"><div>天蓝</div></li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="leftside">
+			<div id="sidebar_s">
+				<div class="collapse">
+					<div class="toggleCollapse"><div></div></div>
+				</div>
+			</div>
+			<div id="sidebar">
+				<div class="toggleCollapse"><h2>主菜单</h2><div>收缩</div></div>
+
+				<div class="accordion" fillSpace="sidebar">
+					<div class="accordionHeader">
+						<h2><span>Folder</span>社区管理</h2>
+					</div>
+					<div class="accordionContent">
+						<ul class="tree treeFolder expand">
+							<li><a>论坛管理</a>
+								<ul>
+									<li><a href="cache.yws" target="navTab" rel="forum_cache" fresh="false">缓存管理</a></li>
+									<li><a href="areas.yws" target="navTab" rel="forum_info" fresh="false">论坛概览</a></li>
+									<!--<li><a href="controlForumTime.yws" target="navTab" rel="forum_time" fresh="false" external="true">论坛时间管理</a></li>-->
+									<li><a href="logs_list.yws" target="navTab" rel="forum_log" fresh="false">操作日志</a></li>
+									<li><a href="uploaditems.yws" target="navTab" rel="forum_upload" fresh="false">资源管理</a></li>
+								</ul>
+							</li>
+							
+							<li><a>社区银行管理</a>
+								<ul>
+									<li><a href="bankManage.yws" target="navTab" rel="bank" fresh="false">银行管理</a></li>
+								</ul>
+							</li>
+							<li><a>区论坛管理员管理</a>
+								<ul>
+									<li><a href="adminManage.yws" target="navTab" rel="admin" fresh="false">管理员管理</a></li>
+								</ul>
+							</li>
+							<li><a>荣誉管理</a>
+								<ul>
+									<li><a href="honor.yws" target="navTab" rel="honor" fresh="false">荣誉概览</a></li>
+								</ul>
+							</li>
+							<li><a>斑竹管理</a>
+								<ul>
+									<li><a href="webmasters.yws" target="navTab" rel="banzhu" fresh="false">斑竹列表</a></li>
+									<li><a href="voteWebmaster.yws" target="navTab" rel="banzhu_vote" fresh="false">优秀斑竹投票</a></li>
+								</ul>
+							</li>
+							<li><a>Groups ＆ Users</a>
+								<ul>
+									<li><a href="groups.yws" target="navTab" rel="user_group" fresh="false">Groups概览</a></li>
+									<li><a href="users.yws" target="navTab" rel="user" fresh="false">Users概览</a></li>
+									<li><a href="select_userInfo.yws" target="navTab" rel="user_live" fresh="false" external="true">用户活动信息</a></li>
+									<li><a href="send_message_all.yws" target="navTab" rel="user_message" fresh="false" external="true">群发短信息</a></li>
+								</ul>
+							</li>
+							<li><a>物品管理</a>
+								<ul>
+									<li><a href="items.yws" target="navTab" rel="item" fresh="false">Item概览</a></li>
+									<li><a href="store_items.yws" target="navTab" rel="item_store" fresh="false">Item上架</a></li>
+								</ul>
+							</li>
+							<li><a>红包管理</a>
+								<ul>
+									<li><a href="hongbao.yws" target="navTab" rel="hongbao" fresh="false">红包概览</a></li>
+									<li><a href="manage_hongbao.yws" target="navTab" rel="hongbao_manage" fresh="false">红包发放</a></li>
+								</ul>
+							</li>
+							<li><a>注册管理</a>
+								<ul>
+									<li><a href="registerUsers.yws" target="navTab" rel="register_user" fresh="false">查看未审核注册用户</a></li>
+									<li><a href="registerUsersToday.yws" target="navTab" rel="register_today"  fresh="false" external="true">查看今日注册</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="accordionHeader">
+						<h2><span>Folder</span>论坛应用</h2>
+					</div>
+					<div class="accordionContent">
+						<ul class="tree treeFolder expand">
+							<li><a href="holiday.yws" target="navTab" rel="holiday" fresh="false">登录页面动画管理</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="container">
+			<div id="navTab" class="tabsPage">
+				<div class="tabsPageHeader">
+					<div class="tabsPageHeaderContent"><!-- 显示左右控制时添加 class="tabsPageHeaderMargin" -->
+						<ul class="navTab-tab">
+							<li tabid="main" class="main"><a href="javascript:;"><span><span class="home_icon">系统主页</span></span></a></li>
+						</ul>
+					</div>
+					<div class="tabsLeft">left</div><!-- 禁用只需要添加一个样式 class="tabsLeft tabsLeftDisabled" -->
+					<div class="tabsRight">right</div><!-- 禁用只需要添加一个样式 class="tabsRight tabsRightDisabled" -->
+					<div class="tabsMore">more</div>
+				</div>
+				<ul class="tabsMoreList">
+					<li><a href="javascript:;">我的主页</a></li>
+				</ul>
+				<div class="navTab-panel tabsPageContent layoutBox">
+					<div class="page unitBox">
+						<div style="background: url('/image/admin/banner_bg.gif') repeat scroll 0 0 #353535; width:100%;height: 460px;min-width: 200px;">
+							<table cellpadding="0" border="0">
+								<tr>
+									<td><div class="tc_pic"><img src="/image/admin/logo.png"/></div></td>
+									<td>
+										<div style="color:#ffffff;">雨无声后台管理系统。欢迎您！<br /><br />
+											change logs:
+											<ul style="list-style:decimal;font-size:12px;">
+												<li>由于论坛开放时间管理还有问题，暂不支持直接修改，如果有需要请联系技术部。</li>
+												<li>添加论坛缓存，并附加管理页面&nbsp;&nbsp;&nbsp;2011-11-06<br /></li>
+												<li>美化全局窗口，多窗口/多对话框操作。标签栏支持右键菜单</li>
+												<li>暂时屏蔽了“刷新缓存”菜单，日后会重新整理论坛的缓存</li>
+												<li>查看荣誉时显示该荣誉的说明信息，添加了”编辑“荣誉的功能</li>
+												<li>添加模糊查询功能，想要查询“计电学院”输入“计”,“计电”都可以得到结果，不过不能输入“计学”等跟原词断裂的词</li>
+												<li>有问题请联系技术部</li>
+											</ul>	
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="footer">Copyright &copy; 2011 &nbsp;&nbsp;&nbsp;<a href="/template/admin/about.html" target="dialog">雨无声技术部|集成显卡</a></div>
+</body>
+<script>
+	function error(info){
+		alert(info);
+		return false;
+	}
+
+</script>
+</html>

@@ -1,0 +1,139 @@
+<#assign version = "雨无声社区 V4.0 beta!">
+<#macro header title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>${title} -- ${version}</title>
+	<script type="text/javascript" src="/js/mootools.v1.00.js"></script>
+	<script type="text/javascript" src="/js/newgxu_common.js"></script>
+	<script type="text/javascript" src="/js/newgxu_dropdownMenu.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_dialog.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_ubb.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_upload.js"></script>
+	<#nested/>
+	<script type="text/JavaScript">
+	<!--
+	function MM_openBrWindow(theURL,winName,features) { //v2.0
+		window.open(theURL,winName,features);
+	}
+	function messageList() {
+		var width = 700 ;
+		var height = 500;
+		var left = eval(screen.Width - width) / 2;
+		var top = eval(screen.Height  -height) / 2;
+		MM_openBrWindow('/message/message_list.yws','查看短消息','menubar=yes,scrollbars=yes,width='+width+',height='+height+',left='+left+',top='+top+'');
+	}
+	//-->
+	</script>
+<script language="javascript" for="document" event="onkeydown">
+  if(event.keyCode==13)
+     event.keyCode=9;
+</script>
+	</head>
+<style type="text/css">
+<!--
+a:link {
+	color: #7A511B;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #7A511B;
+}
+a:hover {
+	text-decoration: underline;
+	color: #7A511B;
+}
+a:active {
+	text-decoration: none;
+	color: #7A511B;
+}
+
+-->
+</style>
+</#macro>
+<#macro body location="">
+<body>
+<div class="whole">
+  <div class="topflash">
+   <object type="application/x-shockwave-flash"  width="960" height="398" style="margin-left:3px;" data="/flash/day.swf">
+    <param name="movie" value="/flash/day.swf" />
+   </object>
+  </div>
+  <div style="height:32px; width:483px; background-image:url(images2/bg_1.jpg); float:left;"></div>
+  <div style="height:32px; width:482px; background-image:url(images2/bg_2.jpg); float:left;"></div>
+  <#if status.login == false>
+  <div class="login">
+    <div class="login_form">
+     <!-- 这里是登录表单 -->
+     <form id="form1" name="loginform" method="post" action="/accounts/login_do.yws"  style="width:150px; height:70px; margin-top:75px;">
+        <input type="text" name="username" id="username" style=" width:150px; background-color:transparent; border:none; " />
+        <input type="password" name="password" id="password" style=" margin-top:10px;width:150px; background-color:transparent; border:none;"/>
+        <input onFocus="javascript:$('validImage').src='/validImage_servlet';" name="validCode"  type="text" style=" margin-top:10px;width:70px;background-color:transparent; border:none;" autocomplete="off" size="5" />&nbsp;<img src="images/default_valid_img.png" align="top" id="validImage" style="margin-top:-20px;margin-left:100px;"/>
+        <input type="submit" value="提交" class="submit" style="margin-top:30px;" /> 
+        <input name="originalUrl" type="hidden" id="originalUrl" value="${status.originalUrl?default("/")}" />
+     </form>
+    </div>
+    
+    <div style="height:91px; width:301px; float:left; overflow:hidden;"><img src="images2/login_pic.jpg" border="0" usemap="#Map" />
+<map name="Map" id="Map">
+   <!-- 以下两个area 分别是登录和注册-->
+  <area shape="rect" coords="61,15,119,36" href="#" id="login" onclick="javascript:loginform.submit();"/>
+  <area shape="rect" coords="58,40,111,64" href="/accounts/register.yws" id="regist" target="_bank"/>
+</map></div>
+  </div>
+  </#if>
+  <#if status.login>
+  <div class="logined" id="logined" >
+    <div style="float:left;margin-top:30px;margin-left:40px;">
+      <span style="padding-left:146px;">${status.nick}</span>
+			<span class="right">
+				<#if status.login>
+				<ul class="userservice">
+				  <li>
+					<a href="/user/upgrade.yws" >&nbsp;－&gt;&nbsp;个人服务区</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="/getdraftboxes.yws" target="_blank">&nbsp;－&gt;&nbsp;草稿箱(${status.draftboxSize})</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="/diary/index.yws" target="_blank">&nbsp;－&gt;&nbsp;心情日记</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="/user/log.yws" target="_blank">&nbsp;－&gt;&nbsp;新手帮助</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="/accounts/logout.yws">&nbsp;－&gt;&nbsp;退出</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="#" onClick="messageList();">&nbsp;－&gt;&nbsp;新消息：${status.messageNotRead}条</a>
+				</li>
+				</ul>
+				</#if>
+			</span>
+	</div>
+  </div>
+  </#if>
+  <div class="bg_1"></div>
+  
+  
+  <div style="width:507px; height:260px; float:left;">
+    <div class="notice">
+     <div style="width:280px; height:60px; padding-top:5px; margin-left: 100px; font-size:16px; line-height:18px;">
+         <table width="280" height="28" border="0" style="margin-right: 15px" cellpadding="0" cellspacing="0">
+				  <tr>
+					<td width="220" valign="middle" style="font-size:12px">		<MARQUEE  scrollAmount="2" scrollDelay="0" onmouseover="this.stop()" onmouseout="this.start()">
+						·欢迎光临雨无声论坛，新版4.0使用的spring+hibernate+webword+模板技术，在firefox浏览器下还不能正常浏览，我们将会继续改进，在此向关心和支持过雨无声的各新老会员表示衷心的感谢！！
+					  </MARQUEE></td>
+				  </tr>
+		</table>
+     </div>
+    </div>
+    <div class="logo"></div>
+  </div>
+	<#nested/>
+</div>
+</body>
+</html>
+</#macro>

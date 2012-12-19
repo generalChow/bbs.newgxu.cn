@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>欢迎来到雨无声论坛->个人服务区</title>
+<link href="/css/self.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/js/mootools.v1.00.js"></script>
+	<script type="text/javascript" src="/js/newgxu_common.js"></script>
+	<script type="text/javascript" src="/js/newgxu_dropdownMenu.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_dialog.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_ubb.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_upload.js"></script>
+</head>
+<body>
+<div class="whole">
+  <div class="topflash">
+   <object type="application/x-shockwave-flash" width="960" height="398" style="margin-left:1px;" data="/flash/day.swf">
+    <param name="movie" value="/flash/day.swf" />
+   </object>
+  </div>
+  <div style="width:961px; height:auto; float:left;">
+    <div class="left">
+      <div style="height:293px; width:158px; background-image:url(/images-self/left_1.jpg);"></div>
+      <div style="height:293px; width:158px; background-image:url(/images-self/left_2.jpg);"></div>
+      <div style="height:293px; width:158px; background-image:url(/images-self/left_3.jpg);"></div>
+    </div>
+    <div style="height:879px; width:803px; float:left;">
+      <div class="location"></div>
+      <div style="height:632px; width:803px;">
+        <div class="nav">
+      <object type="application/x-shockwave-flash"  height="600" width="200" style="margin-left:-20px;margin-top:20px;" data="/flash/left.swf">
+         <param name="movie" value="/flash/left.swf" />
+         <param name="wmode" value="transparent"/>
+      </object>
+        </div>
+        <div class="main">
+    <div style="margin-top:80px;margin-left:5px;">
+    <form id="form1" name="form1" method="post" action="upgradeDo.yws">
+    <table width="98%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+      <td height="25" align="center" class="uline"><strong>升级中心</strong></td>
+     </tr>
+     <tr>
+      <td><table width="100%" border="0" align="center" cellpadding="2" cellspacing="2">
+        <tr>
+          <td height="23" colspan="3" class="uline2">您当前职务：[<font color="#FF0000">${userGroup.groupName}</font>] </td>
+        </tr>
+        <tr>
+          <td height="23" colspan="3" class="uline2">您拥有的西大币：${user.money}&nbsp;体力：${user.currentPower}</td>
+        </tr>
+        <tr>
+          <td height="23" colspan="3" class="uline2">灌水数：${user.numberOfReply} 新主题：${user.numberOfTopic} 折扣率：${userGroup.agio}% 增长率：% </td>
+        </tr>
+        <tr>
+          <td width="99" height="23" class="uline2">经验值状态：</td>
+          <td width="191" height="23" align="left" class="uline2"><table width="180" height="10" border="1" align="left" cellpadding="0" cellspacing="0" bordercolor="#000000">
+            <tr>
+              <td height="10"><img src="/images/bar1.gif" width="${expStatus * 180}" height="10" /></td>
+            </tr>
+          </table></td>
+          <td width="456" height="23" class="uline2">当前经验值：${user.exp}</td>
+        </tr>
+        <#if nextUserGroup?exists >
+        <tr>
+          <td height="23" colspan="3" class="uline2">升级所需经验值：${nextUserGroup.leavelUpExp}，升级奖励：${nextUserGroup.encouragement}</td>
+        </tr>
+        <tr>
+          <td height="25" colspan="3" align="center">
+              <input name="Submit" type="submit" class="submit_style" value="升级到下一级：${nextUserGroup.groupName}"/>
+         </td>
+        </tr>
+        <#else>
+        <tr>
+          <td height="23" colspan="3" class="uline2"><font color="#FF0000">您当前职务不能升级</font></td>
+        </tr>
+        </#if>
+      </table></td>
+    </tr>
+    <tr>
+      <td><table cellspacing="0" cellpadding="3" width="100%" align="center" 
+              border="0">
+        <tbody>
+          <tr bgcolor="#fafafa">
+            <td width="444" align="left" class="uline"><img height="20" src="/images/bullet4.gif" width="20" 
+                  align="absmiddle" /> <b>提示说明</b></td>
+          </tr>
+          <tr>
+            <td height="1" align="left" background="修改密码.files/dotline.gif"></td>
+          </tr>
+          <tr>
+            <td align="left">·每升一级都有相应的西大币奖励，详情请点击 <a href="bbshelp/subweb/shiyong.htm#a5" target="_blank"><font color="#FF0000">查看职务等级结构</font></a></td>
+          </tr>
+          <tr>
+            <td align="left"><hr size="0" /></td>
+          </tr>
+          <tr>
+            <td align="left"><table width="70%" border="0" align="center" cellspacing="0">
+              <tr>
+                <td width="50%" align="center">&nbsp;</td>
+                <td width="50%" align="center">&nbsp;</td>
+              </tr>
+              <tr>
+                <td align="center"><a href="../search_do.yws?type=1&amp;keywords=${status.nick}" target="_blank">我发表的主题</a></td>
+                <td width="50%" align="center"><a href="../search_do.yws?type=2&amp;keywords=${status.nick}" target="_blank">我参与的主题</a></td>
+              </tr>
+              <tr>
+                <td align="center">&nbsp;</td>
+                <td align="center">&nbsp;</td>
+              </tr>
+            </table></td>
+          </tr>
+        </tbody>
+      </table></td>
+    </tr>
+  </table>
+</form>
+</div>
+        </div>
+        <div class="right"></div>
+      </div>
+      <div class="foot">
+      <div>
+      <table  height="35"  border="0" cellpadding="0" cellspacing="0" style="margin-top:30px;">
+				<tr>
+				  <td align="left" class="xlogo">
+					<div style="width:384px;">
+						<div style="float:left;margin-left:60px;">
+		                <li><a href="/index.yws" >雨无声论坛</a></li>
+		                <li><a href="/user/upgrade.yws">个人服务区</a></li>
+		                <li><a href="/bank/index.yws">社区银行</a></li>
+		                <li><a href="/market/official.yws">商业中心</a></li>
+		                </div>
+					</div>
+			      </td>
+				</tr>
+			  </table>
+	   </div>
+	 <div  style="height:54px; width:900px;margin-top:36px;margin-left:-90px;font-size:12px;">
+      <table cellpadding="0" cellspacing="0" height="54" border="0">
+            <tr>
+              <td  align="left" valign="top">关于论坛 | 美术支持 | 免责声明 | 版权申明 | 合作伙伴 | 友情链接 |	桂ICP备05001920号 南宁网警备4501200373号  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雨无声 版权所有◎2003-2007</td>
+            </tr>
+      </table>
+  </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

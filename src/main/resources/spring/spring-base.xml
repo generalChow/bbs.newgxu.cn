@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName">
+	<bean name="abstractBaseAction" abstract="true"
+		class="cn.newgxu.bbs.web.action.AbstractBaseAction">
+		<property name="userService" ref="userService" />
+	</bean>
+
+	<bean name="actionSupport"
+		class="cn.newgxu.bbs.web.action.ValhallaActionSupport" />
+
+	<bean name="messageActionSupport"
+		class="cn.newgxu.bbs.web.action.ValhallaMessageActionSupport" />
+
+	<!--staticManager 静态页面的类-->
+	<bean name="staticManager" class="cn.newgxu.bbs.common.staticHtml.StaticManager"/>
+</beans>

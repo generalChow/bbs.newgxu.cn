@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>草稿箱列表</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link href="/css/panel.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+.row {BACKGROUND-COLOR: expression(rowIndex%2==1?'':'#407F00')}
+-->
+</style>
+	<script type="text/JavaScript">
+//复选
+function selectAll(chk)
+{  
+var chk = document.del.chkall.checked;
+for (i=0;i<document.all.length;i++) {
+if (document.all[i].name=="dbid") {
+document.all[i].checked=chk;
+chkRow(document.all[i]);
+}}}
+
+
+//复选后单元格变色
+function chkRow(obj){
+var r = obj.parentElement.parentElement;
+if(obj.checked){ r.style.backgroundColor="#E6E9F2";}
+else {if(r.rowIndex%2==1)r.style.backgroundColor="";else r.style.backgroundColor="#407F00";}
+}
+	</script>
+</head>
+
+<body>
+<form name="del" method="post" action="/del_draftboxes.yws">
+<table width="93%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="15" align="right">
+		
+	</td>
+  </tr>
+  <tr>
+    <td height="15"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="22%" align="left">${model.user.nick}--草稿箱使用状态：</td>
+        <td width="27%" align="left"><table width="180" height="10" border="1" cellpadding="0" cellspacing="0" bordercolor="#333333">
+            <tr>
+              <td height="10"><img src="/images/bar1.gif" width="${model.size/20*100}%" height="10" /></td>
+            </tr>
+        </table></td>
+        <td width="51%" align="left">&nbsp;&nbsp;&nbsp;&nbsp;<font size="4" color="green">${model.size}/20</font></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td><table width="100%" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="18"><table width="100%" border="0" cellspacing="0">
+            <tr align="center" class="uline">
+              <th width="286">标题</th>
+              <th width="171">时间</th>
+              <th width="38">是否发布</th>
+              <th width="30">操作</th>
+            </tr>
+			<#list model.draftBoxes as m>
+              <tr align="center" class="row">
+                <td width="116" class="uline2"><a href="/readdraftbox.yws?id=${m.id}" target="_blank">${m.title}</a></td>
+                <td width="38" class="uline2">[${m.savetime}]</td>
+                <td width="39" class="uline2"><#if m.ispub==0><font color="red">未发布</font><#else><font color="green">已发布</font></#if></td>
+                <td width="30" class="uline2"> <input name="dbid" type="checkbox" id="dbid" value="${m.id}"  onclick="javascript:chkRow(this);"/> </td>
+              </tr>
+            </#list>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <#if model.size gt 0>
+  <tr>
+    <td align="right"><table align="right">
+      <tr>
+        <td align="left">分页：</td>
+        <td align="center">
+			<a href="javascript:document.del.submit()" onClick="return confirm('确定要进行删除操作吗?')"> 删除选择</a>&nbsp;| 
+          <label for="all">全选</label>        
+		 </td>
+        <td><input name="all" type="checkbox" id="chkall" value="1" onclick="selectAll()" /></td>
+      </tr>
+      </#if>
+    </table></td>
+  </tr>
+</table>
+</form>
+</body>
+</html>

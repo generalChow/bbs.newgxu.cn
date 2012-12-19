@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<HEAD>
+<TITLE>雨无声论坛-操作成功！</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<meta http-equiv="refresh" content="3;URL=${model.url}"/>
+</HEAD>
+<style type="text/css">
+*{ margin:0; padding:0;}
+li{ float:left; font-size:14px;line-height:1.7em;}
+li a{ float:left;white-space:nowrap;}
+.nobreak{width:200px; height:100%; overflow:hidden; margin:10px auto;}
+</style>
+<BODY BGCOLOR=#efefef LEFTMARGIN=0 TOPMARGIN=30 MARGINWIDTH=0 MARGINHEIGHT=0>
+<TABLE WIDTH=500 BORDER=0 align="center" CELLPADDING=0 CELLSPACING=0 style="background-image: url(images3/success.jpg);">
+  <TR>
+    <TD WIDTH=500 HEIGHT=38></TD>
+  </TR>
+  <TR>
+    <TD >&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><table width="98%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="4%" rowspan="4">&nbsp;</td>
+          <td width="45%" rowspan="4"></td>
+          <td width="48%" height="15" class="uline"><font color="#d7e69a;">操作成功：</font></td>
+          <td width="3%" rowspan="4">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="4" valign="top"></td>
+        </tr>
+        <tr>
+          <td height="120" align="left">
+          <div class="nobreak">
+         <ul>
+		  <#list model.messages as message>
+		  <li>${message}</li>
+		  </#list>
+          </ul>
+        </div>
+		  </td>
+        </tr>
+        <tr>
+          <td height="19" align="left" > [<a href='javascript:history.go(-1)'>返回前页</a>]&nbsp;[<a href=/index.yws target='_parent'>返回首页</a>]&nbsp;[<a href="/login.yws">登录</a>]</td>
+        </tr>
+      </table></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+  </TR>
+</TABLE>
+</BODY>
+</HTML>

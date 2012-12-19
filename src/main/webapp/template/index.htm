@@ -1,0 +1,1301 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="author" content="龙凯 - longkai - im.longkai@gmail.com" />
+		<meta name="keywords" content="广西 广西大学 广西大学论坛BBS 西大论坛BBS 雨无声论坛BBS 校园论坛BBS 广西论坛BBS 广西大学自考|招生|就业|招聘|考研|学院|图书馆|学生|交易|买卖|平台|新生|二手|跳楼|交友|平台" />
+		<meta name="description" content="广西 广西大学 广西大学论坛BBS 西大论坛BBS 雨无声论坛BBS 校园论坛BBS 广西论坛BBS 广西大学自考|招生|就业|招聘|考研|学院|图书馆|学生|交易|买卖|平台|新生|二手|跳楼|教务处交友|平台" />
+		<link rel="stylesheet" href="css/10_years_index/layout.css" />
+		<link rel="stylesheet" href="css/10_years_index/index.css" />
+		<link rel="stylesheet" href="css/10_years_index/nav_menus.css" />
+		
+		<style type="text/css">
+			.LC {
+				float: left;
+			}
+			.RC {
+				float: left;
+			}
+			#goLeft {
+				background-image: url("images/10_years_index/left.jpg");
+				background-repeat: no-repeat;
+				display: inline-block;
+				width: 24px;
+				height: 24px;
+			}
+			#goRight {
+				background-image: url("images/10_years_index/right.jpg");
+				background-repeat: no-repeat;
+				display: inline-block;
+				width: 22px;
+				height: 24px;
+			}
+
+			/*兼容ie6*/
+			* html #goLeft {
+				width: 22px;
+			}
+			* html #goRight {
+				width: 22px;
+			}
+
+			.user_content {
+				float: left;
+				width: 206px;
+				height: 225px;
+				font-size: 13px
+			}
+			.user_content ul {
+				list-style: none
+			}
+			.user_content ul li {
+				border-bottom: 1px solid #eeeeee;
+				text-align: center;
+			}
+
+			.user_content .TAB {
+				width: 103px;
+			}
+			.TAB .userBg {
+				height: 24px;
+				line-height: 24px;
+				font-weight: bold;
+				text-align: center;
+				background-color: #f3f3f3;
+			}
+
+			.wish {/*background-color:#f3f3f3*/
+			}
+
+			.wish_LC {
+				float: left;
+			}
+			.wish_RC {
+				float: left;
+			}
+			#wish_left {
+				background-image: url("images/10_years_index/left.jpg");
+				background-repeat: no-repeat;
+				display: inline-block;
+				width: 24px;
+				height: 24px;
+			}
+			#wish_right {
+				background-image: url("images/10_years_index/right.jpg");
+				background-repeat: no-repeat;
+				display: inline-block;
+				width: 22px;
+				height: 24px;
+			}
+
+			/*兼容ie6*/
+			* html #wish_left {
+				width: 22px;
+			}
+			* html #wish_right {
+				width: 22px;
+			}
+
+			.wish_content {
+				float: left;
+				width: 206px;
+				height: 160px;
+				font-size: 13px
+			}
+			.wish_content ul {
+				list-style: none
+			}
+			.wish_content ul li {
+				border-bottom: 1px solid #eeeeee;
+				text-align: center;
+			}
+
+			.wish_content .TAB {
+				width: 103px;
+			}
+			.TAB .wish {
+				height: 24px;
+				line-height: 24px;
+				font-weight: bold;
+				text-align: center;
+				background-color: #f3f3f3;
+			}
+
+			/*
+			 * 在首页新添加的回到顶部的功能
+			 * longkai@2012-06-24
+			 */
+			a#go-top {
+				width: 49px;
+				height: 35px;
+				text-decoration: none;
+				opacity: 0.5;
+				background: url(images/sprite.png?v=031516) no-repeat 0 -324px;
+			}
+			a#go-top:hover {
+				background-position: -49px -324px;
+			}
+			
+			/*
+			 * 在搜索框添加文字提示功能
+			 * longkai@2012-06-30
+			 */
+			.searchtip {
+				color:#999;
+			}
+			
+			.twitter img {
+				margin-right: 5px;
+				border-radius: 4px;
+				border: 0;
+			}
+			
+			.twitter_user a {
+				color: #6CABE1 !important;
+			}
+			
+			img.newly {
+				border: 0;
+			}
+			
+			#footer img {
+				border: 0;
+			}
+			
+			#footer_links {
+				float: right;
+				margin-right: 7px;
+			}
+			
+			#nav_container > div > ul > li > ul  {
+				opacity: 0.75;
+			}
+			
+		</style>
+
+		<script type="text/javascript">
+		/* <![CDATA[ */ 
+			function clock() {
+				var temp = "";
+				var nowtime = new Date();
+				var hours = nowtime.getHours();
+
+				if(hours >= 7 && hours < 12)
+					temp = "早上好！";
+				else if(hours >= 12 && hours <= 13)
+					temp = "中午好！";
+				else if(hours >= 14 && hours <= 18)
+					temp = "下午好！";
+				else if(hours > 18 && hours <= 24)
+					temp = "晚上好！";
+				else
+					temp = "夜深了，注意休息！";
+				hours = hours > 9 ? hours : "0" + hours;
+				var minutes = nowtime.getMinutes();
+				minutes = minutes > 9 ? minutes : "0" + minutes;
+				var seconds = nowtime.getSeconds();
+				seconds = seconds > 9 ? seconds : "0" + seconds;
+				var disptime = hours + ":" + minutes + ":" + seconds + "&nbsp;&nbsp;" + temp;
+				document.getElementById("clock").innerHTML = disptime;
+				setTimeout("clock()", 1000);
+			}
+			/* ]]> */
+		</script>
+
+		
+		<script type="text/javascript">
+		// /* <![CDATA[ */ 
+		//   var _gaq = _gaq || [];
+		//   _gaq.push(['_setAccount', 'UA-33450357-1']);
+		//   _gaq.push(['_trackPageview']);
+
+		//   (function() {
+		//     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		//     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		//     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		//   })();
+		// /* ]]> */
+		</script>
+
+		<title>雨无声十周年论坛首页!</title>
+	</head>
+	<body bgcolor="#F1FAFA">
+		<div id="global_bar">
+			<div id="global_bar_inner">
+				<div id="logo">
+					<a href="//www.newgxu.cn/html/"><img border="0" src="images/10_years_index/logo.jpg" alt="欢迎来到雨无声网站！" title="欢迎来到雨无声网站" /></a>
+				</div>
+				<div id="service">
+					<ul id="service_list">
+						<#if status.login>
+						<li style="display: block;">
+							<a target="_blank" href="/user/upgrade.yws" >${status.nick}</a>, 欢迎你！
+						</li>
+						<li>
+								<a target="_blank" href="/user/upgrade.yws" >个人服务区&nbsp;&nbsp;</a>
+						</li>
+						<li>
+							<a href="/getdraftboxes.yws" target="_blank">草稿箱(${status.draftboxSize})&nbsp;&nbsp;</a>
+						</li>
+						<li>
+							<a href="/diary/index.yws" target="_blank">心情日记&nbsp;&nbsp;</a>
+						</li>
+						<li>
+							<a href="/user/log.yws" target="_blank">新手帮助&nbsp;&nbsp;</a>
+						</li>
+						<li>
+							<a href="/accounts/myTwitter.yws" target="_blank" title="转到“微雨无声”">我的微博&nbsp;&nbsp;</a>
+						</li>
+						<li>
+							<a href="#" onClick="messageList();">新消息:${status.messageNotRead}条&nbsp;&nbsp;</a>
+						</li>
+						<li>
+							<a href="/wap/index.yws">手机版&nbsp;</a><img class="newly" src="/resources/images/common/newly.gif" alt="雨无声网站欢迎您！" title="最新更新，欢迎体验！" />
+						</li>
+						<li>
+							<a href="/user/top_three.yws">榜单&nbsp;</a><img class="newly" src="/resources/images/common/newly.gif" alt="雨无声网站欢迎您！" title="最新更新，欢迎体验！" />
+						</li>
+						<li>
+							<a href="/accounts/logout.yws">退出</a>
+						</li>
+						<#else>
+						<li style="display: block;">
+							游客, 欢迎你！
+						</li>
+						<li>
+							<a href="//bbs.newgxu.cn/login.yws">个人服务区&nbsp;</a>
+						</li>
+						<li>
+							<a href="//bbs.newgxu.cn/login.yws">草稿箱(0)&nbsp;</a>
+						</li>
+						<li>
+							<a href="//bbs.newgxu.cn/login.yws">心情日记&nbsp;</a>
+						</li>
+						<li>
+							<a href="//bbs.newgxu.cn/login.yws">新手帮助&nbsp;</a>
+						</li>
+						<li>
+							<a href="//bbs.newgxu.cn/login.yws">我的微博&nbsp;</a>
+						</li>
+						<li>
+							<a href="//bbs.newgxu.cn/login.yws">新消息:0条&nbsp;</a>
+						</li>
+						<li>
+							<a href="/wap/login.yws">手机版&nbsp;</a><img class="newly" src="/resources/images/common/newly.gif" alt="雨无声网站欢迎您！" title="最新更新，欢迎体验！" />
+						</li>
+						<li>
+							<span class="newly"><a href="/user/top_three.yws">榜单&nbsp;</a></span><img class="newly" src="/resources/images/common/newly.gif" alt="雨无声网站欢迎您！" title="最新更新，欢迎体验！" />
+						</li>
+						<li>
+							<a href="//bbs.newgxu.cn/login.yws">退出</a>
+						</li>
+						</#if>
+					</ul>
+				</div>
+				<div id="user">
+					<#if status.login>
+					<img id="user_face" class="shadow" src="<#if status.userFace == ''>images/10_years_index/user.jpg<#else>${status.userFace}</#if>" alt="用户你好！" style="width: 60px; height: 60px;"/>
+					<ul id="user_info">
+						<li>
+							经&nbsp;&nbsp;验: ${status.experience}
+						</li>
+						<li>
+							发&nbsp;&nbsp;帖: ${status.publishTopicsCount}
+						</li>
+						<li>
+							职&nbsp;&nbsp;务: ${status.userGroup}
+						</li>
+						<li>
+							体&nbsp;&nbsp;力: ${status.currentPower}/${status.maxPower}
+						</li>
+					</ul>
+					<#else>
+					<form action="accounts/homelogin.yws" method="post" id="login" style="padding-top: 27px; color: #90C31F">
+						<table style="float: left; font-size: 12px; height: 47px;">
+							<tr>
+								<td align="center"> 用户名 </td>
+								<td>
+								<input type="text" name="username" style="width: 149px;" />
+								</td>
+							</tr>
+							<tr>
+								<td align="center"> 密码 </td>
+								<td>
+								<input type="password" name="password" style="width: 149px;" />
+								</td>
+							</tr>
+						</table>
+						<input type="image" src="images/10_years_index/login.jpg" style="float: left;" title="Let's go!" />
+					</form>
+					</#if>
+				</div>
+			</div>
+		</div>
+		<div id="wrapper">
+			<div id="header">
+				<div id="header_inner">
+					<div id="welcome">
+						<a href="accounts/register_input.yws?regType=100"><img id="welcome_image" src="images/accounts/register.jpg" alt="亲，欢迎来到雨无声社区！" title="亲，欢迎来到雨无声社区！" /></a>
+					</div>
+					<div id="weather">
+						<iframe src="//m.weather.com.cn/m/pn12/weather.htm?id=101300101T" width="220" height="81" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" align="center"></iframe>
+					</div>
+				</div>
+			</div>
+			<div id="info">
+				<div id="info_inner">
+					<div id="info_scroll">
+						<ul style="height: 17px;">
+						<marquee direction="left" scrollamount="2" onmouseover="this.stop()" onmouseout="this.start()">
+							<#list model.smallNews as s>
+							<li>
+								<a href="small_news.yws?id=${s.id}">${s.user.nick?if_exists}: ${s.title}[${s.createTime}]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+							</li>
+							</#list>
+						</marquee>
+						</ul>
+					</div>
+					<div id="reminder">
+						<div id="clock">
+							<script type="text/javascript">
+								clock();
+							</script>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="nav">
+				<div id="nav_inner">
+					<div id="nav_container">
+						<div class="multi_drop_menus vertical"> 
+							<ul>
+								<li>
+									<a href="/more.yws?id=1" target="_blank">站务管理&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul class="transparent" style="border-radius: 4px;">
+										<li>
+											<a target="_blank" href="forum.yws?forumId=1">问题意见</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=2">版主之家</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=14" style="color: red;">版主申请</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=66">举报中心</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=93">论坛投诉</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=105">惩罚记录</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=113">回收中心</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=173">管理员之家</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="/more.yws?id=2" target="_blank">放眼西大&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a href="#">学院概览</a>
+											<ul id="academy">
+												<li>
+													<a target="_blank" href="forum.yws?forumId=43">计电学院</a>
+													<a target="_blank" href="forum.yws?forumId=32">土木学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=163">新闻学院</a>
+													<a target="_blank" href="forum.yws?forumId=34">数信学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=27">动科学院</a>
+													<a target="_blank" href="forum.yws?forumId=161">材料学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=37">电气学院</a>
+													<a target="_blank" href="forum.yws?forumId=41">化工学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=174">国防学院</a>
+													<a target="_blank" href="forum.yws?forumId=30">公管学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=162">环境学院</a>
+													<a target="_blank" href="forum.yws?forumId=31">机械学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=145">教育学院</a>
+													<a target="_blank" href="forum.yws?forumId=36">轻工学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=26">生命学院</a>
+													<a target="_blank" href="forum.yws?forumId=44">物理学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=39">外语学院</a>
+													<a target="_blank" href="forum.yws?forumId=40">行健学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=151">艺术学院</a>
+													<a target="_blank" href="forum.yws?forumId=38">中加学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=45">资冶学院</a>
+													<a target="_blank" href="forum.yws?forumId=150">政治学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=86">研究生</a>
+													<a target="_blank" href="forum.yws?forumId=42">成教院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=28">法学院</a>
+													<a target="_blank" href="forum.yws?forumId=35">商学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=29">文学院</a>
+													<a target="_blank" href="forum.yws?forumId=46">农学院</a>
+													<a target="_blank" href="forum.yws?forumId=47">林学院</a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=10" target="_blank">校园聚焦</a>
+										</li>
+										<li>
+											<a target="_blank" style="color: red;" href="forum.yws?forumId=131">新生专版</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=48">校报速递</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=110">校友之家</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="/more.yws?id=51" target="_blank">社团风采&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=81">社团人</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=146">文学联社</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=137">书画协会</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=139">科技协会</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=134">音乐协会</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=160">天文协会</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=132">广告协会</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=135">漫画研究社</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=133">自行车协会</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=178">青年志愿者协会</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="/more.yws?id=43" target="_blank">休闲娱乐&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=5">音乐天堂</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=11">天下无图</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=9">自由发帖</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=13">精品时尚</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=20">游戏东西</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=70">手机数码</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=98">驴行天下</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=99">美食沙龙</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=108">影视长廊</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=119">摄影天地</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="/more.yws?id=5" target="_blank">文化艺术&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=4">文行天下</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=57">动漫天地</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=60">科幻世界</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=107">武侠江湖</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=164">史海沉沙</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="/more.yws?id=6" target="_blank">体育健身&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=21">体育资讯</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=101">玩转篮球</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=102">绿茵场上</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="/more.yws?id=45" target="_blank">知性感性&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="/forum.yws?forumId=6">生活空间</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=12">心情故事</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=23">单身部落</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="/more.yws?id=3" target="_blank">学术科学&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=115">经济纵横</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=117">工业技术</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=116">农业科学</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=3">思想前线</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=62">英语角</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="/more.yws?id=4" target="_blank">电脑技术&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=8">软硬兼施</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=96">操作系统</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=97">图形图像</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=111">网络纵横</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="/more.yws?id=48" target="_blank">综合信息&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=24">情牵广西</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=63">考研资讯</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=72">前程无忧</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=109">热点时事</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=103">寻人寻物</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=104">考试认证</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="/more.yws?id=49" target="_blank">交易市场&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=125">新旧书市</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=124">日用百货</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=126">数码通讯</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=127">电脑配件</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="/more.yws?id=7" target="_blank">驻站写手&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=53">雅瑞</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=114">后羿</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=94">echoo</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=73">马萧萧</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=112">帕涅罗珀</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=50">朱一刀 </a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="/more.yws?id=58" target="_blank">思政天地&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=153">家庭教育</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=89">先教活动</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=149">头雁论坛</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=142">关工委论坛</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="index_old.yws" target="_blank">旧版入口&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+								</li>
+								<li>
+									<a href="/wap/index.yws" target="_blank">手机入口<img class="newly" src="/resources/images/common/newly.gif" alt="雨无声网站欢迎您！" title="最新更新，欢迎体验！" />&gt;</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					
+					<div id="news" style="width: 100%; clear: both; float: left;border-radius: 4px;">
+						<a href="//www.newgxu.cn/html/subject/2012fresh_smiles/index.html" target="_blank"> <img src="images/10_years_index/fresh_smiles.jpg" style="width: 100%; border: 1px solid #dfdfdf; float: left; border-radius: 4px;" /> </a>
+					</div>
+					
+					<div id="nav_image" style="margin-top: 10px; clear: both; float: left;">
+						<!-- <a href="/accounts/myTwitter.yws" target="_blank"> <img src="images/10_years_index/twitter.jpg" title="到微雨无声！" /> </a>
+						<a href="//share.newgxu.cn/" target="_blank"> <img src="images/10_years_index/share.jpg" title="到分享平台！" /> </a>
+						<a href="//www.newgxu.cn/7.0/bus/" target="_blank"> <img src="images/10_years_index/service.jpg" title="到服务小站！" /> </a>
+						<a href="//uthink.newgxu.cn/" target="_blank"> <img src="images/10_years_index/uthink.jpg" title="到雨信搜索！" /> </a>
+						<a href="//weibo.com/homeyws" target="_blank"> <img src="images/10_years_index/yws_weibo.jpg" title="到雨无声社区官方微博！" /> </a>
+						<a href="//weibo.com/newgxu2001" target="_blank"> <img src="images/10_years_index/sina_weibo.jpg" title="到雨无声官方新浪微博！" /> </a>
+						<a href="//weibo.com/ywsbianjibu" target="_blank"> <img src="images/10_years_index/visual_weibo.jpg" title="到雨无声视界网官方新浪微博！" /> </a>
+						<a href="//t.newgxu.cn/find/default.php" target="_blank"> <img src="images/10_years_index/lose_and_found.jpg" title="到失物招领！" /> </a> -->
+						<img src="/resources/images/common/yws_nav.jpg" alt="" usemap="#yws_nav" />
+						<map id="yws_nav" name="yws_nav">
+							<area alt="" coords="0, 0, 170, 57" href="/accounts/myTwitter.yws" title="到微雨无声" target="_blank" />
+							<area alt="" coords="0, 62, 170, 124" href="//share.newgxu.cn/" title="到分享平台" target="_blank" />
+							<area alt="" coords="0, 129, 170, 190" href="//www.newgxu.cn/7.0/bus/" title="到服务小站！" target="_blank" />
+							<area alt="" coords="0, 195 170, 257" href="//uthink.newgxu.cn/" title="到雨信搜索！" target="_blank" />
+							<area alt="" coords="0, 262, 170, 326" href="//weibo.com/homeyws" title="到雨无声社区官方微博！" target="_blank" />
+							<area alt="" coords="0, 331, 170, 394" href="//weibo.com/newgxu2001" title="到雨无声官方新浪微博！" target="_blank" />
+							<area alt="" coords="0, 399, 170, 461" href="//weibo.com/ywsbianjibu" title="到雨无声视界网官方新浪微博！" target="_blank" />
+							<area alt="" coords="0, 461, 170, 529" href="//t.newgxu.cn/find/default.php" title="到失物招领！" target="_blank" />
+						</map>
+					</div>
+
+					<div id="family">
+						<a href="//www.newgxu.cn/love2011-2012/ASbox.swf" target="_blank"> <img src="images/10_years_index/family.jpg" title="到雨无声全家福！" /> </a>
+					</div>
+
+					<div id="statistics" style="margin-top: 0px; border: 1px solid #dfdfdf;">
+						<table style="width: 100%; font-size: 12px; align: center;border-radius: 4px;">
+							<tr>
+								<td>在线人数：</td>
+								<td>${onlineStatus.total}</td>
+							</tr>
+							<tr>
+								<td>今日访问：</td>
+								<td>${status.todayHicount}</td>
+							</tr>
+							<tr>
+								<td>总访问量：</td>
+								<td>${status.totalHicount}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div id="content">
+				<div id="content_inner">
+					<div id="search" style="width: 100%;">
+						<form id="search" name="search"  action="search_do.yws" method="post">
+							<div id="search_inner" style="width: 100%;">
+								<input type="text" name="keywords" id="search_bar" />
+								<label id="search_label" for="search_bar"><img id="search_button" src="images/10_years_index/search_buttom.jpg" alt="so" onClick="document.search.submit();" title="搜我吧！" style="cursor: pointer;" /></label>
+							</div>
+						</form>
+					</div>
+					<div class="clear"></div>
+					<div id="infolista" style="border: 1px solid #dfdfdf;  margin-top: 5px;	border-radius: 4px;">
+						<div class="nav_title" style="clear: both; font-size: 15px; font-weight: bold; font-family: 黑体; float:left; width: 538px;  height: 19px; overflow: hidden;" id="fantastic_share">
+							<table style="float: left;">
+								<tr>
+									<td>精彩分享</td>
+								</tr>
+							</table>
+							<table  style="border-collapse:collapse; text-align:right; float: right;">
+								<tr>
+									<td><span class="thist" id="a1"><a href="###">&nbsp;1&nbsp;</a> </span></td>
+
+									<td><a href="###" id="a2">&nbsp;2&nbsp;</a></td>
+
+									<td><a href="###" id="a3">&nbsp;3&nbsp;</a></td>
+
+									<td><a href="###" id="a4">&nbsp;4&nbsp;</a></td>
+								</tr>
+							</table>
+						</div>
+						<div class="clear"></div>
+						<#list pubGoodTopics as t>
+
+						<div class="<#if t_index == 0>info<#else>h</#if>" id="infoa${t_index?if_exists+1}">
+							<div class="article_digest" style="height: 200px; overflow:hidden;">
+								<div class="article">
+									<a target="_blank" href="/topic.yws?forumId=${t.forum.id}&amp;topicId=${t.topic.id}">
+									<p class="title" style="font-weight: bold; font-family:微软雅黑, 宋体;">
+										${t.title}
+									</p></a><a href="user/user_info.yws?id=${t.topic.user.id}" target="_blank">
+									<p class="category" style="font-family:微软雅黑, 宋体;">
+										${t.topic.user.nick}
+									</p></a>
+								</div>
+								<p class="digest" style="color: #4f4f4f; font-size: 13px; font-family: 微软雅黑, 宋体;text-indent: 2em; ">
+									${t.content}<a target="_blank" href="/topic.yws?forumId=${t.forum.id}&amp;topicId=${t.topic.id}">[详细]</a>
+								</p>
+							</div>
+						</div>
+
+						</#list>
+
+					</div>
+
+					<div style="margin-top: 10px; clear: both; border-radius: 4px; border: 1px solid #dfdfdf;">
+						<p class="nav_title" id="new_articles" style=" font-size: 15px; font-weight: bold; font-family: 黑体;">
+							分区新帖
+						</p>
+
+						<#list model.areas as a>
+						<div id="new_area_articles">
+							<div style="width: 100%; border-bottom: 2px solid #e2fac0;" class="area">
+								<p class="area">
+									${a.name}
+								</p>
+								<p class="date">
+									<a target="_blank" href="/more.yws?id=${a.id}" style="color: #6CABE1; font-size: 11px; font-family: 微软雅黑， 宋体；">更多。。。</a>
+								</p>
+							</div><div class="clear" style="clear: both;"></div>
+							<div class="article">
+								<ul>
+									<#list a.latestTopics as t>
+									<li>
+										<p class="title" style="width: 410px; height: 19px; overflow: hidden;">
+											<a target="_blank" href="/topic.yws?forumId=${t.forum.id}&amp;topicId=${t.id}"><span>${t.activityImage}${t.title}</span></a>${t.imageString}
+											<a href="/user/user_info.yws?id=${t.user.id}" target="_blank" style="color: #90c31f;">
+											<p class="date">
+												${t.user.nick}
+											</p> </a>
+										</p>
+									</li>
+									</#list>
+								</ul>
+							</div>
+						</div>
+						</#list>
+					</div>
+				</div>
+			</div>
+			<div id="prome">
+				<div id="prome_inner">
+					<div id="hot_articles" style="margin: 0 0 10px 0;">
+						<p>
+							微雨无声
+						</p>
+						<div>
+							<ul>
+								<#list model.twitters as t>
+								<li style="overflow: hidden; clear: both;" class="twitter">
+									<span style="float: left;"><a href="//t.newgxu.cn" target="_blank">${t.title}</a></span><span style="float: left; width: 210px; overflow: hidden;"><span class="twitter_user">${t.url}</span>:&nbsp;<a href="//t.newgxu.cn" target="_blank">${t.content}</a></span>
+								</li>
+								</#list>
+								<li>
+									<div style="text-align: right;"><a href="/accounts/myTwitter.yws" target="_blank">更多微博。。。</a></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div id="hot_articles" style="margin: 10px 0 10px 0;">
+						<p>
+							推荐文章
+						</p>
+						<div>
+							<ul>
+								<#list pubHotTopics as t>
+								<li>
+									<a target="_blank" href="/topic.yws?forumId=${t.forum.id}&amp;topicId=${t.topic.id}">${t.title}</a>
+								</li>
+								</#list>
+							</ul>
+						</div>
+					</div>
+
+					<div id="hot_articles"  style="margin: 10px 0 10px 0;">
+						<p>
+							校园公告
+						</p>
+						<div>
+							<ul>
+								<ul>
+									<#list model.notices as m>
+									<li>
+										<a target="_blank" href="${m.url}">${m.title}</a>
+									</li>
+									</#list>
+								</ul>
+							</ul>
+						</div>
+					</div>
+
+					<div id="hot_articles" style="margin-top: 10px;">
+						<p>
+							失物招领
+						</p>
+
+						<div id="infolistb">
+							<div class="rank_title">
+								<table width="100%" style="border-collapse:collapse; ">
+									<tr>
+										<td><span class="thist" id="b1"><a href="###">&nbsp;&nbsp;&nbsp;&nbsp;丢失物品&nbsp;&nbsp;&nbsp;&nbsp;</a> </span></td>
+										<td><a href="###" id="b2">&nbsp;&nbsp;&nbsp;&nbsp;捡到物品&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
+									</tr>
+								</table>
+							</div>
+							<div class="info" id="infob1">
+								<table style="width: 100%;">
+									<#list model.finds as f>
+									<tr>
+										<td align="center"><a target="_blank" href="${f.url}">${f.title}&nbsp;&nbsp;&nbsp;&nbsp;${f.time?string("MM-dd")}</a></td>
+									</tr>
+									</#list>
+								</table>
+							</div>
+							<div class="h" id="infob2">
+								<table style="width: 100%;">
+									<#list model.losts as l>
+									<tr>
+										<td align="center"><a target="_blank" href="${l.url}">${l.title}&nbsp;&nbsp;&nbsp;&nbsp;${l.time?string("MM-dd")}</a></td>
+									</tr>
+									</#list>
+								</table>
+							</div>
+						</div>
+
+					</div>
+
+					<div id="hot_articles" style="margin-top: 10px;">
+						<p>
+							无声祝福
+						</p>
+						<div style="width:254px;">
+							<!--左边小按钮-->
+							<div class="wish_LC wish">
+								<a id="wish_left" href="" style="background-color: #f3f3f3;" onfocus="this.blur();"></a>
+							</div>
+
+							<!--中间的列表区域-->
+							<div class="wish_content" id="wish_content">
+								<div id="wish_wrap">
+
+									<#list model.wishes as w>
+									<div class="TAB">
+										<div style="height:24px;" class="wish">
+											<a target="_blank" href="//www.newgxu.cn/wish/">${w.title}</a>
+										</div>
+										<div>
+											<ul>
+												<a target="_blank" href="//www.newgxu.cn/wish/">${w.content}</a>
+											</ul>
+										</div>
+										<div style="margin-top: 20px; text-align: right;">
+											<a target="_blank" href="//www.newgxu.cn/wish/">我要祝福！</a>
+										</div>
+									</div>
+									</#list>
+
+								</div>
+							</div>
+							<!--end 中间列表区域-->
+
+							<!--右边小按钮-->
+							<div class="wish_RC userBg">
+								<a id="wish_right" href="" style="background-color: #f3f3f3;" onfocus="this.blur();"></a>
+							</div>
+							<div style="clear:both;"></div>
+						</div>
+					</div>
+
+					<div id="rank">
+						<p>
+							论坛排行榜
+						</p>
+						<div style="width:254px;">
+							<!--左边小按钮-->
+							<div class="LC userBg">
+								<a id="goLeft" href="" style="background-color: #f3f3f3;" onfocus="this.blur();"></a>
+							</div>
+
+							<!--中间的列表区域-->
+							<div class="user_content" id="user_content">
+								<div id="wrap">
+									<div class="TAB">
+										<div target="_blank" style="height:24px;" class="userBg">
+											<a target="_blank" href="/user/users.yws?type=1">价值</a>
+										</div>
+										<div>
+											<ul>
+												<#list topExpUsers as u>
+												<li>
+													<a target="_blank" href="/user/user_info.yws?id=${u.id}">${u.nick}</a>
+												</li>
+												</#list>
+											</ul>
+										</div>
+									</div>
+
+									<div class="TAB">
+										<div style="height:24px;" class="userBg">
+											<a target="_blank" href="/user/users.yws?type=2">钱力</a>
+										</div>
+										<div>
+											<ul>
+												<#list topMoneyUsers as u>
+												<li>
+													<a target="_blank" href="/user/user_info.yws?id=${u.id}">${u.nick}</a>
+												</li>
+												</#list>
+											</ul>
+										</div>
+									</div>
+
+									<div class="TAB">
+										<div style="height:24px;" class="userBg">
+											<a target="_blank" href="/user/users.yws?type=3">影响</a>
+										</div>
+										<div>
+											<ul>
+												<#list topTopicUsers as u>
+												<li>
+													<a target="_blank" href="/user/user_info.yws?id=${u.id}">${u.nick}</a>
+												</li>
+												</#list>
+											</ul>
+										</div>
+									</div>
+
+									<div class="TAB">
+										<div style="height:24px;" class="userBg">
+											<a target="_blank" href="/user/users.yws?type=5">水手</a>
+										</div>
+										<div>
+											<ul>
+												<#list topGoodUsers as u>
+												<li>
+													<a target="_blank" href="/user/user_info.yws?id=${u.id}">${u.nick}</a>
+												</li>
+												</#list>
+											</ul>
+										</div>
+									</div>
+
+									<div class="TAB">
+										<div style="height:24px;" class="userBg">
+											<a target="_blank" href="/user/users.yws?type=4">水鬼</a>
+										</div>
+										<div>
+											<ul>
+												<#list topReplyUsers as u>
+												<li>
+													<a target="_blank" href="/user/user_info.yws?id=${u.id}">${u.nick}</a>
+												</li>
+												</#list>
+											</ul>
+										</div>
+									</div>
+									
+									<div class="TAB">
+										<div style="height:24px;" class="userBg">
+											<a target="_blank" href="/user/users.yws?type=6">本周最活跃</a>
+										</div>
+										<div>
+											<ul>
+												<#list lastWeekMostActiveUsers as u>
+												<li>
+													<a target="_blank" href="/user/user_info.yws?id=${u.id}">${u.nick}</a>
+												</li>
+												</#list>
+											</ul>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<!--end 中间列表区域-->
+
+							<!--右边小按钮-->
+							<div class="RC userBg">
+								<a id="goRight" href="" style="background-color: #f3f3f3;" onfocus="this.blur();"></a>
+							</div>
+							<div style="clear:both;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="clear"></div>
+			<div id="footer">
+				<a href="//www.newgxu.cn/html" target="_blank"><img src="/images/10_years_index/footer.jpg" alt="" id="footer_logo" title="雨无声网站欢迎您！" style="cursor: pointer;" /></a>
+				<div id="footer_info">
+					<div id="info1">Copyright © 2004-2012 <a target="_blank" href="//www.newgxu.cn">www.newgxu.cn</a> All rights reserved. Powered By <a href="mailto:im.longkai@gmail.com">雨无声技术部</a></div>
+					<div id="info2">地址：广西大学办公楼南楼305室雨无声 电话:0771-3273880 站长信箱：<a href="mailto:yws_webmaster@163.com">yws_webmaster@163.com</a></div>
+					<div id="info3">桂ICP备05001920号 南宁网警备4501200373号</div>
+				</div>
+				<div id="footer_links">
+					<div id="links1"><a href="//www.newgxu.net/aboutus/about.html" target="_blank">关于我们</a> － <a href="//www.newgxu.net/program/post.html" target="_blank">网上投稿</a> － <a href="//www.newgxu.net/aboutus/contract.html" target="_blank">服务条款</a> － <a href="//www.newgxu.net/program/guestbook.html" target="_blank">网友留言</a> － <a href="//www.newgxu.net/aboutus/map.html" target="_blank">网站地图</a></div>
+					<div id="links2"><a href="//www.newgxu.cn/html" target="_blank"><img src="/images/10_years_index/index.jpg" alt="" title="雨无声网站欢迎您！" /></a></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="//lib.sinaapp.com/js/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			!window.jQuery && document.write('<script src="js/jquery-1.4.2.min.js" type="text/javascript"><\/script>');
+		</script>
+		<script src="js/10_years_index/xdImage_3.0.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/go-top.js"></script>
+	<script type="text/javascript">
+	/* <![CDATA[ */
+		$(document).ready(function() {
+			$("#user_content").xdImage_smoothCloth({
+				sonDiv : "wrap",
+				kind : 'div',
+				lastButton : 'goLeft',
+				nextButton : 'goRight',
+				time : 5000,
+				timeout : 400,
+				count : 2
+			});
+		});
+
+		$(document).ready(function() {
+			$("#wish_content").xdImage_smoothCloth({
+				sonDiv : "wish_wrap",
+				kind : 'div',
+				lastButton : 'wish_left',
+				nextButton : 'wish_right',
+				time : 5000,
+				timeout : 400,
+				count : 1
+			});
+		});
+
+		var $afanmi_id = function(id) {
+			return "string" == typeof id ? document.getElementById(id) : id;
+		};
+		//设置切换
+		var ss = new Array;
+		//ss["标识"]=Array(数量,时间(毫秒),"change","是否打开自动切换",0,"是否开启鼠标事件");
+		ss["b"] = Array(2, 5000, "change", true, 0, true);
+		ss["a"] = Array(4, 8000, "change", true, 0, true);
+		//鼠标设置及执行自动切换
+
+		for(var s in ss) {
+			mouses(s);
+			autochange(s);
+		}
+
+		//鼠标事件函数
+		function mouses(s) {
+			if(ss[s][5]) {
+				for(var i = 1; i <= ss[s][0]; i++) {
+					$afanmi_id(s + i).onmouseover = function() {
+						clearTimeout(ss[s][2]);
+						changeonce(s, this.attributes.getNamedItem("id").nodeValue.split(s)[1]);
+					}
+					$afanmi_id(s + i).onmouseout = function() {
+						ss[s][4] = 0;
+						autochange(s);
+					}
+					$afanmi_id("info" + s + i).onmouseover = function() {
+						clearTimeout(ss[s][2]);
+						changeonce(s, this.attributes.getNamedItem("id").nodeValue.split("info"+s)[1]);
+					}
+					$afanmi_id("info" + s + i).onmouseout = function() {
+						ss[s][4] = 0;
+						autochange(s);
+					}
+				}
+			}
+		}
+
+		//切换一次函数
+		function changeonce(s, id) {
+			for(var i = 1; i <= ss[s][0]; i++) {
+				if(i == id) {
+					$afanmi_id(s + i).className = "thist";
+					$afanmi_id("info" + s + i).className = "info";
+				} else {
+					$afanmi_id(s + i).className = "";
+					$afanmi_id("info" + s + i).className = "h";
+				}
+			}
+		}
+
+		//自动切换函数
+		function autochange(s) {
+			if(ss[s][3]) {
+				for(var i = 1; i <= ss[s][0]; i++) {
+					if($afanmi_id(s + i).className == "thist") {
+						var id = ss[s][4] ? (i % ss[s][0] ? i + 1 : 1) : i;
+						break;
+					}
+				}
+				changeonce(s, id);
+				ss[s][2] = setTimeout("autochange(\"" + s + "\");", ss[s][1]);
+				ss[s][4] = 1;
+			} else {
+				return false;
+			}
+		}
+
+		function MM_openBrWindow(theURL, winName, features) {//v2.0
+			window.open(theURL, winName, features);
+		}
+
+		function messageList() {
+			var width = 700;
+			var height = 500;
+			var left = eval(screen.Width - width) / 2;
+			var top = eval(screen.Height - height) / 2;
+			MM_openBrWindow('/message/message_list.yws?folderId=1', '查看短消息', 'menubar=yes,scrollbars=yes,width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + '');
+		}
+
+		function fclose() {
+			document.getElementById("eMeng").style.visibility = 'hidden';
+		}
+
+		function fpone() {
+			var str = "<DIV id=eMeng >" + " <table width='100%' border='0' cellspacing='0' background='images/msgNotice.jpg' class='msgnotice'>" + "  <tr>" + "    <td width='15%' height='28'>&nbsp;</td>" + "    <td width='75%' align='left'>雨无声社区温馨提示：</td>" + "    <td width='10%' align='left'><SPAN title=关闭 " + "   style='FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: black; MARGIN-RIGHT: 4px' " + "     onclick=fclose()>×</SPAN></td>" + "  </tr>" + "   <tr>" + "     <td height='95' colspan='3'><table width='100%' border='0' align='center' cellspacing='0'>" + "      <tr>" + "        <td align='center'><font " + "     color='red'><a href='#' onClick='messageList();' ><font color='#FF0000'>您有${status.messageNotRead}条新的短消息<br />" + "            请注意查收</font></a></font></td>" + "       </tr>" + "    </table></td>" + "   </tr>" + "  </table>" + " </DIV>"
+			document.getElementById("eMeng").innerHTML = str;
+			setTimeout("fclose()", 8000);
+		}
+		
+		(new GoTop()).init({
+			// pageWidth : 980,
+			// nodeId : 'go-top',
+			// nodeWidth : 50,
+			// distanceToBottom : 125,
+			// hideRegionHeight : 130,
+			// text : 'Top'
+			pageWidth : 960, // 页面宽度
+			nodeId : 'go-top', // Go Top 节点的 ID
+			nodeWidth : 50, // Go Top 节点宽度
+			distanceToBottom : 120, // Go Top 节点上边到页面底部的距离
+			distanceToPage : 20, // Go Top 节点左边到页面右边的距离
+			hideRegionHeight : 90, // 隐藏节点区域的高度 (该区域从页面顶部开始)
+			text : ''			// Go Top 的文本内容
+		});
+		
+		// 搜索框
+		var keywords = document.getElementById("search_bar");
+		// 提示文字
+		var tiptext = "你想了解什么呢...";
+		// 页面初始化时
+		if(keywords.value == "" || keywords.value == tiptext) { // 初始化时, 就算显示内容就是提示文字也要进行处理, 以应用提示文字不一样的风格.
+			keywords.className = "searchtip"; // 先改变风格
+			keywords.value = tiptext; // 后改变内容
+		}
+		// 鼠标聚焦搜索框时
+		keywords.onfocus = function(e) {
+			if(keywords.value == tiptext) {
+				keywords.value = ""; // 先改变内容
+				keywords.className = ""; // 后改变风格
+			}
+		}
+		// 搜索框失去焦点时
+		keywords.onblur = function(e) {
+			if(keywords.value == "") {
+				keywords.className = "searchtip"; // 先改变风格
+				keywords.value = tiptext; // 后改变内容
+			}
+		}
+
+		// 提交按钮
+		var search_button = document.getElementById("search_button");
+		// 禁止在搜索框为空或显示提示信息时提交表单
+		search_button.onclick = function(e) {
+			if(keywords.value == "" || keywords.value == tiptext) {
+				return false;
+			}
+			document.search.submit();
+		}
+		/* ]]> */
+	</script>
+	<!--[if IE 6]>
+	<script src="js/10_years_index/kill-ie6.js"></script>
+	<![endif]-->
+</html>

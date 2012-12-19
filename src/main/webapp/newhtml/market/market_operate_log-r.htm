@@ -1,0 +1,121 @@
+<@base.header title="物流日记"></@base.header>
+<@base.body location="商业中心&nbsp;－&gt;&nbsp;物流日记">
+	<@base.main location="社区银行&nbsp;－&gt;&nbsp物流日志;">
+		<@base.market_content>
+<table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" class="list_kuang">
+  <tr>
+    <td width="541" align="center" class="uline"><table width="100%" height="20" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="50%" align="right"><a href="log.yws?typeId=1">转出物品记录</a></td>
+          <td width="50%" align="right"><a href="log.yws?typeId=2">转入物品记录</a></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+
+			<#if logs?size != 0>
+				<#switch typeId>
+				<#case 0><!-- 转出转入物品记录 -->
+						物流汇总表<br />
+						<#list logs as log>
+						<table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" class="list_kuang">
+			             <tr>
+                          <td width="541" align="center" class="uline"><table width="100%" height="20" border="0" cellpadding="0" cellspacing="0">
+			              <tr>
+			                <td>昵称</td>
+			                <td>时间</td>
+			                <td>物品</td>
+			                <td>操作</td>
+			               </table></td>
+			              </tr>
+			             </table>
+			             
+			              <#if user.nick==log.user.nick>
+			              <table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" class="list_kuang">
+			             <tr>
+                          <td width="541" align="center" class="uline"><table width="100%" height="20" border="0" cellpadding="0" cellspacing="0">
+			              <tr>
+			                <td>${log.user.nick}</td>
+			                <td>${log.usedTime}</td>
+			                <td>${log.item.name}</td>
+			                <td>转出给<a href='/user/user_info.yws?id=${log.object.id}' target="_blank">${log.object.nick}</a></td>
+			                 </table></td>
+			              </tr>
+			              </table>
+			              <#else>
+			               <table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" class="list_kuang">
+			             <tr>
+                          <td width="541" align="center" class="uline"><table width="100%" height="20" border="0" cellpadding="0" cellspacing="0">
+			              <tr>
+			                <td>${log.object.nick}</td>
+			                <td>${log.usedTime}</td>
+			                <td>${log.item.name}</td>
+			                <td>从<a href='/user/user_info.yws?id=${log.user.id}' target="_blank">${log.user.nick}</a>转入</td>
+			                </table></td>
+			              </tr>
+			              </table>
+			              </#if>
+						</#list>
+						<#break>
+					<#case 1><!-- 转出物品记录 -->
+						转出物品记录<br />
+						<#list logs as log>
+						<table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" class="list_kuang">
+			             <tr>
+                          <td width="541" align="center" class="uline"><table width="100%" height="20" border="0" cellpadding="0" cellspacing="0">
+			              <tr>
+			                <td>昵称</td>
+			                <td>时间</td>
+			                <td>物品</td>
+			                <td>操作</td>
+			               </table></td>
+			              </tr>
+			             </table>
+			              <table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" class="list_kuang">
+			             <tr>
+                          <td width="541" align="center" class="uline"><table width="100%" height="20" border="0" cellpadding="0" cellspacing="0">
+			              <tr>
+			                <td>${log.user.nick}</td>
+			                <td>${log.usedTime}</td>
+			                <td>${log.item.name}</td>
+			                <td>转出给<a href='/user/user_info.yws?id=${log.object.id}' target="_blank">${log.object.nick}</a></td>
+			                 </table></td>
+			              </tr>
+			              </table>
+						</#list>
+						<#break>
+					<#case 2><!-- 转入物品记录-->
+						转入物品记录<br />
+						<#list logs as log>
+						<table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" class="list_kuang">
+			             <tr>
+                          <td width="541" align="center" class="uline"><table width="100%" height="20" border="0" cellpadding="0" cellspacing="0">
+			              <tr>
+			                <td>昵称</td>
+			                <td>时间</td>
+			                <td>物品</td>
+			                <td>操作</td>
+			               </table></td>
+			              </tr>
+			             </table>
+			               <table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" class="list_kuang">
+			             <tr>
+                          <td width="541" align="center" class="uline"><table width="100%" height="20" border="0" cellpadding="0" cellspacing="0">
+			              <tr>
+			               <td>${log.object.nick}</td>
+			                <td>${log.usedTime}</td>
+			                <td>${log.item.name}</td>
+			                <td>从<a href='/user/user_info.yws?id=${log.user.id}' target="_blank">${log.user.nick}</a>转入</td>
+			                 </table></td>
+			              </tr>
+			              </table>
+						</#list>
+						<#break>
+					<#default>
+				</#switch>
+			<#else>
+				没有相关记录！
+			</#if>
+		</@base.market_content>
+	</@base.main>
+</@base.body>

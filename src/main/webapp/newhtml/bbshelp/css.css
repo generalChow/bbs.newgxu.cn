@@ -1,0 +1,99 @@
+TD {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 15px; FONT-FAMILY: "宋体"
+}
+TH {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: white; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #5265a5
+}
+TD.tableTitle1 {
+	BACKGROUND-COLOR: #84bc14
+}
+.trBorder1 {
+	FONT-WEIGHT: bolder; FONT-SIZE: 9pt; COLOR: #ffffff; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #84bc14; TEXT-DECORATION: none
+}
+.trBorder2 {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 22px; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #f9ffed
+}
+BODY {
+	SCROLLBAR-FACE-COLOR: #84bc14;
+	FONT-SIZE: 12pt;
+	SCROLLBAR-HIGHLIGHT-COLOR: #f9ffed;
+	SCROLLBAR-SHADOW-COLOR: #f9ffed;
+	SCROLLBAR-3DLIGHT-COLOR: #84bc14;
+	SCROLLBAR-ARROW-COLOR: #84bc14;
+	FONT-FAMILY: "宋体";
+	SCROLLBAR-DARKSHADOW-COLOR: #84bc14;
+	SCROLLBAR-BASE-COLOR: #84bc14;
+	BACKGROUND-COLOR: #f9ffed;
+	line-height: 18px;
+
+}
+A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #84bc14; TEXT-DECORATION: underline
+}
+A.1 {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.1:hover {
+	COLOR: #ff5a00; TEXT-DECORATION: underline
+}
+A.2 {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.2:hover {
+	COLOR: #ff5a00; TEXT-DECORATION: underline
+}
+.form1 {
+	BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #cccccc 1px solid; PADDING-LEFT: 1px; FONT-SIZE: 9pt; PADDING-BOTTOM: 1px; MARGIN: 1px; BORDER-LEFT: #cccccc 1px solid; COLOR: #000000; PADDING-TOP: 1px; BORDER-BOTTOM: #cccccc 1px solid; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #ffffff
+}
+.border {
+	BORDER-RIGHT: #ff5a00 1px solid; BORDER-TOP: #ff5a00 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: #ff5a00 1px solid; COLOR: #000000; BORDER-BOTTOM: #ff5a00 1px solid; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #ffffff
+}
+.p {
+	LINE-HEIGHT: 18px
+}
+.p1 {
+	LINE-HEIGHT: 24px
+}
+.b {
+	FONT-SIZE: 10pt;
+	LINE-HEIGHT: 20px;
+	FONT-FAMILY: "宋体";
+	font-weight: normal;
+
+}
+INPUT {
+	FONT-SIZE: 9pt; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+.tableBorder1 {
+	BORDER-RIGHT: 1px; BORDER-TOP: 1px; BORDER-LEFT: 1px; WIDTH: 98%; BORDER-BOTTOM: 1px; BACKGROUND-COLOR: #84bc14
+}
+.tableBorder2 {
+	WIDTH: 98%
+}
+.tdBorder1 {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 13px; FONT-FAMILY: "宋体"
+}
+.tdBorder2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; FONT-FAMILY: "宋体"
+}
+.tableBorder3 {
+	BORDER-RIGHT: #84bc14 1px solid; BORDER-TOP: #84bc14 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: #84bc14 1px solid; WIDTH: 98%; BORDER-BOTTOM: #84bc14 1px solid; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+.tableBorder4 {
+	BORDER-RIGHT: #84bc14 1px solid; BORDER-TOP: #84bc14 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: #84bc14 1px solid; BORDER-BOTTOM: #84bc14 1px solid; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+.trBorder3 {
+	BORDER-RIGHT: #84bc14 1px solid; BORDER-TOP: #84bc14 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: #84bc14 1px solid; BORDER-BOTTOM: #84bc14 1px solid; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+.tdBorder3 {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 24px; FONT-FAMILY: "宋体"; HEIGHT: 36px; TEXT-DECORATION: none
+}
+.tdBorder4 {
+	FONT-SIZE: 14px; LINE-HEIGHT: 24px; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+DIV.quote {
+	BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #cccccc 1px solid; PADDING-LEFT: 5px; BACKGROUND: #f3f3f3; PADDING-BOTTOM: 5px; MARGIN: 5px 20px; BORDER-LEFT: #cccccc 1px solid; LINE-HEIGHT: normal; PADDING-TOP: 5px; BORDER-BOTTOM: #cccccc 1px solid
+}

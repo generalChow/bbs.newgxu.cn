@@ -1,0 +1,55 @@
+<div>
+	<form action="submit_lucky.yws" method="post" id="lucky_form">
+		<input name="lid" value="${lucky.id}" type="hidden"/>
+		<input name="answer" id="lucky_answer" value="" type="hidden"/>
+		 <div class="lucky_warp">
+	      	<div class="issue" id="issue">
+	      		<#assign index=1>
+	      		<#list lucky.randomSubjects as sub>
+	        	<div class="cnt">
+	            	<h3>${index}&nbsp;.&nbsp;${sub.title}</h3>
+	                <ul>
+	                	<#assign index1=1>
+	                	<#list sub.optionList as o>
+	                		<li value="${index1}" sid="${sub.id}"><span>&nbsp;</span><label><input type="radio" subid="${sub.id}" name="lucky_sub${sub.id}" value="1" />${o}</label></li>
+							<#assign index1=index1+1>
+						</#list>
+	                </ul>
+	            </div>
+				<#assign index=index+1>
+				</#list>
+	        </div>
+	        
+	        <div class="ctrl">
+				<div class="temp" id="temp">
+					<#if User?exists>
+						<a href="javascript:;" onclick="LUCKY.submit();">上交</a>&nbsp;&nbsp;<a href="javascript:;" onclick="LUCKY.clearAll();">清空</a>&nbsp;&nbsp;&nbsp;
+						<span id="lucky_time"></span>
+					<#else>
+						请先登录再上传您的答案.				
+					</#if>
+				</div>
+	        	<div class="btns">
+	            	<span title="Previous" class="prev" id="prev">Previous</span>
+	                <span title="Next" class="next" id="next">Next</span>
+	            </div>
+	            <div class="prog" id="prog">
+	            	<div class="ptip" id="tips"><span></span></div>
+	            	<div class="ress" id="ress"></div>
+	            </div>
+	        </div>
+	        <div class="war" id="war"></div>
+	      </div>
+	  </form>
+	  <table cellpadding=0 cellspacing=0 border=0 style="width:520px; margin:8px 0 0 60px;">
+	  	<tr>
+	  		<td align="left" width="50%">题目数:${index-1}</td>
+			<td align="left">中大奖概率:20%</td><#--:${lucky.probability*100}-->
+		</tr>
+		<tr>
+			<td align="left">中大奖说明:${lucky.countInfo}</td>
+			<td align="left">中大奖人数:${lucky.count}</td>
+		</tr>
+	  </table>
+</div>
+<script>$j(document).ready(function(){LUCKY.start(${lucky.timeout});});</script>

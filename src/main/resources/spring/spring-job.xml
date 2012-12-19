@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName">
+
+	<!-- 监听处理自由市场内过期物品的监听器 -->
+	<bean id="freeMarketItemLinstener"
+		class="cn.newgxu.bbs.common.listener.FreeMarketItemListener"
+		lazy-init="false">
+		<property name="marketService" ref="marketService" />
+		<!-- 是否随服务器启动运行，设置为false则不运行 -->
+		<property name="autoRun" value="false" />
+		<!-- 服务器启动多久以后开始运行，单位为秒 -->
+		<property name="lazyTime" value="30" />
+		<!-- 间隔多久检查一次，单位为分钟 -->
+		<property name="distanceTime" value="30" />
+	</bean>
+
+	<!-- 缓存内的计数器自动刷新的监听器 -->
+	<bean id="hitsCounterListener"
+		class="cn.newgxu.bbs.common.listener.HitsCounterListener"
+		lazy-init="false">
+		<property name="statisticService" ref="statisticService" />
+		<!-- 是否随服务器启动运行，设置为false则不运行 -->
+		<property name="autoRun" value="false" />
+		<!-- 服务器启动多久以后开始运行，单位为秒 -->
+		<property name="lazyTime" value="60" />
+		<!-- 间隔多久检查一次，单位为分钟 -->
+		<property name="distanceTime" value="10" />
+	</bean>
+
+	<!-- 清理在线用户列表的监听器 -->
+	<bean id="onlineUserListener"
+		class="cn.newgxu.bbs.common.listener.OnlineUserListener"
+		lazy-init="false">
+		<property name="userService" ref="userService" />
+		<!-- 是否随服务器启动运行，设置为false则不运行 -->
+		<property name="autoRun" value="false" />
+		<!-- 服务器启动多久以后开始运行，单位为秒 -->
+		<property name="lazyTime" value="20" />
+		<!-- 间隔多久检查一次，单位为分钟 -->
+		<property name="distanceTime" value="30" />
+	</bean>
+	
+	<!-- 更新热门帖子的监听器 -->
+	<!-- 清除效果过期物品的监听器 -->
+	<bean id="hotTopicListener"
+		class="cn.newgxu.bbs.common.listener.HotTopicListener"
+		lazy-init="false">
+		<property name="forumService" ref="forumService" />
+		<!-- 是否随服务器启动运行，设置为false则不运行 -->
+		<property name="autoRun" value="false" />
+		<!-- 服务器启动多久以后开始运行，单位为秒 -->
+		<property name="lazyTime" value="5" />
+		<!-- 间隔多久检查一次，单位为分钟 -->
+		<property name="distanceTime" value="30" />
+	</bean>
+	
+	<!-- 更新荣誉称号的监听器 -->
+	<bean id="honorListener"
+		class="cn.newgxu.bbs.common.listener.HonorListener"
+		lazy-init="false">
+		<property name="userService" ref="userService" />
+		<!-- 是否随服务器启动运行，设置为false则不运行 -->
+		<property name="autoRun" value="false" />
+		<!-- 服务器启动多久以后开始运行，单位为秒 -->
+		<property name="lazyTime" value="5" />
+		<!-- 间隔多久检查一次，单位为分钟 -->
+		<property name="distanceTime" value="60" />
+	</bean>
+
+
+</beans>

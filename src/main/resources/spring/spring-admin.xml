@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName">
+	<!--论坛缓存-->
+	<bean name="bbsCacheAction" class="cn.newgxu.bbs.web.action.admin.BBSCacheAction"
+		scope="prototype" parent="abstractBaseAction">
+	</bean>
+	<!--论坛节日动画-->
+	<bean name="holidayAnimateAction" class="cn.newgxu.bbs.web.action.admin.HolidayAnimateAction" scope="prototype" parent="abstractBaseAction">
+		<property name="administratorService"><ref bean="administratorService" /></property>
+	</bean>
+	<!--管理员上传图片-->
+	<bean name="adminUploadAction" class="cn.newgxu.bbs.web.action.admin.AdminUploadImageAction" scope="prototype" parent="abstractBaseAction">
+	</bean>
+	
+	<bean name="selectUserInfoAction" class="cn.newgxu.bbs.web.action.admin.SelectUserInfoAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+	</bean>
+	
+	<bean name="controlForumTimeAction" class="cn.newgxu.bbs.web.action.admin.ControlForumTimeAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+	
+	<bean name="adminLogin" class="cn.newgxu.bbs.web.action.admin.AdminLoginDoAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="administratorService">
+			<ref bean="administratorService" />
+		</property>
+	</bean>
+	
+	<bean name="adminLoginOut" class="cn.newgxu.bbs.web.action.admin.AdminLogOutAction"
+		scope="prototype" parent="abstractBaseAction">
+	</bean>
+	
+	<bean name="areasManager" class="cn.newgxu.bbs.web.action.admin.AreasManagerAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+
+	<bean name="createArea" class="cn.newgxu.bbs.web.action.admin.CreateAreaAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+
+	<bean name="editArea" class="cn.newgxu.bbs.web.action.admin.EditAreaAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+
+	<bean name="forumsManager" class="cn.newgxu.bbs.web.action.admin.ForumsManagerAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+
+	<bean name="createForum" class="cn.newgxu.bbs.web.action.admin.CreateForumAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+
+	<bean name="editForum" class="cn.newgxu.bbs.web.action.admin.EditForumAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+
+	<bean name="groupsManager" class="cn.newgxu.bbs.web.action.admin.GroupsManagerAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+	</bean>
+
+	<bean name="usersManager" class="cn.newgxu.bbs.web.action.admin.UsersManagerAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+	</bean>
+
+	<bean name="registerUsersManager" class="cn.newgxu.bbs.web.action.admin.RegisterUsersManagerAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+	</bean>
+	
+	<bean name="verifyRegisterUser" class="cn.newgxu.bbs.web.action.admin.VerifyRegisterUserAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+	</bean>
+
+	<bean name="editUser" class="cn.newgxu.bbs.web.action.admin.EditUserAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+	</bean>
+
+	<bean name="itemsManager" class="cn.newgxu.bbs.web.action.admin.ItemManageAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="marketService">
+			<ref bean="marketService" />
+		</property>
+	</bean>
+
+	<bean name="editItem" class="cn.newgxu.bbs.web.action.admin.EditItemAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="marketService">
+			<ref bean="marketService" />
+		</property>
+	</bean>
+
+	<bean name="createItem" class="cn.newgxu.bbs.web.action.admin.CreateItemAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="marketService">
+			<ref bean="marketService" />
+		</property>
+	</bean>
+	<bean name="editStoreItem" class="cn.newgxu.bbs.web.action.admin.EditStoreItemAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="marketService">
+			<ref bean="marketService" />
+		</property>
+	</bean>
+	<bean name="manageLogManage" class="cn.newgxu.bbs.web.action.admin.ManageLogManageAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="administratorService">
+			<ref bean="administratorService" />
+		</property>
+	</bean>
+	<bean name="searchUser" class="cn.newgxu.bbs.web.action.admin.SearchUserAction"
+		scope="prototype">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+	</bean>
+	<bean name="webmasterManage" class="cn.newgxu.bbs.web.action.admin.WebmastersManageAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+	</bean>
+	
+	<bean name="voteWebmasterManage" class="cn.newgxu.bbs.web.action.admin.VoteWebmastersManageAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+	</bean>
+
+	<bean name="bankManage" class="cn.newgxu.bbs.web.action.admin.BankManageAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="bankService">
+			<ref bean="bankService" />
+		</property>
+	</bean>
+	
+	<bean name="loanApproach" class="cn.newgxu.bbs.web.action.admin.LoanApproachAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="bankService">
+			<ref bean="bankService" />
+		</property>
+	</bean>
+	
+	<bean name="hongbaoManage" class="cn.newgxu.bbs.web.action.admin.HongbaoManageAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="hongbaoService">
+			<ref bean="hongbaoService" />
+		</property>
+	</bean>
+	
+	<bean name="createHongbao" class="cn.newgxu.bbs.web.action.admin.CreateHongbaoAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="hongbaoService">
+			<ref bean="hongbaoService" />
+		</property>
+	</bean>
+	
+	<bean name="hongbaoTypeCreate" class="cn.newgxu.bbs.web.action.admin.CreateHongbaoTypeAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="hongbaoService">
+			<ref bean="hongbaoService" />
+		</property>
+	</bean>
+	
+	<bean name="hongbaoEdit" class="cn.newgxu.bbs.web.action.admin.EditHongbaoAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="hongbaoService">
+			<ref bean="hongbaoService" />
+		</property>
+	</bean>
+	<bean name="hongbaoDel" class="cn.newgxu.bbs.web.action.admin.DelHongbaoAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="hongbaoService">
+			<ref bean="hongbaoService" />
+		</property>
+	</bean>
+	<bean name="hongbaoTypeDel" class="cn.newgxu.bbs.web.action.admin.DelHongbaoTypeAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="hongbaoService">
+			<ref bean="hongbaoService" />
+		</property>
+	</bean>
+	<bean name="honorManage" class="cn.newgxu.bbs.web.action.admin.HonorManageAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="administratorService">
+			<ref bean="administratorService" />
+		</property>
+	</bean>
+	<bean name="honorCreate" class="cn.newgxu.bbs.web.action.admin.CreateHonorAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="administratorService">
+			<ref bean="administratorService" />
+		</property>
+	</bean>
+	
+    <bean name="registerUserLastManagerAction" class="cn.newgxu.bbs.web.action.admin.RegisterUsersLastManagerAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+	</bean>
+	<!-- 资源管理模块 -->
+    <bean name="uploadItemsAction" class="cn.newgxu.bbs.web.action.admin.UploadItemsAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+	</bean>
+	<bean id="administratorService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="administratorServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="login">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="createHonor">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="editHonorDo">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="editHoliday">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="delHoliday">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="addHoliday">PROPAGATION_REQUIRED, -Exception</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="administratorServiceTarget" class="cn.newgxu.bbs.service.proxy.AdministratorServiceProxy">
+		<property name="administratorService">
+			<ref bean="realAdministratorService" />
+		</property>
+	</bean>
+
+	<bean id="realAdministratorService" class="cn.newgxu.bbs.service.impl.AdministratorServiceImpl" />
+
+	<!--群发信息的action
+		  by:集成显卡 2011.4.22
+	-->
+	<bean name="sendMessageAll"
+		class="cn.newgxu.bbs.web.action.admin.SendMessageAllAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="messageService">
+			<ref bean="messageService" />
+		</property>
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+</beans>

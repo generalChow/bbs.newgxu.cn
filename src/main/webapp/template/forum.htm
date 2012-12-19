@@ -1,0 +1,163 @@
+<@base.header title="论坛：${model.forum.name} -- 主题列表"></@base.header>
+
+<#setting number_format="0">
+
+<@base.body location="${model.forum.name}">
+
+	<@base.main location="${model.forum.name}">
+
+		<@base.forum_info/>
+
+		<div class="list_title_01">&nbsp;</div>
+
+		<div class="list_title_02">
+
+			<span class="left pages">${model.pagination}</span>
+
+			<span class="right">
+
+				<#if activity == 'Doomsday'>
+					<img src="image/grass2.gif" width="15" height="22"/><a href="/create_topic.yws?forumId=${forumId}&activity=Doomsday"><strong style="color:#92af28;">发【末日心语】帖</strong></a>
+				<#elseif activity == 'Christmas'>
+					<img src="image/grass2.gif" width="15" height="22"/><a href="/create_topic.yws?forumId=${forumId}&activity=Christmas"><strong style="color:#92af28;">发【圣诞之情】帖</strong></a>
+				</#if>
+
+				<img src="image/grass2.gif" width="15" height="22"/><a href="/create_topic.yws?forumId=${forumId}"><strong style="color:#92af28;">发新帖</strong></a>
+
+			    <#if model.sort=='replyTime'>
+
+				<img src="image/grass1.gif" width="15" height="22"/><a href="/forum.yws?forumId=${forumId}&sort=createTime">按发帖时间排列</a>
+
+			    <#else>
+
+				<img src="image/grass1.gif" width="15" height="22"/><a href="/forum.yws?forumId=${forumId}">按回帖时间排列</a>
+
+			    </#if>
+
+				<img src="image/grass1.gif" width="15" height="22"/><a href="/forum.yws?forumId=${forumId}&good=true">精华区</a>
+
+				<img src="image/grass1.gif" width="15" height="22"/><a href="/create_vote.yws?forumId=${forumId}">发投票帖</a>
+
+				<img src="image/grass2.gif" width="15" height="22"/><a href="/create_small_news.yws?forumId=${forumId}">发小字报</a>
+
+			</span>
+
+		</div>
+
+		
+
+		<div class="kuang">
+
+
+
+		  <table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" bgcolor="#FFFAD0" class="botom_line">
+
+			  <tr align="center">
+
+				<th width="432" class="right_line">主题</th>
+
+				<th width="100" class="right_line">作者</th>
+
+				<th width="40" class="right_line">回复</th>
+
+				<th width="40" class="right_line">点击</th>
+
+				<#if model.sort=='replyTime'>
+
+				<th width="196">最后更新</th>
+
+			    <#else>
+
+				<th width="196">发表时间</th>
+
+			    </#if>
+
+			  </tr>
+
+		  </table>
+
+		  <#list model.topics as topic>
+
+			<table width="100%" height="25" border="0" align="center" cellpadding="0" cellspacing="0" class="botom_line" style="table-layout:fixed;">
+
+			  <tr align="center">
+
+				<td width="30" height="35" class="right_line"><a href="/topic.yws?forumId=${topic.forum.id}&topicId=${topic.id}" target="_blank"><img src='images/face/${topic.face?default("1.gif")}.gif' title="点击在新窗口打开" border="0"></a></td>
+
+				<td width="402" align="left" class="right_line" style="word-wrap:break-all;" nowrap>${topic.activityImage}${topic.topString}${topic.lockString}${topic.goodString}${topic.voteString}<span class="article"><a href="/topic.yws?forumId=${topic.forum.id}&topicId=${topic.id}" title="发表时间：${topic.creationTime}" id="title_${topic.id}" style="white-space:normal;">${topic.titleFilter}</a></span>${topic.imageString}${topic.holidayString}${topic.newTopicString} ${topic.guide}</td>
+
+				<td width="100" class="right_line"><a href="/user/user_info.yws?id=${topic.topicUser.id}">${topic.topicUser.colorNick}</a></td>
+
+				<td width="40" class="right_line">${topic.replyTimes}</td>
+
+				<td width="40" class="right_line">${topic.clickTimes}</td>
+
+				<td width="196"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+
+					<tr>
+
+					  <td width="49%" align="center" valign="middle"><a href="/user/user_info.yws?id=${topic.replyUser.id}">${topic.replyUser.colorNick}</a></td>
+
+					  <#if model.sort=='replyTime'>
+
+					  <td width="51%" align="center" valign="middle">${topic.replyTimeDisplay}</td>
+
+			    	  <#else>
+
+					  <td width="51%" align="center" valign="middle">${topic.createTimeDisplay}</td>
+
+			    	  </#if>
+
+					</tr>
+
+				</table></td>
+
+			  </tr>
+
+		  </table>
+
+		  </#list>
+
+		</div>
+
+		
+
+		<div class="list_title_03">
+
+			<span class="left pages">${model.pagination}</span>
+
+			<span class="right">
+
+				<select name="menu1" class="select" onchange="javascript:parent.location=this.options[this.selectedIndex].value;">
+
+                    <option selected="selected">论坛跳转至.....</option>
+
+                        <#list model.areas as area><option value="/area.yws?areaId=${area.id}" class="jMenu">╇${area.name}</option>
+
+                        <#list area.forums as forum><option value="/forum.yws?forumId=${forum.id}">&nbsp;├${forum.name}</option></#list>
+
+                        </#list>
+
+                </select>
+
+			</span>
+
+		</div>		
+
+		<div class="list_title_04" align="left">
+
+			<form id="search" name="search" action="search_do.yws" method="post" onsubmit="return Jsearch(this)">
+
+				快速搜索：<input name="keywords" type="text" class="short_input" id="keywords" />
+
+				<input name="Submit" type="submit" class="submit_style" value=" 查找 " />
+
+				<input name="forumId" type="hidden" id="forumID" value="${model.forum.id}" />
+
+			</form>
+
+		</div>
+
+	</@base.main>
+
+</@base.body>

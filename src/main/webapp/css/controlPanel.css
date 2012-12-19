@@ -1,0 +1,121 @@
+.uline {
+	background-image: url(images/dotline.gif);
+	background-repeat: repeat-x;
+	background-position: right bottom;
+}
+a:visited {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #666666;
+	text-decoration: none;
+}
+.uline2 {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #DBDBDB;
+}
+
+a:hover {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #996633;
+	text-decoration: underline;
+}
+.strong_uline {
+	font-family: "宋体";
+	font-size: 9pt;
+	font-weight: bold;
+	background-image: url(images/dotline.gif);
+	background-repeat: repeat-x;
+	background-position: right bottom;
+	color: #666666;
+}
+
+td {
+	font-family: "宋体";
+	font-size: 9pt;
+}
+th {
+	font-family: "宋体";
+	font-size: 9pt;
+}
+
+
+.input_style {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+	width: 200px;
+	border: 1px solid #CCCCCC;
+}
+.9pbtfont {
+	font-family: "宋体";
+	font-size: 9pt;
+	border: 1px solid #CCCCCC;
+}
+.long_input {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #666666;
+	width: 400px;
+	border: 1px solid #CCCCCC;
+}
+.long_input2 {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #666666;
+	width: 320px;
+	border: 1px solid #CCCCCC;
+}
+.submit_style {
+	font-family: "宋体";
+	font-size: 9pt;
+	border: 1px solid #333333;
+	vertical-align: bottom;
+}
+.tstyle {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+	width: 350px;
+	border: 1px solid #CCCCCC;
+}
+a:link {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #666666;
+	text-decoration: none;
+}
+body {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+}
+.short_input {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #666666;
+	width: 50px;
+	border: 1px solid #CCCCCC;
+}
+#form1 .select {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #666666;
+	border: 1px solid #CCCCCC;
+}
+.redFont {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #FF0000;
+}
+.boder_green {
+	border: 1px solid #CCCCCC;
+}
+.sinput_style {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+	width: 150px;
+	border: 1px solid #CCCCCC;
+}

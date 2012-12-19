@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>浏览小字报</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link href="/css/panel.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="15" align="center" class="uline"><strong>${smallNews.title}</strong></td>
+  </tr>
+  <tr>
+    <td height="20" align="center"><a href="/user/user_info.yws?id=${smallNews.user.id}" target="_blank">${smallNews.user.nick}</a> 发布于 ${smallNews.createTime} 浏览：${smallNews.hit}</td>
+  </tr>
+  <tr>
+    <td height="150" valign="top"><table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td>${smallNews.content}</td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="10" align="center" class="uline"><a href="#" onclick="window.close();">『 关闭窗口 』</a></td>
+  </tr>
+  <tr>
+    <td height="19" align="right"><a href="/del_small_news.yws?id=${smallNews.id}" onclick="return confirm('确定要进行删除操作吗?')"><img src="images/del.gif" width="16" height="16" border="0" /></a></td>
+  </tr>
+  <tr>
+    <td height="10"><table cellspacing="0" cellpadding="3" width="100%" align="center" border="0">
+      <tbody>
+        <tr>
+          <td width="444" align="left" class="uline"><img height="20" src="images/bullet4.gif" width="20" 
+                  align="absmiddle" /> <b>提示说明</b></td>
+        </tr>
+        <tr>
+          <td align="left">·论坛管理员以及发表小字报的本人具有删除权限。</td>
+        </tr>
+      </tbody>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

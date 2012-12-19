@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>欢迎来到雨无声论坛->营业大厅->转帐</title>
+<link href="/css/self.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/js/mootools.v1.00.js"></script>
+	<script type="text/javascript" src="/js/newgxu_common.js"></script>
+	<script type="text/javascript" src="/js/newgxu_dropdownMenu.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_dialog.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_ubb.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_upload.js"></script>
+<style type="text/css">
+*{ margin:0; padding:0;}
+.li{float:left;}
+.nobreak{width:200px; height:100%; overflow:hidden; margin:10px auto;}
+</style>
+</head>
+<body>
+<div class="whole">
+  <div class="topflash">
+   <object type="application/x-shockwave-flash" width="960" height="398" style="margin-left:1px;" data="/flash/day.swf">
+    <param name="movie" value="/flash/day.swf" />
+   </object>
+  </div>
+  <div style="width:961px; height:auto; float:left;">
+    <div class="left">
+      <div style="height:293px; width:158px; background-image:url(/images-self/left_1.jpg);"></div>
+      <div style="height:293px; width:158px; background-image:url(/images-self/left_2.jpg);"></div>
+      <div style="height:293px; width:158px; background-image:url(/images-self/left_3.jpg);"></div>
+    </div>
+    <div style="height:879px; width:803px; float:left;">
+      <div class="location"></div>
+      <div style="height:632px; width:803px;">
+        <div class="nav">
+        <div style="margin-top:200px;">
+      <table width="100%" height="217" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="21%" height="30" align="center"><img src="/images/myprofile.gif" width="20" height="20" /></td>
+          <td width="79%" align="left"><a href="index.yws">营业大厅</a></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center" class="under_line"></td>
+        </tr>
+        <tr>
+          <td height="30" align="center"><img src="/images/computer1.gif" width="20" height="20" /></td>
+          <td align="left"><a href="current.yws">活期储蓄</a></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center" class="under_line"></td>
+        </tr>
+        <tr>
+          <td height="30" align="center"><img src="/images/computer2.gif" width="20" height="20" /></td>
+          <td align="left"><a href="fixed.yws">定期储蓄</a></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center" class="under_line"></td>
+        </tr>
+        <tr>
+          <td height="30" align="center"><img src="/images/icon_money.gif" width="20" height="20" /></td>
+          <td align="left"><a href="loan.yws">贷款专柜</a></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center" class="under_line"></td>
+        </tr>
+        <tr>
+          <td height="30" align="center"><img src="/images/faces.gif" width="20" height="20" /></td>
+          <td align="left"><a href="virement.yws">帐户汇款</a></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center" class="under_line"></td>
+        </tr>
+        <!-- 
+                    <tr>
+                      <td height="30" align="center"><img src="/images/member.gif" width="20" height="20" /></td>
+                      <td align="left"><a href="debit.yws">借款专柜</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="center" class="under_line"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="center"><img src="/images/icon_money.gif" width="20" height="20" /></td>
+                      <td align="left"><a href="fund.yws">社区基金</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="center" class="under_line"></td>
+                    </tr>
+                     -->
+        <tr>
+          <td height="30" align="center"><img src="/images/icon_money.gif" width="20" height="20" /></td>
+          <td align="left"><a href="edit_bankpwd.yws">更改银行密码</a></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center" class="under_line"></td>
+        </tr>
+        <tr>
+          <td height="30" align="center"><img src="/images/mail2.gif" width="20" height="20" /></td>
+          <td align="left"><a href="log.yws">理财日志</a></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center" class="under_line"></td>
+        </tr>
+      </table>
+      </div>
+        </div>
+        <div class="main">
+        <div  style="width:592px;margin-top:60px;margin-left:10px;">
+		  <div  style="width:592px;margin-top:60px;margin-left:20px;">  
+		<table cellspacing="0" cellpadding="0">
+  <tr>
+    <td>当前转帐费用为${bank.virementRate*100}%。</td>
+  </tr>
+  <tr>
+    <td>您当前的存款金额为<strong>${current.balance}</strong>。</td>
+  </tr>
+	    <tr>
+          <td><@ww.actionerror/></td>
+        </tr>
+  <tr>
+    <td><form action="virement_do.yws" method="post" name="name" id="name">
+      
+      收款人昵称:     
+          <br />
+          <textarea name="userNicks" rows="5" id="userNicks"></textarea>      
+          <br />
+	转帐金额:
+      <input size="15" name="money" />
+      <br />
+      银行密码:
+      <input type="password" size="15" value="" name="bankpwd" />
+      <button name="banksubmit" type="submit" value=" 提  交 ">提 交</button>
+    </form></td>
+  </tr>
+</table>
+			</div>
+			</div>
+        </div>
+        <div class="right"></div>
+      </div>
+      <div class="foot">
+      <div>
+      <table  height="35"  border="0" cellpadding="0" cellspacing="0" style="margin-top:30px;">
+				<tr>
+				  <td align="left" class="xlogo">
+					<div style="width:384px;">
+						<div style="float:left;margin-left:60px;">
+		                <li><a href="/index.yws" >雨无声论坛</a></li>
+		                <li><a href="/user/upgrade.yws">个人服务区</a></li>
+		                <li><a href="/bank/index.yws">社区银行</a></li>
+		                <li><a href="/market/official.yws">商业中心</a></li>
+		                </div>
+					</div>
+			      </td>
+				</tr>
+			  </table>
+	   </div>
+	 <div  style="height:54px; width:900px;margin-top:36px;margin-left:-90px;font-size:12px;">
+      <table cellpadding="0" cellspacing="0" height="54" border="0">
+            <tr>
+              <td  align="left" valign="top">关于论坛 | 美术支持 | 免责声明 | 版权申明 | 合作伙伴 | 友情链接 |	桂ICP备05001920号 南宁网警备4501200373号  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雨无声 版权所有◎2003-2007</td>
+            </tr>
+      </table>
+  </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

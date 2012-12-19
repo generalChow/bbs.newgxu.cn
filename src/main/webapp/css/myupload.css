@@ -1,0 +1,70 @@
+A:link{text-decoration:none}
+A:visited{text-decoration:none}
+A:hover {color: #4D9800;}
+.tr_title{
+	background-color: #E6F4FE;
+	height: 22;
+	color: #000000;
+	font-size: 12px;
+	/*font-weight:bold;*/
+}
+#datatable tr{wfsr:expression(this.bgColor=this.rowIndex%2?'#ffffff':'#F0FAFF')}
+#datatable td{height:23px}
+
+.tableBorder1{
+	width:97%;
+	border: 1px; 
+	background-color: #A3C7E2;
+}
+.doctab1 tr{wfsr:expression(this.bgColor=this.rowIndex%2?'#ffffff':'#F0FAFF')}/*#datatable*/
+.doctab1 td{height:18px}/*#datatable*/
+.doctab1 {/*tableborder1*/
+
+/*1024*768*/
+.doctab2 tr{wfsr:expression(this.bgColor=this.rowIndex%2?'#ffffff':'#F0FAFF')} /*#datatable*/
+.doctab2 td{height:24px} /*#datatable*/
+.doctab2 { /*tableborder1*/
+
+/*--------- Page Numbers ------------*/
+.pages {
+    float:left;
+	width:490px;
+	font: 1em Arial, Helvetica, sans-serif;
+	padding: 0.2em 1em;
+	margin:3px;
+}
+.pages a,.pages span {
+	padding: 0.1em 0.2em;
+	margin: 0 0.1em 0.1em 0;
+	border: 1px solid #fff;
+	background: #fff;
+}
+
+.pages span.current {
+	border: 1px solid #99CC00;
+	font-weight: bold;
+	background: #99CC66;
+	color: #fff;
+}
+
+.pages a:link,.pages a:visited {
+	line-height: 15px;
+	border: 1px solid #E8FFB0;
+	text-decoration: none;
+}
+
+.pages a:hover {
+	border-color: #2E6AB1;
+}
+
+.pages a.nextprev {
+	font-weight: bold;
+}
+
+.pages span.nextprev,.pages span.stat {
+	border: 1px solid #E8FFB0;
+	line-height: 15px;
+	color: #999;
+}
+
+/*--------- line ------------*/

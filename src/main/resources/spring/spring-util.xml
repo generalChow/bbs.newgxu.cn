@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+	<bean id="fileUpload"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="fileUploadTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="convertItems">PROPAGATION_REQUIRED, -Exception</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="fileUploadTarget"
+		class="cn.newgxu.bbs.common.util.fileupload.NewgxuFileUploadImpl" />
+    
+    <!-- 上传头像 -->
+    
+    <bean id="faceUpload"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="faceUploadTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="convertItems">PROPAGATION_REQUIRED, -Exception</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="faceUploadTarget"
+		class="cn.newgxu.bbs.common.util.fileupload.NewgxuFaceUploadImpl" />
+		
+</beans>

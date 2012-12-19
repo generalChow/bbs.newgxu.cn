@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>短消息列表</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link href="/css/panel.css" rel="stylesheet" type="text/css" />
+		<script type="text/JavaScript">
+
+
+	var smid = document.getElementsByName("smid");
+
+	function isSelect() {
+
+		for ( var i = 0; i < smid.length; i++) {
+			if (smid[i].checked == true)
+				return true;
+		}
+		return false;
+	}
+	function selectall() {
+		if(isSelect()){
+			cancelSelect();
+		}else{
+			for ( var i = 0; i < smid.length; i++) {
+				smid[i].checked = true;
+			}
+		}
+	}
+	function cancelSelect() {
+		for ( var i = 0; i < smid.length; i++) {
+			smid[i].checked = false;
+		}
+	}
+	
+	function onSubmit() {
+		if(isSelect()&&window.confirm("确认删除选中的项目?")){
+			document.del.submit();
+		}else{
+			alert("请先选中一个或多个项目");
+		}
+
+	}
+</script>
+	</head>
+
+<body>
+<form name="del" method="post" action="/message/del_message.yws">
+<table width="93%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="15" align="right">
+		<a href="/message/send_message.yws">发送短消息</a>  
+		| <a href="/message/message_list.yws?folderId=1">收件箱</a> 
+		| <a href="/message/message_list.yws?folderId=2">草稿箱</a>
+		| <a href="/message/message_list.yws?folderId=3">已发送</a>
+	</td>
+  </tr>
+  <tr>
+    <td height="15"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="22%" align="left">${model.folder.name}--使用状态：</td>
+        <td width="27%" align="left"><table width="180" height="10" border="1" cellpadding="0" cellspacing="0" bordercolor="#333333">
+            <tr>
+              <td height="10"><img src="/images/bar1.gif" width="${model.pagination.recordSize/model.folder.size*100}%" height="10" /></td>
+            </tr>
+        </table></td>
+        <td width="51%" align="left">&nbsp;&nbsp;&nbsp;&nbsp;${model.pagination.recordSize}/${model.folder.size}</td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td><table width="100%" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="18"><table width="100%" border="0" cellspacing="0">
+            <tr align="center" class="uline">
+              <th width="31" height="23">心情</th>
+              <th width="286">标题</th>
+              <th width="171">时间</th>
+              <th width="116">发信人</th>
+              <th width="38">标记</th>
+              <th width="39">回复</th>
+              <th width="30">操作</th>
+            </tr>
+			<#list messages as m>
+              <tr align="center">
+                <td height="22" class="uline2"><img src="/images/shortMessage/${m.face}.gif" width="20" height="20" /></td>
+                <td width="300" class="uline2"><a href="/message/message.yws?id=${m.id}">${m.title}</a></td>
+                <td width="171" class="uline2">${m.time}</td>
+                <td width="116" class="uline2"><a href="/user/user_info.yws?id=${m.sender.id}" target="_blank">${m.sender.nick}</a></td>
+                <td width="38" class="uline2"><a href="/message/message.yws?id=${m.id}">${m.readedString}</a></td>
+                <td width="39" class="uline2"><a href="/message/send_message.yws?userId=${m.sender.id}">Re</a></td>
+                <td width="30" class="uline2"> <input name="smid" type="checkbox" id="smid" value="${m.id}" /> </td>
+              </tr>
+            </#list>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td align="right"><table align="right">
+      <tr>
+        <td align="left">分页：${model.pagination} </td>
+        <td align="center">
+			<a href="#" onClick="onSubmit()"> 删除选择</a>&nbsp;| 
+          <label for="all"><a href="#" onClick="cancelSelect();">取消全选</a>  | <a href="#" onClick="selectall();">全选</a></label>        
+		 </td>
+        <td>&nbsp;</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</form>
+</body>
+</html>

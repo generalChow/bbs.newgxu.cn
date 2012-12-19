@@ -1,0 +1,52 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1//EN" 
+"http://www.opensymphony.com/xwork/xwork-1.1.dtd">
+<xwork>
+	<package name="ycalendar" namespace="/ycalendar" extends="default">
+
+		<action name="current" class="ycalendarAction">
+			<result name="success" type="freemarker">/template/ycalendar/index.htm</result>
+		</action>
+		
+		<!-- UBB标签的转换，用于发帖时的预览 -->
+		<action name="getMonth" class="ycalendarAction" method="getMonth">
+		</action>
+		
+		<action name="getDay" class="ycalendarAction" method="getDay">
+			<result name="success" type="freemarker">/template/ycalendar/day.htm</result>
+		</action>
+		
+		<!--添加用户节日-->
+		<action name="newUserHoliday" class="editCalendarAction">
+			<result name="create" type="freemarker">/template/ycalendar/addHoliday.htm</result>
+			<result name="input" type="freemarker">/template/ycalendar/addHoliday.htm</result><!--添加时错误-->
+		</action>
+		<!--编辑用户节日-->
+		<action name="editUserHoliday" class="editCalendarAction" method="edit">
+			<result name="create" type="freemarker">/template/ycalendar/editHoliday.htm</result>
+			<result name="input" type="freemarker">/template/ycalendar/editHoliday.htm</result><!--编辑时错误-->
+		</action>
+		
+		<!--添加用户节日-->
+		<action name="viewHoliday" class="viewCalendarAction">
+			<result name="userH" type="freemarker">/template/ycalendar/userHoliday.htm</result>
+			<result name="fixH" type="freemarker">/template/ycalendar/fixHoliday.htm</result><!--添加时错误-->
+		</action>
+		<!--编辑用户节日-->
+		<action name="viewMyHoliday" class="viewCalendarAction" method="myHoliday">
+			<result name="uList" type="freemarker">/template/ycalendar/listUserHoliday.htm</result>
+			<result name="input" type="freemarker">/template/ycalendar/editHoliday.htm</result><!--编辑时错误-->
+		</action>
+		
+		<!--上传商品图片-->
+		<action name="uploadImage" class="calendar.uploadImageAction">
+			<interceptor-ref name="fileUpload">
+              <!-- 配置允许上传的文件类型，多个用","分隔 -->
+              <param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/x-png, image/pjpeg</param>
+              <!-- 配置允许上传的文件大小，单位字节,这里是 2 M -->
+              <param name="maximumSize">2048000</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack" />
+		    <param name="savePath">/images/holiday/upload</param>
+		</action>
+	</package>
+</xwork>

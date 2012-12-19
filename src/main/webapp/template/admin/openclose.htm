@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>FourmControl.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<style type="text/css">
+td{
+width: 100px;
+}
+tr{
+background-color: red;
+}
+</style>
+  </head>
+  
+  <body>
+   <script type="text/javascript">
+   	var week = new Array();
+   	week[1]="星期日";
+   	week[2]="星期一";
+   	week[3]="星期二";
+   	week[4]="星期三";
+   	week[5]="星期四";
+   	week[6]="星期五";
+   	week[7]="星期六";					
+   </script>
+   
+   <fieldset style="width: 400px;"><legend>每天正常开关时间</legend>
+   <#list itermDay as day>
+   		开:${day.normalStart} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关:${day.normalend}
+   </#list>
+   </fieldset>
+   <p>
+   
+   <fieldset style="width: 270px;"><legend>星期</legend> 
+   <table>
+    	<tr><td>星期</td><td>开</td><td>关</td></tr>
+   <#list itermWeek as week>
+   		<tr><td><script type="text/javascript">document.write(week["${week.week}"])</script></td><td>${week.weekStart}</td><td>${week.weekend}</td></tr>
+   </#list>
+   </table>
+    </fieldset>
+    
+    <p>
+    <fieldset style="width: 320px;"><legend>日期</legend>
+    <table>
+    	<tr><td>日期</td><td>开</td><td>关</td></tr>
+  		 <#list itermDate as date>
+   		
+   			<tr><td>${date.date}</td><td>${date.dateStart}</td><td>${date.dateend}</td></tr>
+   		
+   		</#list>
+   </table>
+   </fieldset>
+   
+   
+   
+    <form action="edit_controlForumTime.yws">
+    	<input type="submit" value="修改论坛开关时间">
+    </form>
+  </body>
+</html>

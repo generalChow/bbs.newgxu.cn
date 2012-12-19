@@ -1,0 +1,133 @@
+<#assign version = "雨无声社区 V4.0 beta!">
+<#macro header title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>${title} -- ${version}</title>
+	<link href="/css/default.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/js/mootools.v1.00.js"></script>
+	<script type="text/javascript" src="/js/newgxu_common.js"></script>
+	<script type="text/javascript" src="/js/newgxu_dropdownMenu.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_dialog.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_ubb.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_upload.js"></script>
+	<#nested/>
+	<script type="text/JavaScript">
+	<!--
+	function MM_openBrWindow(theURL,winName,features) { //v2.0
+		window.open(theURL,winName,features);
+	}
+	function messageList() {
+		var width = 700 ;
+		var height = 500;
+		var left = eval(screen.Width - width) / 2;
+		var top = eval(screen.Height  -height) / 2;
+		MM_openBrWindow('/message/message_list.yws','查看短消息','menubar=yes,scrollbars=yes,width='+width+',height='+height+',left='+left+',top='+top+'');
+	}
+	//-->
+	</script>
+	</head>
+</#macro>
+<#macro body location="">
+<body>
+<table border="0" align="center" cellpadding="0" cellspacing="0">
+<tr align="center"><td>
+<div class="body-container">
+<!-- 
+		<div id="Layer1" style="position:absolute; z-index:1;">
+       	  <div id="yu" style="position:absolute; z-index:2; left: -400;">
+               <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="1004" height="140" align="middle">
+                  <param name="movie" value="flash/yu.swf" />
+                  <param name="wmode"   value="transparent" />
+                  <param name="quality" value="high" />
+                  <embed src="flash/yu.swf" width="1004" height="140" align="middle" quality="high" wmode="transparent"  pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed>
+              </object>
+          </div>
+            <div id="hudie" style="position:absolute; z-index:2; left: -270; top: 30;">
+             <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="566" height="165">
+                  <param name="movie" value="flash/hudie.swf"/>
+                  <param name="wmode"   value="transparent"/>
+                  <param name="quality" value="high"/>
+                  <embed src="flash/yu.swf" quality="high" wmode="transparent"  pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="566" height="165"></embed>
+              </object>
+      		</div>
+  		</div>
+	   -->
+	<div class="${topClass?default("header_night")}">
+		<div class="header_user">
+			<span class="left">嘿，欢迎您， <#if status.login>${status.nick}<#else>游客&nbsp;&nbsp;</#if></span>
+			<span class="right">
+				<#if status.login>
+					<a href="/user/upgrade.yws" >个人服务区</a>&nbsp;&nbsp;
+					<a href="/getdraftboxes.yws" target="_blank">草稿箱(${status.draftboxSize})</a>&nbsp;&nbsp;
+					<a href="/diary/index.yws" target="_blank">心情日记</a>&nbsp;&nbsp;
+					<a href="/user/log.yws" target="_blank">新手帮助</a>&nbsp;&nbsp;
+					<a href="/accounts/logout.yws">退出</a>&nbsp;&nbsp;
+					<a href="#" onClick="messageList();">新消息：${status.messageNotRead}条</a>
+				</#if>
+			</span>
+		</div>
+		<#if status.login == false>
+			<div class="header_login">
+	          <form action="/accounts/login_do.yws" method="post">
+			  	<div style="height:12px;"></div>
+	            <div style="height:25px; padding-left:55px;"><input name="username" type="text" class="input" id="username" size="13"/></div>
+				<div style="height:25px; padding-left:55px;"><input name="password" type="password" class="input" id="password" size="13"/></div>
+				<div style="height:25px; padding-left:55px;"><input onFocus="javascript:$('validImage').src='/validImage_servlet';" name="validCode" type="text" class="input_rand" id="validCode" autocomplete="off" size="5" />&nbsp;<img src="images/default_valid_img.png" align="top" id="validImage" /></div>
+				<div style="height:31px; padding-left:40px;">
+				<input name="originalUrl" type="hidden" id="originalUrl" value="${status.originalUrl?default("/")}" />
+				<img src="images/dl1.gif" name="Image1" width="37" height="16" border="0" id="Image1" onclick="submit()"/>
+				<img src="images/zc1.gif" name="Image2" width="37" height="16" border="0" id="Image2" onclick="window.location.href='/accounts/register.yws'"/>
+				</div>
+			  </form>
+	    	</div>
+		</#if>
+	</div>
+	
+	<#nested/>
+	
+	<div class="footer">
+		<div class="footer_info">
+		  <table width="100%" border="0" >
+              <tr>
+                <td height="23">	
+					<div style="width:800px;">
+						<div style="float:left;"><img src="/images/wz.gif" width="16" height="18"/> 位置：&nbsp;</div>
+						<div style="float:left;">
+							<ul id="dropdownMenu_footer" class="dropdownMenu">
+								${navigation?default("")}
+								<li>${location?default("")}</li>
+							</ul>
+							<script language="javascript">new newgxu.DropdownMenu($('dropdownMenu_footer'));</script>
+						</div>						
+					</div>
+				</td>
+            </tr>
+              <tr>
+                <td height="23"><img src="/images/home.gif" width="16" height="16"/> <a href="http://www.newgxu.cn" class="t">雨无声网站首页</a> </td>
+              </tr>
+              <tr>
+                <td height="23"><img src="/images/pp.gif" width="16" height="15"/> 在线人数：${onlineStatus.total} 总访问： ${status.totalHicount}&nbsp;今日访问：${status.todayHicount}</td>
+              </tr>
+              <tr>
+                <td height="23"><img src="/images/show2.gif" width="16" height="15"/> 建议使用：1024*768分辨率，16位以上颜色、IE6.0以上版本浏览器</td>
+              </tr>
+          </table>
+			<br />
+		</div>
+		<div class="footer_img"></div>
+		<div class="footer_logo">
+		  <table width="100%" cellpadding="0" cellspacing="0" height="53" border="0">
+            <tr>
+              <td width="13%" align="center" valign="middle"><img src="/images/logo.gif" width="88" height="31"/></td>
+              <td width="87%" align="center" valign="middle">关于论坛 | 美术支持 | 免责声明 | 版权申明 | 合作伙伴 | 友情链接 |	桂ICP备05001920号 南宁网警备4501200373号  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雨无声 版权所有◎2003-2007</td>
+            </tr>
+          </table>
+		</div>
+	</div>
+</div>
+</td></tr></table>
+</body>
+</html>
+</#macro>

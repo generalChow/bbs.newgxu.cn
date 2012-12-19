@@ -1,0 +1,148 @@
+<@base.header title="雨无声论坛">
+	<link href="/css/index2.css" rel="stylesheet" type="text/css" />
+</@base.header>
+<@base.body location="论坛首页">
+<style type="text/css">
+<!--
+a:link {
+	color: #7A511B;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #7A511B;
+}
+a:hover {
+	text-decoration: underline;
+	color: #7A511B;
+}
+a:active {
+	text-decoration: none;
+	color: #7A511B;
+}
+-->
+</style><#setting number_format="0">
+  <div style="width:965px; margin-top:0px; height:auto;">
+     <div class="band">
+    <div style="height:38px; width:623px; background-image:url(images2/band_1.jpg)"></div>
+    <div style="height:607px; width:623px; background-image:url(images2/band.jpg); padding-left:20px;" >
+    <#list model.areas as area>
+    	<table width="96%"  border="0" cellspacing="4" cellpadding="0">
+				<tr class="botom_line">
+					<td width="10%" height="13" align="center" valign="top" class="shadow area"><a href="area.yws?areaId=${area.id}">${area.name}</a></td>
+					  <td width="90%" align="left" valign="top"><span>
+						<span class="left"><#list area.forums as forum>
+						 <a href="forum.yws?forumId=${forum.id}">${forum.name}</a>
+						</#list>
+					  </span></span></td>
+				</tr>
+			</table>
+    </#list>
+    </div>
+    </div>
+  <div class="main_right">
+    <div style="height:38px; width:342px; background-image:url(images2/hot_top.jpg)"></div>
+    <div style="height:233px; width:342px; background-image:url(images2/hot.jpg); ">
+       <div style="height:200px; width:260px; margin-left:15px; padding-top:15px;">
+              <tr>
+                <td><table height="12" border="0" cellpadding="0" cellspacing="0">
+                   <#list pubHotTopics as t>
+                    <tr>
+                      <td width="10" height="12" align="right">&nbsp;</td>
+                      <td width="10" align="right"><img src="images/q.gif" width="13" height="12"/></td>
+                      <td width="260" height="12" align="left">[<a href="/forum.yws?forumId=${t.forum.id}">${t.forum.name}</a>]<a href="/topic.yws?forumId=${t.forum.id}&amp;topicId=${t.topic.id}">${t.title}</a></td>
+                    </tr>
+                   </#list>
+                </table></td>
+              </tr>
+      </div>   
+    </div>
+    <div style="height:108px; width:342px; background-image:url(images2/jingcai_top.jpg)"></div>
+    <div style="height:266px; width:342px; background-image:url(images2/jingcai.jpg)">
+      <div style="height:200px; width:260px; margin-left:15px; padding-top:0px;">
+             <tr>
+                <td><table height="12" border="0" cellpadding="0" cellspacing="0">
+                   <#list pubGoodTopics as t>
+                    <tr>
+                      <td width="10" height="12" align="right">&nbsp;</td>
+                      <td width="10" align="right"><img src="images/q.gif" width="13" height="12"/></td>
+                      <td width="300" height="12" align="left">[<a href="/forum.yws?forumId=${t.forum.id}">${t.forum.name}</a>]<a href="/topic.yws?forumId=${t.forum.id}&amp;topicId=${t.topic.id}">${t.title}</a></td>
+                    </tr>
+                   </#list>
+                </table></td>
+              </tr>
+      </div> 
+    </div>
+  </div>
+  </div>  
+  
+  <div class="bg_4"></div>
+   
+  <div class="user"></div>
+  <div class="userlist">
+    <div style="height:179px; width:799px; background-image:url(images2/user_bg.jpg)">
+      <div  style="height:106px; width:799px; margin-left:-20px; padding-top:5px;font-size:14px;"> 
+      <table width="100%"  border="0" cellspacing="4" cellpadding="0">
+				<tr >
+					<td width="18%" height="12" align="left" valign="top" class="botom_line shadow area">
+					<a href="/user/users.yws?type=1">::最有价值TOP10::</a></td>
+					  <td width="80%" align="left" valign="top" class="bbslm"><span class="bbslm">
+						<span class="left"><#list topExpUsers as u>
+						  <a href="/user/user_info.yws?id=${u.id}" style="font-size:12px;">${u.nick}</a>
+						</#list>
+					  </span></td>
+				</tr>
+			</table>
+	<table width="100%"  border="0" cellspacing="4" cellpadding="0">
+				<tr >
+					<td width="20%" height="12" align="left" valign="top" class="botom_line shadow area"><a href="/user/users.yws?type=2">::最有钱力TOP10::</a></td>
+					  <td width="80%" align="left" valign="top" class="bbslm"><span class="bbslm">
+						<span class="left" ><#list topMoneyUsers as u>
+						  <a href="/user/user_info.yws?id=${u.id}" style="font-size:12px;">${u.nick}</a>
+						</#list>
+					  </span></td>
+				</tr>
+			</table>
+			      <table width="100%"  border="0" cellspacing="4" cellpadding="0">
+				<tr >
+					<td width="20%" height="12" align="left" valign="top" class="botom_line shadow area"><a href="/user/users.yws?type=3">::最有影响TOP10::</a></td>
+					  <td width="80%" align="left" valign="top" class="bbslm"><span class="bbslm">
+						<span class="left"><#list topTopicUsers as u>
+						  <a href="/user/user_info.yws?id=${u.id}" style="font-size:12px;">${u.nick}</a>
+						</#list>
+					  </span></td>
+				</tr>
+			</table>
+			      <table width="100%"  border="0" cellspacing="4" cellpadding="0">
+				<tr >
+					<td width="20%" height="12" align="left" valign="top" class="botom_line shadow area"><a href="/user/users.yws?type=4">::十大水鬼::</a></td>
+					  <td width="80%" align="left" valign="top" class="bbslm"><span class="bbslm">
+						<span class="left"><#list topReplyUsers as u>
+						  <a href="/user/user_info.yws?id=${u.id}" style="font-size:12px;">${u.nick}</a>
+						</#list>
+					  </span></td>
+				</tr>
+			</table>
+			<table width="100%"  border="0" cellspacing="4" cellpadding="0">
+				<tr >
+					<td width="20%" height="12" align="left" valign="top" class="botom_line shadow area"><a href="/user/users.yws?type=5">::十大杰出水手::</a></td>
+					  <td width="85%" align="left" valign="top" class="bbslm"><span class="bbslm">
+						<span class="left"><#list topGoodUsers as u>
+						  <a href="/user/user_info.yws?id=${u.id}" style="font-size:12px;">${u.nick}</a>
+						</#list>
+					  </span></td>
+				</tr>
+			</table>
+      </div>
+    </div>
+    <div style="height:84px; width:799px; background-image:url(images2/bg_5.jpg);margin-top:0px;">
+      <div  style="height:54px; width:900px;margin-top:30px;margin-left:-115px;">
+      <table cellpadding="0" cellspacing="0" height="54" border="0">
+            <tr>
+              <td  align="left" valign="top">关于论坛 | 美术支持 | 免责声明 | 版权申明 | 合作伙伴 | 友情链接 |	桂ICP备05001920号 南宁网警备4501200373号  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雨无声 版权所有◎2003-2007</td>
+            </tr>
+      </table>
+      </div>
+    </div>
+  </div>
+</@base.body>

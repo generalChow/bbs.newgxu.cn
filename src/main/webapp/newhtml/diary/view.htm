@@ -1,0 +1,290 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>雨无声论坛-雨无声社区v4.0-查看日记-${diary.title?default("")}</title>
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+		<meta http-equiv="description" content="this is my page">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link href="/css/view.css" rel="stylesheet" type="text/css">
+		<link href="/css/diary.css" rel="stylesheet" type="text/css">
+		<link href="/css/global.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="/js/comment.js"></script>
+		<style type="text/css">
+<!--
+table {<br />
+table-layout:fixed;word-break:break-all;word-wrap:break-word;}<br />
+div{word-break:break-all;word-wrap:break-word;}
+
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
+.STYLE1 {color: #000000}
+-->
+/* 提示信息div的样式 */
+#statusDiv {
+    border:1px solid #999;
+    background:#FFFFCC;
+    width:100px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin:-50px 0 0 -100px;
+    width:280px;
+}
+td.bg{
+background-color: #F5FAE7;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="987" height="1219" border="0" align="center" cellpadding="0" cellspacing="0" id="__01" >
+	<tr>
+		<td rowspan="12">&nbsp;</td>
+		<td rowspan="3">
+			<img src="/images/diary/viewDiary_02.jpg" width="14" height="137" alt=""></td>
+		<td colspan="3" rowspan="3">&nbsp;</td>
+		<td colspan="2">
+			<img src="/images/diary/viewDiary_04.jpg" width="238" height="60" alt=""></td>
+		<td colspan="3" rowspan="3">
+			<img src="/images/diary/viewDiary_05.jpg" width="220" height="137" alt=""></td>
+		<td rowspan="12">&nbsp;</td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="60" alt=""></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="/images/diary/viewDiary_07.jpg" width="91" height="59" alt=""></td>
+		<td rowspan="2">
+			<img src="/images/diary/viewDiary_08.jpg" width="147" height="77" alt=""></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="59" alt=""></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="/images/diary/viewDiary_09.jpg" width="91" height="18" alt=""></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="18" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="5" background="/images/diary/viewDiary_20.jpg">&nbsp;</td>
+		<td colspan="6" rowspan="3">
+			<img src="/images/diary/viewDiary_11.jpg" width="722" height="265" alt=""></td>
+		<td>
+			<img src="/images/diary/viewDiary_12.jpg" width="31" height="9" alt=""></td>
+		<td>
+			<img src="/images/diary/viewDiary_13.jpg" width="33" height="9" alt=""></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="9" alt=""></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="/images/diary/viewDiary_14.jpg" width="31" height="16" alt=""></td>
+		<td rowspan="8">&nbsp;</td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="16" alt=""></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="/images/diary/viewDiary_16.jpg" width="31" height="240" alt=""></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="240" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="6" align="right">&nbsp;</td>
+		<td rowspan="2" background="/images/diary/viewDiary_22.jpg">&nbsp;</td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="23" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="6" align="center" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><table width="719" border="0" align="right" cellpadding="0" cellspacing="0">
+              <tr>
+                <td height="25" class="top_bg">
+                <table width="100%" height="28" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td width="39%" align="left"><span class="statu">Date And Time:</span>${diary.addDate?default("")}</td>
+                      <td width="20%" align="left"><span class="statu">Day:</span>${model.week?default("")}</td>
+                      <td width="16%" align="left"><span class="statu"> weather:</span>${diary.weather?default("")}</td>
+                      <td width="16%" align="left"><span class="statu">mood :</span>${diary.Humor?default("")}</td>
+                      <td width="9%" align="right">阅读 ${diary.hitCount?default("")}</td>
+                    </tr>
+                </table></td>
+              </tr>
+              <tr>
+                <td height="500" valign="top" background="/images/diary/back2.gif" class="diary"><table width="718" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td height="22" align="center"><span class="title">${diary.title?default("")}</span> &nbsp;作者/${diary.user.nick}&nbsp;&nbsp;日记本：<A href="viewDiaryBook.yws" target=_blank>${diary.diaryBook.bookName}</A></td>
+                    </tr>
+                    <tr>
+                       <#if diary.lockedType==3>
+                       <td height="22" align="center" class="line"  wrap="hard">
+                       <font color="#FF0000">该日记已被设置为阅读密码可读</font><br/>
+                      <form action="authLocked.yws">
+                        请输入阅读密码： <input type="password" name="lockedTpye" id="lockedTpye" ><input type="hidden" name="DiaryBookId" value="${diary.diaryBook.id}"><input name="Submit" type="submit" class="short_submit" value="阅读" />
+                      </form>
+                      </td>
+                      <#elseif diary.lockedType==2&&diary.user.nick!=status.nick>
+                      <td height="22" align="center" class="line"  wrap="hard">
+                       <font color="#FF0000">该日记已被上锁</font><br/>
+                      </td>
+                      <#else>
+                      <td height="22" align="left" class="content"  wrap="hard">
+					  <span class="content" ><span class="input02">${diary.content?default("")}</span></span>                        </td>
+                      </#if>
+                    </tr>
+                </table></td>
+              </tr>
+              <tr>
+                <td height="22" valign="top" class="bottom">&nbsp;</td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td height="184" align="center" valign="top"><table width="100%" height="184" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="2%" height="24">&nbsp;</td>
+                <td width="13%" valign="bottom"><img src="/images/diary/pinglun.gif" width="37" height="17" align="bottom"></td>
+                <td width="85%">&nbsp;</td>
+              </tr>
+              <tr>
+                <td height="25" colspan="3" align="center"><TABLE width="96%" border=0 cellPadding=0 cellSpacing=0 class="comment">
+                  <TBODY id="diary">
+                    <#list diaryComments as dc>
+                    <TR>
+                      <TD colspan="3" valign="top"><hr size="1"></TD>
+                    </TR>
+                    <TR id="diary${dc.id}">
+                      <TD width="53%" height="20" class="bg"><span class="STYLE1">网友</span>：<a href="">${dc.user.nick}</a></TD>
+                      <TD width="25%" align="right" class="bg"><span class="STYLE1">IP</span>：${dc.ip?default("")}</TD>
+                      <TD width="22%" align="right" class="bg">${dc.dateTime?default("")}</TD>
+                    </TR>
+                    <TR>
+                      <TD height="25" colspan="3" valign="bottom">${dc.content?default("")}</TD>
+                    </TR>
+                    </#list>
+                  </TBODY>
+                </TABLE></td>
+              </tr>
+               <tr>
+                 <td align="center" width="100%"><span class="left pages">共${pagination.recordSize}条评论${model.pagination}</span></td>
+               </tr>
+              <tr>
+                <td colspan="3" align="center"><hr size="1"></td>
+              </tr>
+              <#if diary.allowcomment==1&&status.login>
+              <tr>
+                <td colspan="3" align="center">
+                <form name="form1" action="add_Comment.yws" method="post">
+                  <TABLE cellSpacing=0 cellPadding=4 width="90%" align=center border=0>
+                    <TBODY>
+                      <TR>
+                        <TD vAlign=top width=115 clasee="td"><DIV align=right>内容：</DIV></TD>
+                        <TD width=417 rowspan="2" clasee="td"><TEXTAREA name="content" cols=40 rows=8 title="Ctrl+Enter快速提交" class=short_text id="content"></TEXTAREA>
+                        </TD>
+                      </TR>
+                      <TR>
+                        <TD align="center" clasee="td"><img src="/images/diary/good.jpg" width="108" height="111"></TD>
+                      </TR>
+                      <TR>
+                        <TD width=115 clasee="td"><DIV align=right>
+                            <INPUT type=hidden name=did  id="did" value="${diary.id}">
+                            <INPUT type=hidden name=uid id="uid" value="${status.nick}">
+                        </DIV></TD>
+                        <TD width=417><DIV align=left>　　&nbsp;&nbsp;&nbsp;&nbsp;
+                                <INPUT name=Submit type=submit class="short_submit" value=":发表评论:">
+                                <INPUT name=Submit2 type=reset class="short_submit" value=":重新填写:" onclick="reset()">
+                        </DIV><div id="statusDiv" style="display:none" align="center"></div></TD>
+                      </TR>
+                    </TBODY>
+                  </TABLE>
+                  </form>
+                </td>
+              </tr>
+              <#elseif diary.allowcomment==0&&status.login>
+              <tr>
+                  <td width="100%" align="center">该日记已被作者标记为不允许评论...</td>
+              </tr>
+              <#else>
+              <tr>
+                  <td width="100%" align="center">你还没有登录哦....</td>
+              </tr>
+              </#if>
+            </table></td>
+          </tr>
+        </table></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="738" alt=""></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="/images/diary/viewDiary_20.jpg" width="14" height="9" alt=""></td>
+		<td colspan="6" rowspan="2">
+			<img src="/images/diary/viewDiary_21.jpg" width="722" height="18" alt=""></td>
+		<td>
+			<img src="/images/diary/viewDiary_22.jpg" width="31" height="9" alt=""></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="9" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			<img src="/images/diary/viewDiary_23.jpg" width="14" height="26" alt=""></td>
+		<td rowspan="2">
+			<img src="/images/diary/viewDiary_24.jpg" width="31" height="26" alt=""></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="9" alt=""></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="/images/diary/viewDiary_25.jpg" width="9" height="17" alt=""></td>
+		<td>
+			<img src="/images/diary/viewDiary_26.jpg" width="10" height="17" alt=""></td>
+		<td colspan="4">
+			<img src="/images/diary/viewDiary_27.jpg" width="703" height="17" alt=""></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="17" alt=""></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td colspan="7">&nbsp;</td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="20" alt=""></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="82" height="1" alt=""></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="14" height="1" alt=""></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="9" height="1" alt=""></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="10" height="1" alt=""></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="309" height="1" alt=""></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="91" height="1" alt=""></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="147" height="1" alt=""></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="156" height="1" alt=""></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="31" height="1" alt=""></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="33" height="1" alt=""></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="104" height="1" alt=""></td>
+		<td></td>
+	</tr>
+</table>
+<!-- End ImageReady Slices -->
+</body>
+</html>

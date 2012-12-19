@@ -1,0 +1,52 @@
+<@base.header title="用户列表">
+	<style type="text/css">
+	<!--
+	.style${type} {color: #407F00}
+	-->
+	</style>
+</@base.header>
+<@base.body location="用户列表">
+	<@base.main location="用户列表">
+	<#setting number_format="0">
+		<div class="list_title_01">&nbsp;</div>
+		<div class="list_title_02">
+				<a href="?type=0"><span class="style0">按加入时间排序</span></a> 
+				<a href="?type=1"><span class="style1">按经验排序</span></a> 
+				<a href="?type=2"><span class="style2">按XDB排序</span></a> 
+				<a href="?type=3"><span class="style3">按发表主题数排序</span></a> 
+				<a href="?type=4"><span class="style4">按发表回复数排序</span></a> 
+				<a href="?type=5"><span class="style5">按发表精华数排序</span></a>
+		</div>
+		<div class="kuang">
+		  <table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" bgcolor="#FFFAD0" class="botom_line">
+			<tr align="center">
+			  <th width="27" class="right_line">名次</th>
+			  <th width="118" class="right_line">昵称</th>
+			  <th width="85" class="right_line style1">经验值</th>
+			  <th width="68" class="right_line style2">西大币</th>
+			  <th width="153" class="right_line style3">发表主题数</th>
+			  <th width="120" class="right_line style4">发表回复数</th>
+			  <th width="148" class="right_line style5">发表精华数</th>
+			  <th width="76">短消息</th>
+			</tr>
+		  </table>
+		  <#list users as u>
+		  <table width="100%" height="20"  border="0" align="center" cellpadding="2" cellspacing="0" class="botom_line">
+			<tr align="center">
+			  <th width="27" height="25" class="right_line">${u_index+1+(pagination.page-1)*pagination.pageSize}</th>
+			  <td width="118" class="right_line"><a href="/user/user_info.yws?id=${u.id}">${u.nick}</a></td>
+			  <td width="85" class="right_line style1">${u.exp}</td>
+			  <td width="68" class="right_line style2">${u.money}</td>
+			  <td width="153" class="right_line style3">${u.numberOfTopic}</td>
+			  <td width="120" class="right_line style4">${u.numberOfReply}</td>
+			  <td width="148" class="right_line style5">${u.numberOfGood}</td>
+			  <td width="76"><a href="/message/send_message.yws?userId=${u.id}">发送短信</a></td>
+			</tr>
+		  </table>
+		  </#list>
+		</div>
+		
+		<div class="list_title_03"><span class="left pages">${model.pagination}</span></div>
+		<div class="list_title_04" align="left">&nbsp;</div>
+	</@base.main>
+</@base.body>

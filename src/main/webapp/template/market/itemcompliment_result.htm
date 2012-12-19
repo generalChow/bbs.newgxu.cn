@@ -1,0 +1,38 @@
+<@base.header title="社区商店"></@base.header>
+<@base.body location="商业中心&nbsp;－&gt;&nbsp;社区商店">
+	<@base.main location="商业中心&nbsp;－&gt;&nbsp;社区商店">
+		<@base.market_content>
+<table width="80%" border="0">
+  <tr>
+    <td colspan="3">操作结果：</td>
+    </tr>
+  <tr>
+	<#if receiveUsers?size != 0>
+      <td align="center">
+      	成功转入用户<br />
+		<#list receiveUsers as nick>
+		  	${nick}&nbsp;－&gt;&nbsp;<br />
+		</#list>
+	  </td>
+	</#if>
+	<#if unReceiveUsers?size != 0>
+      <td align="center">
+         物品数量不足，失败用户<br />
+		<#list unReceiveUsers as nick>
+		  	${nick}<br />
+		</#list>
+	  </td>
+	</#if>
+	<#if notExistUsers?size != 0>
+      <td align="center">
+      	错误昵称<br />
+		<#list notExistUsers as nick>
+		  	${nick}<br />
+		</#list>
+	  </td>
+	</#if>
+  </tr>
+</table>
+	</@base.market_content>
+	</@base.main>
+</@base.body>

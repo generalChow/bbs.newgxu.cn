@@ -1,0 +1,92 @@
+<@base.header title="查看砸蛋中奖">
+</@base.header>
+<@base.body location="查看砸蛋中奖">
+	<@base.main location="查看砸蛋中奖">
+	<div>
+		<div class="list_title_01">&nbsp;</div>
+		<div style="text-align:center; width:100%;">
+				<p style="width:90%; font-size:12px;margin:5px 70px 2px 0; text-align:right;"><a href="#lucky_info">幸运帖信息</a></p>
+				<p style="font-weight:700;margin:5px 0 2px 0"><b>目前中奖信息</b></p>
+				<div class="kuang">
+					<table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" bgcolor="#FFFAD0" class="botom_line">
+					  <tr align="center">
+						<th width="40" class="right_line">序号</th>
+						<th width="120" class="right_line">用户名</th>
+						<th class="right_line">所得礼品</th>
+						<#if User?exists>
+							<#if User.id==lucky.topic.topicUser.id || User.id==70797>
+								<th width="100" class="right_line">领奖码</th>
+							</#if>
+						</#if>
+						<th width="156">记录时间</th>
+					  </tr>
+					</table>
+					<table width="100%" height="25" border="0" align="center" cellpadding="0" cellspacing="0" class="botom_line" style="table-layout:fixed;">
+					 <#assign index1=1>
+					 <#list luckyLogs as l>
+						<tr align="center" class="botom_line">
+							<td width="40" height="35" class="right_line">${index1}</td>
+							<td width="120" class="right_line"><a href="/user/user_info.yws?id=${l.user.id}">${l.user.nick}</a></td>
+							<td class="right_line">
+								<#if l.best>
+									<table border=0>
+										<tr>
+											<td><img src='/images/lucky_egg1_small.gif' style='border:none; width:22px;height:30px;'/></td>
+											<td>${l.giftInfo?default('')}</td>
+										</tr>
+									</table>
+								<#else>
+									${l.giftInfo?default('')}
+								</#if>
+							</td>
+							<#if User?exists>
+							<#if User.id==lucky.topic.topicUser.id || User.id==70797>
+								<td width="100" class="right_line" style="color:#a50100; font-size:14px;">${l.codeNumber}</td>
+							</#if>
+							</#if>
+							<td width="156">${l.createTime}</td>
+						</tr>
+						<#assign index1=index1+1>
+					 </#list>
+					 </table>
+				</div>
+		</div>
+		<br />
+		<div id="lucky_info" style="text-align:center; width:100%;">
+			<p>
+				<br />
+				<b>关于这次砸蛋：</b>
+			</p>
+			<table border=0 style="width:700px; margin-left:160px;">
+					<tr>
+						<td width="140px" align="right"><b>砸蛋出处：</b></td>
+						<td align="left"><a href="/topic.yws?forumId=${lucky.topic.forum.id}&topicId=${lucky.topic.id}">${lucky.topic.title?default('')}</a></td>
+					</tr>
+					<tr>
+						<td align="right"><b>中奖率：</b></td>
+						<td align="left">20%</b></td>
+					</tr>
+					<tr>
+						<td align="right"><b>说明信息：</b></td>
+						<td align="left">${lucky.countInfo}</td>
+					</tr>
+					<tr>
+						<td align="right"><b>目前中金奖人数：</b></td>
+						<td align="left">${lucky.count}</td>
+					</tr>
+					<tr>
+						<td align="right" valign="top"><b>奖品预览：</b></td>
+						<td align="left">
+							<#assign index=1>
+							<#list lucky.giftsInfo as gi>
+								${index}.${gi}<br />
+								<#assign index=index+1>
+							</#list>
+						</td>
+					</tr>
+				</table>
+		</div>
+		<div class="list_title_04" align="left"></div>
+	</div>
+	</@base.main>
+</@base.body>

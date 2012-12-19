@@ -1,0 +1,38 @@
+<@base.header title="定期储蓄"></@base.header>
+<@base.body location="社区银行&nbsp;－&gt;&nbsp;定期储蓄">
+	<@base.main location="社区银行&nbsp;－&gt;&nbsp;定期储蓄">
+		<@base.bank_content>
+<br>
+<table cellspacing="0" cellpadding="0">
+  <tr>
+    <td>当前定期利率为${bank.fixedRate*1000}‰，欢迎使用定期储蓄。</td>
+  </tr>
+  <tr>
+    <td><form action="new_fixed.yws" method="post" name="name" id="name">
+      操作金额:
+      <input size="15" name="money" />
+      天数:
+      <input size="5" name="days" />
+      <br />
+      银行密码:
+      <input type="password" size="15" value="" name="bankpwd" />
+      <button name="banksubmit" type="submit" value=" 提  交 ">提 交</button>
+    </form></td>
+  </tr>
+  <tr>
+    <td><strong>我的定期记录</strong></td>
+  </tr>
+  <tr>
+    <td><table cellspacing="1" cellpadding="0"> 
+    	<#list myFixeds as fixed>
+        <tr>
+          <td>金额: ${fixed.money}   定期利率: ${fixed.fixedRate*1000}‰   生效时间: ${fixed.beginTime}   到期时间: ${fixed.endTime?datetime}     您当前可得利息: ${fixed.accrual} </td>
+          <td align="middle" width="40">[<a href="draw_fixed.yws?id=${fixed.id}">支取</a>] </td>
+        </tr>
+		</#list>
+    </table></td>
+  </tr>
+</table>
+		</@base.bank_content>
+	</@base.main>
+</@base.body>

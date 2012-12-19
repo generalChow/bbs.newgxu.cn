@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>区论坛概况</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+    区论坛概况. <br>
+	区域论坛是几个论坛的集合，同一性质的若干个论坛集合在一起形成区域论坛。 <br>
+	你可以<a href="create_area.yws">创建一个新区域论坛</a>。  <br>
+	<table>
+      <tr>
+        <td>区域论坛标题  </td>
+        <td>是否热门</td>
+        <td>是否隐藏</td>
+        <td>排序</td>
+        <td>区管理员</td>
+        <td>编辑</td>
+        <td>删除</td>
+      </tr>
+	<#list model.areas as area>		
+      <tr>
+        <td><a href="forums.yws?areaId=${area.id}">${area.name}</a><br>          
+        ${area.description?default("")}</td>
+        <td>${area.hotString}</td>
+        <td>${area.hiddenString}</td>
+        <td>${area.taxis}</td>
+        <td><#list area.webmasters as user>${user.nick}</#list></td>
+        <td><a href="edit_area.yws?areaId=${area.id}"><img src="/image/button_edit.gif" width="17" height="17" border="0"></a></td>
+        <td><a href="del_area.yws?areaId=${area.id}"><img src="/image/button_delete.gif" width="17" height="17" border="0"></a></td>
+      </tr>
+	</#list>
+    </table>
+
+  </body>
+</html>

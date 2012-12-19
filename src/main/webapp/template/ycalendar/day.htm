@@ -1,0 +1,27 @@
+<#if comingHoliday?size gt 0>
+<div>
+<div class="title">固定节日</div>
+<#list comingHoliday as ch>
+	<div class="holiday">
+		<p><span class='fix_day' style='color:${ch.color};'>${ch.name}</span>&nbsp;${ch.date}</p>
+		<p class="content">${ch.information?default('')}</p>
+	</div>
+</#list>
+</div>
+<#else>
+	<div class="nothing">这天没有固定节日!</div>
+</#if>
+<#if nearbyHoliday?size gt 0>
+<div>
+<div class="title">用户节日</div>
+<#list nearbyHoliday as ch>
+	<div class="holiday">
+		<p><span class='fix_day'>${ch.name}</span>&nbsp;${ch.date}</p>
+		<p>始发者:<a href="/user/user_info.yws?id=${ch.user.id}">${ch.user.nick}</a></p>
+		<p class="content">${ch.information?default('')}</p>
+	</div>
+</#list>
+</div>
+<#else>
+	<div class="nothing">这天没有用户节日!</div>
+</#if>

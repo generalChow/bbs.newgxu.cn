@@ -1,0 +1,37 @@
+<@base.calendarHeader title="编辑节日">
+<script type="text/javascript" src="/js/datepicker/WdatePicker.js"></script>
+</@base.calendarHeader>
+<@base.calendarBody>
+<form action="newUserHoliday.yws?method=createDo" method="post">
+<div class="main">
+<div><strong>创建新节日</strong><br /></div>
+<div class="kuang" >
+	<table width="830" class="botom_line" border="0">
+		<tr>
+			<td align="center" width="125" height="30" class="right_line">日期:</td><td align="left"><input id="d322" name="holiday.date" class="Wdate" value="${year}-${month}-${day}"  type="text" onfocus="WdatePicker({skin:'default'})"/>
+</td>
+		</tr>
+		<tr>
+			<td align="center" width="125" height="30" class="right_line">名称</td>
+			<td align="left"><input name="holiday.name" class="input_new1" id="name" title='名称是必须填写的哦~' value="" size="30" /></td>
+		</tr>
+		<tr>
+			<td align="center" width="125" height="30" class="right_line">分开度:</td>
+			<td align="left">
+				<label><input name="holiday.overt" type="radio" value="0" checked="checked" />所有人</label>
+				<label><input name="holiday.overt" type="radio" value="1" />仅我自己</label>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">内容:</td>
+			<td>
+				<textarea id="holidayContent" name="holiday.information" style=" width:600px; height:350px;"></textarea>
+			</td>
+		</tr>
+		<tr><td colspan="2"><input type="submit" value="马上创建"/>&nbsp;<input type="reset" value="重置" /></td></tr>
+	</table>
+</div>
+</form>
+</div>
+</@base.calendarBody>
+<@base.kindEditor id="holidayContent"/>

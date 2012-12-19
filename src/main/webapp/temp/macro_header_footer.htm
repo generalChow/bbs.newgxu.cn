@@ -1,0 +1,134 @@
+<#assign version = "雨无声社区 V4.0 beta!">
+<#macro header title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>${title} -- ${version}</title>
+		<link href="/css/global.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="/js/mootools.v1.00.js"></script>
+		<script type="text/javascript" src="/js/newgxu_common.js"></script>
+		<script type="text/javascript" src="/js/newgxu_dropdownMenu.js"></script>
+		<#nested/>
+	</head>
+</#macro>
+<#macro body location="">
+<body onload="javascript:document.execCommand(’BackgroundImageCache’, false, true);">
+	<table width="1004" border="0" align="center" cellpadding="0" cellspacing="0">
+	  <tr>
+	        <td height="184" class="top_bg">&nbsp;</td>
+	  </tr>
+	</table>
+	<table width="1004" border="0" align="center" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td width="162" height="131" class="top_bg_21">&nbsp;</td>
+	    <td align="center" valign="top" class="top_bg_22"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+	      <tr>
+	        <td>&nbsp;</td>
+	      </tr>
+	    </table>
+	      <table width="100%"  border="0" cellpadding="0" cellspacing="0">
+	        <tr>
+	          <td width="67" height="40" align="right" background="images/tit1.jpg">嘿，欢迎您</td>
+	          <td width="217" height="40" align="left" background="images/tit.jpg">
+	             ， <#if status.login>${status.nick}<#else>游客</#if></td>
+	          <td width="272" background="images/tit.jpg"><#if status.login>
+			   <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	                  <tr>
+	                    <td height="20"><a href="controlPanel.jsp" >个人服务区</a>&nbsp;&nbsp;<a href="diary/" target="_blank">心情日记</a>&nbsp;&nbsp;&nbsp;<a href="/accounts/logout.yws">退出</a>&nbsp;&nbsp;<a href="#" onClick="MM_openBrWindow('shortMessagesList.jsp','查看短消息','menubar=yes,scrollbars=yes,width=700,height=500')" >新消息：0条</a></td>
+	                  </tr>
+	                </table></#if>
+			  </td>
+	          <td width="18" height="40" background="images/tit3.jpg">&nbsp;</td>
+	        </tr>
+	      </table></td>
+	    <td width="270" class="top_bg_23"><div id="Layer1" style="position:absolute; z-index:0">
+		<#if status.login == false>
+	        <div id="login">
+	          <form action="/accounts/login_do.yws" method="post">
+			  <div style="height:10px;"></div>
+	            <div style="height:25px; padding-left:55px;"><input name="username" type="text" class="input" id="username" size="15"/></div>
+	<div style="height:25px; padding-left:55px;"><input name="password" type="password" class="input" id="password" size="15"/></div>
+	<div style="height:25px; padding-left:55px;"><input onFocus="javascript:$('validImage').src='/common/validImage.jsp';" name="validCode" type="text" class="input_rand" id="validCode" autocomplete="off" />&nbsp;<img src="/images/default_valid_img.png" align="top" id="validImage" /></div>
+	<div style="height:25px; padding-left:40px;"><input name="originalUrl" type="hidden" id="originalUrl" value="${status.originalUrl?default("/")}" /><input type="image" src="/images/dl1.gif" name="Image1" width="37" height="16" border="0"/>&nbsp;<a href="/accounts/register.yws"><img src="/images/zc1.gif" name="Image2" width="37" height="16" border="0" id="Image2"/></a></div></form>
+	        </div></#if>
+		  <div id="yu" style="position:absolute; width:566px; height:165px; z-index:1; left: -735px; top: -250px;">
+		    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="1004" height="140">
+	          <param name="movie" value="flash/yu.swf" />
+	          <param name="wmode"   value="transparent" />
+	          <param name="quality" value="high" />
+	          <embed src="flash/yu.swf" quality="high" wmode="transparent"  pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="1004" height="140"></embed>
+	        </object>
+		  </div>
+		  <div id="hudie" style="position:absolute; width:566px; height:165px; z-index:1; left: -621px; top: -237px;">
+	        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="566" height="165">
+	          <param name="movie" value="flash/hudie.swf"/>
+			  <param name="wmode"   value="transparent"/>
+	          <param name="quality" value="high"/>
+	          <embed src="flash/yu.swf" quality="high" wmode="transparent"  pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="566" height="165"></embed>
+	        </object>
+	      </div>
+	    </div></td>
+	  </tr>
+	</table>
+	<#nested/>
+	<table width="1004" height="25" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#C3DE81">
+	  <tr>
+	    <td>&nbsp;</td>
+	  </tr>
+	</table>
+	<table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#C3DE81">
+	 <tr>
+	    <td width="44" rowspan="4">&nbsp;</td>
+		 <td height="23" align="left" valign="middle"><img src="/images/wz.gif" width="16" height="18"/></td>
+	    <td height="23">
+	          	<div style="width:800px;">
+	                <div style="float:left;">位置：&nbsp;</div>
+			    	<div style="float:left;">
+			    		<ul id="dropdownMenu_footer" class="dropdownMenu">
+			    			<#include "/navigation.htm">
+			        	</ul>
+						<script language="javascript">new newgxu.DropdownMenu($('dropdownMenu_footer'));</script>
+					</div>
+					<div style="float:left;">${location?default("")}</div>
+						
+				</div>
+	    </td>
+	    <td width="52" rowspan="4">&nbsp;</td>
+	 </tr>
+	  <tr>
+	    <td width="25" height="23" align="left"><img src="/images/home.gif" width="16" height="16"/> </td>
+	    <td width="883" height="23"><a href="http://www.newgxu.cn" class="t">雨无声网站首页</a></td>
+	  </tr>
+	  <tr>
+	    <td height="23" align="left" valign="top"><img src="/images/pp.gif" width="16" height="15"/></td>
+	    <td height="23">在线人数：${onlineStatus.total} 总访问：<xsl:value-of select="newgxu/count/totleHits"/> &nbsp;今日访问：<xsl:value-of select="newgxu/count/todayHits"/></td>
+	  </tr>
+	  <tr>
+	    <td height="23" align="left" valign="middle"><img src="/images/show2.gif" width="16" height="15"/></td>
+	    <td height="23">建议使用：<strong>1024*768分辨率</strong>，16位以上颜色、IE6.0以上版本浏览器</td>
+	  </tr>
+	  
+	</table>
+	<table width="1004" height="25" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#C3DE81">
+	  <tr>
+	    <td>&nbsp;</td>
+	  </tr>
+	</table>
+	<table width="1004" border="0" align="center" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td height="42"><img src="/images/bottom_bg.gif" width="1004" height="42"/></td>
+	  </tr>
+	</table>
+	<table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#5FA206">
+	  <tr>
+	    <td width="134" height="53" align="center"><img src="/images/logo.gif" width="88" height="31"/></td>
+	    <td width="870" class="style6">关于论坛 | 美术支持 | <span class="b">免责声明</span> | 版权申明 | 合作伙伴 | 友情链接 | 
+	
+	
+	    桂ICP备05001920号 南宁网警备4501200373号  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雨无声 版权所有◎2003-2007 </td>
+	  </tr>
+	</table>
+</body>
+</html>
+</#macro>

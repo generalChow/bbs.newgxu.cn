@@ -1,0 +1,52 @@
+<@base.header title=" 快速回复主题 -- 论坛：${model.forum.name}">
+</@base.header>
+<body class="main-center">
+	 <div style="display:none;"><div id="ubbDialog" class="dialog_div"></div><div id="submitWaiting" class="dialog_div"></div></div>
+	<iframe id='target_reply' name='target_reply' src='' style='display: none'></iframe>
+       	<form method="post" id="post_form" action="/replyFastDo.yws"  onKeyDown="if(event.ctrlKey &amp;&amp; event.keyCode==13) {submitReply(); return false;}" target="target_reply">
+			<div class="list_title_01">&nbsp;</div>
+			<div class="list_title_02"><strong>回复主题</strong><br />${validMsg}</div>
+			<div class="kuang">
+				<#if isPhone>
+					<@base.editor>${content?default("")}</@base.editor>
+				<#else>
+					<@base.kindEditor>${content?default("")}</@base.kindEditor>
+				</#if>
+			</div>
+			<div class="list_title_03">
+				<input name="topicId" type="hidden" id="topicId" value="${topicId}" />
+				<input name="forumId" type="hidden" id="forumId" value="${forumId}" />
+				<input name="replyId" type="hidden" id="replyId" value="${replyId}" />
+				<input name="page" type="hidden" id="replyId" value="${page}" />
+				<input type="button" class="newtopic_submit" name="Button3" value=" 提 交 " onclick="javascript:submitReply()" />&nbsp;&nbsp;
+				<input type="button" class="newtopic_submit" name="Button2" value="返回前页" onclick="javascript:history.go(-1)" />&nbsp;&nbsp;
+				<input type="button" name="Submit" class="newtopic_submit" value="取回丢失内容" onclick="if(confirm('安全起见，请将当前帖子内容复制到记事本再进行此操作，你确定要继续吗？')) {resumeContent();}" />
+			</div>		
+			<div class="list_title_04" align="left"></div>
+			<script language="javascript">
+			      <!--  
+			      function   centerWindow(){
+					if($j.browser.mozilla){
+						var   xMax   =   screen.width;
+			             var   yMax   =   screen.height;
+			            window.moveTo(xMax/2-450,yMax/2-300);
+					}
+				  }
+				  
+				  function result(info){
+				   	window.returnValue=info;
+					if(result=='1'){
+						$("submitWaiting").innerHTML = "回复成功";
+						new newgxu.HtmlDialog("submitWaiting", 260, 90);
+					}else{
+						$("submitWaiting").innerHTML = "回复成功";
+						new newgxu.HtmlDialog("submitWaiting", 260, 90);
+					}
+					setTimeout("window.close();",1500);
+				  }
+			      centerWindow();  
+			      //-->  
+				initUbb();
+			</script>
+		</form>
+</body>

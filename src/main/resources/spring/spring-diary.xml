@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName">
+
+      <!-- 日记本 action BEGIN  -->
+      <bean name="diaryIndex" 
+          class="cn.newgxu.bbs.web.action.diary.DiaryIndexAction"
+          scope="prototype" parent="abstractBaseAction">
+          <property name="diaryService">
+             <ref bean="diaryService"/>
+          </property>
+      </bean>
+      <bean name="diaryBook" 
+          class="cn.newgxu.bbs.web.action.diary.DiaryBookAction" 
+          scope="prototype" parent="abstractBaseAction">
+          <property name="diaryService">
+             <ref bean="diaryService"/>
+          </property>
+      </bean>
+      <bean name="diary"
+          class="cn.newgxu.bbs.web.action.diary.DiaryAction"
+          scope="prototype" parent="abstractBaseAction">
+          <property name="diaryService">
+             <ref bean="diaryService"/>
+          </property>
+      </bean>
+      <bean name="comment" class="cn.newgxu.bbs.web.action.diary.DiaryCommentAction"
+          scope="prototype" parent="abstractBaseAction">
+          <property name="diaryService">
+             <ref bean="diaryService"/>
+          </property>
+      </bean>
+      
+     <bean name="diarySearchAction" class="cn.newgxu.bbs.web.action.diary.DiarySearchAction"
+          scope="prototype" parent="abstractBaseAction">
+          <property name="diaryService">
+             <ref bean="diaryService"/>
+          </property>
+      </bean>
+      <!-- getdiaryaction END -->
+     <bean name="getDiarysAction" class="cn.newgxu.bbs.web.action.diary.DetDiarysAction"
+          scope="prototype" parent="abstractBaseAction">
+          <property name="diaryService">
+             <ref bean="diaryService"/>
+          </property>
+      </bean>
+      <!-- 日志管理员操作 -->
+     <bean name="diaryManagerAction" class="cn.newgxu.bbs.web.action.admin.DiaryManagerAction"
+          scope="prototype" parent="abstractBaseAction">
+          <property name="diaryService">
+             <ref bean="diaryService"/>
+          </property>
+      </bean>
+      <!-- 日记本 action END -->
+      
+      <bean id="diaryService"
+          class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+          <property name="transactionManager">
+			<ref bean="transactionManager" />
+		  </property>
+		  <property name="target">
+			<ref bean="diaryServiceTarget" />
+		  </property>
+		  <property name="transactionAttributes">
+			<props>
+			  <prop key="isOrnotBuildBook">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+			  <prop key="addDiaryBook">PROPAGATION_REQUIRED, -Exception</prop>
+			  <prop key="addDiaryDo">PROPAGATION_REQUIRED, -Exception</prop>
+			  <prop key="editDiaryBookDo">PROPAGATION_REQUIRED, -Exception</prop>
+			  <prop key="delDiary">PROPAGATION_REQUIRED, -Exception</prop>
+			  <prop key="addHitCount">PROPAGATION_REQUIRED, -Exception</prop>
+			  <prop key="getDiaryComment">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+			  <prop key="addComment">PROPAGATION_REQUIRED, -Exception</prop>
+			  <prop key="getDiary">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+			  <prop key="getDiaryBooks">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+			  <prop key="editDiaryDo">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+			  <prop key="search">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+			  <prop key="getDiarys">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+			  <prop key="delDiaryByAdmin">PROPAGATION_REQUIRED,-Exception</prop>
+			</props>
+		  </property>
+      </bean>
+      
+      <bean id="diaryServiceTarget" 
+           class="cn.newgxu.bbs.service.proxy.DiaryServiceProxy">
+           <property name="diaryService">
+             <ref bean="realDiaryService" />
+           </property>
+      </bean>
+      <bean id="realDiaryService" 
+           class="cn.newgxu.bbs.service.impl.DiaryServiceImpl">
+      </bean>
+</beans>

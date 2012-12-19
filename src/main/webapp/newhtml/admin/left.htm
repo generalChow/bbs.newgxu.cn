@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>雨无声后台管理--菜单</title>
+<link href="css/admin.css" rel="stylesheet" type="text/css" />
+<style>
+body {
+  font-family: verdana, helvetica, arial, sans-serif;
+}
+
+#mainMenu {
+  background-color: #EEE;
+  border: 1px solid #CCC;
+  color: #000;
+  width: 180px;
+}
+
+#menuList {
+  margin: 0px;
+  padding: 10px 0px 10px 15px;
+}
+
+li.menubar {
+  background: url(/images/minus.gif) no-repeat 0em 0.3em;
+  font-size: 12px;
+  line-height: 1.5em;
+  list-style: none outside;
+}
+
+.menu {
+  display: block;
+  margin-left: 15px;
+  padding: 0px;
+}
+.submenu {
+  display: block;
+  margin-left: 15px;
+  padding: 0px;
+}
+
+.menu li, .submenu li {
+  background: url(/images/item.gif) no-repeat 0em 0.3em;
+  list-style: none outside;
+}
+
+a.actuator {
+  background-color: transparent;
+  color: #000;
+  font-size: 12px;
+  padding-left: 15px;
+  text-decoration: none;
+}
+
+a.actuator:hover {
+  text-decoration: underline;
+}
+
+.menu li a, .submenu li a {
+  background-color: transparent;
+  color: #000;
+  font-size: 12px;
+  padding-left: 15px;
+  text-decoration: none;
+}
+
+.menu li a:hover, submenu li a:hover {
+  /*border-bottom: 1px dashed #000;*/
+  text-decoration: underline;
+}
+
+span.key {
+  text-decoration: underline;
+}
+</style>
+<script>
+if (!document.getElementById)
+    document.getElementById = function() { return null; }
+
+function initializeMenu(menuId, actuatorId, display) {
+    var menu = document.getElementById(menuId);
+    var actuator = document.getElementById(actuatorId);
+
+    if (menu == null || actuator == null) return;
+
+    actuator.parentNode.style.backgroundImage = (display == "block") ? "url(/images/minus.gif)" : "url(/images/plus.gif)";;
+    menu.style.display = display;
+    actuator.onclick = function() {
+        var display = menu.style.display;
+        this.parentNode.style.backgroundImage = (display == "block") ? "url(/images/plus.gif)" : "url(/images/minus.gif)";
+        menu.style.display = (display == "block") ? "none" : "block";
+
+        return false;
+    }
+}
+ window.onload = function() {
+ 	initializeMenu("valhallaMenu", "valhalla", "block");
+	initializeMenu("bbsMenu", "bbs", "block");
+	initializeMenu("bankMenu", "bank", "block");
+	initializeMenu("adminMenu", "admin", "block");
+	initializeMenu("webmasterMenu", "webmaster", "block");
+	initializeMenu("groupMenu", "group", "block");
+	initializeMenu("userMenu", "user", "block");
+	initializeMenu("itemMenu", "item", "block");
+	initializeMenu("hongbaoMenu", "hongbao", "block");
+	initializeMenu("honorMenu", "honor", "block");
+ }
+</script>
+</head>
+
+<body>
+	<div id="mainMenu">
+      <ul id="menuList">
+        <li class="menubar">
+          <a href="javascript:void(0);" id="valhalla" class="actuator">社区管理</a>
+          <ul id="valhallaMenu" class="menu">
+            <li>
+              <a href="javascript:void(0);" id="bbs" class="actuator">论坛管理</a>
+              <ul id="bbsMenu" class="submenu">
+	             <li><a href="areas.yws" target="mainFrame">论坛概览</a></li>
+	             <li><a href="logs_list.yws" target="mainFrame">操作日志</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:void(0);" id="bank" class="actuator">社区银行管理</a>
+              <ul id="bankMenu" class="submenu">
+                <li><a href="bankManage.yws" target="mainFrame">银行管理</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:void(0);" id="admin" class="actuator">区论坛管理员管理</a>
+              <ul id="adminMenu" class="submenu">
+                <li><a href="adminManage.yws" target="mainFrame">管理员管理</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:void(0);" id="webmaster" class="actuator">斑竹管理</a>
+              <ul id="webmasterMenu" class="submenu">
+                <li><a href="webmasters.yws" target="mainFrame">斑竹列表</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:void(0);" id="group" class="actuator">Groups ＆ Users</a>
+              <ul id="groupMenu" class="submenu">
+                <li><a href="groups.yws" target="mainFrame">Groups概览</a></li>
+                <li><a href="users.yws" target="mainFrame">Users概览</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:void(0);" id="item" class="actuator">物品管理</a>
+              <ul id="itemMenu" class="submenu">
+                <li><a href="items.yws" target="mainFrame">Item概览</a></li>
+                <li><a href="create_item.yws" target="mainFrame">Item创建</a></li>
+                <li><a href="store_items.yws" target="mainFrame">Item上架</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:void(0);" id="hongbao" class="actuator">红包管理</a>
+              <ul id="hongbaoMenu" class="submenu">
+                <li><a href="hongbao.yws" target="mainFrame">红包概览</a></li>
+                <li><a href="manage_hongbao.yws" target="mainFrame">红包发放</a></li>
+                <li><a href="create_hongbao.yws" target="mainFrame">红包创建</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:void(0);" id="honor" class="actuator">荣誉管理</a>
+              <ul id="honorMenu" class="submenu">
+                <li><a href="honor.yws" target="mainFrame">荣誉概览</a></li>
+                <li><a href="create_honor.yws" target="mainFrame">荣誉创建</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:void(0);" id="register" class="actuator">注册管理</a>
+              <ul id="hongbaoMenu" class="submenu">
+                <li><a href="registerUsers.yws" target="mainFrame">查看未审核注册用户</a></li>
+                <li><a href="registerUsersToday.yws" target="mainFrame">查看今日注册</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1//EN" 
+"http://www.opensymphony.com/xwork/xwork-1.1.dtd">
+<xwork>
+	<package name="accounts" namespace="/accounts" extends="default">
+
+		<!-- 登录填写 -->
+		<action name="login" class="actionSupport">
+			<result name="success" type="freemarker">/template/accounts/login.htm</result>
+		</action>
+
+		<!-- 登录提交 -->
+		<action name="login_do" class="login">
+			<result name="success" type="redirect">
+				<param name="location">${redirect}</param>
+				<param name="parse">true</param>
+			</result>
+			<result name="input" type="freemarker">/template/accounts/login.htm</result>
+		</action>
+		<!-- 主页登录提交 -->
+		<action name="homelogin" class="login" method="homelogin">
+			<result name="input" type="freemarker">/template/accounts/login.htm</result>
+		</action>
+		<!-- 转到我的微博 -->
+		<action name="myTwitter" class="login" method="toMyTwitter">
+			<result name="success" type="freemarker">/template/accounts/toMyTwitter.htm</result>
+		</action>
+		<!-- 退出登录 -->
+		<action name="logout" class="logout">
+			<result name="success" type="redirect">/</result>
+		</action>
+		
+		<!-- 密码重置-->
+		<!-- 发邮件-->
+		<action name="resetPassword1" class="resetPassword" method="sendMail">
+			<result name="success" type="freemarker">/template/accounts/reset_password_message.html</result>
+			<result name="input" type="freemarker">/template/accounts/reset_password_message.html</result>
+		</action>
+		
+		<!-- 确认重置-->
+		<action name="resetPassword2" class="resetPassword" method="resetPass">
+			<result name="success" type="freemarker">/template/accounts/reset_password_message.html</result>
+			<result name="input" type="freemarker">/template/accounts/reset_password_message.html</result>
+		</action>
+
+		<!-- 注册 -->
+		<action name="register" class="actionSupport">
+			<result name="success" type="freemarker">/template/accounts/register.htm</result>
+		</action>
+
+		<!-- 注册填写 -->
+		<action name="register_input" class="register2">
+			<result name="success" type="freemarker">/template/accounts/register_input.htm</result>
+		</action>
+
+		<!-- 注册提交 -->
+		<action name="register_do" class="register" method="submit">
+			<result name="input" type="freemarker">/template/accounts/register_input.htm</result>
+		</action>
+
+		<!-- 更改注册资料 -->
+		<action name="re_input" class="register" method="reInput">
+			<result name="success" type="freemarker">/template/accounts/register_re_input.htm</result>
+		</action>
+		<action name="re_input_do" class="register" method="reInputDo">
+			<result name="input" type="freemarker">/template/accounts/register_re_input.htm</result>
+		</action>
+
+	</package>
+</xwork>

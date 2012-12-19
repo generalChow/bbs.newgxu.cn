@@ -1,0 +1,97 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1//EN" 
+"http://www.opensymphony.com/xwork/xwork-1.1.dtd">
+<xwork>
+	<package name="diary" namespace="/diary" extends="default">
+	
+	<action name="index" class="diaryIndex">
+	    <result name="success" type="freemarker">/template/diary/index.htm</result>
+	</action>
+	
+	<action name="hotDiary" class="diaryIndex" method="getRecDiary">
+	    <result name="success" type="freemarker">/template/diary/hotDiary.htm</result>
+	</action>
+	
+	<action name="newDiary" class="diaryIndex" method="getLatDiary">
+	    <result name="success" type="freemarker">/template/diary/newDiary.htm</result>
+	</action>
+	
+	<action name="hotDiaryBook" class="diaryIndex" method="getExcDiaryBook">
+	    <result name="success" type="freemarker">/template/diary/hotDiaryBook.htm</result>
+	</action>
+	
+	<action name="newDiaryBook" class="diaryIndex" method="getNewDiaryBook">
+	    <result name="success" type="freemarker">/template/diary/newDiaryBook.htm</result>
+	</action>
+	
+	<action name="goodDiaryBook" class="diaryIndex" method="getCouDiaryBook">
+	    <result name="success" type="freemarker">/template/diary/goodDiaryBook.htm</result>
+	</action>
+	
+	<action name="viewDiaryBook" class="diaryBook">
+	    <result name="input" type="freemarker">/template/diary/addDiaryBook.htm</result>
+	    <result name="success" type="freemarker">/template/diary/viewDiary.htm</result>
+	</action>
+    <action name="viewDiaryByTime" class="diaryBook" method="viewDiaryByTime">
+	    <result name="input" type="freemarker">/template/diary/addDiaryBook.htm</result>
+	    <result name="success" type="freemarker">/template/diary/viewDiary.htm</result>
+	</action>
+	
+	<action name="add_Diary_Book" class="diaryBook" method="sumbit">
+	    <result name="input" type="freemarker">/template/diary/addDiaryBook.htm</result>
+	    <interceptor-ref name="login" />
+	</action>
+	
+	<action name="edit_Book" class="diaryBook" method="editBook">
+	    <result name="input" type="freemarker">/template/diary/addDiaryBook.htm</result>
+	    <result name="success" type="freemarker">/template/diary/editDiaryBook.htm</result>
+	    <interceptor-ref name="login" />
+	</action>
+	
+	<action name="edit_Book_Do" class="diaryBook" method="editBookDo">
+	    <result name="input" type="freemarker">/template/diary/addDiaryBook.htm</result>
+	    <interceptor-ref name="login" />
+	</action>
+	
+	<action name="add_Diary" class="diary">
+	    <result name="input" type="freemarker">/template/diary/addDiaryBook.htm</result>
+	    <result name="success" type="freemarker">/template/diary/addDiary.htm</result>
+	    <interceptor-ref name="login" />
+	</action>
+	
+	<action name="add_Diary_do" class="diary" method="addDiary">	    
+	    <interceptor-ref name="login" />
+	</action>
+	
+	<action name="del_Diary" class="diary" method="delDiary">
+	    <result name="success" type="freemarker">/template/diary/viewDiary.htm</result>
+	    <interceptor-ref name="login" />
+	</action>
+	
+	<action name="edit_Diary" class="diary" method="editDiary">
+	    <result name="input" type="freemarker">/template/diary/addDiaryBook.htm</result>
+	    <result name="success" type="freemarker">/template/diary/editDiary.htm</result>
+	    <interceptor-ref name="login" />
+	</action>
+    <action name="edit_Diary_do" class="diary" method="editDiaryDo">
+	    <interceptor-ref name="login" />
+	</action>
+	<action name="view_Diary" class="diary" method="viewDiary">
+	    <result name="success" type="freemarker">/template/diary/view.htm</result>
+	</action>
+	
+	<action name="add_Comment" class="comment" method="addComment">
+	    <interceptor-ref name="login" />
+	</action>	
+	<action name="diarysearch" class="diarySearchAction" method="searchDo">
+	    <result name="success" type="freemarker">/template/diary/searchResult.htm</result>
+	    <interceptor-ref name="login" />
+	</action>
+	
+    <action name="getdiarys" class="getDiarysAction">
+	    <result name="success" type="freemarker">/template/diary/getdiarys.htm</result>
+	</action>
+	<action name="deleteDiaryByAdmin" class="diaryManagerAction"  method="deleteDiary">
+	<interceptor-ref name="login" />
+	</action>
+	</package>
+</xwork>

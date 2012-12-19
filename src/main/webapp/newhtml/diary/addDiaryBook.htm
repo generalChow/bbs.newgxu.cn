@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>建立日记本</title>
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link href="diary.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    <!--
+ body,td,th {
+	font-family: 宋体;
+	font-size: 9pt;
+    }
+ -->
+</style>
+<script type="text/javascript">
+<!--
+function sumbit(){
+ if(document.form1.bookName.value.length== 0){
+   alert("你忘了填写日记本名称哦...");
+   return false;
+ }
+ if(document.form1.viewKey.value.length == 0){
+   alert("你忘了填写可阅读密码哦...");
+   return false;
+ }
+ if(document.form1.description.value.length == 0){
+   alert("你忘了填写开篇寄语哦...");
+   return false;
+ }
+ return true;
+}
+//-->
+</script>
+  </head>
+  <body>
+<form name="form1" method="post" action="add_Diary_Book.yws" onsubmit="return sumbit();">
+<table width="500" height="283"  border="1" align="center" cellspacing="0" bordercolor="#CCCCCC" style="border-collapse:collapse" >
+  <tr>
+    <td height="25" colspan="2" align="center"><strong>建立日记本<br/><font color="red" style="font-size: 12px;">${validMsg}</font></strong></td>
+    </tr>
+  <tr>
+    <td width="120" height="10" align="center">日记本名称：</td>
+    <td width="380" align="left"><input name="bookName" type="text" class="title_input" id="bookname" value="${model.bookName?default("")}">
+      取一个好听的名字</td>
+  </tr>
+   <tr>
+    <td height="20" align="center">日记本风格：</td>
+    <td><select name="bookStyle" class="weather" id="bookstyle">
+    <#if model.bookStyle?exists>
+    <option value="${model.bookStyle?default("")}"><#if model.bookStyle ==1>那些回忆<#elseif model.bookStyle ==2>花样年华<#elseif model.bookStyle ==3>聆听<#elseif model.bookStyle ==4>感爱<#else>绿色心情</#if></option>
+    </#if>
+      <option value="1">那些回忆</option>
+      <option value="2">花样年华</option>
+      <option value="3">聆听</option>
+      <option value="4">感爱</option>
+      <option value="5">绿色心情</option>
+      </select></td>
+  </tr>
+  <tr>
+    <td height="20" align="center"> &nbsp;阅读密码 ：</td>
+    <td><input name="viewKey" type="password" class="title_input" id="viewkey" value="${model.viewKey?default("")}">
+      可阅读半锁日记</td>
+  </tr>
+  <tr>
+    <td align="center">开篇寄语：</td>
+    <td><textarea name="description" cols="45" rows="10" class="short_text" id="bookdp">${model.description?default("")}</textarea></td>
+  </tr>
+  <tr align="center">
+    <td height="25" colspan="2">
+    <input name="Submit" type="submit" class="short_submit" value="确定"></td>
+  </tr>
+</table> 
+</form>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<@base.header title="存款"></@base.header>
+<@base.body location="社区银行&nbsp;－&gt;&nbsp;存款">
+	<@base.main location="社区银行&nbsp;－&gt;&nbsp;存款">
+		<@base.bank_content>
+    </br>
+	<form id="form1" name="form1" method="post" action="access.yws">
+	  <table cellspacing="0" cellpadding="0">
+	    <tr>
+          <td>您当前的存款金额为<strong>${current.balance}</strong>，活期利率为${bank.currentRate*1000}‰，计息时间从${current.beginTime}开始。</td>
+        </tr>
+	    <tr>
+          <td>您当前的XDB为<strong>${user.money}</strong>。</td>
+        </tr>
+	    <tr>
+          <td><@ww.actionerror/></td>
+        </tr>
+        <tr>
+          <td>操作金额:
+            <input size="20" name="money" />
+            <input name="action" type="radio" value="1" checked="checked" />
+            存款
+            <input name="action" type="radio" value="2" />
+            取款<br />
+            银行密码:
+            <input type="password" size="20" value="" name="bankpwd" />
+      		<input name="banksubmit" type="submit" value=" 提  交 "/>
+      	  </td>
+      	</tr>
+        <tr>
+          <td><br />
+          	您当前可得利息<strong>${accrual}</strong>
+            <a href="manual.yws">手动结息</a>
+          </td>
+        </tr>
+      </table>
+    </form>
+
+		</@base.bank_content>
+	</@base.main>
+</@base.body>

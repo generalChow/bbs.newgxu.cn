@@ -1,0 +1,24 @@
+<div class="pageContent">
+	<table class="table" width="450" layoutH="70">
+		<thead>
+			<tr>
+				<th width="60">ID号</th>
+				<th width="150">物品名</th>
+				<th width="80">在架数量</th>
+				<th width="80">物品价格</th>
+				<th width="50">编辑</th>
+			</tr>
+		</thead>
+		<tbody>
+      <#list items as item>
+      <tr align="center">
+        <td align="left">${item.id}</td>
+        <td><a href="item.yws?id=${item.id}" target="dialog" width="720" height="100" title="【查看】${item.name}">${item.name}</a></td>
+        <td>${item.storeItem.number}</td>
+        <td>${item.storeItem.unitPrice}</td>
+        <td><a href="edit_storeitem.yws?id=${item.id}" target="dialog" fresh="false" height="150" width="300" title="[编辑]${item.name}" rel="item_store_${item.id}"><img src="/image/button_edit.gif" width="17" height="17" border="0"></a></td>
+      </tr>
+	</#list>
+	</tbody>
+    </table>
+</div>

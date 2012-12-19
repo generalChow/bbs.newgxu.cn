@@ -1,0 +1,17 @@
+/*通用样式*/
+.loadmask {background-image:url('../image/common/ui-bg_loop_80_000000_21x21.png');z-index: 100;position: absolute; top:0; left:0;-moz-opacity: 0.3;opacity: .30;filter: alpha(opacity=30);background-color: #888888;width: 100%;height: 5000px;zoom: 1;}
+
+.NEW {width:24px; height:11px; display:inline-block; position:absolute; right:-5px !important; roght:-10px; top:-10px; z-index:100; background:url('../images/newTopic.gif');}
+.CLOSE {width:20px; height:20px; display:inline-block;cursor:pointer;background:url('../image/common/close.png')}
+.LOADING {width:56px; height:21px; display:inline-block; background:url('../image/common/loading.gif');}
+.CLEAR {clear:both;}
+
+/*活动的样式*/
+.BACHELOR_DIV {position:relative;color:#f22222;font-size:15px;background-color:#fdfdfd; padding:8px;font-weight:bold;}
+.BACHELOR_0 {width:200px; height:150px; background-image:url(../image/activity/bachelor0.gif); position:absolute; top:-20px; right:100px; z-index:9999;}
+.BACHELOR_1 {width:200px; height:150px; background-image:url(../image/activity/bachelor1.gif); position:absolute; top:-20px; right:100px; z-index:9999;}
+.BACHELOR_2 {width:200px; height:150px; background-image:url(../image/activity/bachelor2.gif); position:absolute; top:-20px; right:100px; z-index:9999;}
+
+.VIP {color:#f22; font-size:14px; font-weight:bold;}
+.ERROR {color:#f24444;}
+.SUCCESS {color:#92cf28;}

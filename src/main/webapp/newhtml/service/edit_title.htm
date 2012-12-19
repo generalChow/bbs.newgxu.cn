@@ -1,0 +1,81 @@
+<@base.header title="更改头衔"></@base.header>
+<@base.body location="个人服务区&nbsp;－&gt;&nbsp;更改头衔">
+	<@base.main location="个人服务区&nbsp;－&gt;&nbsp;更改头衔">
+		<@base.service_content>
+<form action="edit_title_do.yws" method="post" name="editForm" id="editForm">
+<table width="568" height="235" border="0" align="center" cellspacing="0">
+  <tr>
+    <td width="562" height="231" valign="top" bgcolor="#FFFFFF"><table width="560" height="1"  border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="1"></td>
+        </tr>
+      </table>
+      <table width="562" height="25"  border="0" align="center" cellpadding="2" cellspacing="0">
+        <tr>
+          <td align="center" class="uline"><strong>修改用户头衔</strong></td>
+        </tr>
+      </table>
+      <table width="562" height="20"  border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td bgcolor="#FFFDF1"><table width="443" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFDF1">
+              <tr class="trBorder1">
+                <td width="428" colspan="2"><div align="center">
+                      <table border="0" cellspacing="0" cellpadding="1" align="center" width="104%">
+                        <tr>
+                          <td colspan="2" align="left" bgcolor="#FFFDF1" class="p"><br /></td>
+                        </tr>
+				        <#if validMsg != "">
+				        <tr>
+				          <td height="30" colspan="2" align="center"><font color="#FF0000">${validMsg}</font></td>
+				        </tr>
+				        </#if>
+                        <tr>
+                          <td width="132" height="20" bgcolor="#FFFDF1"><div align="right">头衔名称：<font color="#FF0000">**</font></div></td>
+                          <td width="307" height="20" align="left" bgcolor="#FFFDF1"><input name="title" type="text" class="input_style" id="title" size="50" maxlength="14" value="${title?default("")}" /></td>
+                        </tr>
+                      </table>
+                </div></td>
+              </tr>
+              
+              <tr class="trBorder2">
+                <td height="30" colspan="2"><div align="center">
+                    <input name="submit" type="hidden" id="submit" value="true" />
+                    <input name="tj" type="submit" class="submit_style" id="tj" value=" 确 定 " />
+                  &nbsp;&nbsp;
+                  <input name="Button" type="button" class="submit_style" onclick="history.go(-1)" value="返回前页" />
+                </div></td>
+              </tr>
+          </table></td>
+        </tr>
+      </table>
+      <table width="562" height="20" border="0" align="center" cellspacing="0">
+        <tr>
+          <td><table cellspacing="0" cellpadding="3" width="100%" align="center" 
+              border="0">
+            <tbody>
+              <tr bgcolor="#fafafa">
+                <td width="444" align="left" class="uline"><img height="20" src="/images/bullet4.gif" width="20" 
+                  align="absmiddle" /> <b>提示说明</b></td>
+              </tr>
+              <tr>
+                <td height="1" align="left" background="/images/dotline.gif"></td>
+              </tr>
+              <tr>
+                <td align="left">·<span class="p">请不要使用空格和HTML标记。</span>。</td>
+              </tr>
+              <tr>
+                <td align="left">·<span class="p">头衔长度最多7位汉字（或14位字母）</span></td>
+              </tr>
+              <tr>
+                <td align="left">·<span class="p">头衔修改需要1000西大币<font color="red">版主修改不须西大币</font>。</span></td>
+              </tr>
+            </tbody>
+          </table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+</form>
+		</@base.service_content>
+	</@base.main>
+</@base.body>

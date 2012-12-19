@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName">
+
+	<bean name="register, register2"
+		class="cn.newgxu.bbs.web.action.accounts.RegisterAction"
+		scope="prototype" parent="abstractBaseAction" />
+
+	<bean name="resetPassword"
+		class="cn.newgxu.bbs.web.action.accounts.ResetPassword"
+		scope="prototype" parent="abstractBaseAction" />
+
+	<bean name="login"
+		class="cn.newgxu.bbs.web.action.accounts.LoginAction"
+		scope="prototype" parent="abstractBaseAction" />
+
+	<bean name="logout"
+		class="cn.newgxu.bbs.web.action.accounts.LogoutAction"
+		scope="prototype" parent="abstractBaseAction" />
+
+	<bean id="userService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="userServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="register">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="signOnlineUser">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="cleanOnlineUser">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="deleteOnlineUser">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="login">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="reckonItems">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="itemUseDo">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="editUserInfo">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="editReplyMessage">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="editPassword">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="resetPassword">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="editFace">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="editQuestion">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="editTitle">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="reInput">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="getHitsCount">
+				    PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="FaceReckonItems">
+				    PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="editUser">
+				    PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="saveFavoriteTopic">
+				    PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="delFavoriteTopic">
+				    PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="verifyUser">
+				    PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="VoteWebMasterDo">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="freshWebMasters">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="addVoteWebMaster">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="deleteVoteWebMaster">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="isNickNameInUser">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+				<prop key="isUserNameInUser">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+				<prop key="updateHonors">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="itemComplimentAwayDo">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+				<prop key="saveCupOfLife">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+				<prop key="myUpload">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+				<prop key="getUploadItems">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+				<prop key="searchUserUploadItems">PROPAGATION_REQUIRED, readOnly,-Exception</prop>
+				<prop key="deleteUploadItems">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="addMoneyByNick">PROPAGATION_REQUIRED, -Exception</prop>
+				
+				<prop key="updateLastWeekExp">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="addHits">PROPAGATION_REQUIRED, -Exception</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="userServiceTarget"
+		class="cn.newgxu.bbs.service.proxy.UserServiceProxy">
+		<property name="userService">
+			<ref bean="realUserService" />
+		</property>
+	</bean>
+
+	<bean id="realUserService"
+		class="cn.newgxu.bbs.service.impl.UserServiceImpl" />
+
+</beans>

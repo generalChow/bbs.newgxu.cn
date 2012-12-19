@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>小字报列表</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link href="/css/panel.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<table width="89%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30" align="center"><b>小字报列表</b></td>
+  </tr>
+  <tr>
+    <td align="center"><table width="100%" border="0" cellpadding="5" cellspacing="1">
+      <tr align="center" class="uline">
+        <th width="18%" height="20">用户</th>
+        <th width="41%">标题</th>
+        <th width="30%">发布时间</th>
+        <th width="11%">人气</th>
+        </tr>
+        <#list smallNewsList as sn>
+          <tr align="center">
+            <td class="uline2"><a href="/user/user_info.yws?id=${sn.user.id}" target="_blank">${sn.user.nick}</a></td>
+            <td class="uline2"><a href="small_news.yws?id=${sn.id}">${sn.title}</a></td>
+            <td class="uline2">${sn.createTime}</td>
+            <td class="uline2">${sn.hit}</td>
+          </tr>
+        </#list>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="25" align="left" class="pages">${model.pagination}</td>
+  </tr>
+</table>
+</body>
+</html>

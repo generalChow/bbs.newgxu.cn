@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>浏览小字报</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link href="/css/panel.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="15" align="center" class="uline"><strong>${smallNews.title}</strong></td>
+  </tr>
+  <tr>
+    <td height="20" align="center"><a href="/user/user_info.yws?id=${smallNews.user.id}" target="_blank">${smallNews.user.nick}</a> 发布于 ${smallNews.createTime} 浏览：${smallNews.hit}</td>
+  </tr>
+  <tr>
+    <td height="150" valign="top"><table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td>${smallNews.content}</td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="10" align="center" class="uline"><a href="#" onclick="window.close();">『 关闭窗口 』</a></td>
+  </tr>
+  <tr>
+    <td height="19" align="right"><a href="/del_small_news.yws?id=${smallNews.id}" onclick="return confirm('确定要进行删除操作吗?')"><img src="images/del.gif" width="16" height="16" border="0" /></a></td>
+  </tr>
+  <tr>
+    <td height="10"><table cellspacing="0" cellpadding="3" width="100%" align="center" border="0">
+      <tbody>
+        <tr>
+          <td width="444" align="left" class="uline"><img height="20" src="images/bullet4.gif" width="20" 
+                  align="absmiddle" /> <b>提示说明</b></td>
+        </tr>
+        <tr>
+          <td align="left">1、禁止发布含有广告、交易、交友、无意义类似灌水性质及一切违反相关法律法规及论坛规则等内容的小字报。</td>
+        </tr>
+        <tr>
+          <td align="left">2.经验值达到高级水手及以上级别（≥240），才有权限发表小字报。</td>
+        </tr>
+        <tr>
+          <td align="left">3.同一ID，48小时内只能存在一张小字报。</td>
+        </tr>
+        <tr>
+          <td align="left">4. 论坛管理员以及发表小字报的本人具有删除权限，版主没有对本版的小字报的操作权限。</td>
+        </tr>
+        <tr>
+          <td align="left">5.网管部将依据“小字报发布规则”对小字报进行严格的监督管理，一旦发现有违规者将给于警告或严重警告处罚，严重违规者将直接封ID处理。</td>
+        </tr>
+        <tr>
+          <td align="left">6.本规定即2010年5月14日起开始实行，所有解释权归雨无声网站网管部所有。</td>
+        </tr>
+                 <tr>
+          <td align="left">7.在本版发布小字报将您将付1000XDB， 48小时内发表的小字报将随机抽取10条滚动显示于论坛上。</td>
+        </tr>
+        <tr>
+          <td align="left">8.*HTML标签： 不可用。</td>
+        </tr>
+        <tr>
+          <td align="left">9.*UBB 标签： 不可用。</td>
+        </tr>
+        <tr>
+          <td align="left">9.*内容不得超过500字</td>
+        </tr>
+      </tbody>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

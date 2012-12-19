@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lucky>
+	<!--发幸运帖的最低经验值要求-->
+	<minExperience>1000</minExperience>
+	<!--默认中奖概率-->
+	<probability>0.2</probability>
+	<!--设置幸运帖 中 关于 西大币的分发规则，是否从发帖用户的西大币转到中奖用户，1时为是，0是则是凭空给中奖用户添加相应的西大币-->
+	<createMoney>0</createMoney>
+</lucky>

@@ -1,0 +1,70 @@
+<form name="form1" method="post" action="search_user_do.yws">
+<table bgcolor="#999999" cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr><td>
+<table bgcolor="#999999" cellpadding="3" cellspacing="1" border="0" width="100%">
+          <tr bgcolor="#FFFFFF"> 
+            <td width="60"><div align="center"><strong><font size="-1">搜索：</font></strong></div></td>
+            <td width="400" align="center"><font size="-1"><strong>
+              <input name="type" type="hidden" id="type" value="0">
+              按</strong></font> <font size="-1"> 
+              <input type="radio" name="searchType" value="id" checked><label for="t1">ID查找</label> 
+              <input name="searchType" type="radio" value="nick"><label for="t2">昵称查找</label>  
+              <input name="searchType" type="radio" value="username"><label for="t3">登录账号查找</label>  
+              <input type="radio" name="searchType" value="studentid"><label for="t4">学号查找</label>
+             </font>
+             </td>
+            <td>
+              <input type="text" name="searchValue" >
+              <input type="submit" name="Submit" value="查	找"> </td>
+          </tr>
+        </table>
+</td></tr>
+</table>
+</form>
+<p> 
+<table bgcolor="#999999" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr><td>
+<table bgcolor="#999999" cellpadding="3" cellspacing="1" border="0" width="100%">
+        <tr bgcolor="#eeeeee"> 
+          <td align="center"><font size="-2" face="verdana"><b>ID号</b></font></td>
+          <td align="center"><font size="-2" face="verdana"><b>登录账号</b></font></td>
+          <td align="center"><font size="-2" face="verdana"><b>昵称</b></font></td>
+          <td align="center"><font size="-2" face="verdana"><b>性别</b></font></td>
+          <td align="center"><font size="-2" face="verdana"><b>用户组(职务)</b></font></td>
+          <td align="center"><font size="-2" face="verdana"><b>钱</b></font></td>
+          <td align="center"><font size="-2" face="verdana"><b>经验</b></font></td>
+          <td align="center"><font size="-2" face="verdana"><b>注册时间</b></font></td>
+          <td align="center"><font size="-2" face="verdana"><b>用户类型</b></font></td>
+          <td align="center"><font size="-2" face="verdana"><b>用户状态</b></font></td>
+          <td align="center"><font size="-2" face="verdana"><b>编辑</b></font></td>
+        </tr>
+      <#setting number_format="0">
+      <#list users as user>
+        <tr bgcolor="#ffffff"> 
+          <td><div align="center"><font size="-1" face="verdana">${user.id}</font></div></td>
+          <td><font size="-1" face="verdana"><a href="user_info.yws?id=${user.id}">${user.username}</a></td>
+          <td align="center"><font size="-1" face="verdana">${user.nick}</font></td>
+          <td align="center"><font size="-1" face="verdana">${user.sexDisplay}</td>
+          <td align="center"><font size="-1" face="verdana">${user.userGroup.groupName}</font></td>
+          <td align="center"><font size="-1" face="verdana">${user.money}</font></td>
+          <td align="center"><font size="-1" face="verdana">${user.exp}</font></td>
+          <td align="center"><font size="-1" face="verdana">${user.registerDateDisplay}</font></td>
+          <td align="center"><font size="-1" face="verdana"><#switch user.registerType>
+				<#case 1>本科<#break>
+				<#case 2>研博/成教<#break>
+				<#case 3>教师<#break>
+				<#case 4>校外<#break>
+				<#case 0>未知<#break>
+			 </#switch></font></td>
+	     <td align="center"><font size="-1" face="verdana"><#switch user.accountStatus>
+				<#case 1>正常<#break>
+				<#case 2>禁止登录<#break>
+				<#case 3>资料待审<#break>
+				<#case 4>未通过<#break>
+			 </#switch></font></td>
+         <td align="center"><font size="-1" face="verdana"><a href="edit_user.yws?id=${user.id}"><img src="/image/button_edit.gif" width="17" height="17" border="0"></a></font></td>
+        </tr>
+        </#list>
+      </table>
+</td></tr>
+	${pagination}

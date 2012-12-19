@@ -1,0 +1,53 @@
+<@base.header title="社区商店">
+	<script type="text/javascript" src="/js/newgxu_dialog.js"></script>
+	<script language="javascript">
+	var storeItemBuyDialog;
+	function showStoreItemBuy(id, number, name) {
+		constructStoreItemBuyDialogDiv(id, number, name);
+		storeItemBuyDialog = new newgxu.HtmlDialog("storeItemBuyDialog", 280, 100);
+	}
+	function constructStoreItemBuyDialogDiv(id, number, name) {
+		var html ='<form action="/market/official_buy_do.yws" method="post" >';
+		html += '<table align="center" width="200" border="0" cellspacing="0" cellpadding="0">';
+	  	html += '<tr><td width="130">购买：';
+	  	html += name;
+	 	html += '</td><td width="70">库存：';
+	  	html += number;
+	  	html += '</td></tr><tr><td colspan="2">数量：<input name="number" type="text" id="number" size="4" maxlength="6" value="1">';
+		html += '<input name="id" type="hidden" id="id" value="';
+		html += id;
+		html += '">&nbsp;&nbsp;<input type="submit" name="Submit" value="确认" id="Submit">';
+		html += '&nbsp;&nbsp;<input type="reset" onclick="storeItemBuyDialog.close();" value="取消" id="qiut" /></td></tr></table></form>';
+		var dialogDiv = new Element("div");
+		dialogDiv.id = "storeItemBuyDialogForm";
+		dialogDiv.innerHTML = html;
+		$("storeItemBuyDialog").innerHTML = '';
+		dialogDiv.injectInside($("storeItemBuyDialog"));
+	}
+</script>
+</@base.header>
+<@base.body location="个人服务区">
+	<@base.main location="个人服务区">
+		<@base.service_content>
+			<div style="display:none;"><div id="storeItemBuyDialog"></div></div>
+			<div style="width:660px;"> 
+				<#list model.items as item>
+                    <div class="store_item_div">
+                        <table width="100%" height="100" border="0" cellpadding="0" cellspacing="0">
+                           <tr>
+                                <td width="100" rowspan="2" valign="top"><div align="center"><strong>${item.item.name}</strong><br />
+                                  ${item.item.picture}</div></td>
+                                <td colspan="3" valign="top">${item.item.effect}</td>
+                              </tr>
+                              <tr>
+                                <td width="70" height="30">库存：${item.number}</td>
+                                <td width="90">价格：${item.unitPrice}</td>
+                                <td width="40"><div align="center">[<a href="javascript:showStoreItemBuy(${item.id}, ${item.number}, '${item.item.name}');">购买</a>]</div></td>
+                              </tr>
+                         </table>
+                     </div>
+                </#list> 
+            </div>
+		</@base.service_content>
+	</@base.main>
+</@base.body>

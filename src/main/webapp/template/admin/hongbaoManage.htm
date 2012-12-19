@@ -1,0 +1,31 @@
+<div class="pageHeader">
+	这里列出的是红包类型，点击可以创建新的红包类型。&nbsp;&nbsp;&nbsp;<a class="BUTTON2" height="250" href="create_hongbao.yws" target="dialog" rel="hongbao_create" fresh="false">创建红包类型</a>
+</div>
+<table class="table" id="category_list" width="100%" layoutH="90">
+		<thead>
+			<tr>
+				<th width="6%">ID号</th>
+				<th width="15%">红包名字</th>
+				<th>红包描述</th>
+				<th width="10%">是否开放</th>
+				<th width="15%">发放时间</th>
+				<th width="5%">编辑</th>
+				<th width="5%">删除</th>
+			</tr>
+		</thead>
+	<tbody>
+      <#setting number_format="0">
+      <#list hongbaos as hongbao>
+      <tr align="center">
+        <td align="left">${hongbao.id}</td>
+        <td>${hongbao.name}</td>
+        <td>${hongbao.description}</td>
+        <td>${hongbao.valid}</td>
+        <td>${hongbao.time}</td>
+        <td><a href="edit_hongbao.yws?id=${hongbao.id}" target="dialog" rel="hongbao_edit_${hongbao.id}" title="[编辑红包]${hongbao.name}" width="550" fresh="false"><img src="/image/button_edit.gif" width="17" height="17" border="0"></a></td>
+        <td><a href="del_hongbao.yws?id=${hongbao.id}"  target="ajaxTodo" title="确定要删除这个红包吗?"><img src="/image/button_delete.gif" width="17" height="17" border="0"></a></td> 
+      </tr>
+	</#list>
+	</tbody>
+    </table>
+</div>

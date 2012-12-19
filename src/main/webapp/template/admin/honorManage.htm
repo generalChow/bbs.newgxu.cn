@@ -1,0 +1,32 @@
+<div class="pageHeader">
+	目前荣誉还不允许删除，请谨慎操作，如果错误操作请联系技术部。&nbsp;&nbsp;&nbsp;<a class="BUTTON2" href="create_honor.yws" target="navTab"  external="true" rel="honor_create" fresh="false">荣誉创建</a>
+</div>
+<table class="table" id="category_list" width="100%" layoutH="90">
+		<thead>
+			<tr>
+				<th width="60">ID号</th>
+				<th width="200">荣誉称号</th>
+				<th width="120">荣誉类型</th>
+				<th>说明</th>
+				<th width="30">编辑</th>
+				<th width="30">删除</th>
+			</tr>
+		</thead>
+	<tbody>
+      <#setting number_format="0">
+      <#list honors as honor>
+      <tr align="center">
+        <td align="left">${honor.id}</td>
+        <td>${honor.name}</td>
+		<td><#switch honor.type>
+				<#case 0>系统类<#break>
+				<#case 1>优秀版主<#break>
+				<#case 2>论坛勋章<#break>
+			 </#switch></td>
+		<td>${honor.remark?default('')}</td>
+        <td><a href="edit_honor.yws?id=${honor.id}" target="dialog" width="400" height="160"><img src="/image/button_edit.gif" width="17" height="17" border="0"></a></td>
+        <td><a href="del_honor.yws?id=${honor.id}"  onclick="return error('目前荣誉还不允许删除，请谨慎操作，如果错误操作请联系技术部。');//return confirm('是否确定删除?');"><img src="/image/button_delete.gif" width="17" height="17" border="0"></a></td> 
+      </tr>
+	</#list>
+	</tbody>
+    </table>

@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>test</title>
+	<meta name="author" content="longkai" />
+	<!-- Date: 2012-07-15 -->
+</head>
+<body>
+	hello!
+	<br />
+		
+	<#list activeUsers as u>
+		${u.nick}|${u.exp - u.lastWeekExp} <br />
+	</#list>
+	
+	${model.pagination}
+</body>
+</html>
+

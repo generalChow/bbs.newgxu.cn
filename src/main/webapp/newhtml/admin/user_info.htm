@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>用户概览</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text ml; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+   
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<td>
+<b>用户信息</b>
+</td>
+<td align="right">
+</td>
+</table>
+<hr size="0">
+<font size="-1">用户信息</font>
+<p> 
+ 
+<table width="500" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#999999">
+<tr><td>
+<table bgcolor="#999999" cellpadding="3" cellspacing="1" border="0" width="100%">
+        <tr bgcolor="#eeeeee"> 
+          <td height="25" colspan="3" align="center"><font size="-1" face="verdana"><b>用户信息</b>(<a href="edit_user.yws?id=${pageUser.id}">修改</a>)</font></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td width="100" height="20"><div align="right"><font size="-1">帐号：</font></div></td>
+          <td><font size="-1">${pageUser.username}<font color="#FF0000"></font></font></td>
+          <td width="200" rowspan="7"><div align="center"><font size="-1">${pageUser.faceDisplay}</font></div></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">昵称：</font></div></td>
+          <td><font size="-1">${pageUser.nick}</font></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">禁止登入：</font></div></td>
+          <td><font size="-1">在${pageUser.loginmtDisplay}天内无法登入</font></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">头衔：</font></div></td>
+          <td><font size="-1">${pageUser.titleDisplay?default("")}</font></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">真实姓名：</font></div></td>
+          <td><font size="-1">${pageUser.trueName?default("")}</font></td>
+        </tr>
+		<tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">学号：</font></div></td>
+          <td><font size="-1">${pageUser.studentid?default("")} </font></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">性别：</font></div></td>
+          <td><font size="-1">${pageUser.sexDisplay}</font></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">生日：</font></div></td>
+          <td><font size="-1">${pageUser.birthday}</font></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">E-mail：</font></div></td>
+          <td colspan="2"><font size="-1">${pageUser.email?default("")}</font></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">主页：</font></div></td>
+          <td colspan="2"><font size="-1"><a href="${pageUser.homepage?default("")}" target="_blank">${pageUser.homepage?default("")}</a></font></td>
+        </tr>
+       <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">荣誉：</font></div></td>
+          <td colspan="2"><font size="-1"> ${pageUser.honorDisplay?default("")}</font></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">QQ：</font></div></td>
+          <td colspan="2"><font size="-1">${pageUser.qq?default(0)}</font></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">注册时间：</font></div></td>
+          <td colspan="2"><font size="-1">${pageUser.registerDateDisplay}</font></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">经验/钱：</font></div></td>
+          <td colspan="2"><font size="-1">${pageUser.exp} / ${pageUser.money} </font></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">登录次数：</font></div></td>
+          <td colspan="2"><font size="-1">${pageUser.loginTimes} </font></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">最后登录：</font></div></td>
+          <td colspan="2"><font size="-1">${pageUser.lastLoginTime} </font></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">新帖/回复/精华：</font></div></td>
+          <td colspan="2"><font size="-1">${pageUser.numberOfTopic} / ${pageUser.numberOfReply} / ${pageUser.numberOfGood}</td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">最大/剩余体力：</font></div></td>
+          <td colspan="2"><font size="-1">${pageUser.maxPower} / ${pageUser.currentPower} </font></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">等级：</font></div></td>
+          <td colspan="2"><font size="-1"><font color=red>${pageUser.groupNameDisplay} 
+ 
+</font></font></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20"><div align="right"><font size="-1">个人签名：</font></div></td>
+          <td colspan="2"><font size="-1">${pageUser.idiographFilter?default("")}</font></td>
+        </tr>
+        <tr bgcolor="#ffffff"> 
+          <td height="20" colspan="3"><div align="center">
+                <input type="button" name="Button" value="修改信息" onClick="javascript:location.href='edit_user.yws?id=${pageUser.id}'">
+              &nbsp; 
+              <input type="button" name="Submit2" value="返回前页" onClick="javascript:history.go(-1)">
+            </div></td>
+        </tr>
+      </table>
+</td></tr>
+</table>
+ <!-- 
+<table bgcolor="#999999" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr><td>
+<table bgcolor="#999999" cellpadding="3" cellspacing="1" border="0" width="100%">
+      用户概览 . <br>
+        <tr bgcolor="#eeeeee"> 
+          <td align="center"><font size="-1" face="verdana"><b>ID号</b></font></td>
+          <td align="center"><font size="-1" face="verdana"><b>登录账号</b></font></td>
+          <td align="center"><font size="-1" face="verdana"><b>昵称</b></font></td>
+          <td align="center"><font size="-1" face="verdana"><b>性别</b></font></td>
+          <td align="center"><font size="-1" face="verdana"><b>用户组(职务)</b></font></td>
+          <td align="center"><font size="-1" face="verdana"><b>用户类型</b></font></td>
+          <td align="center"><font size="-1" face="verdana"><b>用户状态</b></font></td>
+          <td align="center"><font size="-1" face="verdana"><b>钱验</b></font></td>
+          <td align="center"><font size="-1" face="verdana"><b>经验</b></font></td>
+          <td align="center"><font size="-1" face="verdana"><b>注册时间</b></font></td>
+          <td align="center"><font size="-1" face="verdana"><b>编辑</b></font></td>
+        </tr>
+        
+     <tr bgcolor="#ffffff"> 
+          <td><div align="center"><font size="-1" face="verdana">${pageUser.id}</font></div></td>
+          <td><font size="-1" face="verdana"><a href="user_info.yws?id=${pageUser.id}">${pageUser.username}</a></td>
+          <td align="center"><font size="-1" face="verdana">${pageUser.nick}</font></td>
+          <td align="center"><font size="-1" face="verdana">${pageUser.sexDisplay}</td>
+          <td align="center"><font size="-1" face="verdana">${pageUser.userGroup.groupName}</font></td>
+          <td align="center"><font size="-1" face="verdana">
+             <#switch pageUser.registerType>
+				<#case 1>本科<#break>
+				<#case 2>研博/成教<#break>
+				<#case 3>教师<#break>
+				<#case 4>校外<#break>
+				<#case 0>未知<#break>
+			 </#switch>
+             </font></td>
+          <td align="center"><font size="-1" face="verdana">
+             <#switch pageUser.accountStatus>
+				<#case 1>正常<#break>
+				<#case 2>禁止登录<#break>
+				<#case 3>资料待审<#break>
+				<#case 4>未通过<#break>
+			 </#switch>
+            </font></td>
+          <td align="center"><font size="-1" face="verdana">${pageUser.money}</font></td>
+          <td align="center"><font size="-1" face="verdana">${pageUser.exp}</font></td>
+	     <td align="center"><font size="-1" face="verdana">${pageUser.registerDateDisplay}</font></td>
+         <td align="center"><font size="-1" face="verdana"><a href="edit_user.yws?id=${pageUser.id}"><img src="/image/button_edit.gif" width="17" height="17" border="0"></a></font></td>
+        </tr>
+</table>
+</td></tr>
+</table>
+ -->
+  </body>
+</html>

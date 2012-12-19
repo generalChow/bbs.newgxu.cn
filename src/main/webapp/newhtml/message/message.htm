@@ -1,0 +1,30 @@
+﻿<link href="/css/panel.css" rel="stylesheet" type="text/css">
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="15" align="left"><img src="/images/banner-shortmassage.gif" width="151" height="45" /></td>
+  </tr>
+  <tr>
+    <td height="15" align="center" class="uline"><img src="/images/shortMessage/${message.face}.gif" width="20" height="20" />${message.title}</td>
+  </tr>
+  <tr>
+    <td height="200" valign="top"><br />
+      <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="uline2">
+        <tr>
+          <td>接收人：${message.receivers}</td>
+        </tr>
+      </table><br />
+      <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>${message.content}</td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td height="10" align="right" class="uline">--by ${message.sender.nick}&nbsp;[${message.time}]</td>
+  </tr>
+  <tr>
+    <td height="19" align="center">[<a href="javascript:history.back()">返回</a>] 
+                [<a href="/message/del_message.yws?smid=${message.id}" onClick="return confirm('确定要进行删除操作吗?')">删除</a>] 
+        [<a href="/message/re_message.yws?id=${message.id}" target="_blank">回复</a>]  </td>
+  </tr>
+</table>

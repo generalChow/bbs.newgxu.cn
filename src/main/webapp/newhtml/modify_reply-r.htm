@@ -1,0 +1,27 @@
+<@base.header title=" 修改回复 -- 论坛：${model.forum.name}">
+</@base.header>
+<@base.body location="修改回复">
+  <div style="display:none;"><div id="ubbDialog" class="dialog_div"></div><div id="submitWaiting" class="dialog_div"></div></div>
+  
+	<@base.main location="修改回复">
+		<@base.forum_info/>
+       	<form method="post" id="post_form" action="/modify_do.yws"  onKeyDown="if(event.ctrlKey &amp;&amp; event.keyCode==13) {submitReply(); return false;}">
+			<div class="list_title_01">&nbsp;</div>
+			<div class="list_title_02"><strong>回复主题</strong><br />${validMsg}</div>
+			<div class="kuang"><@base.editor>${model.reply.content?default("")}</@base.editor></div>
+			<div class="list_title_03">
+				<input name="forumId" type="hidden" id="forumId" value="${model.forumId}" />
+				<input name="topicId" type="hidden" id="topicId" value="${model.topicId}" />
+				<input name="replyId" type="hidden" id="replyId" value="${model.replyId}" />
+				<input type="button" class="newtopic_submit" name="Button3" value=" 提 交 " onclick="javascript:submitReply()" />&nbsp;&nbsp;
+				<input type="button" class="newtopic_submit" name="Button3" value=" 预 览 " onclick="javascript:previewContent()" />&nbsp;&nbsp;
+				<input type="button" class="newtopic_submit" name="Button2" value="返回前页" onclick="javascript:history.go(-1)" />&nbsp;&nbsp;
+				<input type="button" name="Submit" class="newtopic_submit" value="取回丢失内容" onclick="if(confirm('安全起见，请将当前帖子内容复制到记事本再进行此操作，你确定要继续吗？')) {resumeContent();}" />
+			</div>		
+			<div class="list_title_04" align="left"></div>
+			<script language="javascript">
+				initUbb();
+			</script>
+		</form>
+	</@base.main>
+</@base.body>

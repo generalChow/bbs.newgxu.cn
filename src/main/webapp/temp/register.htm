@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>login</title>
+</head>
+
+<body>
+  <form id="reg" name="reg" method="post" action="/accounts/register_do.yws">
+  ${validMsg}
+    <table width="400" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="30" colspan="2"><div align="center">注册</div></td>
+      </tr>
+      <tr>
+        <td width="100" height="25"><div align="right">用户名：</div></td>
+        <td><label>
+          <input name="username" type="text" id="username" value="${model.username?default("")}" maxlength="16" />
+        </label></td>
+      </tr>
+      <tr>
+        <td height="25"><div align="right">密码：</div></td>
+        <td><input name="password" type="password" id="password" maxlength="16" /></td>
+      </tr>
+      <tr>
+        <td height="25"><div align="right">确认密码：</div></td>
+        <td><input name="confirmPassword" type="password" id="confirmPassword" maxlength="16" /></td>
+      </tr>
+      <tr>
+        <td height="25"><div align="right">昵称：</div></td>
+        <td><input name="nick" type="text" id="nick" value="${model.nick?default("")}" maxlength="16" /></td>
+      </tr>
+	  <tr>
+        <td height="25"><div align="right">电子信箱：</div></td>
+        <td><input name="email" type="text" id="email" value="${model.email?default("")}" maxlength="50" /></td>
+      </tr>
+      <tr>
+        <td height="25"><div align="right">性别：</div></td>
+        <td><input name="sex" type="radio" id="female" value="1" checked="checked" /><label for="female">美女</label>&nbsp;
+        <input type="radio" name="sex" value="0" id="male" /><label for="male">帅哥</label></td>
+      </tr>
+      <tr>
+        <td height="25"><div align="right">真实姓名：</div></td>
+        <td><label for="textfield"></label>
+        <input name="truename" type="text" id="truename" value="${model.truename?default("")}" maxlength="8" /></td>
+      </tr>
+      <tr>
+        <td height="30" colspan="2"><div align="center">
+          <label for="Submit"></label>
+          <input type="submit" name="Submit" value="  注册  " id="Submit" />
+        </div></td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>

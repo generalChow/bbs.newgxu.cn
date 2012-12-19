@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>dropdownMenu</title>
+<style type="text/css">
+body {
+	background: #ddd;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", "sans-serif";
+}
+
+a {
+	color: #666;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #C00;
+}
+
+#dropdownMenu, #dropdownMenu ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	line-height: 1;
+	text-align: center;
+	border: 0;
+}
+
+#dropdownMenu a {
+	display: block;
+	width: 200px;
+	height: 30px;
+	line-height: 30px;
+	border: 0;
+}
+
+#dropdownMenu a:hover {
+	background-color: #fff;
+	border: 0;
+}
+
+#dropdownMenu li {
+	float: left;
+	width: 204px;
+	background-color: #eee;
+	border: 0;
+}
+
+#dropdownMenu li ul {
+	width: 200px;
+	background: #eee;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #999999;
+}
+
+#dropdownMenu li ul li {
+	width: 200px;
+	border: 0;
+	border-left-width: 1px;
+	border-right-width: 1px;
+	border-style: solid;
+	border-color: #999999;
+}
+
+#dropdownMenu li ul ul {
+	position: absolute;
+	margin-top: -30px;
+	margin-left: 200px;
+	background: #eee;
+	width: 200px;
+}
+</style>
+<!--[if IE 7]>
+<style>
+#dropdownMenu li ul ul {
+	margin-left: 100px;
+}
+</style>
+<![endif]-->
+<script src="js/mootools.v1.00.js"></script>
+<script type="text/javascript">
+
+	Element.extend(
+	{
+		hide: function() 
+		{
+			return this.setStyle('display', 'none');
+		},
+		
+		show: function() 
+		{
+			return this.setStyle('display', '');
+		}
+	});
+
+	var DropdownMenu = new Class({	
+		initialize: function(element)
+		{
+			$A($(element).childNodes).each(function(el)
+			{
+				if(el.nodeName.toLowerCase() == 'li')
+				{
+					$A($(el).childNodes).each(function(el2)
+					{
+						if(el2.nodeName.toLowerCase() == 'ul')
+						{
+							$(el2).hide();
+							
+							el.addEvent('mouseover', function()
+							{
+								el2.show();
+								return false;
+							});
+	
+							el.addEvent('mouseout', function()
+							{
+								el2.hide();
+							});
+							new DropdownMenu(el2);
+						}
+					});
+				}
+			});
+			return this;
+		}
+	});
+	
+	Window.onDomReady(function() {new DropdownMenu($('dropdownMenu'))});
+	
+</script>
+</head>
+
+<body>
+<h1>Mouseover the menu elements</h1>
+<br/>
+<br/>
+<div style="width:800px;"> <div style=" float:left">a los</div><div style="float:left">
+<ul id="dropdownMenu">
+		  <li><a href="/index.jspa" style="CURSOR:hand">雨无声论坛</a>
+		    <ul>
+			<li><a href="#">Remoras</a>
+				<ul>
+					<li><a href="#">Echeneis</a></li>
+					<li><a href="#">Phtheirichthys</a></li>
+					<li><a href="#">Remora</a></li>
+					<li><a href="#">Remorina</a></li>
+					<li><a href="#">Rhombochirus</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Tilefishes</a>
+				<ul>
+					<li><a href="#">Caulolatilus</a></li>
+					<li><a href="#">Lopholatilus</a></li>
+					<li><a href="#">Malacanthus</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Bluefishes</a>
+				<ul>
+					<li><a href="#">Pomatomus</a></li>
+					<li><a href="#">Scombrops</a></li>
+					<li><a href="#">Sphyraenops</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Tigerfishes</a>
+				<ul>
+					<li><a href="#">Amniataba</a></li>
+					<li><a href="#">Bidyanus</a></li>
+					<li><a href="#">Hannia</a></li>
+
+					<li><a href="#">Hephaestus</a></li>
+					<li><a href="#">Lagusia</a></li>
+					<li><a href="#">Leiopotherapon</a></li>
+					<li><a href="#">Mesopristes</a></li>
+					<li><a href="#">Pelates</a></li>
+					<li><a href="#">Pelsartia</a></li>
+
+					<li><a href="#">Pingalla</a></li>
+					<li><a href="#">Rhyncopelates</a></li>
+					<li><a href="#">Scortum</a></li>
+					<li><a href="#">Syncomistes</a></li>
+					<li><a href="#">Terapon</a></li>
+				</ul>
+			</li>
+            </ul>
+		  </li>
+		  <li><a href="area.jspa?areaId=43" style="CURSOR:hand">休闲娱乐</a>
+		  <ul>
+			<li><a href="#">Remoras</a></li>
+		  </ul>
+		  </li>
+		  </ul>
+</div> <div>sss</div></div>
+</body>
+</html>

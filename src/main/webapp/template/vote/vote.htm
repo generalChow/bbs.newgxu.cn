@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>雨无声论坛年度最佳版主投票评选</title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: 宋体;
+	font-size: 9pt;
+}
+-->
+</style>
+<link href="css/controlPanel.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {
+	background-image: url();
+	background-color: #E6E6E6;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.select {
+	font-family: "宋体";
+	font-size: 9pt;
+	border: 1px solid #CCCCCC;
+}
+.STYLE2 {color: #FF0000}
+.submit2 {
+	font-family: "宋体";
+	font-size: 9pt;
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+}
+a:link {
+	color: #333333;
+}
+-->
+</style>
+<script language="javascript">
+function selectall()
+{
+    var length = 500;
+    document.del.all.checked = document.del.all.checked|0;
+
+    if (length == 0 ){
+          return;
+    }
+    if (length ==1 )
+    {
+       document.del.fid.checked=document.del.all.checked ;
+    }
+   
+    if (length>1)
+    {
+      for (var i = 0; i < length; i++)
+       {
+        document.del.vid[i].checked=document.del.all.checked;         
+       }
+    }
+}
+
+</script>
+</head>
+
+<body>
+<table width="760" height="494" border="0" align="center" cellspacing="0" bgcolor="#FFFFFF">
+  <tr>
+    <td width="219" rowspan="4" valign="top"><img src="/images/vote/0052_03.gif" width="219" height="466" /></td>
+    <td width="314" height="31" rowspan="2" valign="top"><img src="/images/vote/0052_04.gif" width="290" height="29" /></td>
+    <td width="314" align="right" valign="baseline"><img src="/images/vote/rr.jpg" width="41" height="14" /></td>
+  </tr>
+  <tr>
+    <td align="right" valign="baseline">共参与人数：${totalNum}</td>
+  </tr>
+  <tr>
+    <td height="32" colspan="2" align="center" valign="top"><table width="627" border="0" align="right" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="704" align="center"><form id="del" name="del" method="post" action="/webMaster/webMasterVoteDo.yws">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td><table width="598" border="0" align="center" cellspacing="0" bordercolor="#CCCCCC" style="border-collapse:collapse ">
+                    <tr align="center" >
+                      <td width="102" height="20" class="strong_uline">昵称</td>
+                      <td width="105" class="strong_uline">所属板块</td>
+                      <td width="325" class="strong_uline">图例</td>
+                      <td width="27" class="strong_uline">票数</td>
+                      <td width="29" class="strong_uline">
+                      <#if !voteTarget>
+                      	选择
+					  </#if>
+                      </td>
+                    </tr>
+			 		<#list webmasters as webmaster>
+                    <tr align="center"  onmouseover="this.bgColor='#FFFDEA'" onmouseout="this.bgColor=''">
+                      <td height="18" class="uline2" ><a href="http://bbs.newgxu.cn/bbs/userInfo.jsp?userID=${webmaster.user.id}">${webmaster.user.nick}</a></td>
+                      <td align="center" class="uline2" >${webmaster.forum_name}</td>
+                      <td align="left" class="uline2" ><img src="/images/vote/${webmaster.randomBar}.gif" width="${webmaster.score}" height="10" /></td>
+                      <td class="uline2" >${webmaster.score}</td>
+                      <td class="uline2" >
+                      <#if !voteTarget>
+                      <input name="options" type="checkbox" class="select" id="vid"  value="${webmaster.user.id}" />
+                      </#if>
+                      </td>
+                    </tr>
+                    </#list>
+                </table></td>
+              </tr>
+              <tr>
+                <td>
+                <table width="95%" border="0" align="right" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td width="88%" height="25" align="center" valign="bottom"><label for="all">
+                        <input name="Submit" type="submit" class="submit2" value="::提交投票::" />
+                      </label></td>
+                      <td width="12%" height="20" align="right">
+                      <#if !voteTarget>
+                      <label for="label">
+                        全选 &nbsp;</label>                        
+                        <label for="all">
+                        <input name="all" type="checkbox" class="select" id="all" onclick="selectall()" value="1" />
+                        </label>
+                        </#if></td>
+                      </tr>
+                </table>
+                </td>
+              </tr>
+            </table>
+        </form></td>
+      </tr>
+      <tr>
+        <td align="center"><table cellspacing="0" cellpadding="3" width="100%" align="center" 
+              border="0">
+            <tbody>
+              <tr bgcolor="#fafafa">
+                <td width="444" align="left" class="uline"><img height="20" src="/images/vote/bullet4.gif" width="20" 
+                  align="absmiddle" /> <b>提示说明</b></td>
+              </tr>
+              <tr>
+                <td height="1" align="left" background="修改密码.files/dotline.gif"></td>
+              </tr>
+              <tr>
+                <td align="left">・经验值达到<span class="STYLE2">200</span>以上的用户才能投票</td>
+              </tr>
+              <tr>
+                <td align="left">・入选版主每得一票都会增加<span class="STYLE2">200</span>的西大币</td>
+              </tr>
+              <tr>
+                <td align="left">・每个用户只能投<span class="STYLE2">一</span>次票</td>
+              </tr>
+            </tbody>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="50" colspan="2" valign="top">&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

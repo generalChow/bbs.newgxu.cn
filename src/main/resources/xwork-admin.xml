@@ -1,0 +1,494 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1//EN"
+"http://www.opensymphony.com/xwork/xwork-1.1.dtd">
+
+<xwork>
+
+	<package name="admin" extends="default" namespace="/admin">
+		
+		<!-- 登录填写 -->
+		<action name="login" class="actionSupport">
+			<result name="success" type="freemarker">/template/admin/login.htm</result>
+		</action>
+
+		<!-- 登录提交 -->
+		<action name="login_do" class="adminLogin">
+			<result name="success" type="redirect">/admin/admin_index.yws</result>
+			<result name="input" type="freemarker">/template/admin/login.htm</result>
+			<result name="error" type="freemarker">/template/admin/login.htm</result>
+		</action>
+		<!-- 注销 -->
+		<action name="logout" class="adminLoginOut">
+		</action>
+		<!-- 管理首页   使用 index 命名时，本地出现了不能正常跳转的问题，重命名  2011.6.3-->
+		<action name="admin_index" class="actionSupport">
+			<result name="success" type="freemarker">/template/admin/index.htm</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!-- 管理左框架 -->
+		<action name="left" class="actionSupport">
+			<result name="success" type="freemarker">/template/admin/left.htm</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!-- 管理主框架 -->
+		<action name="main" class="actionSupport">
+			<result name="success" type="freemarker">/template/admin/main.htm</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  区论坛管理 -->
+		<action name="areas" class="areasManager">
+			<result name="success" type="freemarker">/template/admin/areas.htm</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  创建区论坛 -->
+		<action name="create_area" class="createArea">
+			<result name="success" type="freemarker">/template/admin/create_area.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="create_area_do" class="createArea" method="createAreaDo">
+			<result name="input" type="freemarker">/template/admin/create_area.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  编辑区论坛 -->
+		<action name="edit_area" class="editArea">
+			<result name="success" type="freemarker">/template/admin/edit_area.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="edit_area_do" class="editArea" method="editAreaDo">
+			<result name="input" type="freemarker">/template/admin/edit_area.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  论坛管理 -->
+		<action name="forums" class="forumsManager">
+			<result name="success" type="freemarker">/template/admin/forums.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  创建新论坛 -->
+		<action name="create_forum" class="createForum">
+			<result name="success" type="freemarker">/template/admin/create_forum.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<action name="create_forum_do" class="createForum" method="createForumDo">
+			<result name="input" type="freemarker">/template/admin/create_forum.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  编辑论坛属性 -->
+		<action name="edit_forum" class="editForum">
+			<result name="success" type="freemarker">/template/admin/edit_forum.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="edit_forum_do" class="editForum" method="editForumDo">
+			<result name="input" type="freemarker">/template/admin/edit_forum.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  用户组列表 -->
+		<action name="groups" class="groupsManager">
+			<result name="success" type="freemarker">/template/admin/groups.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  用户列表 -->
+		<action name="users" class="usersManager">
+			<result name="success" type="freemarker">/template/admin/users.htm</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  申请注册用户列表 -->
+		<action name="registerUsers" class="registerUsersManager">
+			<result name="success" type="freemarker">/template/admin/applyRegisterUsers.htm</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<action name="verifyRegisterUser" class="verifyRegisterUser">
+			<result name="success" type="freemarker">/template/admin/applyRegisterUser.htm</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<action name="verifyRegisterUser_do" class="verifyRegisterUser" method="doVerifyRegisterUser">
+			<result name="success" type="redirect">registerUsers.yws</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!--  用户信息 -->
+		<action name="user_info" class="getUserInfo">
+			<result name="success" type="freemarker">/template/admin/user_info.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  编辑用户信息 -->
+		<action name="edit_user" class="editUser">
+			<result name="success" type="freemarker">/template/admin/edit_user.html
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="edit_user_do" class="editUser" method="editUserDo">
+			<result name="input" type="freemarker">/template/admin/edit_user.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  物品列表 -->
+		<action name="items" class="itemsManager">
+			<result name="success" type="freemarker">/template/admin/items.htm</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  物品信息 -->
+		<action name="item" class="itemsManager" method="doGetItemInfo">
+			<result name="success" type="freemarker">/template/admin/item_info.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  编辑用户信息 -->
+		<action name="edit_item" class="editItem">
+			<result name="success" type="freemarker">/template/admin/edit_item.html
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="edit_item_do" class="editItem" method="doEditItem">
+			<result name="input" type="freemarker">/template/admin/edit_item.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  创建新物品 -->
+		<action name="create_item" class="createItem">
+			<result name="success" type="freemarker">/template/admin/create_item.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="create_item_do" class="createItem" method="doCreateItem">
+			<result name="input" type="freemarker">/template/admin/create_forum.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  物品上架 -->
+		<action name="store_items" class="itemsManager">
+			<result name="success" type="freemarker">/template/admin/store_items.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="edit_storeitem" class="editStoreItem">
+			<result name="success" type="freemarker">/template/admin/edit_storeitem.html
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="edit_storeitem_do" class="editStoreItem" method="doEditStoreItem">
+			<result name="input" type="freemarker">/template/admin/edit_item.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  操作日志 -->
+		<action name="logs_list" class="manageLogManage">
+			<result name="success" type="freemarker">/template/admin/log_list.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  用户查询 -->
+		<action name="search_user_do" class="searchUser" >
+			<result name="success" type="freemarker">/template/admin/users.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  斑竹列表 -->
+		<action name="webmasters" class="webmasterManage">
+			<result name="success" type="freemarker">/template/admin/webmasters.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!--  斑竹投票候选列表 -->
+		<action name="voteWebmaster" class="voteWebmasterManage">
+			<result name="success" type="freemarker">/template/admin/voteWebMasters.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!--  斑竹投票更新为现任斑竹列表 -->
+		<action name="freshWebMasters" class="voteWebmasterManage" method="freshWebMasters">
+			<result name="success" type="freemarker">/template/admin/voteWebMasters.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!--  斑竹投票清零 -->
+		<action name="resetVote" class="voteWebmasterManage" method="resetVote">
+			<result name="success" type="freemarker">/template/admin/voteWebMasters.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!-- 候选斑竹删除 -->
+		<action name="deleteVoteWebMaster" class="voteWebmasterManage" method="deleteVoteWebMaster">
+			<result name="success" type="freemarker">/template/admin/voteWebMasters.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!-- 候选斑竹新增 -->
+		<action name="addVoteWebMaster" class="voteWebmasterManage" method="addVoteWebMaster">
+			<result name="success" type="freemarker">/template/admin/voteWebMasters.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  银行管理 -->
+		<action name="bankManage" class="bankManage">
+			<result name="success" type="freemarker">/template/admin/bankManage.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!--  银行编辑 -->
+		<action name="bankModify" class="bankManage" method="doBankModify">
+			<result name="success" type="redirect">bankManage.yws</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+
+		<!--  贷款批准 -->
+		<action name="loanApproach" class="loanApproach">
+			<result name="success" type="redirect">bankManage.yws</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!--  贷款拒绝 -->
+		<action name="loanDeny" class="loanApproach" method="doLoanDeny">
+			<result name="success" type="redirect">bankManage.yws</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!--  红包概览 -->
+		<action name="hongbao" class="hongbaoManage">
+			<result name="success" type="freemarker">/template/admin/hongbaoManage.htm
+			</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!--  红包发放 -->
+		<action name="manage_hongbao" class="createHongbao">
+			<result name="success" type="freemarker">/template/admin/create_hongbao.htm
+			</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<action name="manage_hongbao_do" class="createHongbao" method="doHongbaoCreate">
+			<result name="success" type="redirect">manage_hongbao.yws</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!--  红包创建 -->
+		<action name="create_hongbao" class="hongbaoTypeCreate">
+			<result name="success" type="freemarker">/template/admin/create_hongbaoType.htm
+			</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<action name="create_hongbao_do" class="hongbaoTypeCreate" method="doHongbaoTypeCreate">
+			<result name="success" type="redirect">manage_hongbao.yws</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!--  红包修改 -->
+		<action name="edit_hongbao" class="hongbaoEdit">
+			<result name="success" type="freemarker">/template/admin/edit_hongbao.htm
+			</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<action name="edit_hongbao_do" class="hongbaoEdit" method="doHongbaoEdit">
+			<result name="success" type="redirect">manage_hongbao.yws</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!--  红包删除 -->
+		<action name="del_hongbao" class="hongbaoDel">
+			<result name="success" type="redirect">hongbao.yws</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		<!--  红包类型删除 -->
+		<action name="del_hongbaoType" class="hongbaoTypeDel">
+			<result name="success" type="redirect">manage_hongbao.yws</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!--  荣誉概览 -->
+		<action name="honor" class="honorManage">
+			<result name="success" type="freemarker">/template/admin/honorManage.htm
+			</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		<!-- 新建荣誉 -->
+		<action name="create_honor" class="honorCreate">	
+			<result name="success" type="freemarker">/template/admin/create_honor.htm
+			</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="create_honor_do" class="honorCreate" method="doHonorCreate">
+			<result name="success" type="redirect">honor.yws</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		<!-- 编辑荣誉 -->
+		<action name="edit_honor" class="honorCreate" method="editHonor">
+			<result name="success" type="freemarker">/template/admin/edit_honor.htm</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="edit_honor_do" class="honorCreate" method="editHonorDo">
+			<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!--   论坛过滤字列表 -->
+		<!--  还真不知道 illegalChar 这个bean在哪=.=   [集成显卡]
+		<action name="illegal_char" class="illegalChar">
+			<result name="success" type="freemarker">/template/admin/honorManage.htm
+			</result>
+		</action>
+		-->
+		<!--  论坛过滤字列表修改 -->
+		<!--  还真不知道 illegalChar 这个bean在哪=.=   [集成显卡]
+		<action name="illegal_char_update" class="illegalChar" method="update">
+			<result name="success" type="freemarker">/template/admin/honorManage.htm
+			</result>
+		</action>
+		-->
+		<!-- 用户注册情况！ -->
+		<action name="registerUsersToday" class="registerUserLastManagerAction">
+			<result name="success" type="freemarker">/template/admin/registerusers.htm
+			</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="registerUsersLast" class="registerUserLastManagerAction" method="registerUserLast">
+			<result name="success" type="freemarker">/template/admin/registerusers.htm
+			</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		<!-- 资源管理模块 -->
+		<action name="uploaditems" class="uploadItemsAction">
+			<result name="success" type="freemarker">/template/admin/uploaditems.htm
+			</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="searchuploaditems" class="uploadItemsAction" method="searchUploadItems">
+			<result name="success" type="freemarker">/template/admin/uploaditems.htm
+			</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="deleteuploaditems" class="uploadItemsAction" method="delectUploadItems">
+		<interceptor-ref name="adminLogin" />
+		</action>
+		<!-- 论坛开关时间 -->
+		<action name="controlForumTime" class="controlForumTimeAction">
+			<result name="success" type="freemarker">/template/admin/openclose.htm
+			</result>
+		<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="edit_controlForumTime" class="controlForumTimeAction">
+			<result name="success" type="freemarker">/template/admin/edit_openclose.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="edit_controlForumTime_do" class="controlForumTimeAction" method="editOpenClose">
+			<result name="input" type="freemarker">/template/admin/openclose.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!-- 后台查询用户登录信息 -->
+		<action name="select_userInfo" class="selectUserInfoAction">
+			<result name="success" type="freemarker">/template/admin/select_userInfo.htm
+			</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!--
+		管理员群发信息，需要管理员登录
+		by：集成显卡 	2011.4.22 0：47
+		-->
+		<action name="send_message_all" class="sendMessageAll">
+			<result name="success" type="freemarker">/template/message/send_message_all.htm</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="send_message_all_do" class="sendMessageAll" method="submit">
+			<result name="input" type="freemarker">/template/message/send_message_all.htm</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!--
+		***********************************************************************************************
+		2011年10月之后更新
+		***********************************************************************************************
+		-->
+		<!--BBS缓存-->
+		<action name="cache" class="bbsCacheAction">
+			<result name="success" type="freemarker">/template/admin/bbs_cache.htm</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		<!--BBS缓存刷新-->
+		<action name="cache_update" class="bbsCacheAction" method="update">
+			<interceptor-ref name="adminLogin" />
+		</action>
+		<!--BBS缓存时间间隔-->
+		<action name="cache_change" class="bbsCacheAction" method="change">
+			<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!--节日动画-->
+		<action name="holiday" class="holidayAnimateAction">
+			<result name="success" type="freemarker">/template/admin/holiday.htm</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="holiday_edit" class="holidayAnimateAction" method="edit">
+			<result name="success" type="freemarker">/template/admin/edit_holiday.htm</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="holiday_del" class="holidayAnimateAction" method="del">
+			<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="holiday_add" class="holidayAnimateAction" method="add">
+			<result name="success" type="freemarker">/template/admin/edit_holiday.htm</result>
+			<interceptor-ref name="adminLogin" />
+		</action>
+		<action name="holiday_addDo" class="holidayAnimateAction" method="addDo">
+			<interceptor-ref name="adminLogin" />
+		</action>
+		
+		<!--管理员上传图片-->
+		<action name="adminUpload" class="adminUploadAction">
+			<interceptor-ref name="fileUpload">
+              <!-- 配置允许上传的文件类型，多个用","分隔 -->
+              <param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/x-png, image/pjpeg</param>
+              <!-- 配置允许上传的文件大小，单位字节,这里是 2 M -->
+              <param name="maximumSize">2048000</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack" />
+		    <param name="savePath">/images/holiday</param>
+		</action>
+		<!--
+		***********************************************************************************************
+		-->
+	</package>
+</xwork>

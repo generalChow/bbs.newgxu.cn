@@ -1,0 +1,27 @@
+BODY {
+	FONT-SIZE: 12px; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #333333
+}
+.border {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; BACKGROUND-REPEAT: repeat-x
+}
+.f12 {
+	FONT-SIZE: 12px; COLOR: #333333; LINE-HEIGHT: 140%; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+.f13 {
+	FONT-SIZE: 13px; COLOR: #333333; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+.f14 {
+	FONT-SIZE: 14px; COLOR: #333333; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+A:link {
+	FONT-SIZE: 12px; COLOR: #333333; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+A:visited {
+	FONT-SIZE: 12px; COLOR: #333333; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #7bc93a; TEXT-DECORATION: none
+}
+.img-border {
+	BORDER-RIGHT: #7bc93a 5px solid; BORDER-TOP: #7bc93a 5px solid; BORDER-LEFT: #7bc93a 5px solid; BORDER-BOTTOM: #7bc93a 5px solid
+}

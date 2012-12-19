@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>edit_openclose.html.htm</title>
+
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-calendar.js"></script> 
+	<link rel="stylesheet" type="text/css" href="../css/jquery-calendar.css" /> 
+	
+    
+    
+  </head>
+  
+  <body>
+
+<div style="float: left; width: 900px; clear: both">
+	<fieldset style="width: 400px;"><legend>查询方式</legend>
+    <form action="select_userInfo.yws" method="post" target="mainFrame">
+    	<fieldset style="width: 400px;"><legend>1.根据登录名或昵称查询</legend>
+    	按登录名查询:<input type="radio" name="type" value="1"><br/>
+    	按昵称查询:<input type="radio" name="type" value="2"><br/>
+    	登录名或昵称：<input type="text" name="keyWord">	<br/>
+    	</fieldset>
+		<fieldset style="width: 400px;"><legend>2.根据用户组查询</legend>
+		普通用户：<input type="radio" name="groupTypeId" value="1"><br/>
+		版主：<input type="radio" name="groupTypeId" value="2"><br/>
+		区管理员：<input type="radio" name="groupTypeId" value="3"><br/>
+		超级管理员：<input type="radio" name="groupTypeId" value="4"><br/>
+		</fieldset>
+    		从<input type="text" id="calendar2" name="startTime" maxlength="10" onfocus="$(this).calendar()"  style="width: 90px;"  readonly/>
+    		到<input type="text" id="calendar2" name="endTime" maxlength="10" onfocus="$(this).calendar()" style="width: 90px;"  readonly/>
+<br/>
+			
+		<input type="submit" value="查询">
+    	
+    </form>
+    <div  style="float: left; width: 400px;">说明：方式1和2只选择其中一种查询，默认为版主的活动信息。默认时间段为以当前时间为月尾。</div>
+    </fieldset>
+</div>
+
+    <table style="clear: both; border-color: black;"  border="1">
+      <caption style="border: 1px; color: red;">
+         时间段为：${startTime}到${endTime}
+     </caption><br/>
+     ${pagination}
+  	 <tr style="color: red;">
+	    <td>登录号</td>
+	    <td>昵称</td>
+	    <td>最后登录时间</td>
+	    <td>登录次数</td>
+	    <td>发帖数量</td>
+	    <td>回帖数量</td>
+	  </tr>
+
+    <#list user as u>
+	   <tr <#if u_index%2==0> style="background-color: yellow;"</#if>>
+	    <td>${u.username}</td>
+	    <td>${u.nick}</td>
+	    <td>${u.lastLoginTime}
+	    <td>${u.loginTimes}</td>
+	    <td>${u.numberOfTopic}</td>
+	    <td>${u.numberOfReply}</td>
+	  </tr>
+    </#list>
+ </table>   
+    ${pagination}
+    
+    
+  </body>
+</html>

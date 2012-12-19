@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>雨无声论坛缓存管理</title>
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  </head>
+  
+  <body>
+  	<div>
+		<p style="width:70%;text-align:left;font-weight:bold;line-height:15px;font-size:13px; padding:10px; color:#3d7ee8;">
+			为了加快论坛页面的访问速度以及减少服务器资源消耗。论坛加入了缓存的功能。<br />
+			缓存内容有：版块列表，首页热门/精彩推荐,首页用户排行榜<br />
+			缓存在论坛启动后，第一次被访问时创建，过了指定的时间缓存会刷新内容。<br /><br />
+			<span style="font-weight:normal;">点击“马上刷新”可以刷新对应缓存的内容。保存缓存默认刷新间隔会在下次刷新缓存后生效
+				<br />访问次数只是一个数量的统计，在缓存刷新后自动清零
+			</span>
+		</p>
+		<table class="table" id="cache_list" width="700">
+			<thead>
+				<tr>
+					<th width="40">序号</th>
+					<th width="150">缓存名称</th>
+					<th width="80">缓存记录数</th>
+					<th width="60">刷新间隔</th>
+					<th width="150">最后更新时间</th>
+					<th width="150">访问次数</th>
+					<th width="70">操作</th>
+				</tr>
+			</thead>
+		  <tbody>
+			 <#if caches?size gt 0>
+			 	<#assign index=1>
+				<#list caches as c>
+					<#if c??>
+					<tr>
+						<td>#{index}</td>
+						<td>${c.name}</td>
+						<td>${c.list?size}</td>
+						<td><#if c.timeout==0>永久<#else>${c.timeout/1000/60}分钟</#if></td>
+						<td>${c.date?datetime}</td>
+						<td>${c.hits}</td>
+						<td><a href="cache_update.yws?cacheId=${index}"  target="ajaxTodo" title="刷新这个缓存内容么？">马上刷新</a></td>
+					</tr>
+					<#assign index=index+1>
+					</#if>
+				</#list>
+			<#else>
+				<tr><td colspan="6">没有缓存！</td></tr>
+			</#if>
+			</tbody>
+		</table>
+		<div style="margin-top:10px;">
+			<form name="cache_form" action="cache_change.yws" method="post" onsubmit="return validateCallback(this, navTabAjaxDone);">
+				当前缓存刷新默认时间间隔：<input type="text" style="width:30px;" value="${timeout?default('')}" name="timeout"/>分钟
+				<input type="submit" class="BUTTON2" value="修改并保存">
+			</form>
+		</div>
+	</div>
+  </body>
+</html>

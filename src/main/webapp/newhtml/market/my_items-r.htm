@@ -1,0 +1,104 @@
+<@base.header title="我的物品">
+	<script language="javascript">
+	var itemUseDialog;
+	var itemComplimentAwayDialog;
+	var itemSellDialog;
+	function showItemUseDialog(id, name) {
+		constructItemUseDialogDiv(id, name);
+		itemUseDialog = new newgxu.HtmlDialog("itemUseDialog", 330, 100);
+	}
+	function showItemComplimentAwayDialog(id, name) {
+		constructItemComplimentAwayDiv(id, name);
+		itemComplimentAwayDialog = new newgxu.HtmlDialog("itemComplimentAwayDialog", 330, 100);
+	}
+	function showItemSellDialog(id, name) {
+		constructItemSellDiv(id, name);
+		itemSellDialog = new newgxu.HtmlDialog("itemSellDialog", 330, 100);
+	}
+	function constructItemUseDialogDiv(id, name) {
+		var html ='<form action="/market/item_use_do.yws" method="post" >';
+		html += '<table align="center" width="250" border="0" cellspacing="0" cellpadding="0">';
+	  	html += '<tr><td width="130">使用：';
+	  	html += name;
+	 	html += '</td><td width="120">';
+	  	html += '</td></tr><tr><td colspan="2">对象：';
+		html += '<input name="nick" id="nick" type="text" size="13" maxlength="16" value="${user.nick?js_string}">';
+		html += '<input name="id" type="hidden" id="id" value="';
+		html += id;
+		html += '"><input type="submit" name="Submit" value="确认" id="Submit">';
+		html += '<input type="reset" onclick="itemUseDialog.close();" value="取消" /></td></tr></table></form>';
+		var dialogDiv = new Element("div");
+		dialogDiv.id = "itemUseDialogForm";
+		dialogDiv.innerHTML = html;
+		$("itemUseDialog").innerHTML = '';
+		dialogDiv.injectInside($("itemUseDialog"));
+	}
+	function constructItemComplimentAwayDiv(id, name) {
+		var html ='<form action="/market/item_compliment_away_do.yws" method="post">';
+		html += '<table align="center" width="250" border="0" cellspacing="0" cellpadding="0">';
+	  	html += '<tr><td width="130">赠送：';
+	  	html += name;
+	 	html += '</td><td width="120">';
+	  	html += '</td></tr><tr><td colspan="2">对象：<input name="nick" id="nick" type="text" size="13" maxlength="16" value="">';
+		html += '<input name="id" type="hidden" id="id" value="';
+		html += id;
+		html += '"><input type="submit" name="Submit" value="确认" id="Submit">';
+		html += '<input type="reset" onclick="itemComplimentAwayDialog.close();" value="取消" /></td></tr></table></form>';
+		var dialogDiv = new Element("div");
+		dialogDiv.id = "itemComplimentAwayDialogForm";
+		dialogDiv.innerHTML = html;
+		$("itemComplimentAwayDialog").innerHTML = '';
+		dialogDiv.injectInside($("itemComplimentAwayDialog"));
+	}
+	function constructItemSellDiv(id, name) {
+		var html ='<form action="/market/item_sell_do.yws" method="post">';
+		html += '<table align="center" width="250" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">';
+	  	html += '<tr><td width="130">拍卖：';
+	  	html += name;
+	 	html += '</td><td width="120">100≤售价≤999,999';
+	  	html += '</td></tr><tr><td colspan="2">售价：<input name="price" id="price" type="text" size="8" maxlength="6" value="">';
+		html += '<input name="id" type="hidden" id="id" value="';
+		html += id;
+		html += '"><input type="submit" name="Submit" value="确认" id="Submit">';
+		html += '<input type="reset" onclick="itemSellDialog.close();" value="取消" /></td></tr></table></form>';
+		var dialogDiv = new Element("div");
+		dialogDiv.id = "itemSellDialogForm";
+		dialogDiv.innerHTML = html;
+		$("itemSellDialog").innerHTML = '';
+		dialogDiv.injectInside($("itemSellDialog"));
+	}
+	</script>
+</@base.header>
+<@base.body location="个人服务区&nbsp;－&gt;&nbsp;我的物品">
+	<@base.main location="个人服务区&nbsp;－&gt;&nbsp;我的物品">
+		<@base.market_content>
+			<div style="display:none;">
+				<div id="itemUseDialog" class="dialog_div"></div>
+				<div id="itemComplimentAwayDialog" class="dialog_div"></div>
+				<div id="itemSellDialog" class="dialog_div">
+			</div></div>
+			<div style="width:628px;">
+				<#list model.items as item>
+					<div class="my_item_div">
+				      <table width="100%" height="100" border="0" cellpadding="0" cellspacing="0">
+				        <tr>
+				          <td width="100" rowspan="2" valign="top"><div align="center"><strong>${item.item.name}</strong><br />
+				            ${item.item.picture}</div></td>
+				          <td colspan="2" valign="top">${item.item.effect}</td>
+				        </tr>
+				        <tr>
+				          <td height="30"><#if item.maker.id != -1><b>${item.maker.nick}</b>(造)</#if></td>
+				          <td align="right">
+						  	[<a href="javascript:showItemSellDialog(${item.id}, '${item.item.name}');">卖</a>]
+							[<a href="javascript:showItemComplimentAwayDialog(${item.id}, '${item.item.name}');">送</a>]
+							[<a href="javascript:showItemUseDialog(${item.id}, '${item.item.name}');">使用</a>]
+				          </td>
+				       </tr>
+				      </table>
+				    </div>
+				</#list>
+			</div>
+			<div class="pages" style="padding:5px;">${model.pagination}</div>
+		</@base.market_content>
+	</@base.main>
+</@base.body>

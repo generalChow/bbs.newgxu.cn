@@ -1,0 +1,3 @@
+html,body { font-family: "宋体"; font-size: 12px; margin: 0px; height:100%; background:#CCCCCC; }
+#Main { width: 100%; text-align:center;}
+#Login { width:300px; height:200px; border:1px solid #999999;}

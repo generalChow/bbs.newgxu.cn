@@ -1,0 +1,39 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1//EN" 
+"http://www.opensymphony.com/xwork/xwork-1.1.dtd">
+<xwork>
+	<package name="message" namespace="/message" extends="default">
+		
+		<!-- 发送短消息 -->
+		<action name="send_message" class="sendMessage">
+			<result name="success" type="freemarker">/template/message/send_message.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<!-- 回复短消息 -->
+		<action name="re_message" class="sendMessage">
+			<result name="success" type="freemarker">/template/message/re_message.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<action name="send_message_do" class="sendMessage" method="submit">
+			<result name="input" type="freemarker">/template/message/send_message.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		
+		<!-- 查看短消息 -->
+		<action name="message" class="message">
+			<result name="success" type="freemarker">/template/message/message.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<action name="message_list" class="message" method="list">
+			<result name="success" type="freemarker">/template/message/message_list.htm</result>
+			<result name="list_2" type="freemarker">/template/message/message_list_2.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		
+		<!-- 删除短消息 -->
+		<action name="del_message" class="delMessage">
+			<interceptor-ref name="login" />
+		</action>
+		
+	</package>
+	
+</xwork>

@@ -1,0 +1,15 @@
+<#if User?exists>
+<h4 style="color:#92cf28;">正在跳转.....</h4>
+<form method="post" id="twitter" action="http://t.newgxu.cn/index.php?app=Home&mod=Public&act=doBbsLogin" style="display:none;">
+	<input name="username" type="hidden" value="${User.username}"/>
+	<input name="password" type="hidden" value="${User.password}"/>
+	<input name="rightCode" type="hidden" value="newgxu"/>
+</form>
+<script>
+	window.onload=function(){document.getElementById("twitter").submit();}
+    function go(){ document.getElementById("twitter").submit();}
+</script>
+<div style="color:blue;cursor: pointer;" onclick="go()">马上进入..</div>
+<#else>
+<script>window.location.href="http://t.newgxu.cn";</script>
+</#if>

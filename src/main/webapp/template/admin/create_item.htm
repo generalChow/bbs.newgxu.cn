@@ -1,0 +1,61 @@
+  <form name="form1" method="post" action="create_item_do.yws"   onsubmit="return validateCallback(this, dialogAjaxDone);">
+    <table>
+      <tr>
+        <td>物品名：</td>
+        <td><input type="text" name="name"></td>
+      </tr>
+      <tr>
+        <td>简介：</td>
+        <td><textarea style="width:300px; height:100px" name="effect"></textarea></td>
+      </tr>
+      <tr>
+        <td>商品类型：</td>
+        <td><select name="item_type_id">
+			<#list itemTypes as type>
+			  	<option value="${type.id}">${type.name}</option>
+			 </#list>
+        </select>
+        </td>
+      </tr>
+      <tr>
+        <td>目标体力影响：</td>
+        <td><input name="objectPower" type="text" size="5"></td>
+      </tr>
+      <tr>
+        <td>目标badboy值影响：</td>
+        <td><input name="objectBadboy" type="text" size="5"></td>
+      </tr>
+      <tr>
+        <td>目标经验影响：</td>
+        <td><input name="objectExp" type="text" size="5"></td>
+      </tr>
+      <tr>
+        <td>自身体力影响：</td>
+        <td><input name="selfPower" type="text" size="5"></td>
+      </tr>
+      <tr>
+        <td>自身金钱影响：</td>
+        <td><input name="selfMoney" type="text" size="5"></td>
+      </tr>
+	  <tr>
+        <td>制造的物品id：</td>
+        <td><input name="returnId" type="text" size="3">&nbsp;&nbsp;如果这个值不为0，表示会一定概率得到相应id号的物品</td>
+      </tr>
+	  <tr>
+        <td>成功制造概率：</td>
+        <td><input name="probability" type="text" size="3">&nbsp;&nbsp;当这个物品是制造材料时，这个就是成功生产的概率，为0就是100%</td>
+      </tr>
+	  <tr>
+        <td>短信息标题：</td>
+        <td><input name="message_title" type="text" size="50"  style="width:120px">&nbsp;&nbsp;如果需要在使用这个道具后发短信息通知用户，就填写</td>
+      </tr>
+	  <tr>
+        <td>短信息内容：</td>
+        <td><textarea style="width:300px; height:60px" width="150px" name="message"></textarea></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><input type="submit" name="Submit" class="BUTTON2" value="创　建"></td>
+      </tr>
+    </table>
+  </form>

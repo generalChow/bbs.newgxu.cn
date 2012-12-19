@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>消息内容</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link href="/css/panel.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="/js/mootools.v1.00.js"></script>
+		<script type="text/javascript" src="/js/newgxu_common.js"></script>
+		<script type="text/javascript" src="/js/newgxu_ubb.js"></script>
+		</head>
+	<body>
+<link href="/css/panel.css" rel="stylesheet" type="text/css" />
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="15" align="left"><img src="/images/banner-shortmassage.gif" width="151" height="45" /></td>
+  </tr>
+  <tr>
+    <td height="15" align="center" class="uline"><img src="/images/shortMessage/${message.face}.gif" width="20" height="20" />${message.title}</td>
+  </tr>
+  <tr>
+    <td height="200" valign="top"><br />
+      <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="uline2">
+        <tr>
+          <td>接收人：${message.receivers}</td>
+        </tr>
+      </table><br />
+      <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>${message.content}</td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td height="10" align="right" class="uline">--by ${message.sender.nick}&nbsp;[${message.time}]</td>
+  </tr>
+  <tr>
+    <td height="19" align="center">[<a href="javascript:history.back()">返回</a>] 
+                [<a href="/message/del_message.yws?smid=${message.id}" onClick="return confirm('确定要进行删除操作吗?')">删除</a>] 
+        [<a href="/message/send_message.yws?userId=${message.sender.id}" target="_blank">回复</a>]  </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>雨无声论坛后台登录</title>
+	<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
+	<link rel="stylesheet" href="/css/admin/admin.css"/>
+</head>
+<body style="background-color:#ffffff;">
+	<div class="header">
+		<div class="content" style=" line-height:80px;font-size:14px; font-weight:bold;">
+			<h3 style="text-align:left; float:left; width:200px;font-size:16px; ">
+				<img src="/image/admin/forum_logo.png"/>
+			</h3>
+			<div style="text-align:center; float:right; width:400px; ">
+				<a href="http://www.newgxu.cn">雨无声首页</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="http://bbs.newgxu.cn">论坛首页</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="http://t.newgxu.cn">微雨无声</a>
+			</div>
+		</div>
+	</div>
+	<div id="banner">
+		<div class="tc_previwe">
+			<div class="tc_pic">
+				<img src="/image/admin/logo.png"/>
+			</div>
+		</div>
+		<div class="info_right">
+		</div>
+		<div class="tc_downarea">
+			<div>
+				<form id="adminLogin" action="/admin/login_do.yws" method="post" name="adminLogin">
+					<table class="dtable" cellspacing="0" cellpadding="0" border="0">
+						<tr>
+							<td height="30" align="center" colspan="2" style="font-size:14px; font-weight:bold;">论坛后台登录</td>
+						</tr>
+						<tr height="30" >
+							<td>用户名</td>
+							<td><input type="text" value="${model.username?default('')}" style="width:180px;background-color:#ffffff;border:1px solid #f2f3f4;" id="username" name="username"></td>
+						</tr>
+						<tr height="30" >
+							<td>密码</td>
+							<td><input id="password" style="width:180px;background-color:#ffffff;border:1px solid #f2f3f4;" type="password" name="password"></td>
+						</tr>
+						<tr  height="30" >
+							<td>验证码</td>
+							<td>
+								<input id="validCode" class="input_rand" type="text" style="background-color:#ffffff; border:1px solid #f2f3f4;" autocomplete="off" size="6" name="validCode">
+								&nbsp;<img src="/validImage_servlet" style="ma"/>
+							</td>
+						</tr>
+						<tr>
+							<td height="30" align="center" colspan="2">
+								<label for="autoLogin"><input id="autoLogin" type="checkbox" value="true" name="autoLogin">自动登录</label>
+							</td>
+						</tr>
+						<tr>
+							<td height="45" align="center" colspan="2">
+								<input id="Submit" type="submit" value="提交" class="BUTTON2">
+								<input id="label" type="reset" value="重置" class="BUTTON2">
+							</td>
+						</tr>
+						<tr>
+							<td align="center" colspan="2" class="ERROR" style="font-size:16px">
+								<#if model.rightCode??>
+								${model.rightCode}
+							  <#else>
+							  <script>
+									$(document).ready(function(){
+										$("#banner .tc_downarea").css("width","0%");
+										$("#banner .tc_downarea").animate({'width':'50%'},1000);
+									});
+								</script>
+								</#if>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	$(document).ready(function(){
+		$("#banner .info_right").css({'line-height':'360px','font-size':'24px','text-align':'center'}).html("2011-11-02 论坛后台更新啦！");
+		//欢迎来到雨无声论坛管理后台！<br /><br />
+		//$("#banner .tc_downarea").css("width","0%");
+		//$("#banner .tc_downarea").animate({'width':'50%'},3000);
+	});
+</script>
+</html>

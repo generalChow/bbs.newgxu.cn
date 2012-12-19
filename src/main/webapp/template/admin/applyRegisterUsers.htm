@@ -1,0 +1,54 @@
+<div class="pageHeader" style="display:none;"  >
+	<form id="pagerForm" action="registerUsers.yws" method="get" onsubmit="return navTabSearch(this);">
+		<input type="hidden" name="page" value="1" /><!--【必须】value=1可以写死-->
+      	<input type="hidden" name="pageSize" value="20" />
+	</form>
+</div>
+<div class="pageContent">
+	<table class="table" width="100%" layoutH="50">
+		<thead>
+			<tr>
+				<th width="10%">ID号</th>
+				<th>登录账号</th>
+				<th width="15%">昵称</th>
+				<th width="5%">性别</th>
+				<th width="15%">注册时间</th>
+				<th width="10%">用户类型</th>
+				<th width="10%">用户状态</th>
+				<th width="5%">审查资料</th>
+			</tr>
+		</thead>
+		<tbody>
+      <#setting number_format="0">
+      <#list users as user>
+      <tr align="center">
+        <td align="left">${user.id}</td>
+        <td><a href="user_info.yws?id=${user.id}" target="navTab" rel="user_info_${user.id}"  external="true" title="[查看]${user.username}">${user.username}</a></td>
+        <td>${user.nick}</td>
+        <td>${user.sexDisplay}</td>
+        <td>${user.registerTime}</td>
+        <td><#switch user.registerType>
+				<#case 1>本科<#break>
+				<#case 2>研博/成教<#break>
+				<#case 3>教师<#break>
+				<#case 4>校外<#break>
+				<#case 0>未知<#break>
+			 </#switch></td>
+        <td><#switch user.accountStatus>
+				<#case 1>正常<#break>
+				<#case 2>禁止登录<#break>
+				<#case 3>资料待审<#break>
+				<#case 4>未通过<#break>
+			 </#switch></td>
+        <td><a href="verifyRegisterUser.yws?id=${user.id}" target="dialog" width="400" title="[审查资料]${user.username}" rel="reg_user_${user.id}"><img src="/image/button_edit.gif" width="17" height="17" border="0"></a></td>
+      </tr>
+	</#list>
+	</tbody>
+    </table>
+	 <div class="panelBar">
+		<div class="pages">
+			<span>共${pagination.recordSize}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="${pagination.recordSize}" numPerPage="${pagination.pageSize}" pageNumShown="16" currentPage="${pagination.page}"></div>
+	</div>
+</div>

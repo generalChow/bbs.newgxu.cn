@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0060)http://diary.yinsha.com/php/viewdiary.php?diaryno=1395906802 -->
+<HTML><HEAD><TITLE>我的日记</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312"><LINK 
+href="viewdiary.files/diary_right.css" type=text/css rel=stylesheet>
+<META content="MSHTML 6.00.2900.2722" name=GENERATOR></HEAD>
+<BODY leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<TABLE cellSpacing=0 cellPadding=0 width=430 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD width=430 background=viewdiary.files/right_top2.gif 
+      height=28>&nbsp;&nbsp;我的日记&nbsp;&nbsp;<A 
+      href="http://talk3.silversand.net/counter/viewcounter.php?USER=diary" 
+      target=_blank><IMG height=1 src="viewdiary.files/counter.yinsha.gif" 
+      width=1 border=0></A></TD></TR></TBODY></TABLE>
+<SCRIPT language=JavaScript>
+var focusok=false;
+if (navigator.appName == "Netscape") {
+	focusok=true;
+}
+vers = navigator.appVersion;
+if (navigator.appName == "Microsoft Internet Explorer") {
+	pos = vers.lastIndexOf('.'); 
+	vers = vers.substring(pos-1,vers.length); 
+}
+proper_version = parseFloat(vers); 
+if(proper_version>=5){
+	focusok=true;
+}
+function launchemote(htmlurl) {
+	var stock = window.open(htmlurl,"essay","top=10,left=150,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=600,height=600");
+	if(focusok){
+		stock.focus();
+	}
+	return true;
+}
+function viewessay(essayno){
+	document.viewform.essayno.value=essayno;
+	launchemote("")
+	document.viewform.submit();
+}
+function viewdiary(startno){
+	document.view.startno.value=startno;
+	document.view.submit();
+}
+</SCRIPT>
+
+<TABLE cellSpacing=0 cellPadding=1 width=445 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <FORM name=viewform action=viewessay.php method=post target=essay><INPUT 
+      type=hidden name=essayno> </FORM>
+      <TABLE class=p cellSpacing=1 cellPadding=3 width=445 border=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=5>日记篇数：2 <!--<a href='newdfavorite.php?fuserno=1395906802' target='_blank'><img src='/images/minus.gif' title='将该作者日记本添加到收藏夹' border=0 width="20" height="20"></a>--></TD></TR>
+        <TR>
+          <TD width=220 height=24><IMG height=11 
+            src="viewdiary.files/diary_icon10.gif" width=11><A 
+            href="javascript:viewessay('2783963')">再来</A>　<IMG height=9 
+            src="viewdiary.files/lock.gif" width=27 border=0></TD>
+          <TD width=55>[感伤篇]</TD>
+          <TD width=25>0</TD>
+          <TD width=100>05-08-17 03:04</TD><!--<td width="18"><a href='newefavorite.php?fessayno=2783963' target='_blank'><img src='/images/diary_icon6.gif' title='将该日记添加到收藏夹' border=0 ></a></td>--></TR>
+        <TR>
+          <TD width=220 height=24><IMG height=11 
+            src="viewdiary.files/diary_icon10.gif" width=11><A 
+            href="javascript:viewessay('2783961')">开始了，呵呵</A>　</TD>
+          <TD width=55>[开心篇]</TD>
+          <TD width=25>3</TD>
+          <TD width=100>05-08-17 03:03</TD><!--<td width="18"><a href='newefavorite.php?fessayno=2783961' target='_blank'><img src='/images/diary_icon6.gif' title='将该日记添加到收藏夹' border=0 ></a></td>--></TR></TBODY></TABLE>
+      <FORM name=view action=viewdiary.php method=post><INPUT type=hidden 
+      name=groupno> <INPUT type=hidden name=sortby> <INPUT type=hidden value=0 
+      name=startno> <INPUT type=hidden value=1395906802 name=diaryno> 
+      <TABLE cellSpacing=0 cellPadding=0 width=445 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE>
+<SCRIPT language=JavaScript>
+if (top.document.topform){
+	if (top.document.topform.diaryno.value != '1395906802'){
+		top.document.topform.diaryno.value='1395906802';
+		top.calendar.document.URL="/php/calendar.php?diaryno=1395906802";
+		
+	}
+}
+</SCRIPT>
+</BODY></HTML>

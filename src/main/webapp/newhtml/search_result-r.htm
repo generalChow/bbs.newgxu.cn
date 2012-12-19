@@ -1,0 +1,107 @@
+<@base.header title="检索中心 -- 主题列表"></@base.header>
+<@base.body location="检索中心">
+	<@base.main location="检索中心">
+	<#setting number_format="0">
+		<table width="857" height="62" border="0" align="center" cellpadding="0" cellspacing="0" id="__01">
+          <tr>
+            <td width="13" rowspan="2" align="right" valign="bottom"><img src="images/list_title1_012.gif" width="13" height="62" alt=""/></td>
+            <td width="109" align="left" valign="bottom"><img src="images/list_title1_022.gif" width="32" height="26" alt=""/></td>
+            <td width="690" height="26" align="right">&nbsp;</td>
+            <td width="32" align="right" valign="bottom"><img src="images/list_title1_042.gif" width="32" height="26" alt=""/></td>
+            <td width="13" rowspan="2" align="left" valign="bottom"><img src="images/list_title1_052.gif" width="13" height="62" alt=""/></td>
+          </tr>
+          <tr>
+            <td height="36" colspan="3" class="list_title"><table width="100%" border="0" cellspacing="0">
+              <tr>
+                <td align="left"><div class="pages" style="width:430px;">${model.pagination}</div></td>
+                <td width="300" align="right"><table width="100%"  border="0" align="right" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td align="right">
+						<form action="?" method="get" name="changePage" id="changePage" onKeyDown="if(event.ctrlKey)submit();">
+							<input name="keywords" type="hidden" id="keywords" value="${keywords}" />&nbsp;跳转：
+							<input name="page" type="text" class="jumpTo" id="page" size="4" />
+							页
+							<input name="Submit2" type="submit" class="jumpTo_submit" id="Submit2" value=" GO " />
+					</form></td>
+                  </tr>
+                </table></td>
+              </tr>
+            </table>
+            </td>
+          </tr>
+      </table>
+      <table width="95%" height="3"  border="0" align="center" cellpadding="0" cellspacing="0" class="list_title_2">
+          <tr>
+            <td height="1"></td>
+          </tr>
+      </table>
+      <table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" bgcolor="#FFFAD0" class="botom_line">
+			  <tr align="center">
+				<th width="344" class="right_line">主题</th>
+	            <th width="88" class="right_line">版块</th>
+				<th width="100" class="right_line">作者</th>
+				<th width="40" class="right_line">回复</th>
+				<th width="40" class="right_line">点击</th>
+				<th width="196">最后更新</th>
+			  </tr>
+		  </table>
+		  <#list model.topics as topic>
+			<table width="100%" height="25" border="0" align="center" cellpadding="0" cellspacing="0" class="botom_line">
+			  <tr align="center">
+				<td width="30" height="35" class="right_line"><a href="/topic.yws?forumId=${topic.forum.id}&topicId=${topic.id}" target="_blank"><img src="images/face/${topic.face}.gif" title="点击在新窗口打开" border="0"></a></td>
+				<td width="314" align="left" class="right_line">${topic.topString}${topic.lockString}${topic.goodString}${topic.voteString}<a href="/topic.yws?forumId=${topic.forum.id}&topicId=${topic.id}" title="发表时间：${topic.creationTime}">${topic.titleFilter}</a>${topic.newTopicString} ${topic.guide}</td>
+            	<td width="88" class="right_line"><a href="/forum.yws?forumId=${topic.forum.id}">${topic.forum.name}</a></td>
+				<td width="100" class="right_line"><a href="/user/user_info.yws?id=${topic.topicUser.id}">${topic.topicUser.nick}</a></td>
+				<td width="40" class="right_line">${topic.replyTimes}</td>
+				<td width="40" class="right_line">${topic.clickTimes}</td>
+				<td width="196"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+					<tr>
+					  <td width="49%" align="center" valign="middle"><a href="/user/user_info.yws?id=${topic.replyUser.id}">${topic.replyUser.nick}</a></td>
+					  <td width="51%" align="center" valign="middle">${topic.replyTimeDisplay}</td>
+					</tr>
+				</table></td>
+			  </tr>
+		  </table>
+		  </#list>
+        <table width="95%" height="20"  border="0" align="center" cellpadding="0" cellspacing="0" class="list_bian">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+      <table width="95%" height="3"  border="0" align="center" cellpadding="0" cellspacing="0" class="list_title_2">
+          <tr>
+            <td height="1"></td>
+          </tr>
+      </table>
+     <#setting url_escaping_charset='utf8'>
+      <table width="857" height="62" border="0" align="center" cellpadding="0" cellspacing="0" id="__01">
+          <tr>
+            <td width="13" rowspan="2" align="right" valign="bottom"><img src="images/list_title2_012.gif" width="13" height="62" alt=""/></td>
+            <td height="36" colspan="3" align="left" class="list_title2"><table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFBE1">
+                <tr>
+                  <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="574" height="20" align="left"><div class="pages">${model.pagination}</div></td>
+                      <td width="257" align="right">
+						<form action="?" method="get" name="changePage" id="changePage" onKeyDown="if(event.ctrlKey)submit();">
+							<input name="keywords" type="hidden" id="keywords" value="${keywords?url}">&nbsp;跳转：
+							<input name="page" type="text" class="jumpTo" id="page" size="4" />
+							页
+							<input name="Submit2" type="submit" class="jumpTo_submit" id="Submit2" value=" GO " />
+						</form>
+                      </td>
+                    </tr>
+                  </table></td>
+                </tr>
+            </table></td>
+            <td width="13" rowspan="2" align="left" valign="bottom"><img src="images/list_title2_052.gif" width="13" height="62" alt=""/></td>
+          </tr>
+          <tr>
+            <td width="32" height="26" align="left" valign="top"><img src="images/list_title2_022.gif" width="32" height="26" alt=""/></td>
+            <td width="767" height="26" align="left">
+            </td>
+            <td width="32" height="26" align="right" valign="top"><img src="images/list_title2_042.gif" width="32" height="26" alt=""/></td>
+          </tr>
+      </table>
+	</@base.main>
+</@base.body>

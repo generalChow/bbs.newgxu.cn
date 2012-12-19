@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>无标题文档</title>
+<link href="/css/global.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/mootools.v1.00.js"></script>
+<script type="text/javascript" src="/js/newgxu_dialog.js"></script>
+<script language="javascript">
+var storeItemBuyDialog;
+function showStoreItemBuy(id, number, name) {
+	constructStoreItemBuyDialogDiv(id, number, name);
+	storeItemBuyDialog = new newgxu.HtmlDialog("storeItemBuyDialog", 280, 100);
+}
+function constructStoreItemBuyDialogDiv(id, number, name) {
+	var html ='<form action="/market/official_buy_do.jspa" method="post" >';
+	html += '<table align="center" width="200" border="0" cellspacing="0" cellpadding="0">';
+  	html += '<tr><td width="130">购买：';
+  	html += name;
+ 	html += '</td><td width="70">库存：';
+  	html += number;
+  	html += '</td></tr><tr><td colspan="2">数量：<input name="number" type="text" id="number" size="4" maxlength="6" value="1">';
+	html += '<input name="id" type="hidden" id="id" value="';
+	html += id;
+	html += '"><input type="submit" name="Submit" value="确认" id="Submit">';
+	html += '<input type="reset" onclick="storeItemBuyDialog.close();" value="取消" /></td></tr></table></form>';
+	var dialogDiv = new Element("div");
+	dialogDiv.id = "storeItemBuyDialogForm";
+	dialogDiv.innerHTML = html;
+	$("storeItemBuyDialog").innerHTML = '';
+	dialogDiv.injectInside($("storeItemBuyDialog"));
+}
+</script>
+</head>
+
+<body>
+<div style="display:none;"><div id="storeItemBuyDialog"></div></div>
+<table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" >
+  <tr>
+    <td width="45" rowspan="3" class="center_bg">&nbsp; </td>
+    <td align="right" valign="bottom"> <img src="/images/art_list_02.jpg" width="21" height="30" alt=""/></td>
+    <td height="30" class="list_center_top">&nbsp; </td>
+    <td> <img src="/images/art_list_04.jpg" width="20" height="30" alt=""/></td>
+    <td width="45" rowspan="3" class="center_bg">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="21" align="right" valign="top" class="art_list_left"><img src="/images/art_list_06_1.jpg" width="21" height="244"/> </td>
+    <td align="center" valign="top" class="center_c"><table width="100%" height="40"  border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td align="left" class="xlogo"><img src="/images/home.gif" width="16" height="16"/>&nbsp;<span class="style9"><a href="index.jsp">雨无声论坛</a> -&gt; 个人服务区</span></td>
+        </tr>
+      </table>
+        <table width="100%" height="10"  border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td></td>
+          </tr>
+      </table>
+        <table width="858" height="62" border="0" align="center" cellpadding="0" cellspacing="0" id="__01">
+          <tr>
+            <td width="13" rowspan="2" align="right" valign="bottom"> <img src="/images/list_title1_01.gif" width="13" height="62" alt=""/></td>
+            <td width="109" align="left" valign="bottom"> <img src="/images/list_title1_02.gif" width="32" height="26" alt=""/></td>
+            <td width="690" height="26" align="right">&nbsp;</td>
+            <td width="32" align="right" valign="bottom"> <img src="/images/list_title1_04.gif" width="32" height="26" alt=""/></td>
+            <td width="13" rowspan="2" align="left" valign="bottom"> <img src="/images/list_title1_05.gif" width="13" height="62" alt=""/></td>
+          </tr>
+          <tr>
+            <td height="36" colspan="3" class="list_title"><table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" >
+                <tr>
+                  <td width="61%" class="list_title_left">&nbsp;&nbsp;</td>
+                  <td width="39%" align="right" class="list_title_right">&nbsp;</td>
+                </tr>
+            </table></td>
+          </tr>
+        </table>
+		  <table width="832" height="3"  border="0" align="center" cellpadding="0" cellspacing="0" class="list_bottom">
+          <tr>
+            <td height="1"></td>
+          </tr>
+        </table>
+        <table width="90%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" class="botom_line">
+          <tr>
+            <td align="center" class="right_line"><table width="825" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="150" rowspan="2" bgcolor="#E2F6FA">&nbsp;</td>
+                <td colspan="3"><img src="/images/controlpanel_2.gif" width="675" height="16" alt="" /></td>
+                <td width="1"><img src="/images/spacer.gif" width="1" height="16" alt="" /></td>
+              </tr>
+              <tr>
+                <td width="11" rowspan="7"><img src="/images/controlpanel_3.gif" width="11" height="497" alt="" /></td>
+                <td width="659" rowspan="4" valign="top">
+<div style="width:660px;">
+	<#list model.items as item>
+	<div class="store_item_div">
+      <table width="100%" height="100" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="100" rowspan="2" valign="top"><div align="center"><strong>${item.item.name}</strong><br />
+            ${item.item.picture}</div></td>
+          <td colspan="3" valign="top">${item.item.effect}</td>
+        </tr>
+        <tr>
+          <td width="70" height="30">库存：${item.number}</td>
+          <td width="90">价格：${item.unitPrice}</td>
+          <td width="40"><div align="center">[<a href="javascript:showStoreItemBuy(${item.id}, ${item.number}, '${item.item.name}');">购买</a>]</div></td>
+        </tr>
+      </table>
+    </div>
+	</#list>
+</div>
+				</td>
+                <td width="5" rowspan="7"><img src="/images/controlpanel_5.gif" width="5" height="497" alt="" /></td>
+                <td><img src="/images/spacer.gif" width="1" height="26" alt="" /></td>
+              </tr>
+              <tr>
+                <td><img src="/images/controlpanel_6.gif" width="150" height="9" alt="" /></td>
+                <td><img src="/images/spacer.gif" width="1" height="9" alt="" /></td>
+              </tr>
+              <tr>
+                <td><img src="/images/controlpanel_7.gif" width="150" height="64" alt="" /></td>
+                <td><img src="/images/spacer.gif" width="1" height="64" alt="" /></td>
+              </tr>
+              <tr>
+                <td rowspan="2" align="center" valign="top" bgcolor="#F4FCFD"><table width="87%" height="217" border="0" align="center" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td height="2" colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td width="21%" height="30" align="center"><img src="/images/myprofile.gif" width="20" height="20" /></td>
+                      <td width="79%" align="left"><a href="editUserInfo.jsp" target="content">修改基本资料</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="center" class="under_line"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="center"><img src="/images/computer1.gif" width="20" height="20" /></td>
+                      <td align="left"><a href="editPassword.jsp" target="content">修改登陆密码</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="center" class="under_line"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="center"><img src="/images/computer2.gif" width="20" height="20" /></td>
+                      <td align="left"><a href="editQuestion.jsp" target="content">修改密码保护</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="center" class="under_line"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="center"><img src="/images/faces.gif" width="20" height="20" /></td>
+                      <td align="left"><a href="editFace.jsp" target="content">修改头像</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="center" class="under_line"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="center"><img src="/images/member.gif" width="20" height="20" /></td>
+                      <td align="left"><a href="editUserTitle.jsp" target="content">修改头衔</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="center" class="under_line"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="center"><img src="/images/icon_money.gif" width="20" height="20" /></td>
+                      <td align="left"><a href="Virement.jsp" target="content">转帐中心</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="center" class="under_line"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="center"><img src="/images/mail2.gif" width="20" height="20" /></td>
+                      <td align="left"><a href="shortMessagesList.jsp" target="content">我的信箱</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="center" class="under_line"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="center"><img src="/images/mylover.gif" width="20" height="20" /></td>
+                      <td align="left"><a href="friendsList.jsp" target="content">我的好友</a><a href="myGoods.jsp" target="content"></a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="center" class="under_line"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="center"><img src="/images/tmp2.gif" width="20" height="20" /></td>
+                      <td align="left"><a href="myGoods.jsp" target="content">我的物品</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="center" class="under_line"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="center"><img src="/images/tell1.gif" width="20" height="20" /></td>
+                      <td align="left"><a href="bbshelp/bbshelp.htm" target="_blank">新手帮助</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="center" class="under_line"></td>
+                    </tr>
+                </table></td>
+                <td><img src="/images/spacer.gif" width="1" height="370" alt="" /></td>
+              </tr>
+              <tr>
+                <td rowspan="3"><img src="/images/controlpanel_9.gif" width="653" height="28" alt="" /></td>
+                <td><img src="/images/spacer.gif" width="1" height="14" alt="" /></td>
+              </tr>
+              <tr>
+                <td><img src="/images/controlpanel_10.gif" width="150" height="8" alt="" /></td>
+                <td><img src="/images/spacer.gif" width="1" height="8" alt="" /></td>
+              </tr>
+              <tr>
+                <td><img src="/images/controlpanel_11.gif" width="150" height="6" alt="" /></td>
+                <td><img src="/images/spacer.gif" width="1" height="6" alt="" /></td>
+              </tr>
+            </table></td>
+          </tr>
+      </table>
+          <table width="50" height="3"  border="0" align="center" cellpadding="0" cellspacing="0" class="list_title_2">
+          <tr>
+            <td height="1"><table width="831" height="50" border="0" align="center" cellpadding="0" cellspacing="0" id="__01">
+              <tr>
+                <td width="13" rowspan="2" align="right" valign="bottom"><img src="/images/list_title2_01.gif" width="13" height="62" alt=""/></td>
+                <td height="36" colspan="3" align="left" class="list_title2"><table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td width="4%" class="list_title2_left">&nbsp;</td>
+                      <td width="96%" align="right" class="list_title2_right">&nbsp;
+                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                              <td width="82%" height="20" align="left">&nbsp;</td>
+                              
+                                <td width="18%" align="right"><form id="form1" name="form1" action="?" method="get"></form></td>
+                              
+                            </tr>
+                        </table></td>
+                    </tr>
+                </table></td>
+                <td width="13" rowspan="2" align="left" valign="bottom"><img src="/images/list_title2_05.gif" width="13" height="62" alt=""/></td>
+              </tr>
+              <tr>
+                <td width="32" height="26" align="left" valign="top"><img src="/images/list_title2_02.gif" width="32" height="26" alt=""/></td>
+                <td width="767" height="26">&nbsp;</td>
+                <td width="32" height="26" align="right" valign="top"><img src="/images/list_title2_04.gif" width="32" height="26" alt=""/></td>
+              </tr>
+            </table></td>
+          </tr>
+      </table>
+        </td>
+    <td width="20" align="left" valign="top" class="art_list_right"><img src="/images/art_list_08_1.jpg" width="20" height="244"/> </td>
+  </tr>
+  <tr>
+    <td> <img src="/images/art_list_09.jpg" width="21" height="24" alt=""/></td>
+    <td class="list_bb">&nbsp; </td>
+    <td> <img src="/images/art_list_11.jpg" width="20" height="24" alt=""/></td>
+  </tr>
+</table>
+<table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+ <tr>
+    <td width="44" rowspan="4">&nbsp;</td>
+	 <td height="23" align="left" valign="middle"><img src="/images/wz.gif" width="16" height="18"/></td>
+    <td height="23">位置：<span class="style9"><a href="index.jsp">雨无声论坛</a> -&gt; 个人服务区</span></td>
+     <td width="52" rowspan="4">&nbsp;</td>
+ </tr>
+  <tr>
+    <td width="25" height="23" align="left"><img src="/images/home.gif" width="16" height="16"/> </td>
+    <td width="883" height="23"><a href="http://www.newgxu.cn" class="t">雨无声网站首页</a><a href="%20" class="t"></a></td>
+  </tr>
+  <tr>
+    <td height="23" align="left" valign="top"><img src="/images/pp.gif" width="16" height="15"/></td>
+    <td height="23">在线人数：&nbsp; 总访问： 今日访问：</td>
+  </tr>
+  <tr>
+    <td height="23" align="left" valign="middle"><img src="/images/show2.gif" width="16" height="15"/></td>
+    <td height="23">建议使用：<strong>1024*768分辨率</strong>，16位以上颜色、IE6.0以上版本浏览器</td>
+  </tr>
+</table>
+<table width="1004" height="25" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<table width="1004" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="42"><img src="/images/bottom_bg.gif" width="1004" height="42"/></td>
+  </tr>
+</table>
+<table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#5FA206">
+  <tr>
+    <td width="134" height="53" align="center"><img src="/images/logo.gif" width="88" height="31"/></td>
+    <td width="883" class="style6">关于论坛 | 美术支持 | <span class="b">免责声明</span> | 版权申明 | 合作伙伴 | 友情链接 | 
+
+
+    桂ICP备05001920号 南宁网警备4501200373号  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雨无声 版权所有◎2005-2006 </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>edit_openclose.html.htm</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-calendar.js"></script> 
+	<link rel="stylesheet" type="text/css" href="../css/jquery-calendar.css" /> 
+	
+    
+    
+  </head>
+  
+  <body>
+    
+    <script type="text/javascript">
+    var week = 0;
+    var date = 0;
+    	$(document).ready(function(){
+    		$("#addweek").click(function(){
+    			week++;
+    			$("#week").append(
+    				'<div id="'+'w_'+week+'">'+
+    				'<select  name="week">'+
+    				'<option value="2">星期一</option>'+
+    				'<option value="3">星期二</option>'+
+    				'<option value="4">星期三</option>'+
+    				'<option value="5">星期四</option>'+
+    				'<option value="6">星期五</option>'+
+    				'<option value="7">星期六</option>'+
+    				'<option value="1">星期日</option>'+
+    				'</select>'+
+    				'开'+
+    				'<input type="text" id="calendar3" name="week" maxlength="5" onfocus="$(this).calendar()" style="width: 50px;" readonly/> '+
+    				'关'+
+    				'<input type="text" id="calendar3" maxlength="5" name="week" onfocus="$(this).calendar()" style="width: 50px;" readonly/> '+
+    				'<a href="#" id="del" onclick="delw('+week+')" >删除</a>'+
+    				'</div>'
+    				);
+    		});
+    		
+    		$("#adddate").click(function(){
+    			date++;
+    			$("#date").append(
+    				'<div id="'+'d_'+date+'">'+
+    				'日期'+
+    				'<input type="text" id="calendar2" name="date" maxlength="10" onfocus="$(this).calendar()" style="width: 90px;"  readonly/>'+
+    				'开'+
+    				'<input type="text" id="calendar3" name="date" maxlength="5" onfocus="$(this).calendar()" style="width: 50px;" readonly/> '+
+    				'关'+
+    				'<input type="text" id="calendar3" name="date" maxlength="5" onfocus="$(this).calendar()" style="width: 50px;" readonly/> '+
+    				'<a href="#" id="del" onclick="deld('+date+')" >删除</a>'+
+    				'</div>'
+    			);
+    		});
+    		
+    		$("#addday").click(function(){
+    			$("#day").append(
+    				'<div >'+
+    				'开'+
+    				'<input type="text"  name="day" maxlength="5" onfocus="$(this).calendar()" style="width: 50px;" readonly/> '+
+    				'关'+
+    				'<input type="text" name="day" maxlength="5" onfocus="$(this).calendar()" style="width: 50px;" readonly/> '+
+    				'</div>'
+    			);
+    		});
+    	
+    	});
+    	
+    	
+    	
+    	function delw(id){
+    		$("#w_"+id).remove();
+    	}
+    	
+    	function deld(id){
+    		$("#d_"+id).remove();
+    	}
+    	
+    	
+    </script>
+
+<div style="width: 420px; float: left;">
+    <form action="edit_controlForumTime_do.yws" method="post" target="mainFrame">
+    	
+    	<fieldset style="width: 400px;"><legend>每天正常开关时间<input type="button" id="addday" value="添加"></legend>
+    	<div id="day"></div>
+    		<#list itermDay as day>
+    			开<input type="text" id="calendar9" name="day" maxlength="5" onfocus="$(this).calendar()" value="${day.normalStart}" style="width: 50px;" readonly/> 
+    			关<input type="text" id="calendar3" name="day" maxlength="5" onfocus="$(this).calendar()" value="${day.normalend}" style="width: 50px;" readonly/>
+    		</#list> 
+    	</fieldset>
+    	<p>	
+    
+    	<fieldset style="width: 270px;"><legend>星期<input type="button" id="addweek" value="添加"></legend> 
+
+    		<#list itermWeek as w>
+    			<div id="w_1${w_index}">
+    				<select name="week">
+    				<option value="2" <#if w.week=="2">selected="selected"</#if>>星期一</option>
+    				<option value="3" <#if w.week=="3">selected="selected"</#if>>星期二</option>
+    				<option value="4" <#if w.week=="4">selected="selected"</#if>>星期三</option>
+    				<option value="5" <#if w.week=="5">selected="selected"</#if>>星期四</option>
+    				<option value="6" <#if w.week=="6">selected="selected"</#if>>星期五</option>
+    				<option value="7" <#if w.week=="7">selected="selected"</#if>>星期六</option>
+    				<option value="1" <#if w.week=="1">selected="selected"</#if>>星期日</option>
+    				</select>
+    				开<input type="text" id="calendar3" name="week" maxlength="5" onfocus="$(this).calendar()" value="${w.weekStart}" style="width: 50px;" readonly/> 
+    				关<input type="text" id="calendar3" maxlength="5" name="week" onfocus="$(this).calendar()"  value="${w.weekend}" style="width: 50px;" readonly/> 
+    				<a href="#" id="del" onclick="delw('1${w_index}')" >删除</a>
+    				</div>
+    		</#list>
+    		
+    		<div id="week"></div>
+    		
+ 		</fieldset>
+		<p>		
+			
+		<fieldset style="width: 320px;"><legend>日期<input type="button" id="adddate" value="添加"></legend>
+    		
+    		<#list itermDate as da>
+    		<div id="d_1${da_index}">
+    				日期<input type="text" id="calendar2" name="date" maxlength="10" onfocus="$(this).calendar()" value="${da.date}" style="width: 90px;"  readonly/>
+    				开<input type="text" id="calendar3" name="date" maxlength="5" onfocus="$(this).calendar()"  value="${da.dateStart}"  style="width: 50px;" readonly/> 
+    				关<input type="text" id="calendar3" name="date" maxlength="5" onfocus="$(this).calendar()"  value="${da.dateend}" style="width: 50px;" readonly/>
+    				<a href="#" id="del" onclick="deld('1${da_index}')" >删除</a>
+    				</div>
+    		</#list>
+    		
+    		
+    		<div id="date"></div>
+    	</fieldset>
+		<p>	
+			
+		<input type="submit" value="提交修改">
+    	
+    </form>
+    
+    
+    </div>
+    
+  </body>
+</html>

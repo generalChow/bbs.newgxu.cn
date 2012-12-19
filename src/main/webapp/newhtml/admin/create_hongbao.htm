@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>添加新的红包</title>
+
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+		<meta http-equiv="description" content="this is my page">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+		<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+	</head>
+
+	<body>
+		添加新的红包
+		<br>
+		<form name="form1" method="post" action="manage_hongbao_do.yws">
+			<table>
+				<tr>
+					<td>
+						红包名：
+					</td>
+					<td>
+						<input type="text" name="name">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						红包描述：
+					</td>
+					<td>
+						<input type="text" name="description">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						节日历史：
+					</td>
+					<td>
+						<textarea name="history"></textarea>（文本格式的节日由来）
+					</td>
+				</tr>
+				<tr>
+					<td>
+						节日时间：
+					</td>
+					<td>
+						<input name="time" type="text">(输入格式为数字，例如元旦输入101，情人节输入214，圣诞节输入1225)
+					</td>
+				</tr>
+				<tr>
+					<td>
+						红包类型：
+					</td>
+					<td>
+						<select name="contentType">
+							<#list hongbaoTypes as hongbaoType>
+							<option value="${hongbaoType.id}">
+								${hongbaoType.name}
+							</option>
+							</#list>
+						</select>
+					</td>
+				</tr>
+			   <tr>
+				<td>
+					<input type="submit" name="Submit" value="创　建">
+				</td>
+				</tr>
+			</table>
+		</form>
+		<form action="">
+			<table>
+			<tr>
+				<td width="15%">类型名</td>
+				<td width="15%">经验加成</td>
+				<td width="20%">金钱加成</td>
+				<td width="40%">赠送物品</td>
+				<td width="10%">操作</td>
+			</tr>
+			<#list hongbaoTypes as hongbaoType>
+				<tr>
+					<td width="15%">${hongbaoType.name}</td>
+					<td width="15%">${hongbaoType.exp}</td>
+					<td width="20%">${hongbaoType.money}</td>
+					<td width="40%">
+						<#list hongbaoType.items as item>
+							${item.name} 
+						</#list>
+					</td>
+					<td  width="10%"><a href="del_hongbaoType.yws?id=${hongbaoType.id}" onclick="return confirm('是否确定删除?');"><img src="/image/button_delete.gif" width="17" height="17" border="0"></a></td> 
+				</tr>
+			</#list>
+			</table>
+		</form>
+	</body>
+</html>

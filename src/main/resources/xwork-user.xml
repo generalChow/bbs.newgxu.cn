@@ -1,0 +1,159 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1//EN" 
+"http://www.opensymphony.com/xwork/xwork-1.1.dtd">
+<xwork>
+	<package name="user" namespace="/user" extends="default">
+
+		<!-- 升级中心 -->
+		<action name="upgrade" class="upgrade">
+			<result name="success" type="freemarker">/template/service/upgrade.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<!-- 用户帮助 -->
+		<action name="log" class="upgrade">
+			<result name="success" type="freemarker">/template/bbshelp/bbshelp.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<action name="upgradeDo" class="upgrade" method="submit">
+			<result name="success" type="freemarker">/template/service/upgrade.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		
+		<!-- 更新用户资料 -->
+		<action name="edit_user_info" class="editUserInfo">
+			<result name="success" type="freemarker">/template/service/edit_user_info.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<action name="edit_user_info_do" class="editUserInfo" method="submit">
+			<result name="input" type="freemarker">/template/service/edit_user_info.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		
+		<!-- 修改回复通知-->
+		<action name="edit_user_replyMessage" class="editUserInfo" method="replyMessage">
+			<interceptor-ref name="login" />
+		</action>
+		
+		<!-- 更改密码 -->
+		<action name="edit_password" class="editPassword">
+			<result name="success" type="freemarker">/template/service/edit_password.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<action name="edit_password_do" class="editPassword" method="submit">
+			<result name="input" type="freemarker">/template/service/edit_password.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		
+		<!-- 更改密码保护 -->
+		<action name="edit_question" class="editQuestion">
+			<result name="success" type="freemarker">/template/service/edit_question.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<action name="edit_question_do" class="editQuestion" method="submit">
+			<result name="input" type="freemarker">/template/service/edit_question.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		
+		<!-- 更换头像 -->
+		<action name="edit_face" class="editFace">
+			<result name="success" type="freemarker">/template/service/edit_face.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<action name="edit_face_do" class="editFace" method="submit">
+			<result name="input" type="freemarker">/template/service/edit_face.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		
+		<!-- 更换头衔 -->
+		<action name="edit_title" class="editTitle">
+			<result name="success" type="freemarker">/template/service/edit_title.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<action name="edit_title_do" class="editTitle" method="submit">
+			<result name="input" type="freemarker">/template/service/edit_title.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		
+		<!-- 用户列表 -->
+		<action name="users" class="getUsers">
+			<result name="success" type="freemarker">/template/service/user_list.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		
+		<!-- 用户信息 -->
+		<action name="user_info" class="getUserInfo">
+			<result name="success" type="freemarker">/template/service/user_info.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		
+		<!-- 在线用户列表 -->
+		<action name="online_users" class="getOnlineUsers">
+			<result name="success" type="freemarker">/template/service/online_user_list.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		
+		<!-- 板块在线用户列表 -->
+		<action name="online_forum_users" class="getOnlineUsers" method="forumOnlineUsers">
+			<result name="success" type="freemarker">/template/service/online_user_list.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		
+		<!-- 系统自带头像 -->
+		<action name="face" class="editFace">
+			<result name="success" type="freemarker">/template/service/system_faces.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<!-- 上传用户头像 -->
+        <action name="uploadFace" class="uploadFace">
+            <result name="success" type="freemarker">/template/service/upload_face.htm</result>
+			<interceptor-ref name="login" />
+        </action>
+        
+        <!-- 添加收藏 -->
+        <action name="saveFavoriteTopic" class="saveFavoriteTopic">
+            <result name="success" type="redirect">/user/manageFavoriteTopic.yws</result>
+			<interceptor-ref name="login" />
+        </action>
+        
+        <!-- 收藏管理 -->
+        <action name="manageFavoriteTopic" class="manageFavoriteTopic">
+            <result name="success" type="freemarker">/template/service/myFavoriteTopics.htm</result>
+			<interceptor-ref name="login" />
+        </action>
+        
+        <!-- 删除收藏 -->
+        <action name="delFavoriteTopic" class="delFavoriteTopic">
+            <result name="success" type="redirect">/user/manageFavoriteTopic.yws</result>
+			<interceptor-ref name="login" />
+        </action>
+        
+        <!-- 领红包 -->
+        <action name="recieve_hongbao" class="recieveHongbao">
+            <result name="success" type="freemarker">/template/service/recieveHongbao.htm</result>
+			<interceptor-ref name="login" />
+        </action>
+        
+        <action name="recieve_hongbao_do" class="recieveHongbao" method="doRevicieveHongbao">
+			<interceptor-ref name="login" />
+        </action>
+		<!-- 世界杯球队选择 -->
+	<action name="cupoflife" class="savecupoflifeAction">
+		 <result name="success" type="freemarker">/template/cupoflife.htm</result>
+     </action>
+     <action name="savecupoflife" class="savecupoflifeAction" method="submit">
+          <interceptor-ref name="login" />
+     </action>
+     
+     <!-- 用户上传资源 -->
+     <action name="myupload" class="myUploadAction">
+     	<result name="swfupload" type="freemarker">/template/service/swfupload.htm</result>
+		 <result name="success" type="freemarker">/template/service/myupload.htm</result>
+     </action>
+     
+     <!-- 查看周榜单 @2012-09-22 -->
+     <action name="top_three" class="topThreeAction">
+		 <result type="freemarker">/template/service/top_three_list.htm</result>
+     </action>
+     
+	</package>
+	
+</xwork>

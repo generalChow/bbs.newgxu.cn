@@ -1,0 +1,175 @@
+@charset "utf-8";
+a{
+white-space:nowrap;
+}
+a:link {
+	color: #7A511B;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #7A511B;
+}
+a:hover {
+	text-decoration: underline;
+	color: #7A511B;
+}
+a:active {
+	text-decoration: none;
+	color: #7A511B;
+}
+
+body{
+    margin-top:0px;
+	margin-bottom:0px;
+	color:#7A511B;
+	font-weight:bold;
+	font-size:14px;
+}
+
+.whole {
+	height: 100%;
+	width: 961px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+}
+.topflash {
+	height:398px;
+	width: 960px;
+}
+.left {
+	float: left;
+	height: 879px;
+	width: 158px;
+}
+.location {
+	background-image: url(../images-self/location.jpg);
+	height: 81px;
+	width: 803px;
+}
+.nav {
+	background-image: url(../images-self/nav.jpg);
+	float: left;
+	height: 632px;
+	width: 167px;
+}
+.main {
+	background-image: url(../images-self/main.jpg);
+	float: left;
+	height: 632px;
+	width: 592px;
+}
+.right {
+	background-image: url(../images-self/right.jpg);
+	float: left;
+	height: 632px;
+	width: 44px;
+}
+.foot {
+	background-image: url(../images-self/foot.jpg);
+	height: 167px;
+	width: 803px;
+}
+
+.dropdownMenu, .dropdownMenu ul {
+	padding: 0px;
+	margin:0px;
+	list-style: none;
+	border: 0px;
+	color: #996600;
+}
+
+.dropdownMenu a {
+	float: left;
+	display: block;
+	height: 20px;
+	line-height: 20px;
+	border: 0px;
+}
+
+.dropdownMenu a:hover {
+	background-color: #C8E18B;
+	text-decoration: none;
+	border: 0px;
+}
+
+.dropdownMenu li {
+	float: left;
+	border: 0;
+}
+.dropdownMenu li ul {
+	position:absolute;
+	width: 100px;
+	background: #AED357;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #CCCCCC;
+}
+
+.dropdownMenu li ul li {
+	width: 100px;
+	border: 0px;
+	border-left-width: 1px;
+	border-right-width: 1px;
+	border-style: solid;
+	border-color: #CCCCCC;
+}
+
+.dropdownMenu li ul ul {
+	position: absolute;
+	margin-top: -30px;
+	margin-left: 100px;
+	background: #AED357;
+	width: 100px;
+}
+<!--[if IE 7] -->
+#dropdownMenu li ul ul {
+	margin-left: 100px;
+}
+<!--[endif]-->
+	
+.store_item_div {width:310px; height:120px; border:1px #999 solid; padding:5px;float:left; margin-left:5px; margin-bottom:5px;font-size:10px;}
+.store_item_div a{
+	float:left;
+	}
+.my_item_div {width:310px; height:120px; border:1px #999 solid; padding:5px;float:left; margin-left:5px; margin-bottom:5px;}
+.freeMarket_item_div {width:310px; height:130px; border:1px #999 solid; padding:5px;float:left; margin-left:5px; margin-bottom:5px;}
+
+#storeItemBuyDialog {
+	height: 60px;
+	width: 220px;
+	position: relative;
+	padding:10px;
+	background-color: #E8FFB0;
+	border: 1px solid #628C00;
+}
+#itemUseDialog {
+	background: #000000;
+	height: 60px;
+	width: 270px;
+	position: relative;
+	padding:10px;
+}
+#itemComplimentAwayDialog {
+	background: #000000;
+	height: 60px;
+	width: 270px;
+	position: relative;
+	padding:10px;
+}
+#itemSellDialog {
+	background: #000000;
+	height: 60px;
+	width: 270px;
+	position: relative;
+	padding:10px;
+}
+#freeMarketItemBuyDialog {
+	background: #000000;
+	height: 60px;
+	width: 270px;
+	position: relative;
+	padding:10px;
+}

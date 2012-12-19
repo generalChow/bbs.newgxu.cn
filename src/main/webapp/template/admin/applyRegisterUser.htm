@@ -1,0 +1,94 @@
+<#setting number_format="0">
+<form name="form1" method="post" action="verifyRegisterUser_do.yws" onsubmit="return validateCallback(this, dialogAjaxDone);">
+<table class="table" width="100%">
+	<tr>
+		<td width="100">
+			ID号
+		</td>
+		<td>
+			${id}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			登录账号
+		</td>
+		<td>
+			${username}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			昵称
+		</td>
+		<td>
+			${nick}
+		</td>
+	</tr> 
+	<tr>
+		<td>
+			性别
+		</td>
+		<#if sex == false >
+        <td>boy</td>
+        <#else>
+        <td>girl</td>
+        </#if>
+	</tr>
+	<tr>
+		<td>
+			email
+		</td>
+		<td>
+			${email}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			身份证号
+		</td>
+		<td>
+			${idcode}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			用户类型
+		</td>
+		<td>
+			<#switch registerType> 
+			<#case 1>本科<#break> 
+			<#case 2>研博/成教<#break> 
+			<#case 3>教师<#break> 
+			<#case 4>校外<#break> 
+			<#case 0>未知<#break> 
+			</#switch>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			用户状态
+		</td>
+		<td><select name="accountStatus">
+        	 <#if accountStatus==1><option value = 1 selected="selected">正常</option><#else><option value = 1>正常</option></#if>
+			 <#if accountStatus==2><option value = 2 selected="selected">禁止登录</option><#else><option value = 2 >禁止登录</option></#if>
+			 <#if accountStatus==3><option value = 3 selected="selected">资料待审</option><#else><option value = 3>资料待审</option></#if>
+			 <#if accountStatus==4><option value = 4 selected="selected">未通过</option><#else><option value = 4 >未通过</option></#if>
+        </select></td>
+    </tr>
+	<tr>
+		<td>
+			审查意见
+		</td>
+		<td>
+			<textarea name="remark"></textarea>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center" style="text-align:center;">
+			<input type="submit" name="Submit" value="提　交">
+			<input name="id" type="hidden" value="${id}">
+		</td>
+	</tr>
+</table> 
+</form>

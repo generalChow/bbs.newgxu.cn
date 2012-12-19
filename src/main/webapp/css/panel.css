@@ -1,0 +1,32 @@
+body,table,td {
+	font: normal 62.5% "ËÎÌו";
+	font-size: 12px;
+	color: #333333;
+	background-color: #FFFBE0;
+}
+
+b,strong,th {color: #666666;}
+
+a:link { color: #407F00; text-decoration: none}
+
+a:visited { color: #407F00; text-decoration: none}
+
+a:hover { color: #996600; text-decoration: underline;}
+
+.submit_style {
+	font-family: "ËÎÌו";
+	font-size: 9pt;
+	border: 1px solid #333333;
+	vertical-align: bottom;
+}
+
+.uline {
+	background-image: url(/images/dotline.gif);
+	background-repeat: repeat-x;
+	background-position: bottom;
+}
+.uline2 {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #DBDBDB;
+}

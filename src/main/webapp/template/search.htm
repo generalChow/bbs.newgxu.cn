@@ -1,0 +1,139 @@
+<@base.header title=" 检索中心">
+  <script type="text/javascript" src="/js/newgxu_dialog.js"></script>
+  <script type="text/javascript" src="/js/newgxu_ubb.js"></script>
+  <script type="text/javascript" src="/js/newgxu_upload.js"></script>
+  <script type="text/JavaScript">
+searchForm.hours.disabled = false;
+searchForm.keywords.disabled = false;
+function check(n) {
+	if (n == 0) {
+		searchForm.hours.disabled = true;
+		searchForm.keywords.disabled = false;
+		if (searchForm.keywords.value == '无需填写') {
+			searchForm.keywords.value = '';
+		}
+	} else if(n == 4 || n == 5 || n==6) {
+		searchForm.hours.disabled = true;
+		searchForm.keywords.disabled = true;
+		searchForm.keywords.value = '无需填写';
+	} else {
+		searchForm.hours.disabled = false;
+		searchForm.keywords.disabled = true;
+		searchForm.keywords.value = '无需填写';
+	}
+}
+</script>
+</@base.header>
+<@base.body location="检索中心">
+  <div style="display:none;"><div id="ubbDialog"></div><div id="submitWaiting"></div></div>
+  	<@base.main location="检索中心">
+		<table width="95%" height="20"  border="0" align="center" cellpadding="0" cellspacing="0" class="list_bian">
+          <tr>
+            <td>
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td><table width="857" height="62" border="0" align="center" cellpadding="0" cellspacing="0" id="__01">
+                      <tr>
+                        <td width="13" rowspan="2" align="right" valign="bottom"><img src="images/list_title1_012.gif" width="13" height="62" alt="" /></td>
+                        <td width="109" align="left" valign="bottom"><img src="images/list_title1_022.gif" width="32" height="26" alt="" /></td>
+                        <td width="690" height="26">&nbsp;</td>
+                        <td width="32" align="right" valign="bottom"><img src="images/list_title1_042.gif" width="32" height="26" alt="" /></td>
+                        <td width="13" rowspan="2" align="left" valign="bottom"><img src="images/list_title1_052.gif" width="13" height="62" alt="" /></td>
+                      </tr>
+                      <tr>
+                        <td height="36" colspan="3" class="list_title"><table width="100%" height="36"  border="0" cellpadding="0" cellspacing="0" class="botom_line">
+                            <tr>
+                              <td align="center"><strong>检索中心</strong></td>
+                            </tr>
+                        </table></td>
+                      </tr>
+                  </table></td>
+                </tr>
+                <tr>
+                  <td><table width="97%" height="20"  border="0" align="center" cellpadding="0" cellspacing="0" class="list_bian">
+                      <tr>
+                        <td>
+                          <form action="search_do.yws" method="get" name="searchForm" id="searchForm">
+                            <table align="center" cellpadding="5" cellspacing="1" class="tableBorder1">
+                              <tr class="trBorder2">
+                                <td><div align="center">
+                                    <table width="600" border="0" align="center" cellpadding="1" cellspacing="0">
+                                      <tr>
+                                        <td width="66" height="28">搜索类型：</td>
+                                        <td width="530" align="left">
+                                        	<input name="type" type="radio" value="0" id="r0" checked="checked" onClick="check(0)" />
+                                            <label for="r0">按标题</label>
+                                            <input type="radio" name="type" value="1" id="r1" onClick="check(0)" />
+                                            <label for="r1">按作者</label>
+                                            <input type="radio" name="type" value="2" id="r2" onClick="check(0)" />
+                                            <label for="r2">按回复人</label>
+                                            <input type="radio" name="type" value="3" id="r3" onClick="check(4)" />
+                                            <label for="r3">按回复时间</label>
+                                            <input type="radio" name="type" value="4" id="r4" onClick="check(6)"/>
+                                  			<label for="r4">按发表时间</label>
+                                      </tr>
+                                      <tr>
+                                        <td width="66" height="28">关 键 词：</td>
+                                        <td width="530" align="left"><input name="keywords" type="text" class="green-border" id="keywords" size="30" />
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td width="66" height="28">选择时间：</td>
+                                        <td width="530" align="left">
+                                        <select name="hours" class="style7" id="hours">
+                                            <option value="" selected="selected">请选择</option>
+                                            <option value="24">24小时内</option>
+                                            <option value="168">一周之内</option>
+                                            <option value="720">一个月内</option>
+                                            <option value="8760">一年之内</option>
+                                          </select>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td width="66" height="28">选择论坛：</td>
+                                        <td width="530" align="left"><select name="forumId" class="style7" id="forumId" >
+                                            <option selected="selected" value="0">选择论坛</option>
+											  <#list model.areas as area>
+												  <#list area.forums as forum>
+													<option value="${forum.id}">&nbsp;├${forum.name}</option>
+												  </#list> 
+											  </#list>
+                                        </select></td>
+                                      </tr>
+                                    </table>
+                                </div></td>
+                              </tr>
+                              <tr class="trBorder2">
+                                <td><div align="center">
+                                    <input name="tj" type="submit" class="submit_style" id="tj" value=" 确 定 " />&nbsp;&nbsp;
+                            		<input name="Button2" type="button" class="submit_style" onClick="history.go(-1)" value="返回前页" />
+                                </div></td>
+                              </tr>
+                            </table>
+                        </form></td>
+                      </tr>
+                  </table></td>
+                </tr>
+                <tr>
+                  <td><table width="857" height="62" border="0" align="center" cellpadding="0" cellspacing="0" id="__01">
+                      <tr>
+                        <td width="13" rowspan="2" align="right" valign="bottom"><img src="images/list_title2_012.gif" width="13" height="62" alt="" /></td>
+                        <td height="36" colspan="3" align="left" class="list_title2"><table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td>&nbsp;</td>
+                            </tr>
+                        </table></td>
+                        <td width="13" rowspan="2" align="left" valign="bottom"><img src="images/list_title2_052.gif" width="13" height="62" alt="" /></td>
+                      </tr>
+                      <tr>
+                        <td width="32" height="26" align="left" valign="top"><img src="images/list_title2_022.gif" width="32" height="26" alt="" /></td>
+                        <td width="767" height="26">&nbsp;</td>
+                        <td width="32" height="26" align="right" valign="top"><img src="images/list_title2_042.gif" width="32" height="26" alt="" /></td>
+                      </tr>
+                  </table></td>
+                </tr>
+            </table></td>
+          </tr>
+        </table>
+	</@base.main>
+</@base.body> 

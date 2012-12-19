@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<HEAD>
+<TITLE>雨无声论坛-操作成功！</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<link href="/css/default.css" rel="stylesheet" type="text/css"/>
+<meta http-equiv="refresh" content="3;URL=${model.url}"/>
+<script language="javascript">
+function goto() {
+	location = '${model.url}';
+}
+setTimeout("goto()", 3000);
+</script>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF LEFTMARGIN=0 TOPMARGIN=30 MARGINWIDTH=0 MARGINHEIGHT=0>
+<TABLE WIDTH=525 BORDER=0 align="center" CELLPADDING=0 CELLSPACING=0>
+  <TR>
+    <TD><IMG SRC="images/success_1.gif" WIDTH=525 HEIGHT=38></TD>
+  </TR>
+  <TR>
+    <TD background="images/success_2.gif">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD background="images/success_2.gif"><table width="98%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="4%" rowspan="4">&nbsp;</td>
+          <td width="45%" rowspan="4"><img src="images/ok.gif" width="235" height="161"></td>
+          <td width="48%" height="15" class="uline"><font color=#0000FF>自动跳转中.......</font></td>
+          <td width="3%" rowspan="4">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="4" valign="top"></td>
+        </tr>
+        <tr>
+          <td height="120" align="center">
+		  <#list model.messages as message>
+		  ${message}<br /><br />
+		  </#list>
+		  </td>
+        </tr>
+        <tr>
+          <td height="19" align="center"> [<a href='javascript:history.go(-1)'>返回前页</a>]&nbsp;&nbsp;&nbsp;[<a href=index.yws target='_parent'>返回首页</a>]</td>
+        </tr>
+      </table></TD>
+  </TR>
+  <TR>
+    <TD><IMG SRC="images/success_4.gif" WIDTH=525 HEIGHT=52></TD>
+  </TR>
+</TABLE>
+</BODY>
+</HTML>

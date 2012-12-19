@@ -1,0 +1,40 @@
+<div class="pageHeader">
+	&nbsp;&nbsp;&nbsp;<a class="BUTTON2" href="create_item.yws"  height="480" target="dialog" rel="item_create" fresh="false">创建物品</a>
+</div>
+<div class="pageContent">
+	<table class="table" width="100%" layoutH="70">
+		<thead>
+			<tr>
+				<th width="3%">ID号</th>
+				<th width="10%">物品名</th>
+				<th width="5%">商品类型</th>
+				<th width="8%">目标体力影响</th>
+				<th width="9%">目标badboy值影响</th>
+				<th width="8%">目标经验影响</th>
+				<th width="8%">自身体力影响</th>
+				<th width="8%">自身金钱影响</th>
+				<th width="5%" title="如果这个值不为0，表示会一定概率得到相应id号的物品">制造物品</th>
+				<th width="3%" title="当这个物品是制造材料时，这个就是成功生产的概率，为0就是100%">概率</th>
+				<th>效果说明</th>
+				<th width="3%">编辑</th>
+			</tr>
+		</thead>
+		<tbody>
+      <#list items as item>
+      <tr>
+        <td>${item.id}</td>
+        <td  align="center">${item.picture}<br />${item.name}</td>
+        <td>${item.type.name}</td>
+        <td>${item.objectPower}</td>
+        <td>${item.objectBadboy}</td>
+        <td>${item.objectExp}</td>
+        <td>${item.selfPower}</td>
+        <td>${item.selfMoney}</td>
+		<td>${item.returnId}</td>
+		<td>${item.probability}</td>
+		<td>${item.effect?default('')}</td>
+        <td><a href="edit_item.yws?id=${item.id}" target="dialog" fresh="false" height="480" title="[编辑]${item.name}" rel="item_${item.id}"><img src="/image/button_edit.gif" width="17" height="17" border="0"></a></td>
+      </tr>
+	</#list>
+	</tbody>
+    </table>

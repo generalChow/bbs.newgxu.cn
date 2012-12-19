@@ -1,0 +1,21 @@
+
+.shadow {filter:shadow(color=#ACCE6E;direction=130;)}
+
+.area {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+b,strong,th {color: #4D9800;}
+
+/* structure */
+.index-container {
+	background: #FFFFFF url('/image/center_bg.jpg') repeat-x;
+	background-position: top;
+	height: 415px;
+}
+
+/* footer */
+.footer_info {
+	background: #FFFFFF;
+}

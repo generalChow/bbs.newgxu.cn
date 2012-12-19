@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>雨无声论坛4.0->发送短消息</title>
+<link href="/css/three1.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/js/mootools.v1.00.js"></script>
+	<script type="text/javascript" src="/js/newgxu_common.js"></script>
+	<script type="text/javascript" src="/js/newgxu_dropdownMenu.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_dialog.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_ubb.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_upload.js"></script>
+</head>
+
+<body>
+<div class="whole">
+  <div class="topflash">
+  <object type="application/x-shockwave-flash" width="960" height="398" data="/flash/day.swf">
+    <param name="movie" value="/flash/day.swf" />
+   </object>
+  </div>
+  <div class="place">
+  			<table  height="35"  border="0" cellpadding="0" cellspacing="0" style="margin-top:30px">
+				<tr>
+				  <td align="left" class="xlogo">
+					<div style="width:384px;">
+						<div style="float:left;margin-left:20px;"><img src="/images/home.gif" width="16" height="16"/>&nbsp;</div>
+					    <ul id="dropdownMenu" class="dropdownMenu">
+								<li><a href="/main.yws">雨无声社区</a>
+	  <ul>
+		<li><a href="/index.yws">雨无声论坛</a></li>
+		<li><a href="/user/upgrade.yws">个人服务区</a></li>
+		<li><a href="/bank/index.yws">社区银行</a></li>
+		<li><a href="/market/official.yws">商业中心</a></li>
+	  </ul>
+	</li>
+							</ul>
+							<script language="javascript">new newgxu.DropdownMenu($('dropdownMenu'));</script>
+					</div>
+			      </td>
+				</tr>
+			  </table>
+  </div>
+  <div class="logo">
+  
+  
+  </div>
+  <div class="login_form">
+     <!-- 这里是登录表单 -->
+     <form id="form1" name="form1" method="post" action=""  style="width:150px;  margin-left:30px; margin-top:18px; ">
+        <input type="text" name="username" id="username" style=" width:150px; background-color:transparent; border:none; " />
+        <input type="password" name="password" id="password" style="margin-top:3px; width:150px; background-color:transparent;border:none;"/>
+        <input type="text" name="check" id="check" style="margin-top:5px; width:70px; background-color:transparent;border:none;"  />
+     </form>
+  </div>
+  <div class="img_1">
+  </div>
+    <div class="logan">
+  </div>
+<div class="stat_login">
+    <div class="login"><img src="images_f/login.jpg" width="242" height="20" border="0" usemap="#Map" />
+<map name="Map" id="Map">
+<area shape="rect" coords="137,5,178,19" href="#" />
+<area shape="rect" coords="185,4,225,20" href="#" /></map>
+    </div>
+    <div class="stat">
+    </div>
+  </div>
+  <div class="innermain">
+    <div style="float: left;width:60px;">
+    </div>
+    <div class="main">
+    <div>
+   <form action="send_message_do.yws" method="post" name="frmAnnounce" onKeyDown="if(event.ctrlKey &amp;&amp; event.keyCode==13)this.submit()">
+  <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td height="25" colspan="3" align="center"><strong>发送短消息</strong><br />${validMsg}</td>
+    </tr>
+    <tr>
+      <td colspan="3"><table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#64B300"  style="border-collapse:collapse">
+          <tr>
+            <td width="20%" height="25" rowspan="2" align="center">接收人昵称：</td>
+            <td width="80%" align="left"><textarea name="users" cols="60" rows="3" class="long_input2" id="users">${users?default("")}</textarea>            </td>
+            </tr>
+          <tr>
+            <td height="25" align="left">可以同时给多个人发送短信息，请用<span style="color:#FF0000">“，”</span>或<span style="color:#FF0000">回车</span>分开</td>
+          </tr>
+          <tr>
+            <td width="20%" height="25" align="center">标&nbsp;题：</td>
+            <td width="80%"><table border="0" align="left" cellpadding="0">
+              <tr>
+                <td align="left">
+                    <input name="title" type="text" id="title" value="${title?default("")}" size="40" maxlength="30" />				</td>
+                <td align="left">&nbsp;</td>
+              </tr>
+            </table></td>
+            </tr>
+          <tr>
+            <td height="12" align="center">心&nbsp;情：<br />
+            可当UBB表情</td>
+            <td align="left"><table border="0" cellspacing="0">
+                <tr>
+                  <td height="10"><input name="face" type="radio" value="1" checked="checked" />
+                      <a href="javascript:faceAdd('[face21]')"><img src="/images/face/1.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="2" />
+                      <a href="javascript:faceAdd('[face22]')"><img src="/images/face/2.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="3" />
+                      <a href="javascript:faceAdd('[face23]')"><img src="/images/face/3.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="4" />
+                      <a href="javascript:faceAdd('[face24]')"><img src="/images/face/4.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="5" />
+                      <a href="javascript:faceAdd('[face25]')"><img src="/images/face/5.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="32" />
+                      <a href="javascript:faceAdd('[face52]')"><img src="/images/face/32.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="26" />
+                      <a href="javascript:faceAdd('[face56]')"><img src="/images/face/26.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="8" />
+                      <a href="javascript:faceAdd('[face28]')"><img src="/images/face/8.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="9" />
+                      <a href="javascript:faceAdd('[face29]')"><img src="/images/face/9.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="10" />
+                      <a href="javascript:faceAdd('[face30]')"><img src="/images/face/10.gif" width="20" height="20" border="0" /></a></td>
+                  </tr>
+                <tr>
+                  <td height="10"><input type="radio" name="face" value="11" />
+                      <a href="javascript:faceAdd('[face31]')"><img src="/images/face/11.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="12" />
+                      <a href="javascript:faceAdd('[face32]')"><img src="/images/face/12.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="13" />
+                      <a href="javascript:faceAdd('[face46]')"><img src="/images/face/13.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="38" />
+                      <a href="javascript:faceAdd('[face58]')"><img src="/images/face/38.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="15" />
+                      <a href="javascript:faceAdd('[face35]')"><img src="/images/face/15.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="16" />
+                      <a href="javascript:faceAdd('[face36]')"><img src="/images/face/16.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="21" />
+                    <a href="javascript:faceAdd('[face41]')"><img src="/images/face/21.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="18" />
+                      <a href="javascript:faceAdd('[face38]')"><img src="/images/face/18.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="27" />
+                    <a href="javascript:faceAdd('[face47]')"><img src="/images/face/27.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="20" />
+                      <a href="javascript:faceAdd('[face40]')"><img src="/images/face/20.gif" width="20" height="20" border="0" /></a></td>
+                  </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td height="25" align="center">UBB表情</td>
+            <td><table width="98%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="5%" align="center"><a href="javascript:faceAdd('[em01]')"><img src="/images/shortMessage/em01.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:faceAdd('[em02]')"><img src="/images/shortMessage/em02.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:faceAdd('[em03]')"><img src="/images/shortMessage/em03.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:faceAdd('[em04]')"><img src="/images/shortMessage/em04.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:faceAdd('[em05]')"><img src="/images/shortMessage/em05.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:faceAdd('[em06]')"><img src="/images/shortMessage/em06.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:faceAdd('[em07]')"><img src="/images/shortMessage/em07.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:faceAdd('[em08]')"><img src="/images/shortMessage/em08.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:faceAdd('[em09]')"><img src="/images/shortMessage/em09.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:faceAdd('[em10]')"><img src="/images/shortMessage/em10.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:faceAdd('[em11]')"><img src="/images/shortMessage/em11.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:faceAdd('[em12]')"><img src="/images/shortMessage/em12.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:faceAdd('[em13]')"><img src="/images/shortMessage/em13.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:faceAdd('[em14]')"><img src="/images/shortMessage/em14.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:faceAdd('[em15]')"><img src="/images/shortMessage/em15.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:faceAdd('[em16]')"><img src="/images/shortMessage/em16.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="6%" align="center"><a href="javascript:faceAdd('[em34]')"><img src="/images/shortMessage/em34.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="7%" align="left">更多...</td>
+                </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td align="center" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td align="center"><br />
+                    内&nbsp;容：</td>
+                </tr>
+                <tr>
+                  <td align="center">最多500字<br />
+                    UBB状态<br />
+                    ON</td>
+                </tr>
+            </table></td>
+            <td align="left"><table width="477" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="71%" height="180"><textarea name="content" cols="40" rows="10" id="content">${content?default("")}</textarea></td>
+                  <td width="29%" align="center"><table height="0%" border="0" align="left" cellspacing="0">
+                      <tr>
+                        <td height="46%"><a href="javascript:faceAdd('[face1]')"><img src="/images/face/face1.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('[face2]')"><img src="/images/face/face2.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('[face3]')"><img src="/images/face/face3.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('[face4]')"><img src="/images/face/face4.gif" border="0" /></a></td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td height="27%"><a href="javascript:faceAdd('[face7]')"><img src="/images/face/face7.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('[face8]')"><img src="/images/face/face8.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('[face13]')"><img src="/images/face/face13.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('[face14]')"><img src="/images/face/face14.gif" border="0" /></a></td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td height="13%"><a href="javascript:faceAdd('[face11]')"><img src="/images/face/face11.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('[face12]')"><img src="/images/face/face12.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('[face9]')"><img src="/images/face/face9.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('[face10]')"><img src="/images/face/face10.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('[face19]')"></a><a href="javascript:faceAdd('[face18]')"></a></td>
+                      </tr>
+                      <tr>
+                        <td height="14%"><a href="javascript:faceAdd('[face5]')"><img src="/images/face/face5.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('[face15]')"><img src="/images/face/face15.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('[face16]')"><img src="/images/face/face16.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('[face6]')"><img src="/images/face/face6.gif" border="0" /></a></td>
+                        <td>&nbsp;</td>
+                      </tr>
+                  </table></td>
+                </tr>
+            </table></td>
+          </tr><tr>
+            <td width="20%" height="25" align="center">&nbsp;</td>
+            <td width="80%" align="left"><input name="track" type="checkbox" id="track" value="1" />
+				<label for="track">发送后保存到已发送</label>&nbsp;&nbsp;
+  				<input name="draft" type="checkbox" id="draft" value="1" />
+				<label for="draft">只保存到草稿箱</label></td>
+          </tr>
+          <tr>
+            <td height="25" colspan="2" align="center">
+              <input name="smid" type="hidden" id="smid" value="${smid}" />
+              <input name="Submit" type="submit" class="newtopic_submit" value=" 发 送 " />
+              &nbsp;
+            <input name="Submit2" type="reset" class="newtopic_submit" value=" 清 除 " /></td>
+          </tr>
+      </table></td>
+    </tr>
+  </table>
+			<script language="javascript">
+				initUbb();
+			</script>
+</form>
+    </div>
+    </div>
+    <div style="float: left;width:60px;">
+    </div>
+  </div>
+  <div class="img_2">
+   <table border="0" style="margin-left:20px;margin-top:3px">
+              <tr>
+                <td height="23">	
+					<div style="width:410px;">
+						<div style="float:left;"><img src="/images/wz.gif" width="16" height="18"/> 位置：&nbsp;</div>
+ <ul id="dropdownMenu_foot" class="dropdownMenu">
+								<li><a href="/main.yws">雨无声社区</a>
+	  <ul>
+		<li><a href="/index.yws">雨无声论坛</a></li>
+		<li><a href="/user/upgrade.yws">个人服务区</a></li>
+		<li><a href="/bank/index.yws">社区银行</a></li>
+		<li><a href="/market/official.yws">商业中心</a></li>
+	  </ul>
+	</li>
+							</ul>
+							<script language="javascript">new newgxu.DropdownMenu($('dropdownMenu_foot'));</script>
+					</div>
+				</td>
+            </tr>
+              <tr>
+                <td height="23"><img src="/images/home.gif" width="16" height="16"/> <a href="http://www.newgxu.cn" class="t">雨无声网站首页</a> </td>
+              </tr>
+              <tr>
+                <td height="23"><img src="/images/pp.gif" width="16" height="15"/> 在线人数：${onlineStatus.total} 总访问： ${status.totalHicount}&nbsp;今日访问：${status.todayHicount}</td>
+              </tr>
+              <tr>
+                <td height="23"><img src="/images/show2.gif" width="16" height="15"/> 建议使用：1024*768分辨率，16位以上颜色、IE6.0以上版本浏览器</td>
+              </tr>
+          </table>
+  </div>
+  <div class="img_3"></div>
+  <div class="img_4"></div>
+  <div class="foot">
+   </div>
+   <div  style="height:54px; width:900px;margin-top:-55px;margin-left:35px;">
+      <table cellpadding="0" cellspacing="0" height="54" border="0">
+            <tr>
+              <td  align="left" valign="top">关于论坛 | 美术支持 | 免责声明 | 版权申明 | 合作伙伴 | 友情链接 |	桂ICP备05001920号 南宁网警备4501200373号  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雨无声 版权所有◎2003-2007</td>
+            </tr>
+      </table>
+  </div>
+</div>
+</body>
+</html>

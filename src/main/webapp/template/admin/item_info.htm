@@ -1,0 +1,30 @@
+<table class="table" width="720">
+		<thead>
+			<tr>
+				<th width="30">ID号</th>
+				<th width="100">物品名</th>
+				<th width="80">商品类型</th>
+				<th width="100">目标体力影响</th>
+				<th width="100">目标badboy值影响</th>
+				<th width="100">目标经验影响</th>
+				<th width="100">自身体力影响</th>
+				<th width="100">自身金钱影响</th>
+			</tr>
+		</thead>
+		<tbody>
+      <tr align="center">
+        <td align="left">${id}</td>
+        <td><a href="item.yws?id=${id}">${name}</a></td>
+        <td><#list itemTypes as type>
+				<#if type.id == model.item_type_id>
+			  	${type.name}
+			  </#if>
+			 </#list></td>
+        <td>${objectPower}</td>
+        <td>${objectBadboy}</td>
+        <td>${objectExp}</td>
+        <td>${selfPower}</td>
+        <td>${selfMoney}</td>
+      </tr>
+	 </tbody>
+ </table>

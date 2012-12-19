@@ -1,0 +1,24 @@
+    荣誉称号概览 . <br>
+	<table>
+      <tr>
+        <td>ID号</td>
+        <td>荣誉称号</td>
+        <td>荣誉类型</td>
+        <td>编辑</td>
+        <td>删除</td>
+      </tr>
+      <#setting number_format="0">
+      <#list honors as honor>
+      <tr align="center">
+        <td align="left">${honor.id}</td>
+        <td>${honor.name}</td>
+		<td><#switch honor.type>
+				<#case 0>系统类<#break>
+				<#case 1>优秀版主<#break>
+				<#case 2>论坛勋章<#break>
+			 </#switch></td>
+        <td><a href="edit_honor.yws?id=${honor.id}"><img src="/image/button_edit.gif" width="17" height="17" border="0"></a></td>
+        <td><a href="del_honor.yws?id=${honor.id}"  onclick="return confirm('是否确定删除?');"><img src="/image/button_delete.gif" width="17" height="17" border="0"></a></td> 
+      </tr>
+	</#list>
+    </table>

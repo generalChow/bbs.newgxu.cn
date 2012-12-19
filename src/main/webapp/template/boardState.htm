@@ -1,0 +1,100 @@
+<@base.header title="论坛： ${model.area.name}-- 在线人数图例"></@base.header>
+<@base.body location="${model.area.name}&nbsp;&nbsp;${model.description}">
+<@base.main location="${model.area.name}&nbsp;&nbsp;${model.description}">
+  <table width="857" height="62" border="0" align="center" cellpadding="0" cellspacing="0" id="__01">
+           <tr>
+            <td width="13" rowspan="2" align="right" valign="bottom"><img src="/images/list_title1_01.gif" width="13" height="62" alt=""/></td>
+            <td width="109" align="left" valign="bottom"><img src="/images/list_title1_02.gif" width="32" height="26" alt=""/></td>
+            <td width="690" height="26" align="right">&nbsp;</td>
+            <td width="32" align="right" valign="bottom"><img src="/images/list_title1_04.gif" width="32" height="26" alt=""/></td>
+            <td width="13" rowspan="2" align="left" valign="bottom"><img src="/images/list_title1_05.gif" width="13" height="62" alt=""/></td>
+          </tr>
+          <tr>
+            <td height="36" colspan="3" align="center" class="list_title"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td height="20" align="center"><strong><a href="boardState.yws?action=todayTopic&&areaID=${model.areaID}">今日帖数图例</a></strong></td>
+                <td height="20" align="center"><a href="boardState.yws?action=totalTopic&&areaID=${model.areaID}"><strong>主题数图例</strong></a></td>
+                <td height="20" align="center"><a href="boardState.yws?action=totalReply&&areaID=${model.areaID}"><strong>总回帖数图例</strong></a></td>
+                <td height="20" align="center"><a href="boardState.yws?action=nowOnline&&areaID=${model.areaID}"><strong>在线图例</strong></a></td>
+                <td height="20" align="center"><a href="/user/online_users.yws" target="_blank"><strong>在线情况</strong></a></td>
+                <td height="20" align="center"><a href="boardState.yws?action=groupOnline&&areaID=${model.areaID}"><strong>用户组在线图例</strong></a></td>
+              </tr>
+              <tr>
+              <#if model.action ="nowOnline">
+                <td height="20" colspan="6" align="center" class="style9">目前 ${model.area.name} 共：${model.totalNum}人在线，其中在线用户：${model.areaUserOnline}人，游客：${model.areaVisitOnline}人</td>
+              <#elseif model.action = "todayTopic">
+                 <td height="20" colspan="6" align="center" class="style9">目前 ${model.area.name} 今日发帖数${model.totalNum}</td>
+              <#elseif model.action = "totalTopic">
+                 <td height="20" colspan="6" align="center" class="style9">目前 ${model.area.name} 总主题数${model.totalNum}</td>
+              <#elseif model.action = "totalReply">
+                 <td height="20" colspan="6" align="center" class="style9">目前 ${model.area.name} 总帖子数${model.totalNum}</td>
+              <#else>
+                 <td height="20" colspan="6" align="center" class="style9">目前 ${model.area.name} 共：${model.totalNum}人在线，其中在线用户：${model.areaUserOnline}人，游客：${model.areaVisitOnline}人 </td>  
+              </#if>               
+              </tr>
+            </table> </td>
+          </tr>
+        </table>
+        <table width="95%" height="3"  border="0" align="center" cellpadding="0" cellspacing="0" class="list_title_0">
+          <tr>
+            <td height="1"></td>
+          </tr>
+        </table>
+        <table width="95%" height="20"  border="0" align="center" cellpadding="0" cellspacing="0" class="list_bian">
+              <tr>
+                <td><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="3%" height="20" class="uline">&nbsp;</td>
+                    <td width="14%" align="center" class="uline">论坛名称</td>
+                    <td width="69%" align="center" class="uline">图型比例</td>
+                    <#if model.action ="nowOnline">
+               		<td width="11%" align="center" class="uline">在线人数</td>
+              		<#elseif model.action = "groupOnline">
+              		<td width="11%" align="center" class="uline">在线人数</td>
+                    <#else>
+                    <td width="11%" align="center" class="uline">主题帖数</td>
+             	    </#if> 
+                    <td width="3%" class="uline">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td colspan="5">
+                        <table width="95%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" class="list_kuang">
+                            <tr>
+                              <td align="left" class="list_kuang2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <#list model.boards as b>
+                                  <tr>
+                                  	<#if model.action=="groupOnline">
+                                    <td width="15%" height="20" align="center">${b.name}</td>
+                                  	<#else>
+                                    <td width="15%" height="20" align="center"><a href="/forum.yws?forumId=${b.id}">${b.name}</a></td>
+                                  	</#if>
+                                    <#if model.totalNum==0>
+                                    <td width="73%" align="left"><img src="/images/sbar${b.shar}.gif" width="0%" height="10" /></td>
+                                    <#else>
+                                    <td width="73%" align="left"><img src="/images/sbar${b.shar}.gif" width="${b.counter/model.totalNum*100}%" height="10" /></td>
+                                    </#if>
+                                    <td width="12%" align="center">${b.counter}</td>
+                                  </tr>
+                               </#list>
+                              </table></td>
+                            </tr>
+                        </table>
+                    </td>
+                  </tr>
+                </table></td>
+              </tr>
+          </table>
+         <div class="list_title_03">
+			<span class="left pages"></span>
+			<span class="right">
+				<select name="menu1" class="select" onchange="javascript:parent.location=this.options[this.selectedIndex].value;">
+                    <option selected="selected">论坛跳转至.....</option>
+                        <#list areas as area><option value="/area.yws?areaId=" class="jMenu">╇${area.name}</option>
+                       <#list area.forums as forum><option value="/forum.yws?forumId=">&nbsp;├${forum.name}</option></#list>
+                       </#list>
+                </select>
+			</span>
+		</div>		
+		<div class="list_title_04" >&nbsp;</div>
+</@base.main>
+</@base.body>

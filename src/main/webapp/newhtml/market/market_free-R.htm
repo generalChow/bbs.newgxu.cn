@@ -1,0 +1,94 @@
+<@base.header title="自由市场">
+	<script language="javascript">
+	var freeMarketItemBuyDialog;
+	function showFreeMarketItemBuyDialog(id, name, nick, price) {
+		constructFreeMarketItemBuyDialogDiv(id, name, nick, price);
+		freeMarketItemBuyDialog = new newgxu.HtmlDialog("freeMarketItemBuyDialog", 330, 100);
+	}
+	function constructFreeMarketItemBuyDialogDiv(id, name, nick, price) {
+		var html ='<form action="/market/free_market_item_buy_do.yws" method="post" >';
+		html += '<table align="center" width="250" border="0" cellspacing="0" cellpadding="0">';
+	  	html += '<tr><td width="130">购买：';
+	  	html += name;
+	 	html += '</td><td width="120">价格：';
+		html += price;
+	  	html += '</td></tr><tr><td colspan="2">出售者：';
+		html += nick;
+		html += '<input name="id" type="hidden" id="id" value="';
+		html += id;
+		html += '">&nbsp;<input type="submit" name="Submit" value="发狠买了" id="Submit">';
+		html += '<input type="reset" onclick="freeMarketItemBuyDialog.close();" value="算了" /></td></tr></table></form>';
+		var dialogDiv = new Element("div");
+		dialogDiv.id = "freeMarketItemBuyDialogForm";
+		dialogDiv.innerHTML = html;
+		$("freeMarketItemBuyDialog").innerHTML = '';
+		dialogDiv.injectInside($("freeMarketItemBuyDialog"));
+	}
+	</script>
+	<script type="text/JavaScript">
+	<!--
+		function category(c)
+		{
+			if (c == -1) {
+				window.location.href="/market/free.yws"; 
+			}
+			else {
+				window.location.href="/market/free.yws?categoryId="+c; 
+			}
+		}
+	//-->
+	</script>
+</@base.header>
+<@base.body location="商业中心">
+	<@base.main location="商业中心&nbsp;－&gt;&nbsp;自由商场">
+		<@base.market_content>
+			<div style="display:none;"><div id="freeMarketItemBuyDialog" class="dialog_div"></div></div>
+			<div style="width:100%;">
+				<div class="broken_line" style="padding: 0px 5px 4px 5px; height:20px;">
+					<span class="left">	
+					  <select name="category" onchange="category(this.options[this.selectedIndex].value)">
+						<option value="-1"/>全部</option>
+						  <#list model.category as c>
+							<#if c.id == categoryId>
+								<option value="${c.id}" selected="selected"/>${c.name}</option>
+							<#else>
+								<option value="${c.id}" />${c.name}</option>
+							</#if>
+						  </#list>
+				          </select>
+				  </span>
+					<span class="right">
+					  <a href="/market/free.yws">查看所有商品</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					  <a href="/market/free.yws?seller=me">查看我卖的商品</a>
+					</span>
+				</div>
+				<#if model.items.empty == false>
+					<div style="width:628px;">
+						<#list model.items as item>
+							<div class="freeMarket_item_div">
+							  <table width="100%" height="100" border="0" cellpadding="0" cellspacing="0">
+								<tr>
+								  <td width="100" rowspan="3" valign="top"><div align="center"><strong>${item.item.name}</strong><br />
+									${item.item.picture}</div></td>
+								  <td colspan="2" valign="top">${item.item.effect}</td>
+								</tr>
+								<tr>
+								  <td width="120" height="20"><#if item.maker.id != -1><b>${item.maker.nick}</b>(造)</#if></td>
+								  <td>售价：${item.unitPrice}</td>
+								</tr>
+								<tr>
+								  <td height="20"><b>${item.user.nick}</b>(卖)</td>
+								  <td><div align="center">${item.overDueTimeFormat} [<a href="javascript:showFreeMarketItemBuyDialog(${item.id}, '${item.item.name}', '${item.user.nick?js_string}', '${item.unitPrice}');">购买</a>]</div></td>
+								</tr>
+							  </table>
+							</div>
+						</#list>
+					</div>
+					<div class="pages" style="padding:5px;">${model.pagination}</div>
+				<#else>
+					<div class="noResult">目前没有任何物品。</div>
+				</#if>
+			</div>
+		</@base.market_content>
+	</@base.main>
+</@base.body>

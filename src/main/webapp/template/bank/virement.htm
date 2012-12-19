@@ -1,0 +1,31 @@
+<@base.header title="转帐"></@base.header>
+<@base.body location="社区银行&nbsp;－&gt;&nbsp;转帐">
+	<@base.main location="社区银行&nbsp;－&gt;&nbsp;转帐">
+		<@base.bank_content>
+<br>
+<table cellspacing="0" cellpadding="0">
+  <tr>
+    <td>当前转帐费用为${bank.virementRate*100}%。</td>
+  </tr>
+  <tr>
+    <td>您当前的存款金额为<strong>${current.balance}</strong>。</td>
+  </tr>
+	    <tr>
+          <td><@ww.actionerror/></td>
+        </tr>
+  <tr>
+    <td><form action="virement_do.yws" method="post" name="name" id="name">
+      	<@ww.token />
+      收款人昵称:（换行可以批量操作） 
+          <br />
+          <textarea name="userNicks" rows="5" id="userNicks"></textarea>      
+          <br />
+	转帐金额:
+      <input size="15" name="money" />
+      <input name="banksubmit" type="submit"  value=" 提  交 " />
+    </form></td>
+  </tr>
+</table>
+		</@base.bank_content>
+	</@base.main>
+</@base.body>

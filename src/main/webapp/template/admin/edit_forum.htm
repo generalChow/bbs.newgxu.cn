@@ -1,0 +1,106 @@
+  在以下表单中设置论坛属性。 <br />
+  <form name="form1" method="post" action="edit_forum_do.yws"  onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <table>
+      <tr>
+        <td>所属区论坛：</td>
+        <td><select name="areaId">
+			<#list areas as area>
+			  <#if area.id == model.areaId>
+			  	<option value="${area.id}" selected="selected">${area.name}</option>
+			  <#else>
+			  	<option value="${area.id}">${area.name}</option>
+			  </#if>
+			 </#list>
+        </select>
+        </td>
+      </tr>
+      <tr>
+        <td>名称：</td>
+        <td><input type="text" name="name" value="${name}"></td>
+      </tr>
+      <tr>
+        <td>简介：</td>
+        <td><textarea name="description" id="description">${description?default("")}</textarea></td>
+      </tr>
+      <tr>
+        <td>权限：</td>
+        <td>
+		  <#if secrecy != 1 >
+			<label><input type="radio" name="secrecy" value="1">是</label>
+          	<label><input name="secrecy" type="radio" value="0" checked>否</label>
+		  <#else>
+			<label><input type="radio" name="secrecy" value="1" checked>是</label>
+          	<label><input name="secrecy" type="radio" value="0">否</label>
+		  </#if></td>
+      </tr>
+      <tr>
+        <td>热门：</td>
+        <td>
+		  <#if hot != 1 >
+			<label><input type="radio" name="hot" value="1">是</label>
+          	<label><input name="hot" type="radio" value="0" checked>否</label>
+		  <#else>
+			<label><input type="radio" name="hot" value="1" checked>是</label>
+          	<label><input name="hot" type="radio" value="0">否</label>
+		  </#if></td>
+      </tr>
+      <tr>
+        <td>内部论坛：</td>
+        <td>
+		  <#if confrere != 1 >
+			<label><input type="radio" name="confrere" value="1">是</label>
+          	<label><input name="confrere" type="radio" value="0" checked>否</label>
+		  <#else>
+			<label><input type="radio" name="confrere" value="1" checked>是</label>
+          	<label><input name="confrere" type="radio" value="0">否</label>
+		  </#if></td>
+      </tr>
+      <tr>
+        <td>每天限制发帖数：</td>
+        <td><input name="limit_topics_perday" type="text" size="5" value="${limit_topics_perday}"></td>
+      </tr>
+      <tr>
+        <td>排序：</td>
+        <td><input name="compositorId" type="text" size="5" value="${compositorId}"></td>
+      </tr>
+      <tr>
+        <td>新主题 钱/经验：</td>
+        <td><input name="topicMoney" type="text" size="5" value="${topicMoney}">
+        /
+        <input name="topicExp" type="text" size="5" value="${topicExp}"></td>
+      </tr>
+      <tr>
+        <td>回复 钱/经验：</td>
+        <td><input name="replyMoney" type="text" size="5" value="${replyMoney}">
+          /
+        <input name="replyExp" type="text" size="5" value="${replyExp}"></td>
+      </tr>
+      <tr>
+        <td>精华 钱/经验：</td>
+        <td><input name="goodMoney" type="text" size="5" value="${goodMoney}">
+          /
+        <input name="goodExp" type="text" size="5" value="${goodExp}"></td>
+      </tr>
+      <tr>
+        <td>加亮 钱/经验：</td>
+        <td><input name="lightMoney" type="text" size="5" value="${lightMoney}">
+          /
+        <input name="lightExp" type="text" size="5" value="${lightExp}"></td>
+      </tr>
+      <tr>
+        <td>删除 钱/经验：</td>
+        <td><input name="delMoney" type="text" size="5" value="${delMoney}">
+          /
+        <input name="delExp" type="text" size="5" value="${delExp}"></td>
+      </tr>
+      <tr>
+        <td>版主：</td>
+        <td><textarea name="nicks" rows="3" id="nicks">${model.nicks?default("")}</textarea></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><input type="submit" name="Submit" class="BUTTON2" value="提　交">
+        <input name="forumId" type="hidden" id="forumId" value="${forumId}"></td>
+      </tr>
+    </table>
+  </form>

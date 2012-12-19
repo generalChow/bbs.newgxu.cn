@@ -1,0 +1,30 @@
+<@base.header title="更改银行密码"></@base.header>
+<@base.body location="社区银行&nbsp;－&gt;&nbsp;更改银行密码">
+	<@base.main location="社区银行&nbsp;－&gt;&nbsp;更改银行密码">
+		<@base.bank_content>
+<br>
+	<form id="form1" name="form1" method="post" action="edit_bankpwd_do.yws">
+	  <table cellspacing="0" cellpadding="0">
+	    <tr>
+          <td><@ww.actionerror/></td>
+        </tr>
+        <tr>
+          <td>
+          	原密码:
+            <input type="password" size="20" value="" name="oldPassword" />
+            <br />
+              新密码:
+            <input type="password" size="20" value="" name="password" />
+            <br />
+              确认密码:
+            <input type="password" size="20" value="" name="confirmPassword" />
+            <br />
+      		<input name="banksubmit" type="submit" value=" 提  交 "/>
+      	  </td>
+      	</tr>
+      </table>
+    </form>
+
+		</@base.bank_content>
+	</@base.main>
+</@base.body>

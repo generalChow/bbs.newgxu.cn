@@ -1,0 +1,254 @@
+<#import "/macro_user_service.htm" as header>
+<@header.inc title="论坛：${model.forum.name} -- 主题列表">
+<script src="/js/newgxu_dropdownMenu.js"></script>
+</@header.inc>
+<@header.body where="<a href='/index.html'>雨无声社区</a>&nbsp;->&nbsp;<a href='/index.jspa'>雨无声论坛</a>&nbsp;->&nbsp;<a href='/area.jspa?areaId=${model.forum.area.id}'>${model.forum.area.name}</a>&nbsp;->&nbsp;${model.forum.name}">
+<table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" >
+  <tr>
+    <td width="45" rowspan="3" bgcolor="#C0DB7E" class="center_bg">&nbsp;</td>
+    <td align="right" valign="bottom"><img src="images/art_list_02.jpg" width="21" height="30" alt=""/></td>
+    <td height="30" class="list_center_top">&nbsp;</td>
+    <td><img src="images/art_list_04.jpg" width="20" height="30" alt=""/></td>
+    <td width="45" rowspan="3" bgcolor="#C0DB7E" class="center_bg">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="21" align="right" valign="top" class="art_list_left"><img src="images/art_list_06_12.jpg" width="21" height="244"/> </td>
+    <td align="center" valign="top" bgcolor="#FFFBE0" class="center_c"><table width="100%" height="35"  border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td align="left" class="xlogo"><div style="width:800px;"><div style="float:left;"><img src="images/home.gif" width="16" height="16"/>&nbsp;<a href="/index.html">雨无声社区</a> -&gt;&nbsp;</div>
+            <div style="float:left;"><ul id="dropdownMenu">
+              <li><a href="/index.jspa" style="CURSOR:hand">雨无声论坛&nbsp;-&gt;&nbsp;</a>
+                <ul>
+                  <#list model.areas as area>
+                  <li><a href="javascript:void(0);">&nbsp;${area.name}</a>
+                    <ul>
+                      <#list area.forums as forum><li><a href="/forum.jspa?forumId=${forum.id}">&nbsp;${forum.name}</a></li>
+					</#list>
+                      </ul>
+			  </li>
+			</#list>
+                  </ul>
+		    </li>
+		    <li><a href="area.jspa?areaId=43" style="CURSOR:hand">${model.forum.area.name}</a>
+		        <ul>
+		          <#list model.forum.area.forums as forum>
+		          <li><a href="/forum.jspa?forumId=${forum.id}">&nbsp;${forum.name}</a></li></#list>
+		          </ul>
+		    </li>
+		    </ul>
+            </div>
+			<div style="float:left;">&nbsp;-&gt;&nbsp;${model.forum.name}&nbsp;&nbsp;<a href="Rss.jsp?forumID=9"><img src="images/rss2.png" alt="订阅/添加RSS" width="80" height="15" border="0" align="absbottom" /></a></div>
+			</div>
+<script language="javascript">
+new newgxu.DropdownMenu($('dropdownMenu'));
+            </script>
+			</td>
+          </tr>
+      </table>
+        <table width="100%"  border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="640" align="left" valign="top"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td height="112" rowspan="2" align="left" valign="top"><table width="179" height="119" border="0" align="right" cellpadding="0" cellspacing="0" class="photo_table">
+                      <tr>
+                        <td><img src="images/bz_01.gif" width="26" height="24" alt=""/></td>
+                        <td colspan="2" align="left" valign="bottom" background="images/bz_02_2.gif"><img src="images/bz_02.gif" width="106" height="24" alt=""/></td>
+                        <td align="right" valign="bottom" background="images/bz_02_2.gif"><img src="images/bz_03.gif" width="20" height="24" alt=""/></td>
+                        <td rowspan="2" align="left" valign="top" background="images/bz_07_2.gif"><img src="images/bz_04.gif" width="26" height="32" alt=""/></td>
+                        <td><img src="images/00.gif" width="1" height="24" alt=""/></td>
+                      </tr>
+                      <tr>
+                        <td rowspan="2" align="right" valign="top" background="images/bz_05_2.gif"><img src="images/bz_05.gif" width="26" height="63" alt=""/></td>
+                        <td colspan="3" rowspan="3" align="center" valign="middle"><img src="images/bz_06.jpg" width="126" height="72"></td>
+                        <td><img src="images/00.gif" width="1" height="8" alt=""/></td>
+                      </tr>
+                      <tr>
+                        <td rowspan="2" align="left" valign="bottom" background="images/bz_07_2.gif"><img src="images/bz_07.gif" width="26" height="64" alt=""/></td>
+                        <td><img src="images/00.gif" width="1" height="55" alt=""/></td>
+                      </tr>
+                      <tr>
+                        <td rowspan="2" align="right" valign="bottom" background="images/bz_05_2.gif"><img src="images/bz_08.gif" width="26" height="31" alt=""/></td>
+                        <td><img src="images/00.gif" width="1" height="9" alt=""/></td>
+                      </tr>
+                      <tr>
+                        <td align="left" valign="top" background="images/bz_10_2.gif"><img src="images/bz_09.gif" width="13" height="22" alt=""/></td>
+                        <td colspan="2" align="right" valign="top" background="images/bz_10_2.gif"><img src="images/bz_10.gif" width="113" height="22" alt=""/></td>
+                        <td align="left" valign="top"><img src="images/bz_11.gif" width="26" height="22" alt=""/></td>
+                        <td><img src="images/00.gif" width="1" height="22" alt=""/></td>
+                      </tr>
+                      <tr>
+                        <td><img src="images/00.gif" width="26" height="1" alt=""/></td>
+                        <td><img src="images/00.gif" width="13" height="1" alt=""/></td>
+                        <td><img src="images/00.gif" width="93" height="1" alt=""/></td>
+                        <td><img src="images/00.gif" width="20" height="1" alt=""/></td>
+                        <td><img src="images/00.gif" width="26" height="1" alt=""/></td>
+                        <td></td>
+                      </tr>
+                  </table></td>
+                  <td width="71%" colspan="2" align="left" valign="top"><table width="100%"  border="0" cellspacing="0" cellpadding="4">
+                      <tr>
+                        <td height="20" colspan="3">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td width="69" align="right"><span class="style8">版主：</span></td>
+                        <td colspan="2" class="style8"><#list model.forum.webmasters as webmaster>${webmaster.nick} </#list>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="69" align="right"><span class="style8">本版宣言：</span></td>
+                        <td colspan="2">${model.forum.description?default("")}</td>
+                      </tr>
+                      <tr>
+                        <td width="69" align="right" class="style8"><a href="#" title="查看本版所有小字报" onClick="MM_openBrWindow('viewSmallNewsList.jsp?forumID=9','小字报列表','menubar=yes,scrollbars=yes,width=600,height=500')"><font color="#B8A974">小字报</a>：</td>
+                        <td colspan="2"><marquee  scrollamount="2" scrolldelay="0" onMouseOver="this.stop()" onMouseOut="this.start()">
+                          &nbsp;&nbsp;
+                          
+                        </marquee></td>
+                      </tr>
+                  </table></td>
+                </tr>
+            </table></td>
+            <td width="235" align="center" valign="bottom"><table width="173" border="0" cellpadding="3" cellspacing="0">
+                <tr>
+                  <td width="85" rowspan="4" align="right" valign="bottom"><img src="images/tree22.gif" width="40" height="48"></td>
+                  <td width="76"><a href="search.jsp">检索中心</a></td>
+                </tr>
+                <tr>
+                  <td><a href="onlineUsersList.jsp">查看在线用户</a></td>
+                </tr>
+                <tr>
+                  <td><a href="usersList.jsp">查看所有用户</a></td>
+                </tr>
+                <tr>
+                  <td><a href="boardState.jsp?action=nowOnline&amp;GforumID=43">版块在线状态</a></td>
+                </tr>
+                <tr>
+                  <td colspan="2" align="right"><table width="80%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="85%" height="20" align="right">论坛在线人数： </td>
+                        <td width="15%" align="center">331</td>
+                      </tr>
+                      <tr>
+                        <td height="20" align="right">此版在线人数：</td>
+                        <td align="center">39</td>
+                      </tr>
+                  </table></td>
+                </tr>
+                        </table></td>
+          </tr>
+        </table>
+      <table width="857" height="62" border="0" align="center" cellpadding="0" cellspacing="0" id="__01">
+          <tr>
+            <td width="13" rowspan="2" align="right" valign="bottom"><img src="images/list_title1_012.gif" width="13" height="62" alt=""/></td>
+            <td width="109" align="left" valign="bottom"><img src="images/list_title1_022.gif" width="32" height="26" alt=""/></td>
+            <td width="690" height="26" align="right">&nbsp;</td>
+            <td width="32" align="right" valign="bottom"><img src="images/list_title1_042.gif" width="32" height="26" alt=""/></td>
+            <td width="13" rowspan="2" align="left" valign="bottom"><img src="images/list_title1_052.gif" width="13" height="62" alt=""/></td>
+          </tr>
+          <tr>
+            <td height="36" colspan="3" class="list_title"><table width="100%" border="0" cellspacing="0">
+              <tr>
+                <td align="left"><div class="pages" style="width:430px;">${model.pagination}</div></td>
+                <td width="300" align="right"><table width="100%"  border="0" align="right" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td align="right" valign="bottom">               
+                        <img src="images/sx2.gif" width="15" height="22"/><a href="/forum.jspa?forumId=${forumId}&good=true">精华区</a>					  </td>
+                    <td align="left" valign="bottom"><img src="images/fb2.gif" width="21" height="29"/><a href="/create_topic.jspa?forumId=${forumId}">发新帖</a></td>
+                    <td align="left" valign="bottom"><img src="images/sx2.gif" width="15" height="22"/><a href="/create_vote.jspa?forumId=${forumId}">发投票帖</a></td>
+                    <td align="left" valign="bottom"><img src="images/fb2.gif" width="21" height="29"/><a href="#" onClick="MM_openBrWindow('addSmallNews.jsp?forumID=9','发小字报','menubar=yes,scrollbars=yes,width=600,height=380')">发小字报</a></td>
+                    <td align="left" valign="bottom"><a href="javascript:location.reload();"><img src="images/sx2.gif" width="15" height="22" border="0" />刷新</a></td>
+                  </tr>
+                </table></td>
+              </tr>
+            </table>
+            </td>
+          </tr>
+      </table>
+      <table width="95%" height="3"  border="0" align="center" cellpadding="0" cellspacing="0" class="list_title_2">
+          <tr>
+            <td height="1"></td>
+          </tr>
+      </table>
+      <table width="95%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" bgcolor="#FFFAD0" class="botom_line">
+          <tr>
+            <td width="432" align="center" class="right_line"><span class="STYLE11">主题</span></td>
+            <td width="100" align="center" class="right_line"><strong class="STYLE11">作者</strong></td>
+            <td width="40" align="center" class="right_line"><strong class="STYLE11">回复</strong></td>
+            <td width="40" align="center" class="right_line"><strong class="STYLE11">点击</strong></td>
+            <td width="196" align="center"><strong class="STYLE11">最后更新</strong></td>
+          </tr>
+      </table>
+      <#list model.topics as topic>
+        <table width="95%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" bgcolor="#FFFBE1" class="botom_line">
+          <tr>
+            <td width="30" height="35" align="center" class="right_line"><a href="/topic.jspa?forumId=${model.forumId}&topicId=${topic.id}" target="_blank"><img src="images/face/${topic.face}.gif" alt="点击在新窗口打开" border="0"></a></td>
+            <td width="396" height="30" align="left" class="right_line"><span class="tdBorder1">${topic.topString}${topic.lockString}<a href="/topic.jspa?forumId=${model.forumId}&topicId=${topic.id}">${topic.title}</a>${topic.newTopicString} ${topic.guide}</span></td>
+            <td width="101" align="center" class="right_line">${topic.topicUser.nick}</td>
+            <td width="40" align="center" class="right_line">${topic.replyTimes}</td>
+            <td width="40" align="center" class="right_line">${topic.clickTimes}</td>
+            <td width="196" align="center"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="49%" align="center" valign="middle">${topic.replyUser.nick}<a href="userInfo.jsp?userID={lastReplyAuthor/replayUserID}"></a></td>
+                  <td width="51%" align="center" valign="middle">${topic.replyTimeDisplay}</td>
+                </tr>
+            </table></td>
+          </tr>
+      </table>
+      </#list>
+        <table width="95%" height="20"  border="0" align="center" cellpadding="0" cellspacing="0" class="list_bian">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+      <table width="95%" height="3"  border="0" align="center" cellpadding="0" cellspacing="0" class="list_title_2">
+          <tr>
+            <td height="1"></td>
+          </tr>
+      </table>
+      <table width="857" height="62" border="0" align="center" cellpadding="0" cellspacing="0" id="__01">
+          <tr>
+            <td width="13" rowspan="2" align="right" valign="bottom"><img src="images/list_title2_012.gif" width="13" height="62" alt=""/></td>
+            <td height="36" colspan="3" align="left" class="list_title2"><table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFBE1">
+                <tr>
+                  <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="660" height="20" align="left"><div class="pages">${model.pagination}</div></td>
+                      <td width="137" align="right">
+					  <select name="menu1" class="style7" onchange="javascript:parent.location=this.options[this.selectedIndex].value;">
+                        <option selected="selected">论坛跳转至.....</option>
+                        <#list model.areas as area><option value="/area.jspa?areaId=${area.id}" class="jMenu">╇${area.name}</option>
+                        <#list area.forums as forum><option value="/forum.jspa?forumId=${forum.id}">&nbsp;├${forum.name}</option></#list>
+                        </#list>
+                      </select>
+                      </td>
+                    </tr>
+                  </table></td>
+                </tr>
+            </table></td>
+            <td width="13" rowspan="2" align="left" valign="bottom"><img src="images/list_title2_052.gif" width="13" height="62" alt=""/></td>
+          </tr>
+          <tr>
+            <td width="32" height="26" align="left" valign="top"><img src="images/list_title2_022.gif" width="32" height="26" alt=""/></td>
+            <td width="767" height="26" align="left">
+            <form id="search" name="search" action="searchResult.jsp" method="post"  onsubmit="return Jsearch(this)">
+                <table border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td align="left">快速搜索：</td>
+                    <td align="left"><input name="keywords" type="text" class="short_input" id="keywords" /></td>
+                    <td width="70" align="center"><input name="Submit" type="submit" class="submit_style" value=" 查找 " /></td>
+                    <td width="45" align="left"><input name="forumID" type="hidden" id="forumID" value="9" /></td>
+                  </tr>
+            </table>
+                </form></td>
+            <td width="32" height="26" align="right" valign="top"><img src="images/list_title2_042.gif" width="32" height="26" alt=""/></td>
+          </tr>
+      </table></td>
+    <td width="20" align="left" valign="top" class="art_list_right"><img src="images/art_list_08_12.jpg" width="20" height="244"/> </td>
+  </tr>
+  <tr>
+    <td><img src="images/art_list_092.jpg" width="21" height="24" alt=""/></td>
+    <td class="list_bb">&nbsp;</td>
+    <td><img src="images/art_list_112.jpg" width="20" height="24" alt=""/></td>
+  </tr>
+</table>
+</@header.body>

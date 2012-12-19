@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Cache-Control" content="no-cache"/>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=2.0" />
+<meta name="MobileOptimized" content="240" />
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="/resources/css/wap/cmcc.css">
+<title>操作成功！</title>
+</head>
+<style type="text/css">
+	#wrap {
+		width: 240px;
+		margin: 20px auto;
+	}
+
+	.success {
+		color: red;
+		font-size: 1.3em;
+		text-align: center;
+		text-align: center;
+		margin: 0 0 10px 0;
+	}
+
+	.nav a {
+		padding: 20px;
+		text-align: center;
+		font-size: 1.1em;
+	}
+</style>
+<body>
+	<#include "/template/wap/cmcc/header.jsp" />
+
+	<div id="wrap">
+		<p class="success">操作成功！</p>
+		<p class="success">${message}</p>
+
+		<span class="nav">您可以：<a href="/wap/index.yws">返回首页</a></span>
+	</div>
+
+	<#include "/template/wap/cmcc/footer.jsp" />
+</body>
+</html>

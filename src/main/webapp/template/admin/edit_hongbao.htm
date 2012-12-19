@@ -1,0 +1,62 @@
+<form name="form1" method="post" action="edit_hongbao_do.yws" onsubmit="return validateCallback(this, dialogAjaxDone);">
+	<table>
+		<tr>
+			<td>
+				红包名：
+			</td>
+			<td>
+				<input type="text" name="name" value="${name}">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				红包描述：
+			</td>
+			<td>
+				<textarea style="width:280px; height:50px;" name="description" >${description}</textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				节日历史：
+			</td>
+			<td>
+				<textarea name="history"  style="width:280px; height:50px;">${history}</textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				节日时间：
+			</td>
+			<td>
+				<input name="time" style="width:50px;" type="text" value="${time}">(输入格式为数字，例如元旦输入101，情人节输入214，圣诞节输入1225)
+			</td>
+		</tr>
+		<tr>
+			<td>
+				红包类型：
+			</td>
+			<td>
+				<select name="contentType">
+					<#list hongbaoTypes as hongbaoType>
+					<#if contentType==hongbaoType.id>
+					<option value="${hongbaoType.id}" selected="selected">
+						${hongbaoType.name}
+					</option>
+					<#else>
+					<option value="${hongbaoType.id}">
+						${hongbaoType.name}
+					</option>
+					</#if>
+					</#list>
+				</select>
+			</td>
+		</tr>
+		<tr>
+		<td style="text-align:center;" colspan="2">
+			<input type="hidden" name="id" value="${id}"/>
+			<input type="submit" name="Submit" class="BUTTON2" value="保存修改">
+		</td>
+		</tr>
+	</table>
+</form>

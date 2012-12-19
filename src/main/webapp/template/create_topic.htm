@@ -1,0 +1,195 @@
+<@base.header title=" 发表新主题 -- 论坛：${model.forum.name}">
+</@base.header>
+<@base.body location="发表新主题">
+  <div style="display:none;"><div id="ubbDialog" class="dialog_div"></div><div id="submitWaiting" class="dialog_div"></div></div>
+	<@base.main location="发表新主题">
+		<@base.forum_info/>
+		<form method="post" id="post_form" action="/create_topic_do.yws"  onKeyDown="if(event.ctrlKey &amp;&amp; event.keyCode==13) {submitTopic(); return false;}">
+			<div class="list_title_01">&nbsp;</div>
+			<div class="list_title_02"><strong>发表新主题</strong></div>
+			<div style="color:#f00; text-align:center;">${validMsg}</div>
+			<div class="kuang">
+			  <table width="830" border="0" align="center" class="botom_line">
+                  <tr>
+                    <td width="125" height="30" align="center" class="right_line">主题：</td>
+                    <td align="left">&nbsp;
+						<select name="select" class="select_style" title="可以选择主题类型~" onchange="selectTopicType(this)" >
+                          <#if activity == 'Doomsday'>
+                          <option selected="selected" value="【末日心语】">【末日心语】</option>
+                          <#elseif activity == 'Christmas'>
+                          <option selected="selected" value="【圣诞之情】">【圣诞之情】</option>
+                          <#else>
+                          <option selected="selected" value="">选择类型</option>
+                          </#if>
+                          <#if model.forum.area.id =49>
+                          <option value="【出售】">【出售】</option>
+                          <option value="【求购】">【求购】</option>
+                          <option value="【求租】">【求租】</option>
+                          <option value="【出租】">【出租】</option>
+                          <option value="【放号】">【放号】</option>
+                          <option value="【服务】">【服务】</option>
+                          <option value="【专卖】">【专卖】</option>
+                          <option value="【赠送】">【赠送】</option>
+                          <option value="【交换】">【交换】</option>
+			              <#else>
+                          <option value="【原创】">【原创】</option>
+                          <option value="【转帖】">【转帖】</option>
+                          <option value="【灌水】">【灌水】</option>
+                          <option value="【讨论】">【讨论】</option>
+                          <option value="【发布】">【发布】</option>
+                          <option value="【求助】">【求助】</option>
+                          <option value="【推荐】">【推荐】</option>
+                          <option value="【公告】">【公告】</option>
+                          <option value="【注意】">【注意】</option>
+                          <option value="【贴图】">【贴图】</option>
+                          <option value="【影片】">【影片】</option>
+                          <option value="【音乐】">【音乐】</option>
+                          <option value="【动画】">【动画】</option>
+                          <option value="【游戏】">【游戏】</option>
+                          <option value="【建议】">【建议】</option>
+                          <option value="【下载】">【下载】</option>
+                          <option value="【分享】">【分享】</option>
+                          <option value="【教学】">【教学】</option>
+                          <option value="【测试】">【测试】</option>
+                          <option value="【插件】">【插件】</option>
+                          <option value="【风格】">【风格】</option>
+              			  </#if> 
+                        </select>&nbsp;&nbsp;
+                          <#if activity == 'Doomsday'>
+                            <input name="title" class="input_new1" id="title" title='标题是必须填写的哦~' value="【末日心语】" size="50" maxlength="50" />
+                          <#elseif activity == 'Christmas'>
+                           <input name="title" class="input_new1" id="title" title='标题是必须填写的哦~' value="【圣诞之情】" size="50" maxlength="50" />
+                          <#else>
+                         <input name="title" class="input_new1" id="title" title='标题是必须填写的哦~' value="${model.title?default("")}" size="50" maxlength="50" />
+                          </#if>
+						&nbsp;&nbsp;
+						<input name="zt" type="radio" value="true" id="radio" />
+						<label for="radio">转帖</label>&nbsp;&nbsp;
+						<input name="zt" type="radio" value="false" id="radio2" checked="checked" />
+					<label for="radio2">原创</label>					</td>
+                  </tr>
+                </table>
+				<table width="830" border="0" align="center" class="botom_line">
+                  <tr>
+                    <td width="125" align="center" valign="middle" class="right_line">心情：<br /><br />
+                    点击可以做为UBB表情插入内容</td>
+                    <td align="left"><table width="644" border="0" cellspacing="2">
+                      <tr>
+                        <td width="56"><input name="face" type="radio" value="1" checked="checked" />
+                          <a href="javascript:faceAdd('21')"><img src="/images/face/1.gif" width="20" height="20" border="0" /></a></td>
+                        <td width="56"><input type="radio" name="face" value="2" />
+                          <a href="javascript:faceAdd('22')"><img src="/images/face/2.gif" width="20" height="20" border="0" /></a></td>
+                        <td width="56"><input type="radio" name="face" value="3" />
+                          <a href="javascript:faceAdd('23')"><img src="/images/face/3.gif" width="20" height="20" border="0" /></a></td>
+                        <td width="56"><input type="radio" name="face" value="4" />
+                          <a href="javascript:faceAdd('24')"><img src="/images/face/4.gif" width="20" height="20" border="0" /></a></td>
+                        <td width="56"><input type="radio" name="face" value="5" />
+                          <a href="javascript:faceAdd('25')"><img src="/images/face/5.gif" width="20" height="20" border="0" /></a></td>
+                        <td width="56"><input type="radio" name="face" value="6" />
+                          <a href="javascript:faceAdd('26')"><img src="/images/face/6.gif" width="20" height="20" border="0" /></a></td>
+                        <td width="56"><input type="radio" name="face" value="7" />
+                          <a href="javascript:faceAdd('27')"><img src="/images/face/7.gif" width="20" height="20" border="0" /></a></td>
+                        <td width="56"><input type="radio" name="face" value="8" />
+                          <a href="javascript:faceAdd('28')"><img src="/images/face/8.gif" width="20" height="20" border="0" /></a></td>
+                        <td width="56"><input type="radio" name="face" value="9" />
+                          <a href="javascript:faceAdd('29')"><img src="/images/face/9.gif" width="20" height="20" border="0" /></a></td>
+                        <td width="56"><input type="radio" name="face" value="10" />
+                          <a href="javascript:faceAdd('30')"><img src="/images/face/10.gif" width="20" height="20" border="0" /></a></td>
+                        <td width="56"><input type="radio" name="face" value="21" />
+                          <a href="javascript:faceAdd('31')"><img src="/images/face/21.gif" width="20" height="20" border="0" /></a></td>
+                        <td width="56"><input type="radio" name="face" value="22" />
+                          <a href="javascript:faceAdd('42')"><img src="/images/face/22.gif" width="20" height="20" border="0" /></a></td>
+                        <td width="56"><input type="radio" name="face" value="23" />
+                          <a href="javascript:faceAdd('43')"><img src="/images/face/23.gif" width="20" height="20" border="0" /></a></td>
+                      </tr>
+                      <tr>
+                        <td><input type="radio" name="face" value="11" />
+                          <a href="javascript:faceAdd('31')"><img src="/images/face/11.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="12" />
+                          <a href="javascript:faceAdd('32')"><img src="/images/face/12.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="13" />
+                          <a href="javascript:faceAdd('33')"><img src="/images/face/13.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="14" />
+                          <a href="javascript:faceAdd('34')"><img src="/images/face/14.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="15" />
+                          <a href="javascript:faceAdd('35')"><img src="/images/face/15.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="16" />
+                          <a href="javascript:faceAdd('36')"><img src="/images/face/16.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="17" />
+                          <a href="javascript:faceAdd('37')"><img src="/images/face/17.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="18" />
+                          <a href="javascript:faceAdd('38')"><img src="/images/face/18.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="19" />
+                          <a href="javascript:faceAdd('39')"><img src="/images/face/19.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="20" />
+                          <a href="javascript:faceAdd('40')"><img src="/images/face/20.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="24" />
+                          <a href="javascript:faceAdd('44')"><img src="/images/face/24.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="25" />
+                          <a href="javascript:faceAdd('45')"><img src="/images/face/25.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="26" />
+                          <a href="javascript:faceAdd('46')"><img src="/images/face/26.gif" width="20" height="20" border="0" /></a></td>
+                      </tr>
+                      <tr>
+                        <td><input type="radio" name="face" value="31" />
+                          <a href="javascript:faceAdd('51')"><img src="/images/face/31.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="32" />
+                          <a href="javascript:faceAdd('52')"><img src="/images/face/32.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="33" />
+                          <a href="javascript:faceAdd('53')"><img src="/images/face/33.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="34" />
+                          <a href="javascript:faceAdd('54')"><img src="/images/face/34.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="35" />
+                          <a href="javascript:faceAdd('55')"><img src="/images/face/35.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="36" />
+                          <a href="javascript:faceAdd('56')"><img src="/images/face/36.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="27" />
+                          <a href="javascript:faceAdd('47')"><img src="/images/face/27.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="28" />
+                          <a href="javascript:faceAdd('48')"><img src="/images/face/28.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="29" />
+                          <a href="javascript:faceAdd('49')"><img src="/images/face/29.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="30" />
+                          <a href="javascript:faceAdd('50')"><img src="/images/face/30.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="37" />
+                          <a href="javascript:faceAdd('57')"><img src="/images/face/37.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="38" />
+                          <a href="javascript:faceAdd('58')"><img src="/images/face/38.gif" width="20" height="20" border="0" /></a></td>
+                        <td><input type="radio" name="face" value="39" />
+                          <a href="javascript:faceAdd('59')"><img src="/images/face/39.gif" width="20" height="20" border="0" /></a></td>
+                      </tr>
+                    </table></td>
+                  </tr>
+                </table>
+				<div style="" id="content_div">
+					<div id="content_edit">
+						<#if isPhone>
+							<@base.editor>${content?default("")}</@base.editor>
+						<#else>
+							<@base.kindEditor>${content?default("")}</@base.kindEditor>
+						</#if>
+					</div>
+				</div>
+		  	</div>
+			<div class="list_title_03">
+          <#if activity == 'Doomsday'>
+          <input type="hidden" name="activity" value="Doomsday" />
+          <#elseif activity == 'Christmas'>
+          <input type="hidden" name="activity " value="Christmas" />
+          </#if>
+				<input name="forumId" type="hidden" id="forumId" value="${model.forumId}" />
+				<input name="areaId" type="hidden" id="areaId" value="${forum.area.id}" />
+				<input type="button" class="newtopic_submit" name="Button3" value=" 提 交 " onclick="javascript:submitTopic()" />&nbsp;&nbsp;
+				<input type="button" class="newtopic_submit" name="Button3" value="保存到草稿箱" onclick="javascript:saveDraftBox()" />&nbsp;&nbsp;
+				<input type="button" class="newtopic_submit" name="Button2" value="返回主题列表" onclick="javascript:history.go(-1)" />&nbsp;&nbsp;
+				<input type="button" name="Submit" class="newtopic_submit" value="取回丢失内容" onclick="if(confirm('安全起见，请将当前帖子内容复制到记事本再进行此操作，你确定要继续吗？')) {resumeContent();}" />
+			</div>		
+			<div class="list_title_04" align="left"></div>
+			<script language="javascript">
+				initUbb();
+				//var uploadArea = new newgxu.UploadArea('uploadArea', 5);
+			</script>
+			</form>
+        
+	</@base.main>
+</@base.body>

@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>雨无声论坛4.0->在线用户列表</title>
+<link href="/css/three1.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/js/mootools.v1.00.js"></script>
+	<script type="text/javascript" src="/js/newgxu_common.js"></script>
+	<script type="text/javascript" src="/js/newgxu_dropdownMenu.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_dialog.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_ubb.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_upload.js"></script>
+</head>
+
+<body>
+<div class="whole">
+  <div class="topflash">
+  <object type="application/x-shockwave-flash" width="960" height="398" data="/flash/day.swf">
+    <param name="movie" value="/flash/day.swf" />
+   </object>
+  </div>
+  <div class="place">
+  			<table  height="35"  border="0" cellpadding="0" cellspacing="0" style="margin-top:30px">
+				<tr>
+				  <td align="left" class="xlogo">
+					<div style="width:384px;">
+						<div style="float:left;margin-left:20px;"><img src="/images/home.gif" width="16" height="16"/>&nbsp;</div>
+					    <ul id="dropdownMenu" class="dropdownMenu">
+								<li><a href="/main.yws">雨无声社区</a>
+	  <ul>
+		<li><a href="/index.yws">雨无声论坛</a></li>
+		<li><a href="/user/upgrade.yws">个人服务区</a></li>
+		<li><a href="/bank/index.yws">社区银行</a></li>
+		<li><a href="/market/official.yws">商业中心</a></li>
+	  </ul>
+	</li>
+							</ul>
+							<script language="javascript">new newgxu.DropdownMenu($('dropdownMenu'));</script>
+					</div>
+			      </td>
+				</tr>
+			  </table>
+  </div>
+  <div class="logo">
+  
+  
+  </div>
+  <div class="login_form">
+     <!-- 这里是登录表单 -->
+     <form id="form1" name="form1" method="post" action=""  style="width:150px;  margin-left:30px; margin-top:18px; ">
+        <input type="text" name="username" id="username" style=" width:150px; background-color:transparent; border:none; " />
+        <input type="password" name="password" id="password" style="margin-top:3px; width:150px; background-color:transparent;border:none;"/>
+        <input type="text" name="check" id="check" style="margin-top:5px; width:70px; background-color:transparent;border:none;"  />
+     </form>
+  </div>
+  <div class="img_1">
+  </div>
+    <div class="logan">
+  </div>
+<div class="stat_login">
+    <div class="login"><img src="images_f/login.jpg" width="242" height="20" border="0" usemap="#Map" />
+<map name="Map" id="Map">
+<area shape="rect" coords="137,5,178,19" href="#" />
+<area shape="rect" coords="185,4,225,20" href="#" /></map>
+    </div>
+    <div class="stat">
+    </div>
+  </div>
+  <div class="innermain">
+    <div style="float: left;width:60px;">
+    </div>
+    <div class="main">
+    <div>
+    <div class="list_title_01">&nbsp;</div>
+		<div class="list_title_02"></div>
+		<div class="kuang">
+		  <table height="25"  border="0" align="center" cellpadding="2" cellspacing="0" bgcolor="#FFFAD0" class="botom_line">
+			<tr align="center">
+			  <th width="126" class="right_line">昵称</th>
+			  <th width="280" class="right_line">位置</th>
+			  <th width="149" class="right_line">OS</th>
+			  <th width="92" class="right_line">IP</th>
+			  <th width="90" class="right_line">最后活动时间</th>
+			  <th width="66">短消息</th>
+			</tr>
+		  </table>
+		  <#list onlineUsers as online>
+		  <table width="100%" height="20"  border="0" align="center" cellpadding="2" cellspacing="0" class="botom_line">
+			<tr>
+			  <td width="126" height="25" class="right_line">${online.nick}</td>
+			  <td width="280" class="right_line">${online.location}</td>
+			  <td width="149" class="right_line"><#if user.userGroup.canViewUserIp()>${online.os}<#else>隐藏</#if></td>
+			  <td width="92" class="right_line"><#if user.userGroup.canViewUserIp()>${online.location}<#else>隐藏</#if></td>
+			  <td width="90" class="right_line">${online.lastAliveTime?datetime}</td>
+			  <td width="66">${online.action}</td>
+			</tr>
+		  </table>
+		  </#list>
+		</div>
+		
+		<div class="list_title_03"><span class="left pages">${model.pagination}</span></div>
+		<div class="list_title_04" align="left">&nbsp;</div>
+    </div>
+    </div>
+    <div style="float: left;width:60px;">
+    </div>
+  </div>
+  <div class="img_2">
+   <table border="0" style="margin-left:20px;margin-top:3px">
+              <tr>
+                <td height="23">	
+					<div style="width:410px;">
+						<div style="float:left;"><img src="/images/wz.gif" width="16" height="18"/> 位置：&nbsp;</div>
+ <ul id="dropdownMenu_foot" class="dropdownMenu">
+								<li><a href="/main.yws">雨无声社区</a>
+	  <ul>
+		<li><a href="/index.yws">雨无声论坛</a></li>
+		<li><a href="/user/upgrade.yws">个人服务区</a></li>
+		<li><a href="/bank/index.yws">社区银行</a></li>
+		<li><a href="/market/official.yws">商业中心</a></li>
+	  </ul>
+	</li>
+							</ul>
+							<script language="javascript">new newgxu.DropdownMenu($('dropdownMenu_foot'));</script>
+					</div>
+				</td>
+            </tr>
+              <tr>
+                <td height="23"><img src="/images/home.gif" width="16" height="16"/> <a href="http://www.newgxu.cn" class="t">雨无声网站首页</a> </td>
+              </tr>
+              <tr>
+                <td height="23"><img src="/images/pp.gif" width="16" height="15"/> 在线人数：${onlineStatus.total} 总访问： ${status.totalHicount}&nbsp;今日访问：${status.todayHicount}</td>
+              </tr>
+              <tr>
+                <td height="23"><img src="/images/show2.gif" width="16" height="15"/> 建议使用：1024*768分辨率，16位以上颜色、IE6.0以上版本浏览器</td>
+              </tr>
+          </table>
+  </div>
+  <div class="img_3"></div>
+  <div class="img_4"></div>
+  <div class="foot">
+   </div>
+   <div  style="height:54px; width:900px;margin-top:-55px;margin-left:35px;">
+      <table cellpadding="0" cellspacing="0" height="54" border="0">
+            <tr>
+              <td  align="left" valign="top">关于论坛 | 美术支持 | 免责声明 | 版权申明 | 合作伙伴 | 友情链接 |	桂ICP备05001920号 南宁网警备4501200373号  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雨无声 版权所有◎2003-2007</td>
+            </tr>
+      </table>
+  </div>
+</div>
+</body>
+</html>

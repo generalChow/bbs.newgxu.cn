@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=2.0" />
+<meta name="MobileOptimized" content="240" />
+<link rel="stylesheet" href="/resources/css/wap/cmcc.css">
+<meta name="format-detection" content="telephone=no" />
+<title>分区 - ${area.name}</title>
+<style type="text/css">
+	* {
+		font-size: 1em;
+	}
+	
+	#welcome {
+		text-align: center;
+		font-size: 1.4em;
+		background-color: #90c31f;
+		border-radius: 2px;
+		padding: 2px;
+		margin-bottom: 5px;
+	}
+	
+	#info a {
+		color: red;
+	}
+	
+	#info {
+		font-size: 1.2em;
+		text-align: center;
+		border-bottom-color: #E2FAC0;
+		padding: 2px;
+	}
+	
+	#forums {
+		margin: 5px 0;
+		padding: 2px 0;
+		text-align: center;
+		background-color: #3373A5;
+		border-radius: 2px;
+		border: 1px solid #3373A5;
+	}
+	
+	#forums a {
+		font-size: 1.3em;
+		color: white;
+	}
+	
+	#latest-article {
+		font-size: 1.1em;
+		text-align: center;
+		background-color: #3373A5;
+		border-radius: 2px;
+		padding: 2px;
+	}
+	
+	.article-list {
+		background-color: #e2fac0;
+		padding: 2px;
+		margin-top: 5px;
+		border-radius: 2px;
+	}
+	
+	.title {
+		width: 230px;
+		overflow: hidden;
+		font-size: 1.4em;
+		color: black;
+		padding: 10px 0;
+	}
+	
+	.sub-title {
+		color: grey;
+	}
+	
+	.sub-title a {
+		font-size: 1em;
+		color: purple;
+	}
+
+	#wrap {
+		width: 240px;
+		margin: 20px auto;
+	}
+</style>
+</head>
+<body>
+	<#include "/template/wap/cmcc/header.jsp" />
+
+	<div id="wrap">
+		<div id="header">
+			<div id="welcome">欢迎来到雨无声论坛！</div>
+			<#if status.login == true>
+				<div id="info">欢迎您，${status.nick}<br /><a href="//t.newgxu.cn">到微雨无声</a>|<a href="/wap/logout.yws">退出</a></div>
+			<#else>
+				<div id="info">游客，您好！请<a href="/wap/login.yws">登录</a>之后再发帖或者回复！</div>
+			</#if>
+		</div>
+			<div id="forums">
+				<#list area.forums as f>
+					<a href="/wap/forum.yws?forumId=${f.id}">${f.name}</a>|
+					<#if (f_index + 1) % 3 == 0>
+						<br />
+					</#if>
+				</#list>
+			</div>
+				
+			<div id="new-article">
+				<div id="latest-article">分区新帖</div>
+					<#list moreTopics as t>
+						<div class="article-list">
+							<p class="title"><a href="/wap/topic.yws?topicId=${t.id}&forumId=${t.forum.id}">${t.title}</a></p>							<span class="sub-title">${t.user.nick}&nbsp;于${t.creationTime?string("HH:mm")}&nbsp;发表在<a href="/wap/forum.yws?forumId=${t.forum.id}">${t.forum.name}</a>(${t.clickTimes}点击/${t.replyTimes}评论)</span>
+						</div>
+					</#list>
+				</div>
+		<div id="footer">
+			<!-- 页脚 -->
+		</div>
+	</div>
+
+	<#include "/template/wap/cmcc/footer.jsp" />
+</body>
+</html>

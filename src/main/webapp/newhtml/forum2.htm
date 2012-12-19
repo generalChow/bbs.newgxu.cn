@@ -1,0 +1,66 @@
+<@base.header title="论坛：${model.forum.name} -- 主题列表"></@base.header>
+<#setting number_format="0">
+<@base.body location="${model.forum.name}">
+	<@base.main location="${model.forum.name}">
+		<@base.forum_info/>
+		<div class="list_title_01">&nbsp;</div>
+		<div class="list_title_02">
+			<span class="left pages">${model.pagination}</span>
+			<span class="right">
+				<img src="image/grass1.gif" width="15" height="22"/><a href="/forum.yws?forumId=${forumId}&good=true">精华区</a>
+				<img src="image/grass2.gif" width="15" height="22"/><a href="/create_topic.yws?forumId=${forumId}">发新帖</a>
+				<img src="image/grass1.gif" width="15" height="22"/><a href="/create_vote.yws?forumId=${forumId}">发投票帖</a>
+				<img src="image/grass2.gif" width="15" height="22"/><a href="/create_small_news.yws?forumId=${forumId}">发小字报</a>
+			</span>
+		</div>
+		
+		<div class="kuang">
+
+		  <table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" bgcolor="#FFFAD0" class="botom_line">
+			  <tr align="center">
+				<th width="432" class="right_line">主题</th>
+				<th width="100" class="right_line">作者</th>
+				<th width="40" class="right_line">回复</th>
+				<th width="40" class="right_line">点击</th>
+				<th width="196">最后更新</th>
+			  </tr>
+		  </table>
+		  <#list model.topics as topic>
+			<table width="100%" height="25" border="0" align="center" cellpadding="0" cellspacing="0" class="botom_line">
+			  <tr align="center">
+				<td width="30" height="35" class="right_line"><a href="/topic.yws?forumId=${topic.forum.id}&topicId=${topic.id}" target="_blank"><img src="images/face/${topic.face}.gif" title="点击在新窗口打开" border="0"></a></td>
+				<td width="402" align="left" class="right_line">${topic.topString}${topic.lockString}${topic.goodString}${topic.voteString}<a href="/topic.yws?forumId=${topic.forum.id}&topicId=${topic.id}" title="发表时间：${topic.creationTime}">${topic.titleFilter}</a>${topic.newTopicString} ${topic.guide}</td>
+				<td width="100" class="right_line"><a href="/user/user_info.yws?id=${topic.topicUser.id}">${topic.topicUser.nick}</a></td>
+				<td width="40" class="right_line">${topic.replyTimes}</td>
+				<td width="40" class="right_line">${topic.clickTimes}</td>
+				<td width="196"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+					<tr>
+					  <td width="49%" align="center" valign="middle"><a href="/user/user_info.yws?id=${topic.replyUser.id}">${topic.replyUser.nick}</a></td>
+					  <td width="51%" align="center" valign="middle">${topic.replyTimeDisplay}</td>
+					</tr>
+				</table></td>
+			  </tr>
+		  </table>
+		  </#list>
+		</div>
+		
+		<div class="list_title_03">
+			<span class="left pages">${model.pagination}</span>
+			<span class="right">
+				<select name="menu1" class="select" onchange="javascript:parent.location=this.options[this.selectedIndex].value;">
+                    <option selected="selected">论坛跳转至.....</option>
+                        <#list model.areas as area><option value="/area.yws?areaId=${area.id}" class="jMenu">╇${area.name}</option>
+                        <#list area.forums as forum><option value="/forum.yws?forumId=${forum.id}">&nbsp;├${forum.name}</option></#list>
+                        </#list>
+                </select>
+			</span>
+		</div>		
+		<div class="list_title_04" align="left">
+			<form id="search" name="search" action="searchResult.jsp" method="post" onsubmit="return Jsearch(this)">
+				快速搜索：<input name="keywords" type="text" class="short_input" id="keywords" />
+				<input name="Submit" type="submit" class="submit_style" value=" 查找 " />
+				<input name="forumID" type="hidden" id="forumID" value="9" />
+			</form>
+		</div>
+	</@base.main>
+</@base.body>

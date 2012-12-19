@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Cache-Control" content="no-cache"/>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=2.0" />
+<meta name="MobileOptimized" content="240" />
+<meta name="format-detection" content="telephone=no" />
+<title>回复主题 - ${topic.title}</title>
+<style type="text/css">
+	* {
+		font-size: 1em;
+	}
+	
+	#submit {
+		background-color: green;
+		align: middle;
+		padding: 5px auto;
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+
+	<form action="/wap/feedback-process.yws" method="post">
+		<fieldset>
+			<legend>回复主题</legend>
+			<label for="content">请填写您回复的内容</label> <br />
+			<textarea rows="5" cols="26" name="content"></textarea>
+		</fieldset>
+		<input name="forumId" type="hidden" id="forumId" value="${forumId}" />
+		<input name="topicId" type="hidden" id="topicId" value="${topicId}" />
+		<input id="submit" type="submit" value="提交！" />
+	</form>
+</body>
+</html>

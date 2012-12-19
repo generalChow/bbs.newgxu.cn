@@ -1,0 +1,78 @@
+<style type="text/css">
+<!--
+.title {
+	font-family: "宋体";
+	font-size: 9pt;
+	font-weight: bold;
+}
+body,td,th {
+	font-family: 宋体;
+	font-size: 9pt;
+}
+a:link {
+	text-decoration: none;
+	color: #666666;
+}
+a:visited {
+	text-decoration: none;
+	color: #666666;
+}
+a:hover {
+	text-decoration: underline;
+	color: #CCCCCC;
+}
+a:active {
+	text-decoration: none;
+}
+-->
+</style>
+  <form name="form1" method="post" action="logs_list.yws"> 
+  <label><input type="radio" name="searchType" value="id" checked>按ID查找</label>
+  <label><input name="searchType" type="radio" value="forum">按版块查找</label>
+  <label><input name="searchType" type="radio" value="username">按登录账号查找</label>
+  <label><input type="radio" name="searchType" value="studentid">按学号查找</label>
+  <label><input type="text" name="searchValue" ></label>
+  <input type="submit" name="Submit" value="查	找"> 
+  </form>
+  <br/>
+    日志列表 . <br>
+	<table width="683" border="1" align="center" cellspacing="0" bordercolor="#999999" style="border-collapse:collapse">
+  	<tr class="title">
+        <td align="center">ID号</td>
+        <td width="78" height="28" align="center" bgcolor="#E3FBEA">用户</td>
+   		<td width="298" align="center" bgcolor="#E3FBEA">操作主题</td>
+   	 	<td width="73" align="center" bgcolor="#E3FBEA">所属板块</td>
+    	<td width="72" align="center" bgcolor="#E3FBEA">操作类型</td>
+   		<td width="140" align="center" bgcolor="#E3FBEA">时间</td>
+      </tr>
+      <#setting number_format="0">
+      <#list logs as log>
+      <tr align="center">
+      	  <td align="center">${log.id}</td>
+   		  <td height="20" align="center"><a href="../user/user_info.yws?id=${log.user.id}" target="_blank">${log.user.nick}</a></td>
+  		  <td align="center"><a href="/topic.yws?forumId=${log.forum.id}&topicId=${log.topic.id}">${log.topic.title}</a></td>
+  		  <td align="center">${log.forum.name}</td>
+      	  <td><#switch log.typeid>
+				<#case 1>删除<#break>
+				<#case 2>修复<#break>
+				<#case 3>置顶<#break>
+				<#case 4>校外<#break>
+				<#case 5>区置顶<#break>
+				<#case 6>精华<#break>
+				<#case 7>锁定<#break>
+				<#case 8>推荐<#break>
+				<#case 9>取消置顶<#break>
+				<#case 10>取消精华<#break>
+				<#case 11>取消推荐<#break>
+				<#case 12>屏蔽发言<#break>
+				<#case 13>删除回复<#break>
+				<#case 14>撤销锁定<#break>
+				<#case 15>转移主题<#break>
+				<#case 16>加亮主题<#break>
+				<#case 17>取消加亮<#break>
+			 </#switch></td>
+		 <td>${log.dt}</td> 
+      </tr>
+	</#list>
+    </table>
+	${pagination}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forum>
+	<!--新编辑器的启动时间-->
+	<editor_year>2011</editor_year>
+	<editor_month>10</editor_month>
+	<editor_day>11</editor_day>
+	<editor_hour>3</editor_hour>
+	<editor_minute>7</editor_minute>
+	
+	<!--编辑器工具栏配置-->
+	<editor_common>'source'|'undo'</editor_common>
+	
+	
+	<!--默认的缓存更新时间，单位为分钟-->
+	<cache_timeout>180</cache_timeout>
+</forum>

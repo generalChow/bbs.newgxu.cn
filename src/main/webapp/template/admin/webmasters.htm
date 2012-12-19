@@ -1,0 +1,40 @@
+<div class="pageContent" style="border:1px solid #92cf28; background-color:#fffbe0;">
+		<div class="list_title_02" style="padding:5px;">
+				<a href="webmasters.yws?type=exp" target="navTab" rel="banzhu" title="版主|经验"><span class="style1">按经验排序</span></a>&nbsp;&nbsp;
+				<a href="webmasters.yws?type=money" target="navTab" rel="banzhu" title="版主|XDB"><span class="style2">按XDB排序</span></a> &nbsp;&nbsp;
+				<a href="webmasters.yws?type=topics" target="navTab" rel="banzhu" title="版主|发表主题"><span class="style3">按发表主题数排序</span></a> &nbsp;&nbsp;
+				<a href="webmasters.yws?type=replys" target="navTab" rel="banzhu" title="版主|发表回复"><span class="style4">按发表回复数排序</span></a> &nbsp;&nbsp;
+				<a href="webmasters.yws?type=goods" target="navTab" rel="banzhu" title="版主|发表精华"><span class="style5">按发表精华数排序</span></a>&nbsp;&nbsp;
+		</div>
+		 <table class="table" width="100%"  layoutH="50">
+			<thead>
+			<tr>
+				<th width="60">ID</th>
+			  <th width="12%">昵称</th>
+			  <th width="12%" >经验值</th>
+			  <th width="12%" >西大币</th>
+			  <th width="12%" >发表主题数</th>
+			  <th width="12%">发表回复数</th>
+			  <th width="12%" >发表精华数</th>
+			  <th width="12%" >操作数</th>
+			  <th >最后上线时间</th>
+			</tr>
+			</thead>
+		<tbody>
+		  <#setting number_format="0">
+		  <#list webmasters as webmaster>
+			<tr>
+				<td>${webmaster.user.id}</td>
+			  <td ><a href="/user/user_info.yws?id=${webmaster.user.id}">${webmaster.user.nick}</a></td>
+			  <td>${webmaster.user.exp}</td>
+			  <td>${webmaster.user.money}</td>
+			  <td>${webmaster.user.numberOfTopic}</td>
+			  <td>${webmaster.user.numberOfReply}</td>
+			  <td>${webmaster.user.numberOfGood}</td>
+			  <td>${webmaster.numberOfManage}</td>
+			  <td>${webmaster.user.lastLoginTime}</td>
+			</tr>
+		  </#list>
+		  </tbody>
+	</table>
+</div>

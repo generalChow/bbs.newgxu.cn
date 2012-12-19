@@ -1,0 +1,72 @@
+<table width="773" height="486" border="0" align="center" cellspacing="0" bgcolor="#FFFFFF">
+  <tr>
+    <td width="219" rowspan="3" valign="top">&nbsp;</td>
+    <td width="313" height="31" valign="top"><img src="/images/vote/0052_04.gif" width="290" height="29" /></td>
+    <td width="235" align="right" valign="baseline"><img src="/images/vote/rr.jpg" width="41" height="14" /></td>
+  </tr>
+  <tr>
+    <td height="32" colspan="2" align="left" valign="top"><table width="627" border="0" align="left" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="704" height="15" align="center">
+        <form name="addVoteWebMasterForm" action="addVoteWebMaster.yws">
+          <table width="598" border="0" align="center" cellspacing="0" bordercolor="#CCCCCC" style="border-collapse:collapse ">
+            <tr align="center"  onmouseover="this.bgColor='#FFFDEA'" onmouseout="this.bgColor=''">
+              		<td>
+					<table width="598" border="0" align="center" cellspacing="0" bordercolor="#CCCCCC" style="border-collapse:collapse ">
+            <tr align="center" >
+              <td width="96" height="20" class="strong_uline">用户ID(可不填)</td>
+              <td width="178" class="strong_uline">昵称</td>
+              <td width="164" class="strong_uline">所属板块</td>
+              <td class="strong_uline">
+              <a href="freshWebMasters.yws" onclick="return confirm('确定要进行删除操作吗?\n请慎用次功能！')">[更新为现在斑竹列表]</a><br>
+              <a href="resetVote.yws" onclick="return confirm('确定要进行删除操作吗?\n请慎用次功能！')">[重新投票]</a></td>
+             </tr>
+            <tr align="center"  onmouseover="this.bgColor='#FFFDEA'" onmouseout="this.bgColor=''">
+              <td align="center" class="uline2" ><input name="user.id" type="text" class="short_input" id="user.id" /></td>
+              <td align="center" class="uline2" ><input name="user.nick" type="text" class="sinput_style" id="user.nick" /></td>
+              <td align="center" class="uline2" ><input name="forum_name" type="text" class="sinput_style" id="forum_name" /></td>
+              <td valign="bottom" class="uline2" ><input name="Submit22" type="submit" class="submit_style" value="单个添加" /></td>
+              </tr>
+          </table>
+
+              		</td>
+				
+               </tr>
+          </table>
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td height="16" align="center"><hr size="0" /></td>
+      </tr>
+      <tr>
+        <td align="center">
+
+<br>
+
+<div class="kuang">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td><table width="598" border="0" align="center" cellspacing="0" bordercolor="#CCCCCC" style="border-collapse:collapse ">
+                  <tr align="center" >
+                    <td width="96" height="20" class="strong_uline">用户ID</td>
+                    <td width="178" class="strong_uline">昵称</td>
+                    <td width="239" class="strong_uline">所属板块</td>
+                    <td colspan="2" class="strong_uline">操作</td> 
+					</tr>
+	<#setting number_format="0"> 
+	<#list webmasters as webmaster>
+	<form id="del" name="del" method="post"
+		action="UpdateVoteWebMaster.yws">
+		<table>
+                  <tr align="center"  onmouseover="this.bgColor='#FFFDEA'" onmouseout="this.bgColor=''">
+                    <td align="center" class="uline2"><input name="user.id" type="text" class="short_input" id="user.id" value="${webmaster.user.id}" /></td>
+                    <td align="center" class="uline2" ><input name="user.nick" type="text" class="sinput_style" id="user.nick" value="${webmaster.nick}" /></td>
+                    <td align="center" class="uline2" ><input name="forum_name" type="text" class="sinput_style" id="forum_name" value="${webmaster.forum_name}" /></td>
+                    <td width="42" class="uline2" ><input name="Submit2" type="submit" class="submit_style" value="修改" /></td>
+                    <td width="33" class="uline2" ><a href="deleteVoteWebMaster.yws?id=${webmaster.userid}"><img src="/images/b_drop.png" width="16" height="16" border="0" /></a></td>
+                  </tr>
+          </table>
+		 </form>
+	</#list>
+</table>

@@ -1,0 +1,69 @@
+
+<#macro navigation>
+	<li><a href="#">雨无声社区</a>
+	  <ul>
+		<li><a href="/index.yws">雨无声论坛</a></li>
+		<li><a href="/user/upgrade.yws">个人服务区</a></li>
+		<li><a href="/bank/index.yws">社区银行</a></li>
+		<li><a href="/market/official.yws">商业中心</a></li>
+	  </ul>
+	</li>
+	<li>&nbsp;－&gt;&nbsp;</li>
+	
+	<#if model.areas?exists>
+	<li><a href="/index.yws">雨无声论坛</a>
+	  <ul>
+		<#list model.areas as area>
+		<li><a href="javascript:void(0);">&nbsp;${area.name}</a>
+		  <ul style="margin-left:20px; width:205px;">
+		    <#if area.id==2>
+			    <#list area.forums?sort_by(["compositorId"]) as forum>
+					<#if forum.hot>
+						<li><a href="/forum.yws?forumId=${forum.id}" style="color:red" >&nbsp;${forum.name}</a></li>
+					<#else>
+						<li><a href="/forum.yws?forumId=${forum.id}">&nbsp;${forum.name}</a></li>
+					</#if>
+				</#list>
+		    <#else>
+			
+		    	<#list area.forums?sort_by(["compositorId"]) as forum>
+					<#if forum.hot>
+						<li><a href="/forum.yws?forumId=${forum.id}" style="color:red" >&nbsp;${forum.name}</a></li>
+					<#else>
+						<li><a href="/forum.yws?forumId=${forum.id}">&nbsp;${forum.name}</a></li>
+					</#if>
+				</#list>
+		    
+			</#if>
+		  </ul>
+		</li>
+		</#list>
+	  </ul>
+	</li>
+	<li>&nbsp;－&gt;&nbsp;</li>
+	</#if>
+	
+	<#if model.forum?exists>
+	<li><a href="#">${model.forum.area.name}</a>
+	  <ul>
+		<#list model.forum.area.forums as forum>
+			<#if forum.hot>
+				<li><a href="/forum.yws?forumId=${forum.id}" style="color:red" >&nbsp;${forum.name}</a></li>
+			<#else>
+				<li><a href="/forum.yws?forumId=${forum.id}">&nbsp;${forum.name}</a></li>
+			</#if>
+		</#list>
+	  </ul>
+	</li>
+	<li>&nbsp;－&gt;&nbsp;</li>
+	</#if>
+	
+	<#if model.topic?exists>
+		<li>
+			<a href="/forum.yws?forumId=${model.topic.forum.id}">
+			${model.topic.forum.name}</a>
+		</li>
+		<li>&nbsp;－&gt;&nbsp;</li>
+	</#if>
+	
+</#macro>

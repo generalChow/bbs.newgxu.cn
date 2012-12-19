@@ -1,0 +1,95 @@
+<div class="accordion" layoutH="70">
+	<div class="accordionHeader"><h2><span>icon</span>管理员、荣誉舰长组 </h2></div>
+	 <div class="accordionContent">
+		 <table class="table" width="400" >
+		 	<thead>
+				<tr>
+					  <th width="100">职务</th>
+					  <th width="80">体力</th>
+					  <th width="100" >折扣</th>
+					  <th width="50" >编辑</th>
+					  <th width="50" >删除</th>
+				</tr>
+			</thead>
+		<tbody>
+			<#list administratorGroups as group>		
+		      <tr align="center">
+		        <td><font color="${group.displayColor}">${group.groupName}</font></td>
+		        <td>${group.maxPower}</td>
+		        <td>${group.agio}</td>
+		        <td><img src="/image/button_edit.gif" width="17" height="17" border="0"></td>
+		        <td><img src="/image/button_delete.gif" width="17" height="17" border="0"></td>
+		      </tr>
+			</#list>
+			<#list areaWebmasterGroups as group>		
+		      <tr align="center">
+		        <td><font color="${group.displayColor}">${group.groupName}</font></td>
+		        <td>${group.maxPower}</td>
+		        <td>${group.agio}</td>
+		        <td><img src="/image/button_edit.gif" width="17" height="17" border="0"></td>
+		        <td><img src="/image/button_delete.gif" width="17" height="17" border="0"></td>
+		      </tr>
+			</#list>
+		</tbody>
+	    </table>
+	 </div>
+   <div  class="accordionHeader"><h2><span>icon</span>版主</h2></div>
+	<div class="accordionContent">
+		<table class="table" width="600" >
+		 	<thead>
+				<tr>
+					  <th width="100">职务</th>
+					  <th width="100">体力</th>
+					  <th width="100" >升级所需经验</th>
+					  <th width="100" >升级奖励</th>
+					   <th width="100" >折扣</th>
+					  <th width="50" >编辑</th>
+					  <th width="50" >删除</th>
+				</tr>
+			</thead>
+		<tbody>
+		<#list forumWebmasterGroups as group>		
+	      <tr align="center">
+	        <td><font color="${group.displayColor}">${group.groupName}</font></td>
+	        <td>${group.maxPower}</td>
+	        <td>${group.leavelUpExp}</td>
+	        <td>${group.encouragement}</td>
+	        <td>${group.agio}</td>
+	        <td><img src="/image/button_edit.gif" width="17" height="17" border="0"></td>
+	        <td><img src="/image/button_delete.gif" width="17" height="17" border="0"></td>
+	      </tr>
+		</#list>
+		</tbody>
+	    </table>
+	</div>
+
+   <div  class="accordionHeader"><h2><span>icon</span>普通用户组</h2></div>
+   <div class="accordionContent"   style="height:500px;">
+		<table class="table" width="600">
+		 	<thead>
+				<tr>
+					  <th width="100">职务</th>
+					  <th width="100">体力</th>
+					  <th width="100" >升级所需经验</th>
+					  <th width="100" >升级奖励</th>
+					   <th width="100" >折扣</th>
+					  <th width="50" >编辑</th>
+					  <th width="50" >删除</th>
+				</tr>
+			</thead>
+		<tbody>
+		<#list basicGroups as group>		
+	      <tr align="center">
+	        <td><font color="${group.displayColor}">${group.groupName}</font></td>
+	        <td>${group.maxPower}</td>
+	        <td>${group.leavelUpExp}</td>
+	        <td>${group.encouragement}</td>
+	        <td>${group.agio}</td>
+	        <td><img src="/image/button_edit.gif" width="17" height="17" border="0"></td>
+	        <td><img src="/image/button_delete.gif" width="17" height="17" border="0"></td>
+	      </tr>
+		</#list>
+		</tbody>
+	    </table>
+  </div>
+</div>

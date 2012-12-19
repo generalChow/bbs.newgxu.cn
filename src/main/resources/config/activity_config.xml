@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<activity>
+	<!--活动的开始/结束时间,注意格式-->
+	<date>
+		<Bachelor>2011-11-6 00:00:00#2011-11-11 00:00:00</Bachelor>
+	</date>
+	
+	<!--当前活动的活动，包路径：cn.newgxu.bbs.web.activity.service.impl-->
+	<current>BachelorService</current>
+</activity>

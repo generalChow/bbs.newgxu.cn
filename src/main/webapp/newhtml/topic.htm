@@ -1,0 +1,575 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>欢迎来到雨无声论坛</title>
+<link href="/css/three1.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/js/mootools.v1.00.js"></script>
+	<script type="text/javascript" src="/js/newgxu_common.js"></script>
+	<script type="text/javascript" src="/js/newgxu_dropdownMenu.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_dialog.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_ubb.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_upload.js"></script>
+</head>
+<script language="javascript">
+	var itemToTopicDialog;
+	var pubTopicDialog;
+	var moveTopicDialog;
+		function showItemToTopicDialog(id) {
+		constructItemDialogDiv(id);
+		itemUseDialog = new newgxu.HtmlDialog("itemUseDialog", 330, 100);
+	}
+	function constructItemDialogDiv(id) {
+		var html ='<form action="/market/item_use_do.yws?topicId='+id+'" method="post" >';
+		html += '	<table align="center" width="250" border="0" cellspacing="0" cellpadding="0">';
+	  	html += '		<tr><td>选择道具：</td></tr>												';
+	  	html += '			<tr><td>															';
+		html += '				<table>															';
+		html += '					<tr><td><input name="id" type="radio" value="33" checked="checked"/></td><td>救生圈</td></tr>';
+		html += '					<tr><td><input name="id" type="radio" value="34"/></td><td>精灵弓</td></tr>';		
+		html += '				</table>														';	
+		html += '			</td></tr>															';
+		html += '		<tr><td colspan="2">													';
+		html += '			<input type="submit" name="Submit" value="确认" id="Submit">			';
+		html += '			<input type="reset" onclick="itemUseDialog.close();" value="取消" />	';
+		html += '		</td></tr>																';
+		html += '	</table></form>																';
+		var dialogDiv = new Element("div");
+		dialogDiv.id = "itemUseDialogForm";
+		dialogDiv.innerHTML = html;
+		$("itemUseDialog").innerHTML = '';
+		dialogDiv.injectInside($("itemUseDialog"));
+	}
+	
+	
+	function showPubTopicDialog(forumId, topicId) {
+		constructPubTopicDialogDiv(forumId, topicId);
+		pubTopicDialog = new newgxu.HtmlDialog("pubTopicDialog", 330, 100);
+	}
+	function showMoveTopicDialog(forumId, topicId) {
+		constructMoveTopicDialogDiv(forumId, topicId);
+		moveTopicDialog = new newgxu.HtmlDialog("moveTopicDialog", 330, 100);
+	}
+	function constructPubTopicDialogDiv(forumId, topicId) {
+		var html ='<form method="post" action="/manage.yws?forumId='+forumId+'&topicId='+topicId+'&action=pub">';
+		html += '  <table width="250" border="0" align="center">';
+		html += '    <tr>';
+		html += '      <td align="center" height="25">推荐到：';
+		html += '        <select name="pubId" id="pubId">';
+		html += '          <option value="1">热门话题</option>';
+		html += '          <option value="2">精彩推荐</option>';
+		html += '        </select>';
+		html += '      <input type="submit" name="Submit" value="提交" />';
+		html += '      <input type="button" onclick="pubTopicDialog.close();" name="Submit2" value="取消" /></td>';
+		html += '    </tr>';
+		html += '  </table>';
+		html += '</form>';
+		var dialogDiv = new Element("div");
+		dialogDiv.id = "pubTopicDialogForm";
+		dialogDiv.innerHTML = html;
+		$("pubTopicDialog").innerHTML = '';
+		dialogDiv.injectInside($("pubTopicDialog"));
+	}
+	function constructMoveTopicDialogDiv(forumId, topicId) {
+		var html ='<form method="post" action="/manage.yws?forumId='+forumId+'&topicId='+topicId+'&action=move">';
+		html += '  <table width="250" border="0" align="center">';
+		html += '    <tr>';
+		html += '      <td align="center" height="25">移动到：';
+		html += '        <select name="toForumId" id="toForumId">';
+                        <#list areas as area><#list area.forums as forum>
+        html += '       	<option value="${forum.id}">&nbsp;${forum.name?js_string}</option>';
+                        </#list></#list>
+		html += '        </select>';
+		html += '      <input type="submit" name="Submit" value="提交" />';
+		html += '      <input type="button" onclick="moveTopicDialog.close();" name="Submit2" value="取消" /></td>';
+		html += '    </tr>';
+		html += '  </table>';
+		html += '</form>';
+		var dialogDiv = new Element("div");
+		dialogDiv.id = "moveTopicDialogForm";
+		dialogDiv.innerHTML = html;
+		$("moveTopicDialog").innerHTML = '';
+		dialogDiv.injectInside($("moveTopicDialog"));
+	}
+	</script>
+<body>
+<div class="whole"></div>
+  <div class="topflash">
+  <object type="application/x-shockwave-flash" width="960" height="398" data="/flash/day.swf">
+    <param name="movie" value="/flash/day.swf" />
+   </object>
+  </div>
+  <div class="place">
+  			<table  height="35"  border="0" cellpadding="0" cellspacing="0" style="margin-top:30px;margin-left:20px;">
+				<tr>
+				  <td align="left" class="xlogo">
+					<div style="width:410px;">
+						<div style="float:left;"><img src="/images/home.gif" width="16" height="16"/>&nbsp;</div>
+					    <ul id="dropdownMenu" class="dropdownMenu">
+								<li><a href="/main.yws">雨无声社区</a>
+	  <ul>
+		<li><a href="/index.yws">雨无声论坛</a></li>
+		<li><a href="/user/upgrade.yws">个人服务区</a></li>
+		<li><a href="/bank/index.yws">社区银行</a></li>
+		<li><a href="/market/official.yws">商业中心</a></li>
+	  </ul>
+	</li>
+	<li>&nbsp;－&gt;&nbsp;</li>
+	
+	<#if model.areas?exists>
+	<li><a href="/index.yws">雨无声论坛</a>
+	  <ul>
+		<#list model.areas as area>
+		<li><a href="javascript:void(0);">&nbsp;${area.name}</a>
+		  <ul>
+			<#list area.forums as forum>
+			<li><a href="/forum.yws?forumId=${forum.id}">&nbsp;${forum.name}</a></li>
+			</#list>
+		  </ul>
+		</li>
+		</#list>
+	  </ul>
+	</li>
+	<li>&nbsp;－&gt;&nbsp;</li>
+	</#if>
+	
+	<#if model.forum?exists>
+	<li><a href="/area.yws?areaId=${model.forum.area.id}">${model.forum.area.name}</a>
+	  <ul>
+		<#list model.forum.area.forums as forum>
+		<li><a href="/forum.yws?forumId=${forum.id}">&nbsp;${forum.name}</a></li>
+		</#list>
+	  </ul>
+	</li>
+	<li>&nbsp;－&gt;&nbsp;</li>
+	</#if>
+	
+	<#if model.topic?exists>
+		<li>
+			<a href="/forum.yws?forumId=${model.topic.forum.id}">
+			${model.topic.forum.name}</a>
+		</li>
+		<li>&nbsp;－&gt;&nbsp;</li>
+	</#if>
+								<li>${model.forum.name?default("")}</li>
+							</ul>
+							<script language="javascript">new newgxu.DropdownMenu($('dropdownMenu'));</script>
+					</div>
+			      </td>
+				</tr>
+			  </table>
+  </div>
+  <div class="logo">
+  </div>
+   <#if status.login==false>
+  <div class="login_form">
+     <!-- 这里是登录表单 -->
+     <form id="form1" name="loginform" method="post" action="/accounts/login_do.yws"   style="width:150px;  margin-left:30px; margin-top:18px; ">
+        <input type="text" name="username" id="username" style=" width:150px; background-color:transparent; border:none; " />
+        <input type="password" name="password" id="password" style="margin-top:3px; width:150px; background-color:transparent;border:none;"/>
+        <input type="text"onFocus="javascript:$('validImage').src='/validImage_servlet';" name="validCode" style="margin-top:5px; width:70px; background-color:transparent;border:none;"  />&nbsp;<img src="images/default_valid_img.png" align="top" id="validImage" style="margin-top:-20px;margin-left:100px;"/>
+     </form>
+  </div>
+  </#if>
+  <#if status.login>
+  <div class="logined_form">
+  <div style="width:243px;margin-top:30px;">
+ <span >嘿！您好！${status.nick}</span>
+			<span  style="float:left;">
+				<#if status.login>
+				<ul class="userservice">
+				  <li>
+					<a href="/user/upgrade.yws" >个人服务区</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="/getdraftboxes.yws" target="_blank">草稿箱(${status.draftboxSize})</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="/diary/index.yws" target="_blank">心情日记</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="/user/log.yws" target="_blank">新手帮助</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="/accounts/logout.yws">退出</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="#"  onClick="messageList();">新消息：${status.messageNotRead}条</a>
+				</li>
+				</ul>
+				</#if>
+			</span>
+	 </div>
+  </div>
+  </#if>
+  <div class="img_1">
+  </div>
+    <div class="logan">
+  <table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td width="75" align="right">
+						<b><font color="#B8A974">版主：</font>
+						</b>
+					</td>
+					<td align="left">
+						<#list model.forum.webmasters as m>
+						<a href="/user/user_info.yws?id=${m.id}">${m.nick}</a> </#list>
+					</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top">
+						<b><font color="#B8A974">本版宣言：</font>						</b>					</td>
+	                <td align="left">
+						${model.forum.description?default("")}
+					</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top">
+						<a href="#" title="查看所有小字报"
+							onclick="wiewSmallNewsList(14);"><b><font
+								color="#B8A974">小字报：</font>
+						</b>
+						</a>
+					</td>
+					<td align="left">
+							<MARQUEE height="32" scrollAmount="2" scrollDelay="0" onmouseover="this.stop()" onmouseout="this.start()">
+						·  欢迎光临雨无声论坛，新版4.0使用的spring+hibernate+webwork+模板技术，在firefox浏览器下还不能正常浏览，我们将会继续改进，在此向关心和支持过雨无声的各新老会员表示衷心的感谢！！
+					      </MARQUEE>
+					</td>
+				</tr>
+			</table>
+  
+  </div>
+<div class="stat_login">
+    <#if status.login==false>
+    <div class="login"><img src="images_f/login.jpg" width="242" height="20" border="0" usemap="#Map" />
+<map name="Map" id="Map">
+<area shape="rect" coords="137,5,178,19" href="#" onclick="javascript:loginform.submit();"/>
+<area shape="rect" coords="185,4,225,20" href="#" onclick="window.location.href='/accounts/register.yws'"/></map>
+    </div>
+  </#if>
+  <#if status.login>
+  <div class="logined"></div>
+  </#if>
+    <div class="stat">
+     <table width="100%" height="96" border="0" cellpadding="0" cellspacing="0">
+     <tr>
+		<td width="120" style="padding-left:20px;">
+			<a href="/search.yws">检索中心</a>
+			<br />
+			<a href="/user/online_users.yws">查看在线用户</a>
+			<br />
+			<a href="/user/users.yws">查看所有用户</a>		
+		<br />
+		    <a href="boardState.yws?action=nowOnline&areaID=${forum.area.id}">版块在线状态</a>
+			<br />
+			论坛在线：${onlineStatus.total}人
+			<br />
+			此版在线：${onlineStatus.numberOfForum}人
+			<br />
+			<a href="http://sighttp.qq.com/cgi-bin/check?sigkey=5d2e139cf74d07c3acfe48d26f73d303d4267d9d41014630e6da018e64687876"; target=_blank;onclick="var tempSrc='http://sighttp.qq.com/wpa.js?rantime='+Math.random()+'&sigkey=5d2e139cf74d07c3acfe48d26f73d303d4267d9d41014630e6da018e64687876';var oldscript=document.getElementById('testJs');var newscript=document.createElement('script');newscript.setAttribute('type','text/javascript'); newscript.setAttribute('id', 'testJs');newscript.setAttribute('src',tempSrc);if(oldscript == null){document.body.appendChild(newscript);}else{oldscript.parentNode.replaceChild(newscript, oldscript);}return false;"><img border="0" SRC='http://wpa.qq.com/pa?p=1:774808046:41' alt="值班管理员QQ"></a>
+		</td>
+            </tr>
+		</table>
+    </div>
+  </div>
+  <div class="innermain">
+    <div class="left">
+    </div>
+    <div class="main">
+   <div class="list_title_01">&nbsp;</div>
+          	<#if topic.voteTopic>
+				<div class="list_title_02"><strong>[投票]：${topic.titleFilter}</strong></div>
+				<form action="/vote.yws?forumId=${forum.id}&topicId=${topic.id}&voteId=${topic.vote.id}" method="post">
+					<div class="kuang">
+					  ${topic.vote.voteDisplay}
+					  <SCRIPT LANGUAGE="JavaScript">
+						<!--
+							votenum=votenum.split("|")
+							var votenum_1=0;
+							for (vv=0;vv>votenum.length;vv++)
+							{
+								votenum_1=votenum_1+(votenum[vv]);
+							}
+							if (votenum_1==0){votenum_1=1;}
+							var g=0;
+							vote=vote.split("|")
+							var tmp;
+							
+							document.write ('<table width="100%" align="center" cellpadding="0" cellspacing="5">');
+							for (m=0;m<vote.length;m++)
+							{
+								g++;
+								if(g==11){g=1;}
+								document.write ('<tr align="left"><td width="60%" height=25 class="right_line">');
+								document.write ((m+1));
+								document.write ('：');		
+								if(votetype=='0')
+								{
+									document.write ('<input type="radio" name="options" value="'+ m +'" id="v'+m+'">&nbsp;');
+								}
+								else
+								{
+									document.write ('<input type="checkbox" name="options" value="'+m+'" id="v'+m+'">&nbsp;');
+								}
+								tmp=parseInt((votenum[m]/voters)*300)
+								document.write ('<label for="v'+m+'">'+vote[m]+'</label></td><td width="40%">');
+								document.write ('<img src="/images/vote/bar'+g+'.gif" width="'+tmp+'" height=8>&nbsp;<b>'+votenum[m]+'票</b></td></tr>');
+							}
+							document.write ('</table>');
+						//-->
+					  </SCRIPT>
+					</div>
+					<div class="list_title_03">
+					  <#if voteable>
+	                      <input type="submit" name="Submit3" class="submit_style" value='投 票' />
+	                  <#else>
+	                      <#if status.login>您已经投过票了，感谢您的支持！<#else>请[<a href="/accounts/login.yws">登录</a>]以后投票</#if>
+	                  </#if>&nbsp;共有<b>${topic.vote.numberOfVoteUsers}</b>位水友参与投票
+					</div>		
+	            </form>		
+				<div class="list_title_00"></div>
+          </#if>		  
+		  
+		<div class="list_title_02">
+		<table  border="0" align="center" cellpadding="0" cellspacing="0" class="botom_line" >
+			<span class="pages">${model.pagination}</span>
+			<span style="margin-left:-67px;">
+				<img src="image/grass1.gif" width="15" height="22" /><a href="/forum.yws?forumId=${forumId}&good=true">精华区</a>
+				<img src="image/grass2.gif" width="15" height="22"/><a href="/create_topic.yws?forumId=${forumId}">发新帖</a>
+				<img src="image/grass1.gif" width="15" height="22"/><a href="/create_vote.yws?forumId=${forumId}">发投票帖</a>
+				<img src="image/grass2.gif" width="15" height="22"/><a href="#" onClick="MM_openBrWindow('/create_small_news.yws?forumId=${forum.id}','发小字报','menubar=yes,scrollbars=yes,width=600,height=380')">发小字报</a>
+				<img src="image/grass1.gif" width="15" height="22"/><a href="/user/saveFavoriteTopic.yws?topicId=${topic.id}">加入个人收藏夹</a>
+			</span>
+			</table>
+		</div>
+	 <div >
+	 <table  border="0" align="center" cellpadding="0" cellspacing="0" class="botom_line" width="880">
+			  <tr>
+				<td width="80%" height="30" align="left" >&nbsp;&nbsp;<b>贴子主题：${topic.titleFilter}</b></td>
+				<td width="20%" align="right">[您是本帖的第 ${topic.clickTimes} 个阅读者]</td>
+			  </tr>
+	 </table>
+	 </div>
+      <div >
+			<#list replieLines as replyLine>
+			<table  border="0" align="center" cellpadding="0" cellspacing="0" class="botom_line">
+			  <tr>
+				<td width="196" valign="top" class="right_line">
+					<div class="reply_user">
+						<a href="/user/user_info.yws?id=${replyLine.reply.postUser.id}"><b>${replyLine.reply.postUser.nick}</b></a><br />
+						<font style="color:#6fa420;">头衔：${replyLine.reply.postUser.titleDisplay}</font><br />
+						${replyLine.reply.postUser.faceDisplay}<br />
+						性　　别：${replyLine.reply.postUser.sexDisplay}<br />
+						加入时间：${replyLine.reply.postUser.registerDateDisplay}<br />
+						经 验 值：${replyLine.reply.postUser.exp}<br />
+						灌　　水：${replyLine.reply.postUser.totalPostDisplay}<br />
+						职　　务：${replyLine.reply.postUser.groupNameDisplay}<br />
+						<#if replyLine.reply.postUser.honorDisplay?has_content>
+						荣　　誉：${replyLine.reply.postUser.honorDisplay}
+						</#if>
+					</div>
+				</td>
+				<td valign="top">
+				    <div>
+				    <ul id="manageMenu_${replyLine_index}" class="dropdownMenu">
+								<li><a name="${replyLine.reply.id}"></a></li>
+								<li><a href="/message/send_message.yws?userId=${replyLine.reply.postUser.id}">&nbsp;短消息&nbsp;</a> </li>
+								<li><a href="/message/send_message.yws?userId=${replyLine.reply.postUser.id}&action=apply">&nbsp;好友&nbsp;</a> </li>
+								<li><a href="/user/user_info.yws?id=${replyLine.reply.postUser.id}">&nbsp;信息&nbsp;</a> </li>
+								<li><a href="/reply.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=quote">&nbsp;引用&nbsp;</a> </li>
+								<li><a href="/modify.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}">&nbsp;修改&nbsp;</a> </li>
+								<#if replyLine.floor == 1>
+									<#if User?exists>
+									 <#if User.groupTypeId gt 1>
+									<li><a href="javascript:void(0);">&nbsp;管理操作&nbsp;</a>
+										<ul>
+										   <#if User.groupTypeId==2>
+										        <#if topic.topType==0>
+											<li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=setTop" onClick="return confirm('确定要版置顶该主题吗?');">版置顶该主题</a></li>
+											    </#if>
+										   <#elseif User.groupTypeId==3>
+										        <#if topic.topType==0>
+										    <li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=setTop" onClick="return confirm('确定要版置顶该主题吗?');">版置顶该主题</a></li>
+											<li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=setAreaTop" onClick="return confirm('确定要区置顶该主题吗?');">区置顶该主题</a></li>
+										        </#if>
+										    <#elseif User.groupTypeId==4>
+										        <#if topic.topType==0>
+										    <li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=setTop" onClick="return confirm('确定要版置顶该主题吗?');">版置顶该主题</a></li>
+											<li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=setAreaTop" onClick="return confirm('确定要区置顶该主题吗?');">区置顶该主题</a></li>
+											<li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=setAllTop" onClick="return confirm('确定要总置顶该主题吗?');">总置顶该主题</a></li>
+											    </#if>
+											</#if>
+											
+											<#if topic.topType gt 0>
+											<li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=unSetTop">取消置顶</a></li>
+											</#if>
+											
+											<#if !topic.goodTopic>
+											<li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=setGood" onClick="return confirm('加精主题将增加发帖者 ${forum.goodExp}经验值， ${forum.goodMoney} 西大币。\r\n确定要加精吗?');">加为精华</a></li>
+											<#else>
+											<li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=unSetGood">取消精华</a></li>
+											</#if>
+											
+											<#if !topic.lightTopic>
+											<li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=setLight" onClick="return confirm('加亮主题将增加发帖者 ${forum.lightExp} 经验值，${forum.lightMoney} 西大币。\r\n确定要加亮吗?');">加亮该主题</a></li>
+											<#else>
+											<li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=unSetLight">取消加亮</a></li>
+											</#if>
+											
+											<#if !topic.lock>
+											<li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=lock" onClick="return confirm('确定要锁定该主题吗?');">锁定该主题</a></li>
+											<#else>
+											<li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=unLock">解除锁定</a></li>
+											</#if>
+											
+											<#if topic.pubType==0>
+											<li><a href="javascript:showPubTopicDialog(${forumId}, ${topic.id});">推荐该主题</a></li>
+											<#else>
+											<li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=unPub">取消推荐</a></li>
+											</#if>
+											<li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=repair">修复该主题</a></li>
+											<li><a href="javascript:showMoveTopicDialog(${forumId}, ${topic.id});">转移主题</a></li>
+											<li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=delete" onClick="return confirm('删除主题将增加发帖者 ${forum.delExp} 经验值，${forum.delMoney} 西大币。\r\n确定要删除吗?');">删除该主题</a></li>
+										</ul>
+									</li>
+									  </#if>
+									</#if>
+								<#else>
+									<li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=delReply" onClick="return confirm('确定要删除该回复吗?')">&nbsp;删除&nbsp;</a> </li>
+									<li><a href="/manage.yws?forumId=${forumId}&topicId=${topic.id}&replyId=${replyLine.reply.id}&action=screen" onClick="return confirm('确定要屏蔽该发言吗?')">&nbsp;屏蔽&nbsp;</a></li>
+								</#if>
+								<li><a style="cursor:default">&nbsp;发布时间：${replyLine.reply.postTime}&nbsp;</a></li>
+								<li><a href="/reply.yws?forumId=${forumId}&topicId=${topic.id}">&nbsp;[回复]&nbsp;</a></li>
+							</ul>
+							<script language="javascript">new newgxu.DropdownMenu($('manageMenu_${replyLine_index}'));</script>
+				    </div>
+                  <div class="reply_content">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0" style="TABLE-LAYOUT: fixed; WORD-WRAP: break-word">
+						  <tr>
+							<td height="150" align="left" valign="top" style="font-size:14px">${replyLine.reply.contentFilter}
+						  </tr>
+						  <tr>
+							<td height="20" align="right" class="broken_line"><font color="#666666">[本文观点仅代表网友个人意见，不代表雨无声论坛立场！]</font></td>
+						  </tr>
+						  <tr>
+							<td height="19" align="left"><font color="#CC6600">${replyLine.reply.postUser.idiographFilter}</font></td>
+						  </tr>
+						</table>	
+					</div>
+				</td>
+			  </tr>
+			</table>
+			</#list>
+		</div>
+		 	<div>
+			<span class="pages">${pagination}</span>
+				<select name="menu1" class="select" onchange="javascript:parent.location=this.options[this.selectedIndex].value;">
+                    <option selected="selected">论坛跳转至.....</option>
+                        <#list areas as area><option value="/area.yws?areaId=${area.id}" class="jMenu">╇${area.name}</option>
+                        <#list area.forums as forum><option value="/forum.yws?forumId=${forum.id}">&nbsp;├${forum.name}</option></#list>
+                        </#list>
+                </select>
+		</div>	
+	   <div class="list_title_04" align="left"></div>	
+		<form method="post" id="post_form" action="/reply_do.yws"  onKeyDown="if(event.ctrlKey &amp;&amp; event.keyCode==13) {submitReply(); return false;}">
+			<div class="list_title_01">&nbsp;</div>
+			<div class="list_title_02"><strong>快速回复</strong><br />${validMsg}</div>
+			<div class="kuang"><@base.editor>${content?default("")}</@base.editor></div>
+			<div class="list_title_03">
+				<input name="forumId" type="hidden" id="forumId" value="${forumId}" />
+				<input name="topicId" type="hidden" id="topicId" value="${topicId}" />
+				<input style="margin-left:300px;" type="button" class="newtopic_submit" name="Button3" value=" 提 交 " onclick="javascript:submitReply()" />&nbsp;&nbsp;
+				<input type="button" class="newtopic_submit" name="Button3" value=" 预 览 " onclick="javascript:previewContent()" />&nbsp;&nbsp;
+				<input type="button" class="newtopic_submit" name="Button2" value="返回前页" onclick="javascript:history.go(-1)" />&nbsp;&nbsp;
+				<input type="button" name="Submit" class="newtopic_submit" value="取回丢失内容" onclick="if(confirm('安全起见，请将当前帖子内容复制到记事本再进行此操作，你确定要继续吗？')) {resumeContent();}" />
+			</div>		
+			<script language="javascript">
+				initUbb();
+			</script>
+		</form>
+    </div>
+    <div class="right">
+    </div>
+  </div>
+  <div class="img_2">
+   <table border="0" style="margin-left:20px;font-size:12;">
+              <tr>
+                <td height="23">	
+					<div style="width:410px;">
+						<div style="float:left;"><img src="/images/wz.gif" width="16" height="18"/> 位置：&nbsp;</div>
+  <ul id="dropdownMenu_foot" class="dropdownMenu">
+	 <li><a href="/main.yws">雨无声社区</a>
+	  <ul>
+		<li><a href="/index.yws">雨无声论坛</a></li>
+		<li><a href="/user/upgrade.yws">个人服务区</a></li>
+		<li><a href="/bank/index.yws">社区银行</a></li>
+		<li><a href="/market/official.yws">商业中心</a></li>
+	  </ul>
+	</li>
+	<li>&nbsp;－&gt;&nbsp;</li>
+	
+	<#if model.areas?exists>
+	<li><a href="/index.yws">雨无声论坛</a>
+	  <ul>
+		<#list model.areas as area>
+		<li><a href="javascript:void(0);">&nbsp;${area.name}</a>
+		  <ul>
+			<#list area.forums as forum>
+			<li><a href="/forum.yws?forumId=${forum.id}">&nbsp;${forum.name}</a></li>
+			</#list>
+		  </ul>
+		</li>
+		</#list>
+	  </ul>
+	</li>
+	<li>&nbsp;－&gt;&nbsp;</li>
+	</#if>
+	
+	<#if model.forum?exists>
+	<li><a href="/area.yws?areaId=${model.forum.area.id}">${model.forum.area.name}</a>
+	  <ul>
+		<#list model.forum.area.forums as forum>
+		<li><a href="/forum.yws?forumId=${forum.id}">&nbsp;${forum.name}</a></li>
+		</#list>
+	  </ul>
+	</li>
+	<li>&nbsp;－&gt;&nbsp;</li>
+	</#if>
+	
+	<#if model.topic?exists>
+		<li>
+			<a href="/forum.yws?forumId=${model.topic.forum.id}">
+			${model.topic.forum.name}</a>
+		</li>
+		
+	</#if>
+							</ul>
+							<script language="javascript">new newgxu.DropdownMenu($('dropdownMenu_foot'));</script>
+					</div>
+				</td>
+            </tr>
+              <tr>
+                <td height="23"><img src="/images/home.gif" width="16" height="16"/> <a href="http://www.newgxu.cn" class="t">雨无声网站首页</a> </td>
+              </tr>
+              <tr>
+                <td height="23"><img src="/images/pp.gif" width="16" height="15"/> 在线人数：${onlineStatus.total} 总访问： ${status.totalHicount}&nbsp;今日访问：${status.todayHicount}</td>
+              </tr>
+              <tr>
+                <td height="23"><img src="/images/show2.gif" width="16" height="15"/> 建议使用：1024*768分辨率，16位以上颜色、IE6.0以上版本浏览器</td>
+              </tr>
+          </table>
+  </div>
+  <div class="img_3"></div>
+  <div class="img_4"></div>
+  <div class="foot">
+   </div>
+   <div  style="height:54px; width:900px;margin-top:-55px;margin-left:35px;">
+      <table cellpadding="0" cellspacing="0" height="54" border="0">
+            <tr>
+              <td  align="left" valign="top">关于论坛 | 美术支持 | 免责声明 | 版权申明 | 合作伙伴 | 友情链接 |	桂ICP备05001920号 南宁网警备4501200373号  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雨无声 版权所有◎2003-2007</td>
+            </tr>
+      </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>雨无声节日动画效果说明</title>
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  	<style>
+  		.kind {font-size:14px;color:#92cf28;padding-right:10px;}
+		li {padding:3px;line-height:14px;}
+  	</style>
+  </head>
+  
+  <body>
+  		<div style="width:500px; margin:0px auto;">
+			<p style="font-size:16px; font-weight:bold;color:#92cf28;">雨无声节日动画效果说明</p>
+			<p style="font-size:12px;color:#999999;padding:15px;">节日动画是在节日来临时，在论坛首页（目前也只支持首页）中产生一个动态的图片效果，图片内容就是节日的
+				宣传。网管可以编辑节日并上传相应的图片。图片参数：1004px的宽，高度就参照相应的动画效果制定
+			</p>
+			<ul style="list-style:decimal;font-size:12px;color:#333333;">
+				<li><span class="kind">名称</span>只是给后台人看的而已哈</li>
+				<li><span class="kind">提前提示</span>当这个设置了后，在节日前就会出现提示，直到节日过去。提前最多只能是3天，多了就不好了哈</li>
+				<li><span class="kind">是否有效</span>当这个为“否”时，节日是没有效果的</li>
+				<li><span class="kind">是否重复</span>这个需要理解，如果设置了“重复”，那么每次刷新首页都会有那个动画效果出现，如果不重复，就只会新开浏览器访问首页
+					时会看到效果，刷新是看不到的，想再看就只能关闭浏览器，重新访问首页。就是说一个session对应一个效果。
+				</li>
+				<li><span class="kind">图片路径</span>这个不必说了吧，就是图片的路径，可以用外部的图片，也可以直接上传</li>
+				<li><span class="kind">动画类型</span>目前提供了3种动画类型。<br />1.开门式，图片会从中间左右打开。<br />2.淡出淡入式，图片一开始全部显示，然后渐渐退去
+					<br />3.上升下降式，图片会出现在首页的头部，并慢慢将首页的页面内容往下推，直到图片全部显示。然后又回去。
+				</li>
+				<li><span class="kind">等待时长</span>图片显示的时间</li>
+				<li><span class="kind">动画时长</span>完成动画效果所消耗的时间</li>
+				<li><span class="kind">执行时间</span>节日开启的日期</li>
+			</ul>
+  		</div>
+  </body>
+</html>

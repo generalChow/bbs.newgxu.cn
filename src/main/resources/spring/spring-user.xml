@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName">
+	<!-- 个人服务区 BEGIN -->
+	<bean name="upgrade"
+		class="cn.newgxu.bbs.web.action.user.UpgradeAction" scope="prototype"
+		parent="abstractBaseAction" />
+
+	<bean name="editUserInfo"
+		class="cn.newgxu.bbs.web.action.user.EditUserInfoAction"
+		scope="prototype" parent="abstractBaseAction" />
+
+	<bean name="editPassword"
+		class="cn.newgxu.bbs.web.action.user.EditPasswordAction"
+		scope="prototype" parent="abstractBaseAction" />
+
+	<bean name="editFace"
+		class="cn.newgxu.bbs.web.action.user.EditFaceAction" scope="prototype"
+		parent="abstractBaseAction" />
+
+	<bean name="editQuestion"
+		class="cn.newgxu.bbs.web.action.user.EditQuestionAction"
+		scope="prototype" parent="abstractBaseAction" />
+
+	<bean name="editTitle"
+		class="cn.newgxu.bbs.web.action.user.EditTitleAction"
+		scope="prototype" parent="abstractBaseAction" />
+
+	<bean name="getUsers"
+		class="cn.newgxu.bbs.web.action.user.GetUsersAction" scope="prototype"
+		parent="abstractBaseAction" />
+
+	<bean name="getUserInfo"
+		class="cn.newgxu.bbs.web.action.user.GetUserInfoAction"
+		scope="prototype" parent="abstractBaseAction" />
+
+	<bean name="getOnlineUsers"
+		class="cn.newgxu.bbs.web.action.user.GetOnlineUsersAction"
+		scope="prototype" parent="abstractBaseAction" />
+	<bean name="uploadFace"
+		class="cn.newgxu.bbs.web.action.user.UploadFaceAction"
+		scope="prototype" parent="abstractBaseAction" />
+		
+	<bean name="saveFavoriteTopic"
+		class="cn.newgxu.bbs.web.action.user.SaveFavoriteTopicAction"
+		scope="prototype" parent="abstractBaseAction" />
+	<bean name="manageFavoriteTopic"
+		class="cn.newgxu.bbs.web.action.user.ManageFavoriteTopicAction"
+		scope="prototype" parent="abstractBaseAction" />
+	<bean name="delFavoriteTopic"
+		class="cn.newgxu.bbs.web.action.user.DelFavoriteTopicAction"
+		scope="prototype" parent="abstractBaseAction" />
+		
+	<bean name="recieveHongbao"
+		class="cn.newgxu.bbs.web.action.user.RecieveHongbaoAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="hongbaoService">
+			<ref bean="hongbaoService" />
+		</property>
+		</bean>
+	<!-- cup of life -->
+	<bean name="savecupoflifeAction"
+		class="cn.newgxu.bbs.web.action.user.SaveCupOfLifeAction"
+		scope="prototype" parent="abstractBaseAction" >
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+		</bean>
+	<!-- 用户上传资源 -->	
+	<bean name="myUploadAction"
+		class="cn.newgxu.bbs.web.action.user.MyUploadAction"
+		scope="prototype" parent="abstractBaseAction" >
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+	</bean>
+	<bean id="accountService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="accountServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="leavelUp">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="accountServiceTarget"
+		class="cn.newgxu.bbs.service.proxy.AccountServiceProxy">
+		<property name="accountService">
+			<ref bean="realAccountService" />
+		</property>
+	</bean>
+	<bean id="realAccountService"
+		class="cn.newgxu.bbs.service.impl.AccountServiceImpl" />
+
+	<!-- 个人服务区 END -->
+	
+	<!-- 查看周榜单列表 -->
+	
+	<bean id="topThreeAction" class="cn.newgxu.bbs.web.action.TopThreeAction" scope="prototype" parent="abstractBaseAction" />
+</beans>

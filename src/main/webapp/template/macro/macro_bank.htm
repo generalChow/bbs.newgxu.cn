@@ -1,0 +1,62 @@
+<#macro bank_content>
+<div class="bank">
+	<div class="main-menu left">
+	  <table width="100%" height="217" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="21%" height="30" align="center"><img src="/images/myprofile.gif" width="20" height="20" /></td>
+          <td width="79%" align="left"><a href="index.yws">营业大厅</a></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center" class="under_line"></td>
+        </tr>
+        <tr>
+          <td height="30" align="center"><img src="/images/computer1.gif" width="20" height="20" /></td>
+          <td align="left"><a href="current.yws">活期储蓄</a></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center" class="under_line"></td>
+        </tr>
+        <tr>
+          <td height="30" align="center"><img src="/images/computer2.gif" width="20" height="20" /></td>
+          <td align="left"><a href="fixed.yws">定期储蓄</a></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center" class="under_line"></td>
+        </tr>
+        <tr>
+          <td height="30" align="center"><img src="/images/faces.gif" width="20" height="20" /></td>
+          <td align="left"><a href="virement.yws">帐户汇款</a></td>
+        </tr>
+        <!-- 
+                    <tr>
+                      <td height="30" align="center"><img src="/images/member.gif" width="20" height="20" /></td>
+                      <td align="left"><a href="debit.yws">借款专柜</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="center" class="under_line"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="center"><img src="/images/icon_money.gif" width="20" height="20" /></td>
+                      <td align="left"><a href="fund.yws">社区基金</a></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="center" class="under_line"></td>
+                    </tr>
+                     -->
+        <tr>
+          <td colspan="2" align="center" class="under_line"></td>
+        </tr>
+        <tr>
+          <td height="30" align="center"><img src="/images/mail2.gif" width="20" height="20" /></td>
+          <td align="left"><a href="log.yws?type=4">理财日志</a></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center" class="under_line"></td>
+        </tr>
+      </table>
+	</div>
+
+	<div class="main-content right">
+		<#nested/>
+	</div>
+</#macro>

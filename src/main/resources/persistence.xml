@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	version="1.0">
+	<persistence-unit name="persistenceUnit"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+ <!-- property name="hibernate.dialect"
+				value="org.hibernate.dialect.MySQLInnoDBDialect" /-->
+  <!--  
+		<properties>
+			
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.OracleDialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.use_sql_comments" value="true" />
+			<property name="hibernate.cache.use_query_cache" value="true" />
+			<property name="hibernate.cache.provider_class"
+				value="org.hibernate.cache.EhCacheProvider" />
+		</properties>
+		-->
+		<properties>
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+				<property name="hibernate.hbm2ddl.auto" value="update" />
+			<!-- 输出了太多的sql，意义不大，禁用 longkai@2012-10-10 -->
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.use_sql_comments" value="false" />
+			<property name="hibernate.cache.use_query_cache"
+				value="false" />
+			<property name="hibernate.cache.provider_class"
+				value="org.hibernate.cache.EhCacheProvider" />
+		</properties>
+	</persistence-unit>
+</persistence>

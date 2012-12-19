@@ -1,0 +1,40 @@
+编辑荣誉称号
+<br>
+<form name="form1" method="post" action="edit_honor_do.yws" onsubmit="return validateCallback(this, dialogAjaxDone);">
+	<input type="hidden" value="${honor.id?default('0')}" name="honor.id"/>
+	<table>
+		<tr>
+			<td>
+				荣誉称号：
+			</td>
+			<td>
+				<input type="text" name="honor.name" value="${honor.name?default('')}" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				荣誉类型：
+			</td>
+			<td>
+				<select name="honor.type">
+				    <option value="0" <#if honor.type==0>selected</#if>>系统类</option>
+	  				<option value="1" <#if honor.type==1>selected</#if>>优秀版主</option>
+	  				<option value="2" <#if honor.type==2>selected</#if>>论坛勋章</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				荣誉备注：
+			</td>
+			<td>
+				<input type="text" name="honor.remark" value="${honor.remark?default('')}" />
+			</td>
+		</tr>
+	   <tr>
+		<td>
+			<input type="submit" name="Submit" class="BUTTON2" value="保存修改">
+		</td>
+		</tr>
+	</table>
+</form>

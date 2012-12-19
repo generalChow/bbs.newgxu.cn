@@ -1,0 +1,14 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1//EN" 
+"http://www.opensymphony.com/xwork/xwork-1.1.dtd">
+<xwork>
+	<package name="activity" namespace="/activity" extends="default">
+		<action name="bachelor_topic" class="activity.bachelorAction" method="topic">
+			<result name="topic" type="freemarker">/template/activity/bachelor/create_topic.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<action name="bachelor_topicDo" class="activity.bachelorAction" method="topicDo">
+			<result name="input" type="freemarker">/template/activity/bachelor/create_topic.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+	</package>
+</xwork>

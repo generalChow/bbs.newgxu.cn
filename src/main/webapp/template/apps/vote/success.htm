@@ -1,0 +1,70 @@
+<#assign base="/resources/apps">
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>第七届芙蓉学子投票系统|系统说明|雨无声网站|广西大学论坛BBS|自考|招生|就业|招聘|考研|学院|图书馆</title>
+		<meta name="keywords" content="广西 广西大学 雨无声网站 投票系统 祝福墙 集成显卡 雨无声 广西大学论坛BBS 西大论坛BBS 雨无声论坛BBS 校园论坛BBS 广西论坛BBS 广西大学自考|招生|就业|招聘|考研|学院|图书馆|学生|交易|买卖|平台|新生|二手|跳楼|交友|平台" />
+	    <meta name="description" content="广西 广西大学 雨无声网站 投票系统 祝福墙 集成显卡 雨无声 广西大学论坛BBS 西大论坛BBS 雨无声论坛BBS 校园论坛BBS 广西论坛BBS 广西大学自考|招生|就业|招聘|考研|学院|图书馆|学生|交易|买卖|平台|新生|二手|跳楼|教务处交友|平台" />
+	    <script src="${base}/js/jquery-1.4.4.min.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="${base}/css/vote/index.css"/>
+		<script src="${base}/js/newgxu_vote.js" type="text/javascript"></script>
+	</head> 
+	 <body>
+	  <div style="width:1000px;  margin:0 auto;height:30px;line-height:30px; text-align:right; background-color:#fffbe0;">
+		<a class="LINK" href="http://www.newgxu.cn/html/" target="_blank" style="color:#7eae28">首 页</a>
+		<a class="LINK" href="http://www.newgxu.cn/html/zxkd" target="_blank" style="color:#7eae28">新闻网</a>
+		<a class="LINK" href="http://www.newgxu.cn/html/sztd" target="_blank" style="color:#7eae28">思政天地</a>
+		<a class="LINK" href="http://www.newgxu.cn/html/fwrx/" target="_blank" style="color:#7eae28">服务热线</a>
+		<a class="LINK" href="http://www.newgxu.cn/html/xlsk/" target="_blank" style="color:#7eae28">心理时空</a>
+		<a class="LINK" href="http://www.newgxu.cn/html/ylsx/" target="_blank" style="color:#7eae28">玉兰树下</a>
+		<a class="LINK" href="http://www.newgxu.cn/html/qczb/" target="_blank" style="color:#7eae28">青春坐标</a>
+		<a class="LINK" href="http://bbs.newgxu.cn/" target="_blank" style="color:#7eae28">社区论坛</a>
+	</div>
+   <div style="width:1000px;  margin:0 auto; background-color:#fffbe0; text-align:left;">
+		
+		<div style="width:500px; margin-left:300px; padding-top:20px;">
+			<table cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td><img src="${base}/images/success.gif"/></td>
+					<td width="50"></td>
+					<td align="left" valign="middle">
+						<h3 class="SUCCESS">操作成功！</h3>
+						<p>
+							此次投票，选择的候选者：
+							<ul style="list-style:none;margin-left:18px; font-size:12px;padding:10px 0 10px;">
+								${message}
+							</ul>
+							谢谢您的参与!
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" align="center"><br /><br />[<a href="/apps/index.yws">返回投票</a>] - [<a href="/apps/result.yws">查看结果</a>] - [<a href="/apps/logout.yws">退出系统</a>]</td>
+				</tr>
+			</table>
+		</div>
+		
+	</div>
+	<div class="container">
+	  <div class="footer" style="background: url('') no-repeat scroll 175px 20px transparent;padding: 15px;">
+		  	<p align="center">
+		  		<a href="http://www.newgxu.net/html/about.html" target="_blank"><span>关于我们</span></a> 
+				－ <a href="http://www.newgxu.net/program/post.html" target="_blank" class="style4"><span>网上投稿</span></a>
+			    － <a href="http://www.newgxu.net/html/contract.html" target="_blank" class="style4"><span>服务条款</span></a> 
+				－ <a href="http://www.newgxu.net/program/guestbook.html" target="_blank" class="style4"><span>网友留言</span></a> 
+				－ <a href="http://www.newgxu.net/html/map.html" target="_blank" class="style4"><span>网站地图</span></a>
+				<br /><span>Copyright © 2004-2012 www.newgxu.cn All rights reserved.<br>地址：广西大学办公楼南楼305室雨无声 电话:0771-3273880</span>
+				<br />站长信箱：<a href="mailto:yws_webmaster@163.com">yws_webmaster@163.com</a>
+				<br />改版后访问量：54528560 日均：20508<br />桂ICP备05001920号 
+				<a href="http://nanning.cyberpolice.cn/beian/4501200373.htm">南宁网警备4501200373号</a>
+			</p>
+		</div>
+	</div>
+  </body>
+<script>
+	$(document).ready(function(){
+		Vote.topAnimate({'parent':'#topAnimate_div','parentW':940,'parentH':96,'sonTag':'img'});
+	});
+</script>
+</html>

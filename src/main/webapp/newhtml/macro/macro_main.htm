@@ -1,0 +1,44 @@
+<#macro main location="">
+
+  <div class="main">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td width="21" height="30" class="main-top-left">&nbsp;</td>
+        <td class="main-top-center">&nbsp;</td>
+        <td width="21" class="main-top-right">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="main-center-left">&nbsp;</td>
+        <td class="main-center">
+		
+			<table width="100%" height="35"  border="0" cellpadding="0" cellspacing="0">
+				<tr>
+				  <td align="left" class="xlogo">
+					<div style="width:800px;">
+						<div style="float:left;"><img src="/images/home.gif" width="16" height="16"/>&nbsp;</div>
+						<div style="float:left;">
+							<ul id="dropdownMenu" class="dropdownMenu">
+								${navigation?default("")}
+								<li>${location?default("")}</li>
+							</ul>
+							<script language="javascript">new newgxu.DropdownMenu($('dropdownMenu'));</script>
+						</div>						
+					</div>
+				  </td>
+				</tr>
+			  </table>
+			  
+			  <#nested/>
+		  
+		</td>
+        <td class="main-center-right">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="24" class="main-bottom-left">&nbsp;</td>
+        <td class="main-bottom-center">&nbsp;</td>
+        <td class="main-bottom-right">&nbsp;</td>
+      </tr>
+    </table>
+  </div>
+		
+</#macro>

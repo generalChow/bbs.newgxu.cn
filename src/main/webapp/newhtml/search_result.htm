@@ -1,0 +1,328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>检索中心</title>
+<link href="/css/three1.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/js/mootools.v1.00.js"></script>
+	<script type="text/javascript" src="/js/newgxu_common.js"></script>
+	<script type="text/javascript" src="/js/newgxu_dropdownMenu.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_dialog.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_ubb.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_upload.js"></script>
+</head>
+
+<body>
+<div class="whole">
+  <div class="topflash">
+  <object type="application/x-shockwave-flash" width="960" height="398" data="/flash/day.swf">
+    <param name="movie" value="/flash/day.swf" />
+   </object>
+  </div>
+  <div class="place">
+  			<table  height="35"  border="0" cellpadding="0" cellspacing="0" style="margin-top:30px">
+				<tr>
+				  <td align="left" class="xlogo">
+					<div style="width:384px;">
+						<div style="float:left;margin-left:20px;"><img src="/images/home.gif" width="16" height="16"/>&nbsp;</div>
+					    <ul id="dropdownMenu" class="dropdownMenu">
+								<li><a href="/main.yws">雨无声社区</a>
+	  <ul>
+		<li><a href="/index.yws">雨无声论坛</a></li>
+		<li><a href="/user/upgrade.yws">个人服务区</a></li>
+		<li><a href="/bank/index.yws">社区银行</a></li>
+		<li><a href="/market/official.yws">商业中心</a></li>
+	  </ul>
+	</li>
+							</ul>
+							<script language="javascript">new newgxu.DropdownMenu($('dropdownMenu'));</script>
+					</div>
+			      </td>
+				</tr>
+			  </table>
+  </div>
+  <div class="logo">
+  
+  
+  </div>
+   <#if status.login==false>
+  <div class="login_form">
+     <!-- 这里是登录表单 -->
+     <form id="form1" name="loginform" method="post" action="/accounts/login_do.yws"   style="width:150px;  margin-left:30px; margin-top:18px; ">
+        <input type="text" name="username" id="username" style=" width:150px; background-color:transparent; border:none; " />
+        <input type="password" name="password" id="password" style="margin-top:3px; width:150px; background-color:transparent;border:none;"/>
+        <input type="text"onFocus="javascript:$('validImage').src='/validImage_servlet';" name="validCode" style="margin-top:5px; width:70px; background-color:transparent;border:none;"  />&nbsp;<img src="images/default_valid_img.png" align="top" id="validImage" style="margin-top:-20px;margin-left:100px;"/>
+     </form>
+  </div>
+  </#if>
+  <#if status.login>
+  <div class="logined_form">
+  <div style="width:243px;margin-top:30px;">
+ <span >嘿！您好！${status.nick}</span>
+			<span  style="float:left;">
+				<#if status.login>
+				<ul class="userservice">
+				  <li>
+					<a href="/user/upgrade.yws" >个人服务区</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="/getdraftboxes.yws" target="_blank">草稿箱(${status.draftboxSize})</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="/diary/index.yws" target="_blank">心情日记</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="/user/log.yws" target="_blank">新手帮助</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="/accounts/logout.yws">退出</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="#" onClick="messageList();">新消息：${status.messageNotRead}条</a>
+				</li>
+				</ul>
+				</#if>
+			</span>
+	 </div>
+  </div>
+  </#if>
+  <div class="img_1">
+  </div>
+    <div class="logan">
+  </div>
+<div class="stat_login">
+    <#if status.login==false>
+    <div class="login"><img src="images_f/login.jpg" width="242" height="20" border="0" usemap="#Map" />
+<map name="Map" id="Map">
+<area shape="rect" coords="137,5,178,19" href="#" onclick="javascript:loginform.submit();"/>
+<area shape="rect" coords="185,4,225,20" href="#" onclick="window.location.href='/accounts/register.yws'"/></map>
+    </div>
+  </#if>
+  <#if status.login>
+  <div class="logined"></div>
+  </#if>
+    <div class="stat">
+    </div>
+  </div>
+  <div class="innermain">
+    <div style="float: left;width:60px;">
+    </div>
+    <div class="main">
+    <div>
+    		<table width="95%" height="20"  border="0" align="center" cellpadding="0" cellspacing="0" class="list_bian">
+          <tr>
+            <td>
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td><table width="857" height="62" border="0" align="center" cellpadding="0" cellspacing="0" id="__01">
+                      <tr>
+                        <td width="13" rowspan="2" align="right" valign="bottom"></td>
+                        <td width="109" align="left" valign="bottom"></td>
+                        <td width="690" height="26">&nbsp;</td>
+                        <td width="32" align="right" valign="bottom"></td>
+                        <td width="13" rowspan="2" align="left" valign="bottom"></td>
+                      </tr>
+                      <tr>
+                        <td height="36" colspan="3" class="list_title"><table width="100%" height="36"  border="0" cellpadding="0" cellspacing="0" class="botom_line">
+                            <tr>
+                              <td align="center"><strong>检索中心</strong></td>
+                            </tr>
+                        </table></td>
+                      </tr>
+                  </table></td>
+                </tr>
+                <tr>
+                  <td><table width="97%" height="20"  border="0" align="center" cellpadding="0" cellspacing="0" class="list_bian">
+                      <tr>
+                        <td>
+                          <form action="search_do.yws" method="get" name="searchForm" id="searchForm">
+                            <table align="center" cellpadding="5" cellspacing="1" class="tableBorder1">
+                              <tr class="trBorder2">
+                                <td><div align="center">
+                                    <table width="600" border="0" align="center" cellpadding="1" cellspacing="0">
+                                      <tr>
+                                        <td width="66" height="28">搜索类型：</td>
+                                        <td width="530" align="left">
+                                        	<input name="type" type="radio" value="0" id="r0" checked="checked" onClick="check(0)" />
+                                            <label for="r0">按标题</label>
+                                            <input type="radio" name="type" value="1" id="r1" onClick="check(0)" />
+                                            <label for="r1">按作者</label>
+                                            <input type="radio" name="type" value="2" id="r2" onClick="check(0)" />
+                                            <label for="r2">按回复人</label>
+                                            <input type="radio" name="type" value="3" id="r3" onClick="check(4)" />
+                                            <label for="r3">按回复时间</label>
+                                            <input type="radio" name="type" value="4" id="r4" onClick="check(6)"/>
+                                  			<label for="r4">按发表时间</label>
+                                      </tr>
+                                      <tr>
+                                        <td width="66" height="28">关 键 词：</td>
+                                        <td width="530" align="left"><input name="keywords" type="text" class="green-border" id="keywords" size="30" />
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td width="66" height="28">选择时间：</td>
+                                        <td width="530" align="left"><select name="hours" class="style7" id="hours">
+                                            <option value="" selected="selected">请选择</option>
+                                            <option value="24">24小时内</option>
+                                            <option value="168">一周之内</option>
+                                            <option value="720">一个月内</option>
+                                            <option value="8760">一年之内</option>
+                                          </select>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td width="66" height="28">选择论坛：</td>
+                                        <td width="530" align="left"><select name="forumId" class="style7" id="forumId" >
+                                            <option selected="selected" value="0">选择论坛</option>
+                                            <#if model.areas?exists>
+											  <#list model.areas as area>
+												  <#list area.forums as forum>
+													<option value="${forum.id}">&nbsp;├${forum.name}</option>
+												  </#list> 
+											  </#list>
+											 </#if>
+                                        </select></td>
+                                      </tr>
+                                    </table>
+                                </div></td>
+                              </tr>
+                              <tr class="trBorder2">
+                                <td><div align="center">
+                                    <input name="tj" type="submit" class="newtopic_submit" id="tj" value=" 确 定 " />&nbsp;&nbsp;
+                            		<input name="Button2" type="button" class="newtopic_submit" onClick="history.go(-1)" value="返回前页" />
+                                </div></td>
+                              </tr>
+                            </table>
+                        </form></td>
+                      </tr>
+                  </table></td>
+                </tr>
+                <tr>
+                  <td><table width="857" height="62" border="0" align="center" cellpadding="0" cellspacing="0" id="__01">
+                      <tr>
+                        <td width="13" rowspan="2" align="right" valign="bottom"></td>
+                        <td height="36" colspan="3" align="left" class="list_title2"><table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td>&nbsp;</td>
+                            </tr>
+                        </table></td>
+                        <td width="13" rowspan="2" align="left" valign="bottom"></td>
+                      </tr>
+                      <tr>
+                        <td width="32" height="26" align="left" valign="top"></td>
+                        <td width="767" height="26">&nbsp;</td>
+                        <td width="32" height="26" align="right" valign="top"></td>
+                      </tr>
+                  </table></td>
+                </tr>
+            </table></td>
+          </tr>
+        </table>
+    </div>
+    <div class="list_title_01">&nbsp;</div>
+		<div class="list_title_02">
+			<span class="pages">${model.pagination}</span>
+			<span >
+				<img src="/image/grass1.gif" width="15" height="22"/><a href="/forum.yws?forumId=${forumId}&good=true">精华区</a>
+				<img src="/image/grass2.gif" width="15" height="22"/><a href="/create_topic.yws?forumId=${forumId}">发新帖</a>
+				<img src="/image/grass1.gif" width="15" height="22"/><a href="/create_vote.yws?forumId=${forumId}">发投票帖</a>
+				<img src="/image/grass2.gif" width="15" height="22"/><a href="/create_small_news.yws?forumId=${forumId}">发小字报</a>
+			</span>
+		</div>
+	   <div>
+       <table  width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0"  class="botom_line">
+			  <tr align="center">
+				<th width="432" class="right_line">主题</th>
+				<th width="100" class="right_line">作者</th>
+				<th width="40" class="right_line">回复</th>
+				<th width="40" class="right_line">点击</th>
+				<th width="196">最后更新</th>
+			  </tr>
+		  </table>
+		  <#list model.topics as topic>
+			<table  width="100%" height="25" border="0" align="center" cellpadding="0" cellspacing="0" class="botom_line">
+			  <tr align="center">
+				<td width="30" height="35" class="right_line"><a href="/topic.yws?forumId=${topic.forum.id}&topicId=${topic.id}" target="_blank"><img src="/images/face/${topic.face}.gif" title="点击在新窗口打开" border="0"></a></td>
+				<td width="402" align="left" class="right_line">${topic.topString}${topic.lockString}${topic.goodString}${topic.voteString}<a href="/topic.yws?forumId=${topic.forum.id}&topicId=${topic.id}" title="发表时间：${topic.creationTime}">${topic.titleFilter}</a>${topic.newTopicString} ${topic.guide}</td>
+				<td width="100" class="right_line"><a href="/user/user_info.yws?id=${topic.topicUser.id}">${topic.topicUser.nick}</a></td>
+				<td width="40" class="right_line">${topic.replyTimes}</td>
+				<td width="40" class="right_line">${topic.clickTimes}</td>
+				<td width="196"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+					<tr>
+					  <td width="49%" align="center" valign="middle"><a href="/user/user_info.yws?id=${topic.replyUser.id}">${topic.replyUser.nick}</a></td>
+					  <td width="51%" align="center" valign="middle">${topic.replyTimeDisplay}</td>
+					</tr>
+				</table></td>
+			  </tr>
+		  </table>
+		  </#list>
+		  </div>
+		  <#setting url_escaping_charset='utf8'>
+		   <div class="list_title_03">
+		   <table  height="25" border="0" align="center" cellpadding="0" cellspacing="0" class="botom_line">
+		   <td width="600"><span class="pages">${model.pagination}</span></td>
+		   <td width="220">
+		   </td>
+		   </table>
+		</div>	
+		<div style="margin-top:-27px;padding-left:15px;">
+		   <table  height="25" border="0" align="center" cellpadding="0" cellspacing="0" >
+		   <td width="300" align="center" style="padding-left:35px;">
+			<form action="?" method="get" name="changePage" id="changePage" onKeyDown="if(event.ctrlKey)submit();">
+							<input name="keywords" type="hidden" id="keywords" value="${keywords}" />&nbsp;跳转：
+							<input name="page" type="text" class="jumpTo" id="page" size="4" />
+							页
+							<input name="Submit2" type="submit" class="newtopic_submit" id="Submit2" value=" GO " />
+					</form>
+			</td>
+			</table>
+		</div>
+    </div>
+    <div style="float: left;width:60px;">
+    </div>
+  </div>
+  <div class="img_2">
+   <table border="0" style="margin-left:20px;margin-top:3px">
+              <tr>
+                <td height="23">	
+					<div style="width:410px;">
+						<div style="float:left;"><img src="/images/wz.gif" width="16" height="18"/> 位置：&nbsp;</div>
+ <ul id="dropdownMenu_foot" class="dropdownMenu">
+								<li><a href="/main.yws">雨无声社区</a>
+	  <ul>
+		<li><a href="/index.yws">雨无声论坛</a></li>
+		<li><a href="/user/upgrade.yws">个人服务区</a></li>
+		<li><a href="/bank/index.yws">社区银行</a></li>
+		<li><a href="/market/official.yws">商业中心</a></li>
+	  </ul>
+	</li>
+							</ul>
+							<script language="javascript">new newgxu.DropdownMenu($('dropdownMenu_foot'));</script>
+					</div>
+				</td>
+            </tr>
+              <tr>
+                <td height="23"><img src="/images/home.gif" width="16" height="16"/> <a href="http://www.newgxu.cn" class="t">雨无声网站首页</a> </td>
+              </tr>
+              <tr>
+                <td height="23"><img src="/images/pp.gif" width="16" height="15"/> 在线人数：${onlineStatus.total} 总访问： ${status.totalHicount}&nbsp;今日访问：${status.todayHicount}</td>
+              </tr>
+              <tr>
+                <td height="23"><img src="/images/show2.gif" width="16" height="15"/> 建议使用：1024*768分辨率，16位以上颜色、IE6.0以上版本浏览器</td>
+              </tr>
+          </table>
+  </div>
+  <div class="img_3"></div>
+  <div class="img_4"></div>
+  <div class="foot">
+   </div>
+   <div  style="height:54px; width:900px;margin-top:-55px;margin-left:35px;">
+      <table cellpadding="0" cellspacing="0" height="54" border="0">
+            <tr>
+              <td  align="left" valign="top">关于论坛 | 美术支持 | 免责声明 | 版权申明 | 合作伙伴 | 友情链接 |	桂ICP备05001920号 南宁网警备4501200373号  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雨无声 版权所有◎2003-2007</td>
+            </tr>
+      </table>
+  </div>
+</div>
+</body>
+</html>

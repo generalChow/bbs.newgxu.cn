@@ -1,0 +1,27 @@
+<@base.header title="红包信息">
+</@base.header> 
+<@base.main location="红包信息"> 
+<table>
+	<tr>
+		<td>
+			今天是${today}
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<#if isRecieveToday==0>
+			<#if isFestivalToday==1>
+			<a href="/user/recieve_hongbao_do.yws">领取红包</a>
+			</#if>
+		<#else>
+			你今天已经领过红包了
+		</#if>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			下次礼物领取时间是${nextFestival}
+		</td>
+	</tr>
+</table>
+</@base.main>

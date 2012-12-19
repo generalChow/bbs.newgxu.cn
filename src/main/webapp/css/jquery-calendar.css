@@ -1,0 +1,208 @@
+/* calendar styles */
+#calendar_div {
+	display: none;
+	border: 1px solid #777;
+	z-index: 10; 
+	font-size: 12px;
+	padding: 0;
+	margin: 0;
+}
+#calendar_div a {
+	cursor: pointer;
+}
+button.calendar_trigger {
+	width: 25px;
+}
+img.calendar_trigger {
+	margin: 2px;
+	vertical-align: middle;
+}
+#calendar_control, #calendar_links, #calendar_header, #calendar, #calendar_time {
+	clear: both;
+	float: left;
+	width: 185px;
+	color: #fff;
+}
+#calendar_control {
+	background-color: #400;
+}
+#calendar_links {
+	background-color: #000;
+	height:20px;
+	*line-height:20px;
+}
+#calendar_control>a, #calendar_links>a {
+	font-weight: bold;
+	font-size: 12px;
+	letter-spacing: 1px;
+	color: #eee;
+	padding: 2px 5px;
+}
+#calendar_control>a:hover {
+	background-color: #fdd;
+	color: #333;
+}
+#calendar_links>a:hover, .calendar_titleRow a:hover {
+	background-color: #ddd;
+	color: #333;
+}
+#calendar_clear, #calendar_prev {
+	float: left;
+}
+#calendar_current {
+	float: left;
+	width: 35%;
+	margin-left:10px;
+	text-align: center;
+}
+#calendar_close, #calendar_next {
+	float: right;
+}
+#calendar_header, #calendar_time {
+	background-color: #333;
+	text-align: center;
+	font-weight: bold;
+}
+#calendar{
+	background: #ccc;
+	text-align: center;
+	font-size: 100%;
+	border-collapse: separate;
+    border-width:0px;
+}
+#calendar td{
+    padding:0px;
+    font:normal 12px ËÎÌו;
+    text-align: center; 
+}
+#calendar a {
+	width: 100%;
+	display: block;
+}
+#calendar a:hover {
+	color: #eee;
+}
+#calendar .calendar_titleRow {
+	background: #777;
+	border-width:0px;
+    border-color:#777;
+}
+#calendar .calendar_titleRow > td{
+	color:#FFF;
+	background: #777;
+	border-width:0px;
+}
+#calendar .calendar_titleRow a {
+	color: #eee;
+}
+#calendar .calendar_titleRow a:hover {
+	color: #000;
+}
+#calendar .calendar_daysRow {
+	background: #eee;
+	color: #666;
+}
+#calendar .calendar_daysCell {
+	border: 1px solid #ddd;
+}
+#calendar .calendar_daysCell a {
+	color: #000;
+	width: 100%;
+}
+#calendar .calendar_daysCell a:hover {
+	background: none;
+}
+#calendar .calendar_weekEndCell {
+	background: #ddd;
+}
+#calendar .calendar_daysCellOver {
+	background-color: #FFFFFF;
+	border: 1px solid #777777;
+}
+#calendar .calendar_unselectable {
+	color: #888;
+}
+#calendar_today {
+	background: #fcc !important;
+}
+#calendar_currentDay {
+	background: #999 !important;
+}
+#calendar_cover {
+    display: none; /*sorry for IE5*/
+    display/**/: block; /*sorry for IE5*/
+    position: absolute; /*must have*/
+    z-index: -1; /*must have*/
+    filter: mask(); /*must have*/
+    top: -1px; /*must have*/
+    left: -1px; /*must have*/
+    width: 300px; /*must have to match width and borders*/
+    height: 300px; /*must have to match maximum height*/ 
+}
+#CLD_OK{
+    margin:auto;
+    float:right;
+    margin-right:15px;
+    width:45px;
+    height:18px;
+    line-height:18px;
+    cursor:pointer;
+    display:inline;
+}
+.btOK_out{
+    margin:auto;
+    float:left;
+    font-weight:normal;
+    margin-right:15px;
+    width:45px;
+    background: #666;
+    margin-top:2px;
+    height:18px;
+    line-height:18px;
+    cursor:pointer;
+    color:#EEE;
+}
+.btOK_over{
+    margin:auto;
+    float:left;
+    font-weight:normal;
+    margin-right:15px;
+    width:45px;
+    background: #DDD;
+    margin-top:2px;
+    height:18px;
+    line-height:18px;
+    cursor:pointer;
+    color:#333;
+}
+.select{
+	float:left;
+	padding:0;
+	margin:0;
+	overflow:hidden;
+	height:20px;
+	border:1px solid #333;
+}
+.select > select {
+    font:normal 12px ËÎÌו;
+	float:left;
+	width:125px;
+	border-width:0px;
+	margin-top:-1px;
+	*margin-top:-2px;
+	margin-left:-1px;
+	border-style: none;
+    border-width: 0px;
+	background-color: #333;
+	*background-color: #FFF;
+	color:#FFF;
+	*color:#333;	
+}
+.select > select > option{
+	background-color: #333;
+	*background-color: #FFF;
+	border-width:0px;
+	color:#FFF;
+	*color:#333;	
+}
+

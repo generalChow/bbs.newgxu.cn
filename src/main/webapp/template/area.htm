@@ -1,0 +1,32 @@
+<@base.header title="雨无声论坛">
+	<link href="/css/index.css" rel="stylesheet" type="text/css" />
+</@base.header>
+<@base.body location="论坛首页">
+<#setting number_format="0">
+	<div class="index-container">
+	  <span class="left">
+			<table width="610" style="margin-left:50x " border="0" cellspacing="4" cellpadding="0">
+			  <#list model.area.forums as forum>
+			  	<tr>
+			  		<td>
+	  			  	   <a href="forum.yws?forumId=${forum.id}">${forum.name}</a>
+			  		</td>
+			  		<td>
+			  		  ${forum.description}
+			  		</td>
+ 				    <td>${forum.topicsByForum}</td>
+			  	</tr>
+				<tr class="botom_line">
+					<td width="11%" height="13" align="center" valign="top" class="shadow area"><a href="forum.yws?forumId=${forum.id}">${forum.name}</a></td>
+					  <td width="89%" align="left" valign="top" class="bbslm"><span class="bbslm">
+						<#list forum.webmasters as webmaster>
+						  <a href="forum.yws?forumId=${forum.id}">${webmaster.nick}</a>
+						</#list>
+					  </span>
+					  </td>
+				</tr>
+			  </#list>
+			</table>
+	</div>
+	
+</@base.body>

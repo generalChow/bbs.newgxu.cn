@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName">
+
+	<!-- 自由市场 action BEGIN -->
+	<bean name="official"
+		class="cn.newgxu.bbs.web.action.market.OfficialAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="marketService">
+			<ref bean="marketService" />
+		</property>
+	</bean>
+
+	<bean name="officialBuyDo"
+		class="cn.newgxu.bbs.web.action.market.OfficialBuyDoAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="marketService">
+			<ref bean="marketService" />
+		</property>
+	</bean>
+
+	<bean name="myItems"
+		class="cn.newgxu.bbs.web.action.market.MyItemsAction"
+		scope="prototype" parent="abstractBaseAction" />
+
+	<bean name="itemUseDo"
+		class="cn.newgxu.bbs.web.action.market.ItemUseDoAction"
+		scope="prototype" parent="abstractBaseAction" />
+
+	<bean name="itemComplimentAwayDo"
+		class="cn.newgxu.bbs.web.action.market.ItemComplimentAwayDoAction"
+		scope="prototype" parent="abstractBaseAction" />
+
+	<bean name="itemSellDo"
+		class="cn.newgxu.bbs.web.action.market.ItemSellDoAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="marketService">
+			<ref bean="marketService" />
+		</property>
+	</bean>
+
+	<bean name="free" class="cn.newgxu.bbs.web.action.market.FreeAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="marketService">
+			<ref bean="marketService" />
+		</property>
+	</bean>
+
+	<bean name="freeMarketItemBuyDo"
+		class="cn.newgxu.bbs.web.action.market.FreeMarketItemBuyDoAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="marketService">
+			<ref bean="marketService" />
+		</property>
+	</bean>
+	
+	<bean name="marketOperateItemLog"
+		class="cn.newgxu.bbs.web.action.market.MarketOperateItemLogAction"
+		scope="prototype" parent="abstractBaseAction" />
+	<!-- 自由市场 action END -->
+	
+	<bean id="marketService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="marketServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="getStoreItems">
+					PROPAGATION_REQUIRED,readOnly
+				</prop>
+				<prop key="officialBuyDo">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="itemSellDo">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="freeMarketItemBuyDo">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="cleanFreeMarketItem">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+				<prop key="freeMarket">
+					PROPAGATION_REQUIRED, readOnly, -Exception
+				</prop>
+				<prop key="createItem">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="editItem">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="editStoreItem">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="itemComplimentAwayDo">PROPAGATION_REQUIRED, -Exception</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="marketServiceTarget"
+		class="cn.newgxu.bbs.service.proxy.MarketServiceProxy">
+		<property name="marketService">
+			<ref bean="realMarketServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="realMarketServiceTarget"
+		class="cn.newgxu.bbs.service.impl.MarketServiceImpl" />
+
+</beans>

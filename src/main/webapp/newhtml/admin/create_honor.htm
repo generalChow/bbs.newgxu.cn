@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>添加新的荣誉称号</title>
+
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+		<meta http-equiv="description" content="this is my page">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+		<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+	</head>
+
+	<body>
+		添加新的荣誉称号
+		<br>
+		<form name="form1" method="post" action="create_honor_do.yws">
+			<table>
+				<tr>
+					<td>
+						荣誉称号：
+					</td>
+					<td>
+						<input type="text" name="name">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						荣誉类型：
+					</td>
+					<td>
+						<select name="type">
+						    <option value="0">系统类</option>
+			  				<option value="1">优秀版主</option>
+			  				<option value="2">论坛勋章</option>
+        				</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						荣誉备注：
+					</td>
+					<td>
+						<input type="text" name="remark">
+					</td>
+				</tr>
+			   <tr>
+				<td>
+					<input type="submit" name="Submit" value="创　建">
+				</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

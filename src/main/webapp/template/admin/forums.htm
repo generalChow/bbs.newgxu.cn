@@ -1,0 +1,47 @@
+<div class="pageHeader">
+   	 论坛概览. <br /><br />
+	当前区域论坛：${area.name}<br />
+	你可以<a href="create_forum.yws?areaId=${area.id}" width="350" height="450" target="navTab"  external="true" rel="forum0" style="font-size:13px; font-weight:bold;">创建一个新论坛</a>。 
+	<br /><br /><span class="ERROR">【暂不能删除论坛，如果有需要请联系技术人员】</span>
+</div>
+<div class="pageContent">
+	<table class="table" id="category_list" width="100%" layoutH="90">
+		<thead>
+			<tr>
+				<th>论坛名称及描述</th>
+				<th width="30">权限</th>
+				<th width="55">内部论坛</th>
+				<th width="55">是否热门</th>
+				<th width="25">排序</th>
+				<th width="90">新主题 钱/经验</th>
+				<th width="90">回复 钱/经验</th>
+				<th width="90">精华 钱/经验</th>
+				<th width="90">加亮 钱/经验</th>
+				<th width="90">删除 钱/经验</th>
+				<th width="100">版主</th>
+				<th width="30">编辑</th>
+				<th width="30">删除</th>
+			</tr>
+		</thead>
+	<tbody>
+	<#list area.forums as forum>		
+      <tr align="center">
+        <td align="left"><a href="edit_forum.yws?forumId=${forum.id}" width="350" height="450" target="navTab"  external="true" rel="forum${forum.id}" title="[编辑]${forum.name}">${forum.name}</a><br>          
+        <div style="color:#3d7ee8;">${forum.description?default("")}</div></td>
+        <td>${forum.secrecyString}</td>
+        <td>${forum.confrereString}</td>
+        <td>${forum.hotString}</td>
+        <td>${forum.compositorId}</td>
+        <td>${forum.topicMoney}/${forum.topicExp}</td>
+        <td>${forum.replyMoney}/${forum.replyExp}</td>
+        <td>${forum.goodMoney}/${forum.goodExp}</td>
+        <td>${forum.lightMoney}/${forum.lightExp}</td>
+        <td>${forum.delMoney}/${forum.delExp}</td>
+        <td><#list forum.webmasters as user>${user.nick}<br /></#list></td>
+        <td><a href="edit_forum.yws?forumId=${forum.id}" width="350" height="450" target="navTab"  external="true" rel="forum${forum.id}" title="[编辑]${forum.name}"><img src="/image/button_edit.gif" width="17" height="17" border="0"></a></td>
+        <td><a href="del_forum.yws?forumId=${forum.id}" target="_blank" onclick="return error('暂不能删除论坛，如果有需要请联系技术人员');"><img src="/image/button_delete.gif" width="17" height="17" border="0"></a></td>
+      </tr>
+	</#list>
+	</tbody>
+    </table>
+</div>

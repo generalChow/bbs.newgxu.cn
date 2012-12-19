@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>用户信息</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text ml; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+  	<script type="text/javascript" src="/js/group.js"></script>
+  </head>
+   <body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#0000ff" alink="#6699cc" style="margin-top:5px;">
+<form name="form1" method="post" action="edit_user_do.yws">
+  <table width="500" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#999999" >
+  <#setting number_format="0">
+    <tr>
+      <td> <table bgcolor="#999999" cellpadding="3" cellspacing="1" border="0" width="100%">
+          <tr bgcolor="#eeeeee"> 
+            <td height="25" colspan="2" align="center"><font size="-1" face="verdana"><b>用户信息</b></font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td width="100" height="20"><div align="right"><font size="-1">帐号：</font></div></td>
+            <td><font size="-1">${model.username}<font color="#FF0000"><!--%=SkinUtils.getRegType(pageUser.getUserID())%--></font></font> </td>
+          </tr>
+		  <tr bgcolor="#ffffff"> 
+            <td width="100" height="20"><div align="right"><font size="-1">密码：</font></div></td>
+            <td><input name="password" type="password" id="password" value="${model.password}" maxlength="16"> </td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">昵称：</font></div></td>
+            <td><font size="-1">
+              <input name="nick" type="text" id="nick" value="${model.nick}" maxlength="8">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">禁止登入：</font></div></td>
+            <td><font size="-1"> 在 <input name="loginmt" type="text" id="loginmt" value="${model.loginmt}" size="4" maxlength="8">
+              天内无法登入 (输入 -1 取消禁止登入)</font></td>
+          </tr>
+         <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">用户状态：</font></div></td>
+            <td><font size="-1">
+              <#if model.accountStatus==1>
+              <input type="radio" name="accountStatus" value="1" checked>正常
+              <input type="radio" name="accountStatus" value="2">禁止登录
+              <input type="radio" name="accountStatus" value="3">资料待审
+              <input type="radio" name="accountStatus" value="4">未通过
+              <#elseif  model.accountStatus==2>
+              <input type="radio" name="accountStatus" value="1" >正常
+              <input type="radio" name="accountStatus" value="2" checked>禁止登录
+              <input type="radio" name="accountStatus" value="3">资料待审
+              <input type="radio" name="accountStatus" value="4">未通过
+              <#elseif  model.accountStatus==3>
+              <input type="radio" name="accountStatus" value="1" >正常
+              <input type="radio" name="accountStatus" value="2">禁止登录
+              <input type="radio" name="accountStatus" value="3"  checked>资料待审
+              <input type="radio" name="accountStatus" value="4">未通过
+              <#else>
+              <input type="radio" name="accountStatus" value="1" >正常
+              <input type="radio" name="accountStatus" value="2">禁止登录
+              <input type="radio" name="accountStatus" value="3">资料待审
+              <input type="radio" name="accountStatus" value="4" checked>未通过
+              </#if>
+              </font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">头衔：</font></div></td>
+            <td><font size="-1">
+              <input name="title" type="text" id="title" value="${model.title}">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">头像：</font></div></td>
+            <td><font size="-1">
+              <input name="face" type="text" id="face" value="${model.face}">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">真实姓名：</font></div></td>
+            <td><font size="-1">
+              <input name="trueName" type="text" id="trueName" value="${model.trueName}">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">性别：</font></div></td>
+            <td><font size="-1"> 
+              <#if model.sex == false >
+               <input type="radio" name="sex" id="sex0" value="false" checked=""><label for="sex0">男</label>
+              <input type="radio" name="sex" id="sex1" value="true" ><label for="sex1">女</label>
+              <#else>
+              <input type="radio" name="sex" id="sex0" value="false"  ><label for="sex0">男</label>
+              <input type="radio" name="sex" id="sex1" value="true" checked=""><label for="sex1">女</label> 
+              </#if>
+			  </font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">身份证号：</font></div></td>
+            <td><font size="-1">
+              <input name="idcode" type="text" id="idcode" value="${model.idcode?default("")}">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">生日：</font></div></td>
+            <td><font size="-1">
+              <input name="birthday" type="text" id="birthday" value="${model.birthday}">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">E-mail：</font></div></td>
+            <td><font size="-1">
+              <input name="email" type="email" id="title5" value="${model.email}">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">主页：</font></div></td>
+            <td><font size="-1">
+              <input name="homepage" type="text" id="homepage" value="${model.homepage?default("")}">
+              </font></td>
+          </tr>
+         <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">荣誉：</font></div></td>
+            <td><font size="-1">${model.honor?default("")} </font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">QQ：</font></div></td>
+            <td><font size="-1">
+              <input name="qq" type="text" id="qq" value="${model.qq?default("0")}">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">注册时间：</font></div></td>
+            <td><font size="-1">
+              <input name="registerTime" type="text" id="registerTime" value="${model.registerTime}">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">经验/钱：</font></div></td>
+            <td><font size="-1"> 
+              <input name="exp" type="text" id="exp" value="${model.exp}" size="5" maxlength="8">
+              / 
+              <input name="money" type="text" id="money" value="${model.money}" size="5" maxlength="8">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">登录次数：</font></div></td>
+            <td><font size="-1">
+              <input name="loginTimes" type="text" id="loginTimes" value="${model.loginTimes}" maxlength="8">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">最后登录：</font></div></td>
+            <td><font size="-1">
+              <input name="lastLoginTime" type="text" id="lastLoginTime" value="${model.lastLoginTime}">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">新帖/回复/精华：</font></div></td>
+            <td><font size="-1">
+              <input name="numberOfTopic" type="text" id="numberOfTopic" value="${model.numberOfTopic}" size="5" maxlength="8">
+              / 
+              <input name="numberOfReply" type="text" id="numberOfReply" value="${model.numberOfReply}" size="5" maxlength="8">
+              / 
+              <input name="numberOfGood" type="text" id="numberOfGood" value="${model.numberOfGood}" size="5" maxlength="8">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">最大/剩余体力：</font></div></td>
+            <td><font size="-1">${model.maxPower} / 
+              <input name="currentPower" type="text" id="currentPower" value="${model.currentPower}" size="3" maxlength="5">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">用户组：</font></div></td>
+            <td><font size="-1">
+              <select name="groupTypeId" id="groupTypeId" onChange="getSel2()">
+                   <option value="0">请选择</option >
+                   <#if model.groupTypeId==1>
+                  <option value="1" selected>基本用户组 </option>
+                  <option value="2">版块管理组</option>
+                  <option value="3">区管理组</option>
+                  <option value="4" >超级管理组</option>
+                  <option value="5" >论坛认证用户</option>
+                  <#elseif model.groupTypeId==2>
+                  <option value="1">基本用户组 </option>
+                  <option value="2" selected>版块管理组</option>
+                  <option value="3" >区管理组</option>
+                  <option value="4" >超级管理组</option>
+                  <option value="5" >论坛认证用户</option>
+                  <#elseif model.groupTypeId==3>
+                  <option value="1">基本用户组 </option>
+                  <option value="2">版块管理组</option>
+                  <option value="3" selected>区管理组</option>
+                  <option value="4" >超级管理组</option>
+                  <option value="5" >论坛认证用户</option>
+                  <#elseif model.groupTypeId==4>
+                  <option value="1">基本用户组 </option>
+                  <option value="2">版块管理组</option>
+                  <option value="3">区管理组</option>
+                  <option value="4" selected>超级管理组</option>
+                  <option value="5" >论坛认证用户</option>
+                  <#elseif model.groupTypeId==5>
+                  <option value="1">基本用户组 </option>
+                  <option value="2">版块管理组</option>
+                  <option value="3">区管理组</option>
+                  <option value="4">超级管理组</option>
+                  <option value="5" selected>论坛认证用户</option>
+                  </#if>
+              </select>
+              &nbsp; 
+              <select name="groupId" id="groupId" onchange="">
+                <option value="${model.groupId}">请选择</option>
+             </select>
+              </font></td>
+			  
+          </tr>
+          <tr bgcolor="#ffffff"> 
+            <td height="20"><div align="right"><font size="-1">个人签名：</font></div></td>
+            <td><font size="-1">
+              <textarea name="idiograph" cols="30" rows="5" id="qian">${model.idiograph?if_exists}</textarea>
+              </font></td>
+          </tr>
+          <input type="hidden" name="id" value="${model.id}" />
+          <tr bgcolor="#ffffff"> 
+            <td height="20" colspan="2"><div align="center">
+                <input type="submit" name="Submit" value="修改提交">
+                &nbsp; 
+                <input type="button" name="Submit2" value="返回前页" onClick="javascript:history.go(-1)">
+              </div></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+</form>
+  </body>
+</html>

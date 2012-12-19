@@ -1,0 +1,185 @@
+/*-----------------------------------------------
+ Uniform Stylesheets for MozCN, from mozilla.org
+ http://wiki.mozcn.org
+
+ version: Jan 06, 2005
+ modify£º01-17-2005 by phy
+-----------------------------------------------*/
+
+/* content */
+body {
+	font-family: verdana, sans-serif;
+	font-size: 10pt;
+} 
+
+body { 
+	min-width: 610px;
+	margin: 20px; 
+}
+
+hr.hide {
+	display: none;
+}
+
+/* structure */
+#container {
+/*	max-width: 70em;     modify by phy*/
+	margin: 0 auto;
+}
+
+/* Basic Structure */
+body {
+	background: #fff url("images/body_back.gif") repeat-x;
+}
+
+/* Header */
+#topheader li {
+	display: inline;
+	padding: 0 20px 0 0;
+	margin: 0;
+	white-space: nowrap;
+}
+
+#topheader {
+	background: #455372 url("images/header_bl.png") bottom left repeat-x;
+	position: relative;
+	min-height: 39px;
+	height: 5em;
+	border: 0;
+	padding: 0;
+} #ignored {}
+
+#topheader h1 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 2px;
+	background: url("images/header_tl.gif") no-repeat;
+	height: 8px;
+	z-index: 100; /* above the UL */
+	border: 0;
+}
+#topheader h1 a {
+	display: block;
+	width: 204px;
+	height: 55px;
+	background: transparent url("images/header_logo.gif") no-repeat;
+	text-indent: -700em;
+	text-decoration: none;
+}
+#topheader ul {
+	width: auto;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin: 0;
+	padding: 0 15px 0 0;
+	line-height: 1.3;
+	list-style: none;
+	background: url("images/header_br.gif") no-repeat bottom right;
+	z-index: 90; /* below the H1 */
+}
+#topheader li {
+	float: right;
+	background: transparent url("images/header_tab.gif") 100% -600px no-repeat;
+	padding: 0 6px 0 0;
+	margin: 0 1px 0 0;
+	border-bottom: 1px solid #515358;
+}
+#topheader ul a {
+	float: left;
+	display: block;
+	padding: 4px 4px 4px 10px;
+	background: transparent url("images/header_tab.gif") 0% -600px no-repeat;
+	font-weight: bold;
+	color: #fff;
+	text-decoration: none;
+}
+#topheader ul li:hover a { background-position: 0% -400px; }
+#topheader ul li:hover { background-position: 100% -400px; }
+
+#topheader form {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 12px 20px 0 0;
+	background: url("images/header_tr.gif") no-repeat right top;
+	margin: 0; /* need for IE Mac */
+	text-align: right; /* need for IE Mac */
+	white-space: nowrap; /* for Opera */
+}
+#topheader form label { display:inline; color: #fff; font-size: 90%; text-align:left; }
+#topheader form input { font-size: 90%; }
+
+#topheader form #submit {
+	font-size: 90%;
+	background: #6A7389;
+	color: #fff;
+	padding: 1px 4px;
+	border-right: 1px solid #283043;
+	border-bottom: 1px solid #283043;
+	border-top: 1px solid #9097A2;
+	border-left: 1px solid #9097A2;
+}
+
+#topheader form #q {
+	width: 170px;
+	font-size: 90%;
+	border:	1px solid #9097A2;
+	background: #D9DBE1;
+	padding: 2px;
+}
+
+#topheader form #q:hover, #topheader form #q:focus {
+	background: #fff;
+}
+
+/* Footer */
+
+#footer {
+	border-top: 1px solid #999;
+	border: 0;
+	margin: 2em 0;
+	margin: 0;
+	padding: 1em 0;
+	text-align: center;
+}
+
+#footer ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#footer li {
+	display: inline;
+}
+
+#footer span,#footer a {
+	white-space: nowrap;
+	padding: 0 1em;
+}
+
+#footer p span,#footer p a {
+	white-space: nowrap;
+	padding: 0 0.3em;
+}
+
+#footer span a {
+	padding: 0;
+}
+
+#footer p,#footer p a {
+	color: #666;
+}
+
+#footer p a:link, #footer p a:visited {
+	text-decoration: underline;
+}
+
+#footer p a:hover {
+	color: #000;
+}
+

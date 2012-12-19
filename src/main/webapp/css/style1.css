@@ -1,0 +1,61 @@
+.bgStyle {
+	background-image: url(/images/diary/1.gif);
+	border: 1px solid #006699;
+	position: 固定;
+	height: 681px;
+	width: 824px;
+}
+a:active {
+	color: #33ADDD;
+}
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-family: "宋体";
+	font-size: 9pt;
+}
+.manager {
+	border: 1px solid #0986BA;
+}
+.diary-logo {
+	background-image: url(/images/diary/xqrj-logo1.jpg);
+	background-position: bottom;
+	height: 37px;
+	width: 98px;
+}
+.rijishouyubiaoti {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+}
+.rijishouyu {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #21A3D6;
+}
+a:link {
+	color: #333333;
+	text-decoration: none;
+}
+a:visited {
+	color: #333333;
+	text-decoration: none;
+}
+a:hover {
+	color: #666666;
+	text-decoration: underline;
+}
+.bookname {
+	font-family: "宋体";
+	font-size: 9pt;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+.uline {
+	background-image: url(/images/diary/dotline.gif);
+	background-repeat: repeat-x;
+	background-position: right bottom;
+}

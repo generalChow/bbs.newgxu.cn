@@ -1,0 +1,37 @@
+<@base.calendarHeader title="${title}">
+<script type="text/javascript" src="/js/datepicker/WdatePicker.js"></script>
+</@base.calendarHeader>
+<@base.calendarBody>
+	<div class="main">
+		<table border="0">
+			<tr>
+				<td width="50%" align="left">
+					<form action="${actionUrl?default('')}" method="post">
+						关键字:<input type="text" value="${keyword?default('')}" name="keyword" /><input type="submit" value="搜索" />
+					</form>
+				</td>
+				<td align="right">结果数:${pagination.pageSize}&nbsp;&nbsp;当前页:${pagination.page}</td>
+			</tr>
+		</table>
+		<table cellpadding="0" cellspacing="1" border="0" style="font-size:14px; width:100%;">
+			<tr>
+				<th>名称</th>
+				<th width="15%">日期</th>
+				<th width="10%">始创人</th>
+				<th width="20%">创立时间</th>
+				<#if control><th width="15%">操作</th></#if>
+			</tr>
+			<#list userHolidays as h>
+				<tr>
+					<td><a href="" target="_blank">${h.name}</a></td>
+					<td align="center">${h.date}</td>
+					<td align="center"><a href="/user/user_info.yws?id=${h.user.id}">${h.user.nick}</a></td>
+					<td align="center">${h.joinTime}</td>
+					<#if control><td><a href="" target="_blank">编辑</a>|<a href="" target="_blank">删除</a></td></#if>
+				</tr>			
+			</#list>
+		</table>
+		
+	</div>
+</@base.calendarBody>
+<@base.kindEditor id="holidayContent"/>

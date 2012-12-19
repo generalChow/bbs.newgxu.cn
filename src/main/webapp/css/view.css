@@ -1,0 +1,78 @@
+.diary {
+	border-top: 1px none #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px none #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #666666;
+}
+.top_bg {
+	background-image: url(/images/diary/top2.jpg);
+	background-repeat: repeat-x;
+	background-position: bottom;
+}
+.bottom {
+	background-image: url(/images/diarybottom2.jpg);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-top-color: #CCCCCC;
+	border-right-color: #CCCCCC;
+	border-bottom-color: #CCCCCC;
+	border-left-color: #CCCCCC;
+}.statu {
+	font-family: "宋体";
+	font-size: 9pt;
+	font-weight: bold;
+	color: #666666;
+}
+body {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+}
+tr {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #666666;
+}
+td {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #666666;
+}
+.content {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #666666;
+	text-indent: 22px;
+	line-height: 22px;
+	padding-right: 6px;
+	padding-left: 6px;
+}
+.comment {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+	line-height: 20px;
+	padding-top: 5px;
+	padding-right: 2px;
+	padding-bottom: 0px;
+	padding-left: 2px;
+}
+.title {
+	font-family: "宋体";
+	font-size: 9pt;
+	font-weight: bold;
+	color: #333333;
+}
+a:link {
+	color: #333333;
+	text-decoration: none;
+}

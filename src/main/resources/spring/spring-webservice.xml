@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd" default-autowire="byName" >
+      <!-- default-lazy-init="true" -->      
+  	<!-- Enable @Transactional support
+		添加 注解的支持，并指定了扫描目录为 cn.newgxu.bbs.web.webservice
+	 -->
+    <tx:annotation-driven/>
+    <context:annotation-config />
+	
+	<bean id="voteUpdateAction" class="cn.newgxu.bbs.web.webservice.impl.VoteUpdateAction">
+	</bean>
+	
+	<bean id="ubbAction" class="cn.newgxu.bbs.web.webservice.impl.action.UBBAction"></bean>
+	
+	<context:component-scan base-package="cn.newgxu.bbs.web.webservice" />
+	
+	<!-- 新添加对wap页面的支持 longkai@2012-07-31 -->
+	<context:component-scan base-package="cn.newgxu.bbs.web.wap" />
+</beans>

@@ -1,0 +1,426 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, ul, ol, dl {		
+	font-family: "微软雅黑", "宋体", serif, san-serif;		
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:hover {
+	color: red;
+	text-decoration: underline;
+}
+
+.clear {
+	clear: both;
+}
+
+/************************/
+#global_bar_inner {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#logo {
+	float: left;
+	width: 170px;
+	padding-top: 7px;
+}
+
+#service {
+	float: left;
+	color: #90C31F;
+	float: left;
+	width: 550px;
+	font-size: 12px;
+	text-align: center;
+	padding: 40px 0 0 0;
+}
+
+#service_list li {
+	list-style-type: none;
+	display: inline;
+}
+
+#service_list a:link, #service_list a:visited, #service_list a:hover, #service_list a:active {
+	color: #90c31f;
+	text-decoration: none;
+}
+
+#user {
+	float: right;
+	color: #fff;
+	margin-right: 20px;
+}
+
+#user_face {
+	float: left;
+	width: 60px;
+	height: 60px;
+	border: 0 none;
+	margin-top: 12px;
+}
+
+#user_info {
+	float: left;
+	font-size: 12px;
+	list-style-type: none;
+	padding: 6px 5px 6px 10px;
+	color: #4f4f4f;
+}
+
+#login {
+	margin-right: -17px;
+}
+/************************/
+
+/************************/
+#welcome {
+	float: left;
+	border: 0px none;
+}
+
+#welcome_image {
+	width: 726px;
+	padding: 2px;
+	border-radius: 4px;
+	
+	border: 0px none;
+}
+
+#weather {
+	float: right;
+}
+
+#info_scroll {
+	float: left;
+	width: 728px;
+	border-right: 1px solid #f4ffe4;
+	font-size: 12px;
+	/*padding: 2px 0;*/
+	padding-top: 5px; 
+}
+
+#info_scroll ul li {
+	display: inline;
+}
+#info_scroll ul li a {
+	color: #4f4f4f;
+}
+
+#reminder {
+	text-align: center;
+	color: red;
+	font-size: 12px;
+	padding-top: 5px;
+}
+/************************/
+
+/************************/
+#nav_container {
+	float:left; 
+	width:100%; 
+	background-color: #f4ffe4;
+	border: 1px solid #d9ded1;
+	margin-bottom: 10px;
+	border-radius: 4px;
+}
+
+#nav_image {
+	border: 1px solid #dfdfdf;
+	width: 100%;
+	clear: both;
+	border-radius: 4px;
+}
+
+#nav_image img {
+	border: 0 none;
+	border-radius: 4px;
+}
+
+#family {
+	width: 100%;
+	clear: both;
+	margin: 10px 0;
+	float: left;
+}
+
+#family img {
+	border: 1px solid #dfdfdf;
+	width: 100%;
+	float: left;
+	border-radius: 4px;
+}
+
+#statistics {
+	margin-top: 10px; 
+	margin-bottom: 10px; 
+	/*
+	border: 1px solid #dfdfdf;
+	*/
+	color: #7bb214;
+	text-align: center;
+	clear: both;
+	width: 100%;
+	float: left;
+	border-radius: 4px;
+}
+/************************/
+
+/************************/
+#search {
+	width: 100%;
+	font-family: '微软雅黑';
+}
+
+#search_bar {
+	float: left;
+	width: 425px;
+	height: 28px;
+	border-left: 3px solid #8ec31f;
+	border-bottom: 3px solid #8ec31f;
+	border-right: 3px solid #8ec31f;
+	border-top: 3px solid #8ec31f;
+	font-size: 15px;
+	border-radius: 4px;
+}
+
+#search_button {
+	float: right;
+	border-radius: 4px;
+}
+
+.nav_title {
+		background-color: #E2FAC0;
+		padding: 5px 5px;
+		color: #90C31F;
+		border-left: 0px;
+	}
+
+.fantastic_share {
+	clear: both;
+}
+
+#fantastic_share a:link, #fantastic_share a:visited, #fantastic_share a:hover, #fantastic_share a:active {
+	color: #90C31F;
+	text-decoration: none;
+}
+
+.digest {
+	padding: 5px .5em;
+	margin: 5px 0;
+	border-bottom: 1px solid #f4ffe4;
+}
+
+.digest a {
+	color: #90C31F;
+}
+	
+	
+.category, .more, .date {
+	text-align: right;
+	padding: 0  1em 0 .3em;
+}
+
+.title, .area {
+	float: left;
+}
+
+.area {
+	font-size: 15px; font-weight: bold; font-family: 黑体;
+}
+
+.article {
+	padding: 5px 2px 0 2px;
+}
+
+.article p {
+	font-size: 13px;
+	color: #90C31F;
+}
+
+.article ul {
+	list-style-type: none;
+}
+
+.article li:hover, #hot_articles li:hover {
+	background-color: #DCF3FF;
+}
+
+.article ul li {
+	padding: 5px 0;
+	margin: 0 5px 0 5px;
+	border-bottom: 1px solid #dddddd;
+}
+
+.article a:link, #hot_articles a:link, #rank a:link {
+	color: #4f4f4f;
+}
+
+#new_area_articles {
+	padding: 5px;	
+}
+
+p.area {
+	color: #98C31F;
+	background-color: #E2FAC0;
+	border-radius: 4px;
+}
+	
+#hot_articles {
+	border: 1px solid #dfdfdf;
+	border-radius: 4px;
+}
+
+#hot_articles ul {
+	padding: 2px;
+}
+
+#hot_articles p {
+	font-size: 15px; font-family: 黑体; font-weight: bold; color: #90c31f;  background-color: #E2FAC0; padding: 5px 5px;
+}
+
+
+#hot_articles ul li {
+	border-bottom: 1px solid #eeeeee;
+	padding: .3em 0 0 0;
+	font-size: 13px;
+	font-weight: normal;
+	list-style-type: none;
+}
+
+#lecture_info {
+	padding: .5em .5em;
+	border: 1px solid #D3D3D3;
+}
+
+#lecture_info ul {
+	list-style-type: none;
+}
+
+#lecture_info ul li {
+	border-bottom: 1px solid #D3D3D3;
+	padding: .3em 0 0 0;
+	font-size: 13px;
+}
+
+#rank {
+	border: 1px solid #dfdfdf;
+	margin-top: 10px;
+	border-radius: 4px;
+	clear: both;
+}
+
+#rank p {
+	font-size: 15px; font-family: 黑体; font-weight: bold; color: #90c31f;  background-color: #E2FAC0; padding: 5px 5px;
+}
+
+.rank_title td {
+	text-align: center;
+	background-color: #E2FAC0;
+	padding: 0 0;
+	font-size: 14px;
+	font-family: '黑体';
+}
+
+.rank_title td:hover {
+	/* background:#FFF; */
+	background: none repeat scroll 0 0 #FFFFFF;
+	border-bottom: 0 none;
+}   
+
+.rank_title a:link, .rank_title a:visited, .rank_title a:hover, .rank_title a:active {
+	color: #90C31F;
+	text-decoration: none;
+}  
+
+.thist {
+	display: block;
+	font-weight: bold; 
+	background-color: #FFF;
+	border-bottom: 0 none;
+}
+
+.info {
+	font-size: 13px;
+}   
+
+.h {
+	display:none;
+}   
+
+.info ol {
+	list-style-position: inside;
+	text-indent: 1em;
+}
+
+.info table tr td {
+	border-bottom: 1px solid #eeeeee;
+}
+
+a.thist {
+	background-color: #FFF;
+}
+
+#academy a {
+	display: inline
+}
+
+#wish_content a:link, #wish_content a:visited, #wish_content a:hover, #wish_content a:active {
+	color: #4f4f4f;
+	text-decoration: none;
+}
+
+.shadow {
+    -moz-box-shadow: 3px 3px 4px #cbcbcb;
+    -webkit-box-shadow: 3px 3px 4px #cbcbcb;
+    box-shadow: 3px 3px 4px #cbcbcb;
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#cbcbcb')";
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#cbcbcb');
+}
+
+#footer {
+	width: 994px;
+	height: 82px;
+	margin: 10px 0;
+	background-color: #333834;
+	border-radius: 4px;
+	border: 1px solid #333834;
+}
+
+#footer_logo {
+	float: left;
+}
+
+#footer_info {
+	float: left;
+	font-size: 12px;
+	color: white;
+	margin: 15px 3px;
+	font-family: 微软雅黑;
+}
+
+#footer_links {
+	float: left;
+	font-size: 12px;
+	color: white;
+	margin: 15px 0;
+}
+
+#footer_links img {
+	float: right;
+	margin-top: 5px;
+}
+
+#footer a:link, #footer a:hover, #footer a:visited, #footer a:active {
+ 	color: #fff;
+ 	text-decoration: none;
+}
+

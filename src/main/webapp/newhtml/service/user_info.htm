@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>欢迎来到雨无声论坛</title>
+<link href="/css/three1.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/js/mootools.v1.00.js"></script>
+	<script type="text/javascript" src="/js/newgxu_common.js"></script>
+	<script type="text/javascript" src="/js/newgxu_dropdownMenu.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_dialog.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_ubb.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_upload.js"></script>
+</head>
+<body>
+<div class="whole">
+  <div class="topflash">
+  <object type="application/x-shockwave-flash" width="965" height="399" data="/flash/day.swf">
+    <param name="movie" value="/flash/day.swf" />
+   </object>
+  </div>
+  <div class="place">
+  </div>
+  <div class="logo">
+  </div>
+  <div class="login_form">
+     <!-- 这里是登录表单 -->
+     <form id="form1" name="form1" method="post" action=""  style="width:150px;  margin-left:30px; margin-top:18px; ">
+        <input type="text" name="username" id="username" style=" width:150px; background-color:transparent; border:none; " />
+        <input type="password" name="password" id="password" style="margin-top:3px; width:150px; background-color:transparent;border:none;"/>
+        <input type="text" name="check" id="check" style="margin-top:5px; width:70px; background-color:transparent;border:none;"  />
+     </form>
+  </div>
+  <div class="img_1">
+  </div>
+    <div class="logan">
+  </div>
+<div class="stat_login">
+    <div class="login"><img src="images_f/login.jpg" width="242" height="20" border="0" usemap="#Map" />
+<map name="Map" id="Map">
+<area shape="rect" coords="137,5,178,19" href="#" />
+<area shape="rect" coords="185,4,225,20" href="#" /></map>
+    </div>
+    <div class="stat">
+    </div>
+  </div>
+  <div class="innermain">
+    <div style="float: left;width: 60px;">
+    </div>
+    <div class="main">
+   <div class="list_title_01">&nbsp;</div>
+		<div class="list_title_02">&nbsp;</div>
+		<div class="kuang">
+		  <div class="kuang" style="width:70%">
+			<table border="0" align="center" cellpadding="3" cellspacing="1">
+              <tr>
+                <td height="25" colspan="3" align="center"><strong>用户信息</strong></td>
+              </tr>
+              <tr>
+                <td width="114" height="25" align="right">昵称：</td>
+                <td width="243" align="left">${pageUser.nick}</td>
+                <td width="198" rowspan="7" align="center">${pageUser.faceDisplay}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">QQ：</td>
+                <td align="left">${pageUser.qq?default(0)}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">头衔：</td>
+                <td align="left">${pageUser.titleDisplay?default("")}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">禁止登入：</td>
+                <td align="left">在${pageUser.loginmtDisplay}天内无法登入</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">经验/钱：</td>
+                <td align="left">${pageUser.exp} / ${pageUser.money}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right" >性别：</td>
+                <td align="left" >${pageUser.sexDisplay}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">生日：</td>
+                <td align="left">${pageUser.birthday}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">E-mail：</td>
+                <td colspan="2" align="left">${pageUser.email?default("")}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">主页：</td>
+                <td colspan="2" align="left"><a href="${pageUser.homepage?default("")}" target="_blank">${pageUser.homepage?default("")}</a></td>
+              </tr>
+              <tr>
+                <td height="25" align="right">注册时间：</td>
+                <td colspan="2" align="left">${pageUser.registerDateDisplay}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">登录次数：</td>
+                <td colspan="2" align="left">${pageUser.loginTimes}</td>
+              </tr>
+              <#if user.userGroup.authViewLastLogTime == true>
+              <tr>
+                <td height="25" align="right"><font color="#FF0000">最后登录：</font></td>
+                <td colspan="2" align="left">${pageUser.lastLoginTime}</td>
+              </tr>
+              </#if>
+              <#if user.userGroup.authViewTrueName == true>
+              <tr>
+                <td height="25" align="right"><font color="#FF0000">真实姓名：</font></td>
+                <td colspan="2" align="left">${pageUser.trueName}</td>
+              </tr>
+              </#if>
+              <tr>
+                <td height="25" align="right">新帖/回复/精华：</td>
+                <td colspan="2" align="left">${pageUser.numberOfTopic} / ${pageUser.numberOfReply} / ${pageUser.numberOfGood}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">最大/剩余体力：</td>
+                <td colspan="2" align="left">${pageUser.maxPower} / ${pageUser.currentPower}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">等级：</td>
+                <td colspan="2" align="left">${pageUser.groupNameDisplay}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">个人签名：</td>
+                <td colspan="2" align="left">${pageUser.idiographFilter?default("")}</td>
+              </tr>
+              <tr>
+                <td height="25" colspan="3" align="center">
+                    <#setting url_escaping_charset='utf8'> 
+					[<a href="search_do.yws?type=1&keywords=${pageUser.nick?url}">发表的主题</a>]&nbsp;&nbsp;
+					[<a href="#" onClick="MM_openBrWindow('send_message.yws?userID=${pageUser.id}','发送短消息','menubar=yes,scrollbars=yes,width=700,height=500')">发送短信</a>]&nbsp;&nbsp;
+					[<a href="/diary/index.yws?userID=${pageUser.id}" target="_blank">心情日记</a>]&nbsp;&nbsp;
+					[<a href="#" onClick="javascript:history.go(-1)">返回前页</a>]</td>
+              </tr>
+            </table>
+		  
+		  </div>
+		</div>
+		<div class="list_title_04" align="left">&nbsp;</div>
+    <div style="float: left;width: 60px;">
+    </div>
+  </div>
+  <div class="img_2">
+  </div>
+  <div class="img_3"></div>
+  <div class="img_4"></div>
+  <div class="foot">
+   </div>
+   <div  style="height:54px; width:900px;margin-top:-30px;margin-left:35px;">
+      <table cellpadding="0" cellspacing="0" height="54" border="0">
+            <tr>
+              <td  align="left" valign="top">关于论坛 | 美术支持 | 免责声明 | 版权申明 | 合作伙伴 | 友情链接 |	桂ICP备05001920号 南宁网警备4501200373号  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雨无声 版权所有◎2003-2007</td>
+            </tr>
+      </table>
+  </div>
+</body>
+</html>

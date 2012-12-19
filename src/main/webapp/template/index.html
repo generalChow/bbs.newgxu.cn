@@ -1,0 +1,796 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" href="css/10_years_index/layout.css" />
+		<link rel="stylesheet" href="css/10_years_index/index.css" />
+		<link rel="stylesheet" href="css/10_years_index/nav_menus.css" />
+		<script type="text/javascript">
+			function clock() {
+				var temp = "";
+				var nowtime = new Date();
+				var hours = nowtime.getHours();
+
+				if(hours > 7 && hours <= 12)
+					temp = "早上好！";
+				else if(hours > 12 && hours <= 14)
+					temp = "中午好！";
+				else if(hours > 14 && hours <= 18)
+					temp = "下午好！";
+				else if(hours > 18 && hours <= 24)
+					temp = "晚上好！";
+				else
+					temp = "zzzzzzzzzz";
+				hours = hours > 9 ? hours : "0" + hours;
+				var minutes = nowtime.getMinutes();
+				minutes = minutes > 9 ? minutes : "0" + minutes;
+				var seconds = nowtime.getSeconds();
+				seconds = seconds > 9 ? seconds : "0" + seconds;
+				var disptime = hours + ":" + minutes + ":" + seconds + "&nbsp;&nbsp;" + temp;
+				document.getElementById("clock").innerHTML = disptime;
+				setTimeout("clock()", 1000);
+			}
+		</script>
+		<title>雨无声十周年论坛首页</title>
+	</head>
+	<body>
+		<div id="global_bar">
+			<div id="global_bar_inner">
+				<div id="logo">
+					<img src="images/10_years_index/logo.gif" alt="欢迎来到雨无声网站！" title="欢迎来到雨无声网站" />
+				</div>
+				<div id="service">
+					<ul id="service_list">
+						<li>
+							游客,欢迎你！
+						</li>
+						<li>
+							个人服务区&nbsp;
+						</li>
+						<li>
+							草稿箱(0)&nbsp;
+						</li>
+						<li>
+							心情日记&nbsp;
+						</li>
+						<li>
+							新手帮助&nbsp;
+						</li>
+						<li>
+							我的微博&nbsp;
+						</li>
+						<li>
+							新消息:1条&nbsp;
+						</li>
+						<li>
+							退出
+						</li>
+					</ul>
+				</div>
+				<div id="user">
+					<img id="user_face" src="images/10_years_index/user.jpg" alt="用户你好！" />
+					<ul id="user_info">
+						<li>
+							经&nbsp;&nbsp;验: 0
+						</li>
+						<li>
+							灌&nbsp;&nbsp;水: 0
+						</li>
+						<li>
+							职&nbsp;&nbsp;务: xxxx
+						</li>
+						<li>
+							体&nbsp;&nbsp;力: 0/0
+						</li>
+					</ul>
+					<!--	<ul>
+					<li style="list-style-type: none;">
+					xxxx
+					</li>
+					<li>
+					xxxx
+					</li>
+					</ul>
+					-->
+				</div>
+			</div>
+		</div>
+		<div id="wrapper">
+			<div id="header">
+				<div id="header_inner">
+					<div id="welcome">
+						<img id="welcome_image" src="images/10_years_index/welcome.jpg" alt="亲，欢迎来到雨无声社区！" title="亲，欢迎来到雨无声社区！" />
+					</div>
+					<div id="weather">
+						<iframe src="http://m.weather.com.cn/m/pn12/weather.htm?id=101300101T" width="220" height="81" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" align="center"></iframe>
+					</div>
+				</div>
+			</div>
+			<div id="info">
+				<div id="info_inner">
+					<div id="info_scroll">
+						<marquee direction="left" scrollamount="2" onmouseover="this.stop()" onmouseout="this.start()">
+							<ul>
+								<li>
+									雨无声论坛10周年改版
+								</li>
+								<li>
+									目前处于测试阶段
+								</li>
+								<li>
+									推荐使用Friefox，Chrome，或者搜狗浏览器
+								</li>
+								<li>
+									以及IE8以上浏览器
+								</li>
+								<li>
+									有问题欢迎反馈雨无声技术部！
+								</li>
+							</ul>
+						</marquee>
+					</div>
+					<div id="reminder">
+						<div id="clock">
+							<script type="text/javascript">
+								clock();
+
+							</script>
+						</div>
+					</div>
+					<div id="qq"></div>
+				</div>
+			</div>
+			<div id="nav">
+				<div id="nav_inner">
+					<div id="nav_container">
+						<div class="multi_drop_menus vertical">
+							<ul>
+								<li>
+									<a href="#">站务管理&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=1">问题意见</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=2">版主之家</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=14">版主申请</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=66">举报中心</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=93">论坛投诉</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=105">惩罚记录</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=113">回收中心</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=173">管理员之家</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">放眼西大&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a href="#">所有学院</a>
+											<ul>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=43">计电学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=32">土木学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=161">材料学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=27">动科学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=37">电气学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=174">国防学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=30">公管学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=41">化工学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=162">环境学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=31">机械学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=145">教育学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=36">轻工学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=26">生命学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=34">数信学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=44">物理学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=39">外语学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=40">行健学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=163">新闻学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=151">艺术学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=151">中加学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=45">资冶学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=150">政治学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=86">研究生</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=42">成教院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=28">法学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=35">商学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=29">文学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=46">农学院</a>
+												</li>
+												<li>
+													<a target="_blank" href="forum.yws?forumId=47">林学院</a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=10" target="_blank">校园聚焦</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=131">新生专版</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=48">校报速递</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=110">校友之家</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">交易市场&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=125">新旧书市</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=124">日用百货</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=126">数码通讯</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=127">电脑配件</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">社团风采&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=81">社团人</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=146">文学联社</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=137">书画协会</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=139">科技协会</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=134">音乐协会</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=160">天文协会</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=132">广告协会</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=135">漫画研究社</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=133">自行车协会</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">休闲娱乐&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=5">音乐天堂</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=11">天下无图</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=9">自由发帖</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=13">精品时尚</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=20">游戏东西</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=70">手机数码</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=98">驴行天下</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=99">美食沙龙</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=108">影视长廊</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=119">摄影天地</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">文化艺术&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=4">文行天下</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=57">动漫天地</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=60">科幻世界</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=107">武侠江湖</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=164">史海沉沙</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">体育健身&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=21">体育资讯</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=101">玩转篮球</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=102">绿茵场上</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">知性感性&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="/forum.yws?forumId=6">生活空间</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=12">心情故事</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=23">单身部落</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">学术科学&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=115">经济纵横</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=117">工业技术</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=116">农业科学</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=3">思想前线</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=62">英语角</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">电脑技术&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=8">软硬兼施</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=96">操作系统</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=97">图形图像</a>
+										</li>
+										<li>
+											<a target="_blank" href="forum.yws?forumId=111">网络纵横</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">驻站写手&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a href="forum.yws?forumId=53">雅瑞</a>
+										</li>
+										<li>
+											<a href="forum.yws?forumId=114">后羿</a>
+										</li>
+										<li>
+											<a href="forum.yws?forumId=94">echoo</a>
+										</li>
+										<li>
+											 <a href="forum.yws?forumId=73">马萧萧</a>
+										</li>
+										<li>
+											 <a href="forum.yws?forumId=112">帕涅罗珀</a>
+										</li>
+										<li>
+											 <a href="forum.yws?forumId=50">朱一刀 </a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">思政天地&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
+									<ul>
+										<li>
+											<a href="forum.yws?forumId=153">家庭教育</a>
+										</li>
+										<li>
+											<a href="forum.yws?forumId=89">先教活动</a>
+										</li>
+										<li>
+											<a href="forum.yws?forumId=149">头雁论坛</a>
+										</li>
+										<li>
+											 <a href="forum.yws?forumId=142">关工委论坛</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div id="nav_image">
+						<img src="images/10_years_index/nav.gif" width="100%" align="center" style="float: left;"/>
+						<map id="navx" name="nav">
+							<area coords="0,0,170,60" target="_blank" href="http://t.newgxu.cn/">
+							<area coords="0,60,170,125" target="_blank" href="http://uthink.newgxu.cn/">
+							<area coords="0,125,170,185" target="_blank" href="http://www.newgxu.cn/7.0/bus/">
+							<area coords="0,185,170,250" target="_blank" href="http://share.newgxu.cn/">
+							<area coords="0,250,170,310" target="_blank" href="http://210.36.16.167/find/default.php">
+						</map>
+					</div>
+					<div id="statistics">
+								<table width="100%" style="border: 1px solid #dfdfdf; font-size: 12px; align: center ">
+									<tr>
+										<td>在线人数：</td>
+										<td>185</td>
+									</tr>
+									<tr>
+										<td>今日访问：</td>
+										<td>23292</td>
+									</tr>
+									<tr>
+										<td>总访问量：</td>
+										<td>252492193</td>
+									</tr>
+								</table>
+								<!-- <ul style="list-style-type: none">
+									<li>在线人数:185</li>
+									<li>今日访问:185</li>
+									<li>总访问量：252492193</li>
+								</ul> -->
+							</div>
+				</div>
+			</div>
+			<div id="content">
+				<div id="content_inner">
+					<div id="search" style="width: 100%;">
+						<form id="search" name="search"  action="search_do.yws" method="post">
+							<div id="search_inner" style="width: 100%;">
+								<input type="text" name="keywords" id="search_bar" />
+								<label id="search_label" for="search_bar"><img id="search_button" src="images/10_years_index/search_buttom.gif" alt="so" onClick="document.search.submit();"/></label>
+							</div>
+						</form>
+					</div>
+					<div class="clear"></div>
+					<div id="infolista" style="border: 1px solid #dfdfdf;  margin-top: 5px;">
+						<div class="nav_title" style="clear: both; font-size: 15px; font-weight: bold; font-family: 黑体;" id="fantastic_share">
+							精彩分享
+							<table  style="border-collapse:collapse; text-align:right; float: right;">
+							<tr>
+							<td><span class="thist" id="a1"><a href="###">1&nbsp;</a> </span></td>
+
+							<td><a href="###" id="a2">2&nbsp;</a></td>
+
+							<td><a href="###" id="a3">3&nbsp;</a></td>
+
+							<td><a href="###" id="a4">4&nbsp;</a></td>
+							</tr>
+							</table></div>
+
+				<#list pubGoodTopics as t>
+									
+						<div class="<#if t_index == 0>info<#else>h</#if>" id="infoa${t_index?if_exists+1}">
+							<div class="article_digest">
+							<div class="article"><p class="title" style="font-weight: bold; font-family:宋体;">${t.title}</p> <p class="category" style="font-family:宋体;">${t.forum.name}</p></div>
+							<p class="digest" style="color: #4f4f4f; font-size: 13px; font-family: 微软雅黑, 宋体;text-indent: 2em;">  ${t.content}<a target="_blank" href="/topic.yws?forumId=${t.forum.id}&amp;topicId=${t.id}">[详细]</a></p>
+							</div>
+							</div>
+
+				</#list>	
+							<div style="margin-top: 10px;">
+								<p class="nav_title" id="new_articles" style=" font-size: 15px; font-weight: bold; font-family: 黑体;">分区新帖</p>
+								
+							<#list model.areas as a>
+								<div id="new_area_articles">
+								<div style="width: 100%; border-bottom: 2px solid #e2fac0;" class="area"><p class="area">${a.name}</p></div><div class="clear" style="clear: both;"></div>
+									<div class="article">
+										<ul>
+											<#list a.latestTopics as t>
+												<li>
+													<p class="title">
+														<a target="_blank" href="/topic.yws?forumId=${t.forum.id}&amp;topicId=${t.id}">${t.title}</a></a>
+														<p class="date">
+															${t.creationTime?string("HH:mm MM-dd")}
+														</p>
+												</li>
+											</#list>
+										</ul>
+									</div>	
+								</div>
+							</#list>
+							</div>
+				</div>
+			</div>
+		</div>
+		<div id="prome">
+			<div id="prome_inner">
+				<div id="hot_articles">
+					<p>
+						论坛热帖
+					</p>
+					<div>
+						<ul>
+							<#list pubHotTopics as t>
+								<li>
+									<a target="_blank" href="/topic.yws?forumId=${t.forum.id}&amp;topicId=${t.id}">${t.title}</a>
+								</li>
+							</#list>
+						</ul>
+					</div>
+				</div>
+				
+				<div id="hot_articles" style="margin: 10px 0 10px 0;">
+					<p>
+						推荐文章
+					</p>
+					<div>
+						<ul>
+							<#list model.recommendedTopics as t>
+								<li>
+									<a target="_blank" href="/topic.yws?forumId=${t.forum.id}&amp;topicId=${t.id}">${t.title}</a>
+								</li>
+							</#list>
+						</ul>
+					</div>
+				</div>
+				
+				<div id="hot_articles">
+					<p>
+						心情日记
+					</p>
+					<div>
+						<ul>
+							<ul>
+							<#list model.diaries as d>
+								<li>
+									<a target="_blank" href="/diary/view_Diary.yws?id=${d.id}">${d.title}</a>
+								</li>
+							</#list>
+						</ul>
+						</ul>
+					</div>
+				</div>
+				<div id="rank">
+					<p>
+						论坛排行榜
+					</p>
+					<div id="infolistb">
+						<div class="rank_title">
+							<table width="100%" style="border-collapse:collapse;">
+								<tr>
+									<td><span class="thist" id="b1"><a href="###">经验</a> </span></td>
+									<td><a href="###" id="b2">潜力</a></td>
+									<td><a href="###" id="b3">影响</a></td>
+									<td><a href="###" id="b4">水手</a></td>
+									<td><a href="###" id="b5">水鬼</a></td>
+								</tr>
+							</table>
+						</div>
+						<div class="info" id="infob1">
+							<table style="width: 100%;">
+								<#list topExpUsers as u>
+									<tr>
+										<td align="center"><a href="/user/user_info.yws?id=${u.id}">${u.colorNick}</a></td>
+									</tr>
+								</#list>
+							</table>
+						</div>
+						<div class="h" id="infob2">
+							<table style="width: 100%;">
+								<#list topMoneyUsers as u>
+									<tr>
+										<td align="center"><a href="/user/user_info.yws?id=${u.id}">${u.colorNick}</a></td>
+									</tr>
+								</#list>
+							</table>
+						</div>
+						<div class="h" id="infob3">
+							<table style="width: 100%;">
+								<#list topTopicUsers as u>
+									<tr>
+										<td align="center"> <a href="/user/user_info.yws?id=${u.id}">${u.colorNick}</a></td>
+									</tr>
+								</#list>
+							</table>
+						</div>
+						<div class="h" id="infob4">
+							<table style="width: 100%;">
+								<#list topReplyUsers as u>	
+									<tr>
+										<td align="center"> <a href="/user/user_info.yws?id=${u.id}">${u.colorNick}</a></td>
+									</tr>
+								</#list>
+							</table>
+						</div>
+						<div class="h" id="infob5">
+							<table style="width: 100%;">
+								<#list topGoodUsers as u>
+									<tr>
+										<td align="center"><a href="/user/user_info.yws?id=${u.id}">${u.colorNick}</a></td>
+									</tr>
+								</#list>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="foot" style="background-color: #343735; clear: both; margin-top: 10px;">
+	<div class="footlogo" style="float: left;"><img src="images/10_years_index/footer.jpg" /></div>
+    <div class="footc">
+    <div class="mess1" style="font-size: 12px; text-align: left;">
+   	  <p>Copyright &copy; 2004-2012 <a href="http://www.newgxu.cn">www.newgxu.cn</a> All rights reserved.</p>
+      <p>地址：广西大学办公楼南楼305室雨无声      电话:0771-3273880       站长信箱：<a href="http://yws_webmaster@163.com">yws_webmaster@163.com</a></p>
+      <p>改版后访问量：49988235 日均：21022      桂ICP备05001920号 南宁网警备4501200373号</p>
+    </div>
+    <div class="mess2">
+   	  <p style="float:right; font-size: 12px;"><a href="http://www.newgxu.net/aboutus/about.html">关于我们</a> － <a href="http://www.newgxu.net/program/post.html">网上投稿</a> － <a href="http://www.newgxu.net/aboutus/contract.html">服务条款</a> － <a href="http://www.newgxu.net/program/guestbook.html">网友留言</a> － <a href="http://www.newgxu.net/aboutus/map.html">网站地图</a></p>
+        <div class="mess2pic">
+        	<img src="images/10_years_index/index.jpg" usemap="#map09" style="border: 0 none;" />
+  <map name="map09" id="#map09">
+            	<area shape="rect" coords="0,0,84,20" href="http://www.newgxu.cn/7.0/html/"/>
+          </map>
+      </div>
+    </div>
+    </div>
+</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var $afanmi_id = function(id) {
+			return "string" == typeof id ? document.getElementById(id) : id;
+		};
+		//设置切换
+		var ss = new Array;
+		//ss["标识"]=Array(数量,时间(毫秒),"change","是否打开自动切换",0,"是否开启鼠标事件");
+		ss["b"] = Array(5, 5000, "change", true, 0, true);
+		ss["a"] = Array(4, 8000, "change", true, 0, true);
+		//鼠标设置及执行自动切换
+
+		for(var s in ss) {
+			mouses(s);
+			autochange(s);
+		}
+
+		//鼠标事件函数
+		function mouses(s) {
+			if(ss[s][5]) {
+				for(var i = 1; i <= ss[s][0]; i++) {
+					$afanmi_id(s + i).onmouseover = function() {
+						clearTimeout(ss[s][2]);
+						changeonce(s, this.attributes.getNamedItem("id").nodeValue.split(s)[1]);
+					}
+					$afanmi_id(s + i).onmouseout = function() {
+						ss[s][4] = 0;
+						autochange(s);
+					}
+					$afanmi_id("info" + s + i).onmouseover = function() {
+						clearTimeout(ss[s][2]);
+						changeonce(s, this.attributes.getNamedItem("id").nodeValue.split("info"+s)[1]);
+					}
+					$afanmi_id("info" + s + i).onmouseout = function() {
+						ss[s][4] = 0;
+						autochange(s);
+					}
+				}
+			}
+		}
+
+		//切换一次函数
+		function changeonce(s, id) {
+			for(var i = 1; i <= ss[s][0]; i++) {
+				if(i == id) {
+					$afanmi_id(s + i).className = "thist";
+					$afanmi_id("info" + s + i).className = "info";
+				} else {
+					$afanmi_id(s + i).className = "";
+					$afanmi_id("info" + s + i).className = "h";
+				}
+			}
+		}
+
+		//自动切换函数
+		function autochange(s) {
+			if(ss[s][3]) {
+				for(var i = 1; i <= ss[s][0]; i++) {
+					if($afanmi_id(s + i).className == "thist") {
+						var id = ss[s][4] ? (i % ss[s][0] ? i + 1 : 1) : i;
+						break;
+					}
+				}
+				changeonce(s, id);
+				ss[s][2] = setTimeout("autochange(\"" + s + "\");", ss[s][1]);
+				ss[s][4] = 1;
+			} else {
+				return false;
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,39 @@
+<@base.header title="操作结果"></@base.header>
+<@base.body location="社区银行&nbsp;－&gt;&nbsp;操作结果">
+	<@base.main location="社区银行&nbsp;－&gt;&nbsp;操作结果">
+		<@base.bank_content>
+<br>
+<table width="80%" border="0">
+  <tr>
+    <td colspan="3">操作结果：</td>
+    </tr>
+  <tr>
+	<#if doneUsers?size != 0>
+      <td align="center">
+      	成功转入用户<br />
+		<#list doneUsers as nick>
+		  	${nick}&nbsp;－&gt;&nbsp;${money}<br />
+		</#list>
+	  </td>
+	</#if>
+	<#if unPayUsers?size != 0>
+      <td align="center">
+         余额不足，转帐失败用户<br />
+		<#list unPayUsers as nick>
+		  	${nick}<br />
+		</#list>
+	  </td>
+	</#if>
+	<#if notExistUsers?size != 0>
+      <td align="center">
+      	错误昵称<br />
+		<#list notExistUsers as nick>
+		  	${nick}<br />
+		</#list>
+	  </td>
+	</#if>
+  </tr>
+</table>
+		</@base.bank_content>
+	</@base.main>
+</@base.body>

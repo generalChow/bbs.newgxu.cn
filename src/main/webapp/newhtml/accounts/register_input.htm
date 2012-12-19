@@ -1,0 +1,471 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>欢迎来到雨无声论坛_新用户注册</title>
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function Juge(theForm){
+		if (theForm.trueName.value == "" || theForm.trueName.value.length<2 || theForm.trueName.value.length>8){
+		  alert("请认真填写您的真实姓名");
+		  theForm.trueName.focus();
+		  return (false);
+		}
+		if (theForm.username.value == "" || theForm.username.value.length<3 || theForm.username.value.length>8){
+		  alert("您的登陆帐号为3-8个字符，必须以字母开头");
+		  theForm.user_id.focus();
+		  return (false);
+		}
+	   if (theForm.nick.value == "" || theForm.nick.value.length<2 || theForm.nick.value.length>8){
+		  alert("出错了，昵称必须为2-8个字符");
+		  theForm.nick.focus();
+		  return (false);
+		}
+		if (theForm.password.value == ""){
+   	     alert("请输入您的密码!");
+         theForm.password.focus();
+         return (false);
+       }
+
+	  if (theForm.password.value.length < 4){
+       alert("请输入4位或以上的密码字符!");
+       theForm.user_passwd1.focus();
+      return (false);
+     }
+	  if (theForm.password.value !=theForm.confirmPassword.value){
+		alert("您输入的密码与确认密码不符!");
+		theForm.password.select();
+		theForm.password.focus();
+		theForm.confirmPassword.value="";
+		return (false);
+    }
+	
+	if (theForm.idcode.value == ""){
+		  alert("请输入你的身份证号");
+		  theForm.idcode.focus();
+		  return (false);
+	}
+	if (theForm.email.value == ""){
+		  alert("请输入你的电子邮件");
+		  theForm.email.focus();
+		  return (false);
+	}
+	var checkOK = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_@.";
+	var checkStr = theForm.email.value;
+	var allValid = true;
+	for (i = 0;  i < checkStr.length;  i++)
+	{
+		ch = checkStr.charAt(i);
+		for (j = 0;  j < checkOK.length;  j++)
+		if (ch == checkOK.charAt(j))
+			break;
+		if (j == checkOK.length)
+		{
+			allValid = false;
+			break;
+		}
+	}
+
+	if (theForm.email.value.length < 6)
+	{
+			allValid = false;
+	}
+
+	if (!allValid)
+	{
+		alert("您输入的 \"电子邮件地址\" 无效!");
+		theForm.email.focus();
+		return (false);
+	}
+	if (theForm.rand.value == "") {
+	alert("请键入您在图片中看到的字符,填写入附加码框!");
+	theForm.rand.focus();
+	return false;
+	}
+}
+
+var client = null;
+
+function validateLoginName(userName){
+	  client = getXMLHttpRequest();
+	  var requestURL = "validateLoginName.ajax?userName=" + userName;
+	  client.open("GET", requestURL, true);
+	  client.onreadystatechange = showMessage;
+	  client.send(null);
+	}
+
+function validateNickName(nick){
+  client = getXMLHttpRequest();
+  var requestURL = "validateNickName.ajax?nick=" + nick;
+  client.open("GET", requestURL, true);
+  client.onreadystatechange = showMessage2;
+  client.send(null);
+}
+
+function getXMLHttpRequest(){
+    var client = getXMLHttpRequestFromIE();
+     if(client == null){
+          client = new XMLHttpRequest();
+     }
+    return client;
+  }
+  
+  function getXMLHttpRequestFromIE(){
+    var namePrefixes = ["Msxml3","Msxml2","Msxml","Microsoft"];
+    for(var i = 0; i < namePrefixes.length; i++){
+         try{
+             var name = namePrefixes[i] + ".XMLHTTP";
+             return new ActiveXObject(name);
+         }catch(e){
+         }
+    }
+    return null;
+  }
+
+function showMessage(){
+  if(client.readyState == 4){
+    if(client.status == 200){
+      var result = client.responseText;
+      if(result == "inuse"){
+        var message = "登录帐号：";
+        message += document.getElementById("username").value;
+        message += "已经被使用！";
+        document.getElementById("message").innerHTML = message;
+      }
+    }else{
+      showErrors(client.status);
+    }
+  }
+}
+
+function showMessage2(){
+	  if(client.readyState == 4){
+	    if(client.status == 200){
+	      var result = client.responseText;
+	      if(result == "inuse"){
+	        var message = "用户昵称：";
+	        message += document.getElementById("nick").value;
+	        message += "已经被使用！";
+	        document.getElementById("nickMessage").innerHTML = message;
+	      }
+	    }else{
+	      showErrors(client.status);
+	    }
+	  }
+	}
+
+function handleStateChange() {
+	if(xmlHttp.readyState == 4 &&xmlHttp.status == 200) {
+		if(xmlHttp.responseText.length > 2){
+			alert(xmlHttp.responseText);
+			type.focus();
+		}
+	}
+}
+
+function showErrors(responseStatus){
+    var consoleDiv = document.getElementById("console");
+    
+    if(consoleDiv == null){
+      consoleDiv = document.createElement("div");
+      document.body.appendChild(consoleDiv);
+      consoleDiv.id = "console"; 
+      consoleDiv.className = "console"; 
+      consoleDiv.style.width = "300px"; 
+      consoleDiv.style.height = "50px"; 
+      consoleDiv.style.margin = "0 auto"; 
+      consoleDiv.style.border = "1px solid #DDD"; 
+      consoleDiv.style.marginLeft = "20px";
+    }  
+    
+function clearErrors(){
+    var consoleDiv = document.getElementById("console");
+    if(consoleDiv != null){
+      consoleDiv.innerHTML = "";
+      consoleDiv.style.display = "none";
+    }
+  } 
+</script>
+</head>
+
+<body>
+<div class="main-container">
+
+  <div class="main">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td width="21" height="30" class="main-top-left">&nbsp;</td>
+        <td class="main-top-center">&nbsp;</td>
+        <td width="21" class="main-top-right">&nbsp;</td>
+      </tr>
+      <tr>
+        <td valign="top" class="main-center-left"><img src="/image/main-left_2.jpg" alt="" width="20" height="244" /></td>
+        <td class="main-center">
+		
+		<form name="form1" method="post" action="/accounts/register_do.yws">
+          <table width="96%" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+              <td colspan="2" align="center"><strong>新用户注册资料填写</strong></td>
+            </tr>
+			  <#if validMsg != "">
+			  <tr>
+				<td height="50" colspan="2" align="center"><font color="#FF0000">${validMsg}</font></td>
+			  </tr>
+			  </#if>
+			  <tr>
+				<td width="13%" height="20" align="center">真实姓名：<font color="#FF0000">**</font></td>
+				<td width="87%" align="left"><input name="trueName" type="text" class="short_input" id="trueName" size="16" maxlength="12" value="${trueName?default("")}" />
+				  &nbsp;请认真填写，以便您我们为您提供的各种服务。</td>
+			  </tr>
+			  <tr>
+				<td height="20" align="center">登录帐号：<font color="#FF0000">**</font></td>
+				<td align="left"><input name="username" type="text" class="short_input" size="16" maxlength="12" value="${username?default("")}" onblur="validateLoginName(this.value)" onfocus="clearErrors()"/>
+				  <span id="message" style="color: red"></span>&nbsp;3-8个字符，必须以字母开头，您登录的用户名（帐号），请尽量不要使用汉字！</td>
+			  </tr>
+			  <tr>
+				<td height="20" align="center">用户昵称：<font color="#FF0000">**</font></td>
+				<td align="left"><input name="nick" type="text" class="short_input" id="nick" size="16" maxlength="14" value="${nick?default("")}" onblur="validateNickName(this.value)" onfocus="clearErrors()"/>
+				  <span id="nickMessage" style="color: red"></span>&nbsp;3-8个字符，您在论坛、社区等地方的名字</td>
+			  </tr>
+			  <tr>
+				<td height="20" align="center">密　　码：<font color="#FF0000">**</font></td>
+				<td align="left"><input type="password" class="input_style" name="password" size="15" maxlength="14" value="${password?default("")}" />
+				  &nbsp;您登录的密码 4-14个字符</td>
+			  </tr>
+			  <tr>
+				<td height="20" align="center">确认密码：<font color="#FF0000">**</font></td>
+				<td align="left"><input  type="password" name="confirmPassword" class="input_style" size="15" maxlength="14" value="${confirmPassword?default("")}" /></td>
+			  </tr>
+			  <tr>
+				<td height="20" align="center">性　　别：<font color="#FF0000">**</font></td>
+				<td align="left"><#if sex == true >
+					<input name="sex" id="male"  type="radio" value="0"/>
+					<label for="male">帅哥</label>
+					<input  type="radio" id="female" name="sex" value="1" checked="checked"/>
+					<label for="female">美女</label>
+				  <#else>
+				  <input name="sex" id="male" type="radio" value="0" checked="checked"/>
+				  <label for="male">帅哥</label>
+				  <input  type="radio" id="female" name="sex" value="1"/>
+				  <label for="female">美女</label>
+				  </#if> </td>
+			  </tr>
+			  <tr>
+				<td height="20" align="center">出生年月：<font color="#FF0000">**</font></td>
+				<td align="left"><select name="year" class="select_input">
+				  <option>1919</option>
+				  <option>1920</option>
+				  <option>1921</option>
+				  <option>1922</option>
+				  <option>1923</option>
+				  <option>1924</option>
+				  <option>1925</option>
+				  <option>1926</option>
+				  <option>1927</option>
+				  <option>1928</option>
+				  <option>1929</option>
+				  <option>1930</option>
+				  <option>1931</option>
+				  <option>1932</option>
+				  <option>1933</option>
+				  <option>1934</option>
+				  <option>1935</option>
+				  <option>1936</option>
+				  <option>1937</option>
+				  <option>1938</option>
+				  <option>1939</option>
+				  <option>1940</option>
+				  <option>1941</option>
+				  <option>1942</option>
+				  <option>1943</option>
+				  <option>1945</option>
+				  <option>1946</option>
+				  <option>1947</option>
+				  <option>1948</option>
+				  <option>1949</option>
+				  <option>1950</option>
+				  <option>1951</option>
+				  <option>1952</option>
+				  <option>1953</option>
+				  <option>1954</option>
+				  <option>1955</option>
+				  <option>1956</option>
+				  <option>1957</option>
+				  <option>1958</option>
+				  <option>1959</option>
+				  <option>1960</option>
+				  <option>1961</option>
+				  <option>1962</option>
+				  <option>1963</option>
+				  <option>1964</option>
+				  <option>1965</option>
+				  <option>1966</option>
+				  <option>1967</option>
+				  <option>1968</option>
+				  <option>1969</option>
+				  <option>1970</option>
+				  <option>1971</option>
+				  <option>1972</option>
+				  <option>1973</option>
+				  <option>1974</option>
+				  <option>1975</option>
+				  <option>1976</option>
+				  <option>1977</option>
+				  <option>1978</option>
+				  <option>1979</option>
+				  <option>1980</option>
+				  <option>1981</option>
+				  <option>1982</option>
+				  <option>1983</option>
+				  <option selected="selected">1984</option>
+				  <option>1985</option>
+				  <option>1986</option>
+				  <option>1987</option>
+				  <option>1988</option>
+				  <option>1989</option>
+				  <option>1990</option>
+				  <option>1991</option>
+				  <option>1992</option>
+				  <option>1993</option>
+				  <option>1994</option>
+				  <option>1995</option>
+				  <option>1996</option>
+				  <option>1997</option>
+				  <option>1998</option>
+				  <option>1999</option>
+				  <option>2000</option>
+				</select>
+				  年
+				  <select name="month" class="select_input">
+					<option>01</option>
+					<option>02</option>
+					<option>03</option>
+					<option>04</option>
+					<option>05</option>
+					<option>06</option>
+					<option>07</option>
+					<option selected="selected">08</option>
+					<option>09</option>
+					<option>10</option>
+					<option>11</option>
+					<option>12</option>
+				  </select>
+				  月
+				  <select name="day" class="select_input">
+					<option>01</option>
+					<option>02</option>
+					<option>03</option>
+					<option>04</option>
+					<option>05</option>
+					<option>06</option>
+					<option>07</option>
+					<option>08</option>
+					<option>09</option>
+					<option>10</option>
+					<option>11</option>
+					<option>12</option>
+					<option>13</option>
+					<option>14</option>
+					<option>15</option>
+					<option>16</option>
+					<option>17</option>
+					<option>18</option>
+					<option>19</option>
+					<option>20</option>
+					<option>21</option>
+					<option>22</option>
+					<option>23</option>
+					<option>24</option>
+					<option selected="selected">25</option>
+					<option>26</option>
+					<option>27</option>
+					<option>28</option>
+					<option>29</option>
+					<option>30</option>
+					<option>31</option>
+				  </select>
+				  日</td>
+			  </tr>
+			  <tr>
+				<td height="20" align="center">电子邮件：<font color="#FF0000">**</font></td>
+				<td align="left"><input name="email" class="input_style" size="27"  maxlength="50" value="${email?default("")}"/></td>
+			  </tr>
+			  <tr>
+				<td height="20" align="center">身份证号：<font color="#FF0000">**</font></td>
+				<td align="left"><input name="idcode" class="input_style" size="27"  maxlength="18" value="${idcode?default("")}"/>
+				  &nbsp;请填写真实身份证号，填写后将不能修改。</td>
+			  </tr>
+			  <#switch regType>
+						<#case 2>
+									<!-- 研究生注册 -->
+									<tr>
+									  <td height="20" align="center">学　　号：<font color="#FF0000">**</font></td>
+									  <td align="left"><input name="studentid"  class="input_style" id="studentid" size="15" maxlength="14" value="${studentid?default("")}" />
+										&nbsp;您的学号</td>
+									</tr>
+			  <#break>
+						<#case 3>
+									<!-- 教师注册 -->
+									<tr>
+									  <td height="20" align="center">联系电话：<font color="#FF0000">**</font></td>
+									  <td align="left"><input name="tel" class="input_style" size="27"  maxlength="50" value="${tel?default("")}"/>
+										&nbsp;您的注册信息经确认后，我们将电话通知您。</td>
+									</tr>
+									<tr>
+									  <td height="20" align="center">工作单位：<font color="#FF0000">**</font></td>
+									  <td align="left"><input name="units" class="input_style" size="27"  maxlength="100" value="${units?default("")}"/></td>
+									</tr>
+			  <#break>
+						<#case 4>
+									<!-- 校外人员注册 -->
+			  <#break>
+						<#default>
+									<!-- 本科生注册 -->
+									<tr>
+									  <td height="20" align="center">学　　号：<font color="#FF0000">**</font></td>
+									  <td align="left"><input name="studentid"  class="input_style" id="studentid" size="15" maxlength="14" value="${studentid?default("")}" />
+										&nbsp;您的学号</td>
+									</tr>
+									<tr>
+									  <td height="20" align="center">密　　码：<font color="#FF0000">**</font></td>
+									  <td align="left"><input name="mima"  type="password" class="input_style" id="mima" size="15" maxlength="14" value="${mima?default("")}" />
+										&nbsp;教务处选课系统登录密码</td>
+									</tr>
+			  </#switch>
+			  <tr>
+				<td height="12" align="center" class="uline2">验 证 码：<font color="#FF0000">**</font></td>
+				<td height="12" align="left" class="uline2"><input name="validCode" type="text" class="input_rand1" id="validCode" size="10" maxlength="4" />
+					<img src="/validImage_servlet" width="38" height="17" align="absbottom" /></td>
+			  </tr>
+			  <tr>
+				<td height="25" colspan="2" align="center" valign="bottom"><input name="regType" type="hidden" id="regType" value="${regType}">
+				<input name="tj" type="submit" class="submit_style" id="tj"  value="提交注册信息" />
+				  &nbsp;
+				  <input name="Reset" type="reset" class="submit_style" value=" 重新填写 " /></td>
+			  </tr>
+          </table>
+        </form>
+				
+        </td>
+        <td valign="top" class="main-center-right"><img src="/image/main-right_2.jpg" alt="" width="21" height="244" /></td>
+      </tr>
+      <tr>
+        <td height="24" class="main-bottom-left">&nbsp;</td>
+        <td class="main-bottom-center">&nbsp;</td>
+        <td class="main-bottom-right">&nbsp;</td>
+      </tr>
+    </table>
+  </div>
+
+		
+  <div style=" height: 25px;">桂ICP备05001920号 南宁网警备4501200373号 广西大学雨无声 版权所有◎2008-2009 </div>
+		
+</div>
+</body>
+</html>

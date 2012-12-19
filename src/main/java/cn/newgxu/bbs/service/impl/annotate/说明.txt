@@ -1,0 +1,5 @@
+这里是被扫描的包，一些service可以放这里。
+
+扫描设置在   spring-calendar.xml
+
+集成显卡

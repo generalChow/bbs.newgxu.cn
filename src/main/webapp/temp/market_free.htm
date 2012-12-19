@@ -1,0 +1,81 @@
+<@base.header title="自由市场">
+	<script type="text/javascript" src="/js/newgxu_dialog.js"></script>
+	<script language="javascript">
+	var freeMarketItemBuyDialog;
+	function showFreeMarketItemBuyDialog(id, name, nick, price) {
+		constructFreeMarketItemBuyDialogDiv(id, name, nick, price);
+		freeMarketItemBuyDialog = new newgxu.HtmlDialog("freeMarketItemBuyDialog", 330, 100);
+	}
+	function constructFreeMarketItemBuyDialogDiv(id, name, nick, price) {
+		var html ='<form action="/market/free_market_item_buy_do.yws" method="post" >';
+		html += '<table align="center" width="250" border="0" cellspacing="0" cellpadding="0">';
+	  	html += '<tr><td width="130">购买：';
+	  	html += name;
+	 	html += '</td><td width="120">价格：';
+		html += price;
+	  	html += '</td></tr><tr><td colspan="2">出售者：';
+		html += nick;
+		html += '<input name="id" type="hidden" id="id" value="';
+		html += id;
+		html += '">&nbsp;<input type="submit" name="Submit" value="发狠买了" id="Submit">';
+		html += '<input type="reset" onclick="freeMarketItemBuyDialog.close();" value="算了" /></td></tr></table></form>';
+		var dialogDiv = new Element("div");
+		dialogDiv.id = "freeMarketItemBuyDialogForm";
+		dialogDiv.innerHTML = html;
+		$("freeMarketItemBuyDialog").innerHTML = '';
+		dialogDiv.injectInside($("freeMarketItemBuyDialog"));
+	}
+	</script>
+</@base.header>
+<@base.body location="个人服务区">
+	<@base.main location="个人服务区">
+		<@base.service_content>
+<div style="display:none;"><div id="freeMarketItemBuyDialog"></div></div>
+<div style="width:100%;">
+<table width="98%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><div align="center"><a href="/market/free.yws">查看所有商品</a></div></td>
+    <td><div align="center"><a href="/market/free.yws?seller=me">查看我卖的商品</a></div></td>
+  </tr>
+  <tr>
+    <td colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+	  <#list model.category?chunk(6) as row>
+      <tr>
+	    <#list row as c>
+        <td height="20"><div align="center"><a href="/market/free.yws?categoryId=${c.id}">${c.name}</a></div></td>
+		</#list>
+      </tr>
+	  </#list>
+    </table></td>
+  </tr>
+</table>
+<#if model.items.empty == false>
+	<div>
+		<#list model.items as item>
+			<div class="freeMarket_item_div">
+			  <table width="98%" height="100" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+				  <td width="100" rowspan="3" valign="top"><div align="center"><strong>${item.item.name}</strong><br />
+					${item.item.picture}</div></td>
+				  <td colspan="2" valign="top">${item.item.effect}</td>
+				</tr>
+				<tr>
+				  <td width="120" height="20"><#if item.maker.id != -1><b>${item.maker.nick}</b>(造)</#if></td>
+				  <td>售价：${item.unitPrice}</td>
+			    </tr>
+				<tr>
+				  <td height="20"><b>${item.user.nick}</b>(卖)</td>
+				  <td><div align="center">${item.overDueTimeFormat} [<a href="javascript:showFreeMarketItemBuyDialog(${item.id}, '${item.item.name}', '${item.user.nick?js_string}', '${item.unitPrice}');">购买</a>]</div></td>
+				</tr>
+			  </table>
+			</div>
+		</#list>
+		<div class="pages">${model.pagination}</div>
+	</div>
+<#else>
+	<div class="noResult">目前没有任何物品。</div>
+</#if>
+</div>
+		</@base.service_content>
+	</@base.main>
+</@base.body>

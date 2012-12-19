@@ -1,0 +1,34 @@
+<@base.header title="升级中心"></@base.header>
+<@base.body location="个人服务区">
+	<@base.main location="个人服务区">
+		<@base.service_content>
+<div class="kuang">
+		  <table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" bgcolor="#FFFAD0" class="botom_line">
+			  <tr align="center">
+				<th width="350" class="right_line">主题</th>
+				<th width="80" class="right_line">作者</th>
+				<th width="40" class="right_line">回复</th>
+				<th width="40" class="right_line">点击</th>
+				<th width="196">最后更新</th>
+			  </tr>
+		  </table>
+		  <#list list as topic>
+			<table width="100%" height="25" border="0" align="center" cellpadding="0" cellspacing="0" class="botom_line">
+			  <tr align="center">
+				<td width="350" align="left" class="right_line">${topic.topString}${topic.lockString}${topic.goodString}${topic.voteString}<a href="/topic.yws?forumId=${topic.forum.id}&topicId=${topic.id}">${topic.titleFilter}</a>${topic.newTopicString} ${topic.guide}</td>
+				<td width="80" class="right_line"><a href="/user/user_info.yws?id=${topic.topicUser.id}">${topic.topicUser.nick}</a></td>
+				<td width="40" class="right_line">${topic.replyTimes}</td>
+				<td width="40" class="right_line">${topic.clickTimes}</td>
+				<td width="196"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+					<tr>
+					  <td width="49%" align="center" valign="middle"><a href="/user/user_info.yws?id=${topic.replyUser.id}">${topic.replyUser.nick}</a></td>
+					  <td width="51%" align="center" valign="middle">${topic.replyTimeDisplay}</td>
+					</tr>
+				</table></td>
+			  </tr>
+		  </table>
+		  </#list>
+		</div>
+		</@base.service_content>
+	</@base.main>
+</@base.body>

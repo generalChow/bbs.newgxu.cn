@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName">
+
+	<bean name="test" class="cn.newgxu.bbs.web.action.TestAction"
+		scope="prototype" parent="abstractBaseAction">
+		<!-- <property name="forumService">
+			<ref bean="forumService" />
+		</property> -->
+	</bean>
+
+	<bean name="more" class="cn.newgxu.bbs.web.action.MoreResultsAction" scope="prototype" parent="abstractBaseAction">
+		
+	</bean>
+
+	<bean name="index" class="cn.newgxu.bbs.web.action.IndexAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+
+	<bean name="area" class="cn.newgxu.bbs.web.action.AreaAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+
+	<bean name="forum" class="cn.newgxu.bbs.web.action.ForumAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+
+	<bean name="topic" class="cn.newgxu.bbs.web.action.TopicAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+
+	<bean name="createTopic"
+		class="cn.newgxu.bbs.web.action.CreateTopicAction" scope="prototype"
+		parent="abstractBaseAction" />
+
+	<bean name="createVote"
+		class="cn.newgxu.bbs.web.action.CreateVoteAction" scope="prototype"
+		parent="abstractBaseAction" />
+
+	<bean name="vote" 
+		class="cn.newgxu.bbs.web.action.VoteAction"
+		scope="prototype" parent="abstractBaseAction" />
+	
+	<!--砸蛋-->
+	<bean name="luckyAction" 
+		class="cn.newgxu.bbs.web.action.LuckyTopicAction"
+		scope="prototype" parent="abstractBaseAction" />
+   <bean name="createLucky" 
+		class="cn.newgxu.bbs.web.action.CreateLuckyAction"
+		scope="prototype" parent="abstractBaseAction" />
+	<!-- end 砸蛋-->
+	
+	<bean name="reply" class="cn.newgxu.bbs.web.action.ReplyAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+	
+	<bean name="replyDo" class="cn.newgxu.bbs.web.action.ReplyAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+
+	<bean name="modify" 
+		class="cn.newgxu.bbs.web.action.ModifyAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+
+	<bean name="manage" 
+		class="cn.newgxu.bbs.web.action.ManageAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+
+	<bean name="search" 
+		class="cn.newgxu.bbs.web.action.SearchAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+
+	<bean name="createSmallNews"
+		class="cn.newgxu.bbs.web.action.CreateSmallNewsAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+
+	<bean name="smallNews"
+		class="cn.newgxu.bbs.web.action.SmallNewsAction" scope="prototype"
+		parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+	
+	<bean name="boardState" 
+		class="cn.newgxu.bbs.web.action.BoardStateAction" scope="prototype" 
+	    parent="abstractBaseAction">
+	    <property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+	<!-- add by daodaoyu -->
+	<bean name="draftBoxAction"
+		class="cn.newgxu.bbs.web.action.DraftBoxAction"
+		scope="prototype" parent="abstractBaseAction">
+	    <property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+   <bean name="getTopicAction" class="cn.newgxu.bbs.web.action.DetTopicAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="forumService">
+			<ref bean="forumService" />
+		</property>
+	</bean>
+	
+	<bean id="forumService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="forumServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="forum">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+				<prop key="topic">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="vote">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="createTopic">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+				<prop key="createVote">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+				<prop key="createTopicDo">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="createVoteDo">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="createReply">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="modifyDo">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="replyFastDo">PROPAGATION_REQUIRED, -Exception</prop><!--快速回复使用-->
+				<prop key="manage">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="createSmallNewsDo">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="smallNews">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="delSmallNews">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="BoardState">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+				<prop key="getArea">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+				<prop key="createArea">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="createForum">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="editArea">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="editForum">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="queryHotTopics">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="checkTopicSafer">PROPAGATION_REQUIRED, -Exception</prop>
+				
+				<prop key="saveDraftBox">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="getDraftBoxes">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="readDraftBox">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="createTpFromDb">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="saveAgainDraftBox">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="delDraftBoxes">PROPAGATION_REQUIRED, -Exception</prop>
+				
+				<prop key="modifyFourmTime">PROPAGATION_REQUIRED, -Exception</prop>
+				
+				<!--砸蛋-->
+				<prop key="answerLucky">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="luckyDo">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="createLuckyDo">PROPAGATION_REQUIRED, -Exception</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="forumServiceTarget"
+		class="cn.newgxu.bbs.service.proxy.ForumServiceProxy">
+		<property name="forumService">
+			<ref bean="realForumService" />
+		</property>
+	</bean>
+
+	<bean id="realForumService"
+		class="cn.newgxu.bbs.service.impl.ForumServiceImpl" />
+		
+		<bean id="statisticService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="statisticServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="flushHitsManager">
+					PROPAGATION_REQUIRED, -Exception
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="statisticServiceTarget"
+		class="cn.newgxu.bbs.service.impl.StatisticServiceImpl" />
+
+</beans>

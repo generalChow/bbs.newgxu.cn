@@ -1,0 +1,51 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1//EN" 
+"http://www.opensymphony.com/xwork/xwork-1.1.dtd">
+<xwork>
+	<package name="hongbao" namespace="/hongbao" extends="default">
+	
+		<!-- 官方商店 -->
+		<action name="official" class="official">
+			<result name="success" type="freemarker">/template/market/market_official.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 官方商店购买提交 -->
+		<action name="official_buy_do" class="officialBuyDo">
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 用户向自由市场出售物品提交 -->
+		<action name="item_sell_do" class="itemSellDo">
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 用户的所有物品 -->
+		<action name="myItems" class="myItems">
+			<result name="success" type="freemarker">/template/market/my_items.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 用户使用物品 -->
+		<action name="item_use_do" class="itemUseDo">
+			<interceptor-ref name="login" />
+		</action>
+		
+		<!-- 用户赠送物品 -->
+		<action name="item_compliment_away_do" class="itemComplimentAwayDo">
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 自由市场 -->
+		<action name="free" class="free">
+			<result name="success" type="freemarker">/template/market/market_free.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 自由市场购买提交 -->
+		<action name="free_market_item_buy_do"
+			class="freeMarketItemBuyDo">
+			<interceptor-ref name="login" />
+		</action>
+	</package>
+	
+</xwork>

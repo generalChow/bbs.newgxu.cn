@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0042)http://diary.yinsha.com/song/bgmplayer.htm -->
+<!--Shinobu's BGM Player 1.5 HTML File--><!--Copyleft (C) 2000 - 2001 by Shinobu All Rights Unreversed--><!--中文化 : Cora - E-mail: wait4mayday@hotmail.com--><!--程式修改 : Sharon--><!--E - mail : forsharon@hotmail.com--><!--网站网址 : http://sharon.has.it--><HTML><HEAD><TITLE>BGM Player</TITLE>
+<META content="MSHTML 6.00.2900.2722" name=GENERATOR>
+<META http-equiv=Content-Type content="text/html; charset=gb2312"><!--BGM Script Includes-->
+<SCRIPT language=javascript src="bgmplayer.files/bgm_system.js">
+</SCRIPT>
+
+<SCRIPT language=Javascript>
+//选择歌曲播放形式
+//0 ->按照歌曲排列顺序播放
+//1 ->随机播放
+var playMode = 1;
+
+
+//每首歌之间的休息时间(秒)
+var restLength = 1;
+
+
+
+//是否显示歌曲名称
+var showTitle = 1;
+
+
+//是否歌曲一载入就自动播放
+var doFirstPlay = 1;
+
+//以下是连接歌曲URL语法（可增加/减少，但每首歌的播放时间数字一定不能相同）
+//歌曲类型最好是WMA MIDI & ASF!
+//addbgm('歌曲连接位置', '歌手－歌曲名称', 播放时间数字[以秒为单位]); 
+//(例如) addbgm('http://sms.yinsha.com/folder/file.wma','Artist - Title',123);
+addbgm('http://sms.yinsha.com/diary/song/01.wma','温岚- 眼泪知道',235);
+addbgm('http://sms.yinsha.com/diary/song/02.wma','韩国不知名',235);
+addbgm('http://sms.yinsha.com/diary/song/03.wma','陈小春- 算你狠',235);
+addbgm('http://sms.yinsha.com/diary/song/04.wma','孙燕姿-懒的去管',235);
+addbgm('http://sms.yinsha.com/diary/song/05.wma','孙燕姿- 直来直往',235);
+addbgm('http://sms.yinsha.com/diary/song/06.wma','分手快乐- 汪佩蓉 梁静茹 黄嘉千 ',235);
+addbgm('http://sms.yinsha.com/diary/song/07.wma','因为是女子',235);
+addbgm('http://sms.yinsha.com/diary/song/08.wma','周杰伦 温岚- 胡同里有只猫',235);
+addbgm('http://sms.yinsha.com/diary/song/09.wma','韩国不知名',235);
+addbgm('http://sms.yinsha.com/diary/song/10.wma','Helene',235);
+addbgm('http://sms.yinsha.com/diary/song/11.wma','杨千嬅- 可惜我是水瓶座',235);
+addbgm('http://sms.yinsha.com/diary/song/12.wma','莎拉布来曼- join me',235);
+addbgm('http://sms.yinsha.com/diary/song/13.wma','梁咏琪- 两个人的幸福',235);
+addbgm('http://sms.yinsha.com/diary/song/13.wma','张学友- 如果这都不算爱',235);
+</SCRIPT>
+<!--End script-->
+<STYLE type=text/css>BODY {
+	FONT-SIZE: 12px; MARGIN: 0px
+}
+</STYLE>
+<!--BODY 里的 OnLoad="init_bgm()" 为程式语法之一, 请勿删除哦!--></HEAD>
+<BODY text=#6794bc bgColor=#ffffff onload=init_bgm()><!--BGM Script BODY Start-->
+<FORM name=form1><!--以下语法最好不要修改-->
+<OBJECT id=Music style="LEFT: 0px; TOP: 0px" height=1 hspace=1 width=1 
+align=middle vspace=1 classid=clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95><PARAM NAME="AllowChangeDisplaySize" VALUE="true"><PARAM NAME="AllowScan" VALUE="true"><PARAM NAME="AnimationAtStart" VALUE="true"><PARAM NAME="AudioStream" VALUE="-1"><PARAM NAME="AutoRewind" VALUE="true"><PARAM NAME="AutoSize" VALUE="false"><PARAM NAME="AutoStart" VALUE="true"><PARAM NAME="Balance" VALUE="0"><PARAM NAME="BufferingTime" VALUE="5"><PARAM NAME="ClickToPlay" VALUE="true"><PARAM NAME="CurrentMarker" VALUE="0"><PARAM NAME="CurrentPosition" VALUE="-1"><PARAM NAME="CursorType" VALUE="0"><PARAM NAME="DisplayBackColor" VALUE="0"><PARAM NAME="DisplayForeColor" VALUE="16777215"><PARAM NAME="DisplayMode" VALUE="0"><PARAM NAME="DisplaySize" VALUE="2"><PARAM NAME="EnableContextMenu" VALUE="true"><PARAM NAME="Enabled" VALUE="true"><PARAM NAME="EnableFullScreenControls" VALUE="false"><PARAM NAME="EnablePositionControls" VALUE="true"><PARAM NAME="EnableTracker" VALUE="true"><PARAM NAME="InvokeURLs" VALUE="true"><PARAM NAME="Language" VALUE="-1"><PARAM NAME="Mute" VALUE="false"><PARAM NAME="PlayCount" VALUE="1"><PARAM NAME="PreviewMode" VALUE="false"><PARAM NAME="Rate" VALUE="1"><PARAM NAME="SelectionEnd" VALUE="-1"><PARAM NAME="SelectionStart" VALUE="-1"><PARAM NAME="SendErrorEvents" VALUE="true"><PARAM NAME="SendKeyboardEvents" VALUE="false"><PARAM NAME="SendMouseClickEvents" VALUE="true"><PARAM NAME="SendMouseMoveEvents" VALUE="false"><PARAM NAME="SendOpenStateChangeEvents" VALUE="true"><PARAM NAME="SendPlayStateChangeEvents" VALUE="true"><PARAM NAME="SendWarningEvents" VALUE="true"><PARAM NAME="ShowAudioControls" VALUE="true"><PARAM NAME="ShowCaptioning" VALUE="false"><PARAM NAME="ShowControls" VALUE="true"><PARAM NAME="ShowDisplay" VALUE="false"><PARAM NAME="ShowGotoBar" VALUE="false"><PARAM NAME="ShowPositionControls" VALUE="true"><PARAM NAME="ShowStatusBar" VALUE="true"><PARAM NAME="ShowTracker" VALUE="true"><PARAM NAME="TransparentAtStart" VALUE="false"><PARAM NAME="VideoBorder3D" VALUE="true"><PARAM NAME="VideoBorderColor" VALUE="0"><PARAM NAME="VideoBorderWidth" VALUE="0"><PARAM NAME="Volume" VALUE="2000"><PARAM NAME="WindowlessVideo" VALUE="false"></OBJECT><IMG height=8 
+src="bgmplayer.files/music2.gif" width=11> Music: <INPUT 
+style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 8pt; BORDER-BOTTOM-WIDTH: 0px; COLOR: #6794bc; FONT-FAMILY: Arial; BORDER-RIGHT-WIDTH: 0px" 
+readOnly size=30 value="Shinobu BGM Player 1.5 [ready]" name=stitle> &nbsp;<A 
+onmouseover="window.status=('Previous Track'); return true;" onclick=preTrack(); 
+onmouseout="window.status=(''); return true;" 
+href="http://diary.yinsha.com/song/bgmplayer.htm#"><IMG height=13 alt=上一首 
+src="bgmplayer.files/forward.gif" width=13 align=middle border=0></A> <A 
+onmouseover="window.status=('Stop BGM'); return true;" onclick=stopTrack(); 
+onmouseout="window.status=(''); return true;" 
+href="http://diary.yinsha.com/song/bgmplayer.htm#"><IMG height=13 alt=暂停 
+src="bgmplayer.files/stop.gif" width=13 align=middle border=0></A> <A 
+onmouseover="window.status=('Play BGM'); return true;" onclick=play(); 
+onmouseout="window.status=(''); return true;" 
+href="http://diary.yinsha.com/song/bgmplayer.htm#"><IMG height=13 alt=播放 
+src="bgmplayer.files/play.gif" width=13 align=middle border=0></A> <A 
+onmouseover="window.status=('Next Track'); return true;" onclick=nextTrack(); 
+onmouseout="window.status=(''); return true;" 
+href="http://diary.yinsha.com/song/bgmplayer.htm#"><IMG height=13 alt=下一首 
+src="bgmplayer.files/backward.gif" width=13 align=middle border=0></A> <A 
+onmouseover="window.status=('Display the BGM List'); return true;" 
+onclick=m_list(); onmouseout="window.status=(''); return true;" 
+href="http://diary.yinsha.com/song/bgmplayer.htm#"><IMG height=13 alt=歌曲列表 
+src="bgmplayer.files/list.gif" width=28 align=middle border=0></A> </FORM><!--BGM Script BODY End--></BODY></HTML>

@@ -1,0 +1,61 @@
+<div style="background-color:#fffbe0;">
+	银行行长: <#list bankAdmins as ba>
+							${ba.nick},
+					</#list>
+	<br />
+	银行简介: 实际资本 ${bank.bankroll} ,银行存款 ${bank.deposit} ,用户数量 ${bank.userNumber}  <br />
+	<br />
+</div>
+	业务介绍 <br />
+	<#setting number_format="0">
+	<form name="form1" method="post" action="bankModify.yws" onsubmit="return validateCallback(this,navTabAjaxDone);">
+	开户费用: <input name="openCost" type="text" value="${bank.openCost}"
+	onkeyup="if(/^\d+(\.)?(\d+)?$/.test(this.value)==false){alert('请输入数字！');this.value='';}"/> <br>
+	活期利率: <input name="currentRate" type="text" value="${bank.currentRate*1000}"
+	onkeyup="if(/^\d+(\.)?(\d+)?$/.test(this.value)==false){alert('请输入数字！');this.value='';}"/>‰<br>
+	定期利率: <input name="fixedRate" type="text" value="${bank.fixedRate*1000}"
+	onkeyup="if(/^\d+(\.)?(\d+)?$/.test(this.value)==false){alert('请输入数字！');this.value='';}"/>‰<br>
+	贷款利率: <input name="loanRate" type="text" value="${bank.loanRate*1000}"
+	onkeyup="if(/^\d+(\.)?(\d+)?$/.test(this.value)==false){alert('请输入数字！');this.value='';}"/>‰<br>
+	转帐手续费率:<input name="virementRate" type="text" value="${bank.virementRate*1000}"
+	onkeyup="if(/^\d+(\.)?(\d+)?$/.test(this.value)==false){alert('请输入数字！');this.value='';}"/>‰<br>
+	<input name="submit" type="submit" class="BUTTON2" value="修改"/>
+	</form>
+	<br><br>
+	
+	<a href="bankManage.yws?type=1" title="银行|申请列表"  target="navTab" rel="bank" >申请列表</a>&nbsp;|&nbsp;
+	<a href="bankManage.yws?type=2" title="银行|取消列表" target="navTab" rel="bank" >取消列表</a>&nbsp;|&nbsp;
+	<a href="bankManage.yws?type=3" title="银行|批准列表"  target="navTab" rel="bank" >批准列表</a>&nbsp;|&nbsp;
+	<a href="bankManage.yws?type=4" title="银行|拒绝列表" target="navTab" rel="bank" >拒绝列表</a>&nbsp;|&nbsp;
+	<a href="bankManage.yws?type=5" title="银行|偿还列表" target="navTab" rel="bank" >偿还列表</a>&nbsp;
+	<table class="table" id="category_list" width="580" layoutH="90">
+		<thead>
+			<tr>
+				<th width="100">用户名</th>
+				<th width="100">金额</th>
+				<th width="50">贷款利率</th>
+				<th width="120">申请时间</th>
+				<th width="100">贷款天数</th>
+				<th width="100">操作</th>
+			</tr>
+		</thead>
+	<tbody>
+	<#list applyLoans as al>
+		<tr>
+		<td>${al.user.nick}</td>
+		<td>${al.money}</td>
+		<td>${al.loanRate*1000}‰</td>
+		<td>${al.applyTime}</td>
+		<td>${al.days}</td>
+		<#if al.status==1>
+		<td>
+			<a href="loanApproach.yws?id=${al.id}" target="ajaxTodo" title="确定要批准这个申请吗?">批准</a>&nbsp;|&nbsp;
+			<a href="loanDeny.yws?id=${al.id}"  target="ajaxTodo" title="确定要j拒绝这个申请吗?">拒绝</a>
+		</td>
+		<#else>
+		<td>无</td>
+		</#if>
+	</tr>
+			</#list>
+	</tbody>
+	</table>

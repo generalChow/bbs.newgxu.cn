@@ -1,0 +1,195 @@
+div.multi_drop_menus * {
+	margin: 0;
+	padding: 0;     /* removes margin and padding off all list elements */
+}
+/* SET YOUR PREFERENCES!!! */
+/* set your menu's font and colors here - the MENU MECHANICS  follow below */
+div.multi_drop_menus {
+	behavior: url(js/10_years_index/csshover.htc);/* you must link to the hover.htc file for this menu to work in IE6 and earlier */
+	/* need a copy? go to http://www.xs4all.nl/~peterned/htc/csshover.htc - copy the code into a text file and save it as csshover.htc */
+	font-family: arial, sans-serif;   /* font family for menu */
+	font-size: 15px; /* size of menu's type relative to parent element */
+	margin: 0px 0 0px 0px;
+	background-color: transparent;    /* colors the div - div fills the parent element for a horizontal menu - set to background-color:transparent; if not needed */
+}
+div.multi_drop_menus ul {
+	border-left: 1px solid #d9ded1;   /* creates dividing line to left of level 1's first menu item, revealing div color to left of menu */
+	display: inline;						/* fixes margin-doubling bug in IE6 */
+}
+div.multi_drop_menus li {
+	/*background-color:#FFF;*/         /* background color of the level 1 menu items */
+	background-color: ##F4FFE4;
+	border-right: 1px solid #d9ded1;   /* creates dividing lines to right of each horiz level 1 menu item *//* set to 0px to remove */
+}/* border-right is automatically removed from vert menu below  */
+div.multi_drop_menus li:hover {
+	background-color: #F0F7D9;      /* background color of hovered menu items */
+}
+div.multi_drop_menus a {
+	color: #8ec31f;                     		/* sets the color of all menu type */
+	padding: .2em 5px;           		/*creates space top/bottom and left/right respectively around each menu item's text - set vert height in ems   */
+}
+div.multi_drop_menus a:hover {
+	color: #FFF;        				 /* type color of a hovered menu choice */
+	background-color: #8ec31f;
+}
+div.multi_drop_menus ul li ul {
+	width: 12em;   						/* sets the width of menu levels 2 - 4 */
+	background-color: #8ec31f;
+}
+div.multi_drop_menus li li {
+	background-color: #F4FFE4;        /* background color of the level 2 menu */
+	border-bottom: 1px solid #d9ded1; /* lines between menu choices - set to 0px if not wanted */
+}
+div.multi_drop_menus ul li ul li ul {
+	border-top: 1px solid #d9ded1;     /* set the border-top of levels 3 and 4 of a horizontal menu - set to 0px to remove - for a vertical menu, you will set this for levels 1 - 4 below */
+	/*top: -1px;*/ /* set to negative value of border-top for perfect pop-out alignment -set to 0 if border is 0 - don't remove! */
+}
+div.multi_drop_menus li li li {
+	background-color: #EDFDD6;          /* background color of the level 3 menu */
+}
+div.multi_drop_menus li li li li {
+	background-color: #DDA;         /* background color of the level 4 menu */
+}
+/* Want transparency on your menus? add the class 'transparent' to the multi_drop_menus div */
+div.multi_drop_menus.transparent ul ul li {
+	/* note: the lower the value, the greater the transparency */
+	opacity: 0.9; /* CSS3 - range 0 to 1 */
+	-moz-opacity: 0.9; /* Firefox- range 0 to 1  */
+	filter: alpha(opacity=90);  /* IE- range 0 to 100  */
+}
+/* ADDITIONAL PREFS FOR VERTICAL MENU - NO NEED TO TOUCH THESE IF LEVEL 1 IS HORIZONTAL */
+div.multi_drop_menus.vertical ul {
+	/*border-top:1px solid #CCB;*/     /* set the border-top of level 1 of the vertical menu - broken out separately so it can be different from top border of other levels */
+}
+div.multi_drop_menus.vertical li {
+	border-bottom: 1px solid #edfdd6;  /* adds horizontal lines between menu choices - overrides main setting above for this feature */
+}
+
+/*
+div.multi_drop_menus.vertical ul li ul li {
+	background-color: #8ec31f;
+}
+
+div.multi_drop_menus.vertical ul li ul li a {
+	color: #FFF;
+}
+*/
+
+div.multi_drop_menus.vertical ul ul {
+	border-top: 1px solid #d9ded1;       /* set the border-top of levels 2 - 4 of a vertical menu - set to 0 to remove */
+	top: -1px;            /* set to negative value of border-top for perfect pop-out alignment - set to 0 if border is 0 - don't remove!*/
+}
+/* end vertical menu preferences */
+/* END MENU PREFERENCES */
+
+/* YOU ARE STONGLY ADVISED NOT TO MODIFY THE CODE THAT FOLLOWS : ) */
+/* the menu mechanics start here */
+div.multi_drop_menus {
+	float: left;
+	width: 100%;
+	/*width: 126.5px;*/
+}
+div.multi_drop_menus ul {
+	float: left; /* makes ul wrap li */
+	font-weight: bold;
+	text-align: center;
+}
+div.multi_drop_menus li {
+	float: left;  /*causes the list to align horizontally instead of stack */
+	list-style-type: none; /* removes the bullet off each list item */
+	position: relative; /* positioning context for the absolutely positioned drop-down */
+}
+div.multi_drop_menus a {
+	display: block; /* makes link fill li so entire area is "hot" */
+	text-decoration: none;  /* removes the underlining from the links */
+}
+/* the horizontal menu ends here */
+/* the drop-downs starts here */
+div.multi_drop_menus ul li ul {
+	position: absolute;     /* positions the drop-down ul in relation to its relatively positioned li parent */
+	border: 0;         			/* stops inheritance from level 1 ul */
+	margin-left: 0px;        /* stops inheritance from level 1 ul */
+	background-color: #8ec31f;
+}
+div.multi_drop_menus ul li ul li {
+	width: 100%;
+	padding: 0; /* stops inheritance */
+	border-left: 0; /* stops inheritance */
+	border-right: 0; /* stops inheritance */
+}
+div.multi_drop_menus ul li ul {
+	display: none;
+}/* conceals the drop-down when menu not hovered */
+div.multi_drop_menus ul li:hover ul {
+	display: block; /* shows the drop-down when the menu is hovered */
+	z-index: 1000; /* Safari needs this to display menu on top of other page elements */
+}
+/* pop-outs starts here */
+body div.multi_drop_menus ul li ul li ul {
+	position: absolute; /* associated menu with parent li positioning context */
+	visibility: hidden; /* ensures that level 3 menu is not reveal when level 2 is reveled */
+	left: 100%;
+	top: -1px; /* aligns level 3 and 4 pop-out with previous level */
+}
+div.multi_drop_menus ul li ul li:hover ul {
+	visibility: visible;
+}/* shows level 3 menu when associated level 2 li is hovered */
+/* second and third level popouts here*/
+div.multi_drop_menus ul li ul li:hover ul li ul {
+	visibility: hidden;
+}/* ensures that level 4 is not reveal when level 3 is reveled */
+div.multi_drop_menus ul li ul li ul li:hover ul {
+	visibility: visible;
+}/* shows level 4 menu when associated level 3 li is hovered */
+/* the drop-downs end here */
+
+/* extra styles for the vertical menu */
+div.multi_drop_menus.vertical ul {
+	border-left: 0px; /* removes the border of the level 1 ul that can be used in the horizontal menu */
+	margin-left: 0;         /* removes left margin that is available on horizontal menu */
+}
+.vertical ul { /* took off the id so the ul ul width setting in prefs was more specific */
+	width: 100%;
+}
+div.multi_drop_menus.vertical li {
+	position: relative; /* positioning context for the level 2 menu */
+	width: 100%;         /* set width of level 1 menu - MUST match left value in ul ul selector below */
+	clear: left; /* makes the main menu stack - note: turning off floating (alternative way to create stacking) causes spacing problems in IE */
+	border-right: 0; /* removes right borders used by horiz level 1 */
+}
+div.multi_drop_menus.vertical ul ul {
+	position: absolute; /* make ul position relative to parent li for all menu levels */
+	left: 100%;         /* align level 2 with level 1 - MUST match li width in selector above */
+	top: -1px; /* aligns the level 2 pop-out */
+}
+/* levels 2 -4 width */
+div.multi_drop_menus.vertical li li {
+	background-color: #f4ffe4;
+}
+div.multi_drop_menus.vertical ul ul ul {
+	left: 100%;          /* align level 2 with level 3 and 3 with 4 - MUST match li width in selector above */
+}
+/* END MENU MECHANICS */
+
+/* inevitable hacks for IE6  and < */
+* html div.multi_drop_menus {
+	z-index: 1; /* IE6 won't respect high z-index on abs-pos'd child (ul li ul) without this on its parent rel-pos'd element */
+}/* see http://www.last-child.com/conflicting-z-index-in-ie6/ */
+* html div.multi_drop_menus ul li ul {
+	z-index: 400; /*ensures menu is on top of other page elements */
+}
+* html div.multi_drop_menus a {
+	/* cannot find a way to get the top level 'a' to fill the unwidthed menu choices without drop-down in IE : ( */
+}
+* html div.multi_drop_menus.vertical a {
+	/* now hasLayout in IE - works on the vert menu as container has width */
+	zoom: 100%;
+}
+* html div.multi_drop_menus ul ul a { /* second level of horiz menu */
+	zoom: 100%;  /* now IE 'haslayout" - IE now makes background hot in horizontal menus */
+}
+/* info on haslayout:
+ http://www.sitepoint.com/forums/showpost.php?p=2041209&postcount=24
+ http://onhavinglayout.fwpf-webdesign.de/hack_management/
+ */
+/* END OF LIST-BASED MENU */

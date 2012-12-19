@@ -1,0 +1,110 @@
+<@base.diaryheader title="心情日记主页">
+<link href="css/diary.css" rel="stylesheet" type="text/css">
+<link href="css/global.css" rel="stylesheet" type="text/css">
+<script src="js/diary.js"></script>
+<style type="text/css">
+<!--
+body {
+	background-color: #DEF4AB;
+}
+-->
+</style>
+</@base.diaryheader>
+<@base.diaryBody location="心情日记主页">
+<table width="50" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="49%" valign="top"><table width="251" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="35"><img src="/images/diary/tjrj.jpg" width="250" height="39"></td>
+          </tr>
+          <tr>
+            <td valign="top"><table width="97%" border="0" cellspacing="0" cellpadding="0">
+            <#list recDiarys as rd>
+              <tr>
+                <td  height="18"  width="60%">・<A href="view_Diary.yws?id=${rd.id}" target=_blank><#if rd.title?length lt 8>${rd.title?default("")}<#else>${rd.title[0..7]}...</#if><#if rd.lockedType==2><img src="/images/diary/locked.gif" border="0"><#elseif rd.lockedType==3><img src="/images/diary/locked2.gif" border="0"><#else></#if></A></td>
+                <td  width="40%" align="right"><a href="../user/user_info.yws?id=${rd.user.id}" target=_blank>${rd.user.nick}</a></td>
+              </tr>
+            </#list>
+            </table></td>
+          </tr>
+        </table></td>
+        <td width="2%">&nbsp;</td>
+        <td width="49%"><table width="252" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="252" height="35"><img src="/images/diary/zxrj.jpg" width="250" height="39"></td>
+          </tr>
+          <tr>
+            <td height="190" valign="top"><table width="97%" border="0" cellspacing="0" cellpadding="0">
+            <#list latDiarys as ld>
+              <tr>
+                <td   height="18"  width="60%">・<A href="view_Diary.yws?id=${ld.id}" target=_blank><#if ld.title?length lt 8>${ld.title?default("")}<#else>${ld.title[0..7]}...</#if><#if ld.lockedType==2><img src="/images/diary/locked.gif" border="0"><#elseif ld.lockedType==3><img src="/images/diary/locked2.gif" border="0"><#else></#if></A></td>
+                <td  width="40%" align="right"><a href="../user/user_info.yws?ld=${ld.user.id}" target=_blank>${ld.user.nick}</a></td>
+              </tr>
+            </#list>
+            </table></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td height="85" colspan="3" align="center"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="494" height="92">
+          <param name="movie" value="/images/diary/xqrj.swf">
+          <param name="quality" value="high">
+          <embed src="/images/diary/xqrj.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="494" height="92"></embed>
+        </object></td>
+      </tr>
+      <tr>
+        <td colspan="3"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="251" height="35"><img src="/images/diary/yxrjb.jpg" width="250" height="39"></td>
+            <td>&nbsp;</td>
+            <td width="251"><img src="/images/diary/zxrjb.jpg" width="250" height="39"></td>
+          </tr>
+          <tr>
+            <td height="218" valign="top"><table width="97%" border="0" cellspacing="0" cellpadding="0">
+            <#list excDiaryBooks as ed>
+              <tr>
+                <td   height="18"  width="61%">・<A href="viewDiaryBook.yws?id=${ed.user.id}" target=_blank>${ed.bookName}[${ed.diaryNum}篇]</A></td>
+                <td  width="39%" align="right"><a href="../user/user_info.yws?id=${ed.user.id}" target=_blank>${ed.user.nick}</a></td>
+              </tr>
+             </#list> 
+            </table></td>
+            <td>&nbsp;</td>
+            <td valign="top"><table width="97%" border="0" cellspacing="0" cellpadding="0">
+            <#list newDiaryBooks as nd>
+              <tr>
+                <td   height="18"  width="61%">・<A href="viewDiaryBook.yws?id=${nd.user.id}" target=_blank>${nd.bookName}[${nd.diaryNum}篇]</A></td>
+                <td  width="39%" align="right"><a href="../user/user_info.yws?id=${nd.user.id}" target=_blank>${nd.user.nick}</a></td>
+              </tr>
+            </#list>
+            </table></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td><table width="100%" height="255" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="65%" height="268" valign="top"><table width="331" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="296" height="35"><img src="/images/diary/rjzsph.jpg" width="250" height="39"></td>
+          </tr>
+          <tr>
+            <td height="200" valign="top"><table width="97%" border="0" cellspacing="0" cellpadding="0">
+            
+              <tr>
+              <#list couDiaryBooks as cd>
+                <td   height="18"  width="50%">・<A href="viewDiaryBook.yws?id=${cd.user.id}" target=_blank>${cd.bookName}[${cd.diaryNum}篇]</A></td>
+                <#if (cd_index+1)%2 =0></tr></#if>
+            </#list>         
+              </table></td>
+          </tr>
+        </table></td>
+        <td width="35%" align="center"><img src="/images/diary/index1_20.jpg" width="177" height="255" /></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</@base.diaryBody>

@@ -1,0 +1,47 @@
+<table width="830" border="0" align="center" cellpadding="0" cellspacing="0" class="botom_line">
+						<tr align="center">
+							<td width="125" height="270" valign="middle" class="right_line">
+								内容：
+								<br />
+								<br />
+								5-20000字符
+								<br />
+								内容支持ＵＢＢ标签
+								<br />
+								使用方法请参考帮助
+							</td>
+							<td align="left" style="padding:5px 0 5px 5px;">
+								<textarea id="content" name="model.content"  style=" width:100%; height:400px;"></textarea>
+							</td>
+						</tr>
+					</table>
+<form action="/upload_servlet" method="post" enctype="multipart/form-data">
+	<input type="file" name="a" />
+	<input type="submit"/>
+</form>
+<script charset="utf-8" src="/js/jquery-1.4.2.min.js"></script>
+<script charset="utf-8" src="/kindEditer/kindeditor-newgxu.js"></script>
+<script charset="utf-8" src="/kindEditer/lang/zh_CN.js"></script>
+<script>
+		var kindEditor;
+		$(document).ready(function(){
+			try{
+				KindEditor.ready(function(K) {
+					kindEditor=K.create('#content', {
+						themeType : 'default',
+						shadowMode:false,resizeMode:0,
+						syncType : '', allowPreviewEmoticons : false,
+						allowMediaUpload:false,allowFlashUpload:false,
+						allowUpload : true,uploadJson : '/ycalendar/uploadImage.yws'
+					});
+				});
+				/*
+				 * ----3.X
+				KE.show({
+					id : 'content',shadowMode : false,resizeMode : 1,basePath:'/kindEditer',
+					syncType : '', allowPreviewEmoticons : false,allowUpload : true,imageUploadJson : '/ycalendar/uploadImage.yws',
+				});*/
+			}
+			catch(e){alert(e);}
+			});
+	</script>

@@ -1,0 +1,39 @@
+  <form name="form1" method="post" action="<#if id == 0>holiday_addDo<#else>holiday_edit</#if>.yws"  onsubmit="return validateCallback(this, dialogAjaxDone);">
+  	<input type="hidden" name="<#if holiday.id gt 0>holiday.id</#if>" value="${holiday.id?default(0)}"/>
+    <table width="100%">
+      <tr>
+        <td width="110">节日名称：</td>
+        <td><input type="text" name="holiday.name" value="${holiday.name?default('')}"/></td>
+      </tr>
+	  <tr>
+	  	<td>图片路径：</td>
+		<td>
+			<input type="text" id="img_path" name="holiday.imgPath" value="${holiday.imgPath?default('')}" style="width:300px;"/>
+			<a href="/template/admin/upload.html" target="dialog" height="150" mask="true" width="360" external="true">上传图片</a>
+		</td>
+	  </tr>
+	  <tr>
+	  	<td>链接地址：</td>
+		<td>
+			<input type="text" id="img_path" name="holiday.url" value="${holiday.url?default('')}" style="width:300px;"/>
+		</td>
+	  </tr>
+	  <tr>
+	  	<td>是否有效：</td>
+		<td>
+			<label><input type="radio" name="holiday.ifLive" value="true" <#if holiday.ifLive>checked</#if>  />是</label>
+			<label><input type="radio" name="holiday.ifLive" value="false" <#if !holiday.ifLive>checked</#if> />否</label>
+		</td>
+	  </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><input type="submit" name="Submit" class="BUTTON2" value="修　改">
+      </tr>
+    </table>
+  </form>
+  <script>
+  		function uploadSubmit(){
+		alert(1);
+		$('#upload_form').submit();
+	}
+  </script>

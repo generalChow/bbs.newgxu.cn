@@ -1,0 +1,69 @@
+<div class="pageHeader">
+	<form onsubmit="return navTabSearch(this);" action="logs_list.yws" method="post">
+	<div class="searchBar">
+		  <label style="width:90px;"><input type="radio" name="searchType" value="id" <#if model.searchType=='id'>checked</#if>>按ID查找</label>
+		  <label style="width:90px;"><input name="searchType" type="radio" value="forum" <#if searchType=='forum'>checked</#if>>按版块查找</label>
+		  <label style="width:110px;"><input name="searchType" type="radio" value="username" <#if searchType=='username'>checked</#if>>按登录账号查找</label>
+		  <label style="width:90px;"><input type="radio" name="searchType" value="studentid" <#if searchType=='studentid'>checked</#if>>按学号查找</label>
+		  <label style="width:140px;"><input type="text" name="searchValue"  value="${searchValue?default('')}"></label>
+		  <input type="submit" name="Submit" value="查	找"> 
+	</div>
+	</form>
+	<form id="pagerForm" style="display:none;" action="logs_list.yws" method="get">
+		<input type="hidden" name="page" value="1" /><!--【必须】value=1可以写死-->
+      	<input type="hidden" name="pageSize" value="20" />
+		<input type="hidden" name="searchType" value="${searchType?default('')}" />
+		<input type="hidden" name="searchValue" value="${searchValue?default('')}" />
+	</form>
+</div>
+<div class="pageContent">
+	<table class="table" width="100%" border="1" layoutH="90" align="center" cellspacing="0" bordercolor="#999999" style="border-collapse:collapse">
+		<thead>
+			<tr>
+				<th width="100">ID号</th>
+				<th width="100">用户</th>
+				<th>操作主题</th>
+				<th width="100">所属板块</th>
+				<th width="100">操作类型</th>
+				<th width="120">时间</th>
+			</tr>
+		</thead>
+		<tbody>
+      <#setting number_format="0">
+      <#list logs as log>
+      <tr align="center">
+      	  <td align="center">${log.id}</td>
+   		  <td height="20" align="center"><a href="../user/user_info.yws?id=${log.user.id}" target="_blank">${log.user.nick}</a></td>
+  		  <td align="center"><a href="/topic.yws?forumId=${log.forum.id}&topicId=${log.topic.id}" target="_blank">${log.topic.title}</a></td>
+  		  <td align="center">${log.forum.name}</td>
+      	  <td><#switch log.typeid>
+				<#case 1>删除<#break>
+				<#case 2>修复<#break>
+				<#case 3>置顶<#break>
+				<#case 4>校外<#break>
+				<#case 5>区置顶<#break>
+				<#case 6>精华<#break>
+				<#case 7>锁定<#break>
+				<#case 8>推荐<#break>
+				<#case 9>取消置顶<#break>
+				<#case 10>取消精华<#break>
+				<#case 11>取消推荐<#break>
+				<#case 12>屏蔽发言<#break>
+				<#case 13>删除回复<#break>
+				<#case 14>撤销锁定<#break>
+				<#case 15>转移主题<#break>
+				<#case 16>加亮主题<#break>
+				<#case 17>取消加亮<#break>
+			 </#switch></td>
+		 <td>${log.dt}</td> 
+      </tr>
+	</#list>
+	</tbody>
+    </table>
+	<div class="panelBar">
+		<div class="pages">
+			<span>共${pagination.recordSize}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="${pagination.recordSize}" numPerPage="${pagination.pageSize}" pageNumShown="16" currentPage="${pagination.page}"></div>
+	</div>
+</div>

@@ -1,0 +1,129 @@
+<@base.header title="理财日志"></@base.header>
+<@base.body location="社区银行&nbsp;－&gt;&nbsp;理财日志">
+	<@base.main location="社区银行&nbsp;－&gt;&nbsp理财日志;">
+		<@base.bank_content>
+			<a href="log.yws?type=1">活期记录</a>
+			<a href="log.yws?type=2">定期记录</a>
+			<a href="log.yws?type=3">贷款记录</a>
+			<a href="log.yws?type=4">转出记录</a>
+			<a href="log.yws?type=5">转入记录</a>
+			<a href="log.yws?type=0">其他记录</a>
+			<br />
+			<#if logs?size != 0>
+				<#switch type>
+					<#case 0><!-- 其他记录 -->
+						其他操作记录<br />
+						<#list logs as log>
+						<table border="0">
+			              <tr>
+			                <td>时间</td>
+			                <td>摘要</td>
+			              </tr>
+			              <tr>
+			                <td>${log.time}</td>
+			                <td>${log.info}</td>
+			              </tr>
+			            </table>
+						</#list>
+						<#break>
+					<#case 1><!-- 活期记录 -->
+						活期存款操作记录<br />
+						<#list logs as log>
+						<table border="0">
+			              <tr>
+			                <td>时间</td>
+			                <td>金额</td>
+			                <td>摘要</td>
+			              </tr>
+			              <tr>
+			                <td>${log.time}</td>
+			                <td>${log.money}</td>
+			                <td>${log.info}</td>
+			              </tr>
+			            </table>
+						</#list>
+						<#break>
+					<#case 2><!-- 定期记录 -->
+						定期存款操作记录<br />
+						<#list logs as log>
+						<table border="0">
+			              <tr>
+			                <td>时间</td>
+			                <td>定期金额</td>
+			                <td>定期利率</td>
+			                <td>定期天数</td>
+			                <td>摘要</td>
+			              </tr>
+			              <tr>
+			                <td>${log.time}</td>
+			                <td>${log.money}</td>
+			                <td>${log.rate}</td>
+			                <td>${log.days}</td>
+			                <td>${log.info}</td>
+			              </tr>
+			            </table>
+						</#list>
+						<#break>
+					<#case 3><!-- 贷款记录 -->
+						贷款款操作记录<br />
+						<#list logs as log>
+						<table border="0">
+			              <tr>
+			                <td>时间</td>
+			                <td>贷款金额</td>
+			                <td>贷款利率</td>
+			                <td>贷款天数</td>
+			                <td>摘要</td>
+			              </tr>
+			              <tr>
+			                <td>${log.time}</td>
+			                <td>${log.money}</td>
+			                <td>${log.rate}</td>
+			                <td>${log.days}</td>
+			                <td>${log.info}</td>
+			              </tr>
+			            </table>
+						</#list>
+						<#break>
+					<#case 4><!-- 转出记录 -->
+						转出操作记录<br />
+						<#list logs as log>
+						<table border="0">
+			              <tr>
+			                <td>时间</td>
+			                <td>转出金额</td>
+			                <td>接收用户</td>
+			              </tr>
+			              <tr>
+			                <td>${log.time}</td>
+			                <td>${log.money}</td>
+			                <td>${log.receiver.nick}</td>
+			              </tr>
+			            </table>
+						</#list>
+						<#break>
+					<#case 5><!-- 转入记录 -->
+						转入操作记录<br />
+						<#list logs as log>
+						<table border="0">
+			              <tr>
+			                <td>时间</td>
+			                <td>转入金额</td>
+			                <td>汇款用户</td>
+			              </tr>
+			              <tr>
+			                <td>${log.time}</td>
+			                <td>${log.money}</td>
+			                <td>${log.user.nick}</td>
+			              </tr>
+			            </table>
+						</#list>
+						<#break>
+					<#default>
+				</#switch>
+			<#else>
+				没有相关记录！
+			</#if>
+		</@base.bank_content>
+	</@base.main>
+</@base.body>

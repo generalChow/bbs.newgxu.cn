@@ -1,0 +1,26 @@
+<@base.header title="营业大厅"></@base.header>
+<@base.body location="社区银行&nbsp;－&gt;&nbsp;营业大厅">
+	<@base.main location="社区银行&nbsp;－&gt;&nbsp;营业大厅">
+		<@base.bank_content>
+			银行行长: <#list bankAdmins as ba>
+							${ba.nick},
+					</#list>
+			<br>
+			银行简介: 实际资本 ${bank.bankroll} ,银行存款 ${bank.deposit} ,用户数量 ${bank.userNumber}  <br>
+			<br>
+			业务介绍 <br>
+			开户费用: ${bank.openCost} <br>
+			活期利率: ${bank.currentRate*1000}‰<br>
+			定期利率: ${bank.fixedRate*1000}‰<br>
+			贷款利率: ${bank.loanRate*1000}‰<br>
+			转帐手续费率: ${bank.virementRate*1000}‰ <br>
+			<br><br>
+			<#if !hasAccounts>
+				您还没开户，请先开户！<br>
+				<a href='open_accounts.yws'>我要开户</a>
+			<#else>
+				已开户
+			</#if>
+		</@base.bank_content>
+	</@base.main>
+</@base.body>

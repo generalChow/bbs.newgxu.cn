@@ -1,0 +1,17 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1//EN" 
+"http://www.opensymphony.com/xwork/xwork-1.1.dtd">
+<xwork>
+	<package name="webservice" namespace="/webservice" extends="default">
+
+		<!-- 给指定的版主添加西大币 -->
+		<action name="voteUpdate" class="voteUpdateAction">
+			<result name="error" type="freemarker">/template/accounts/login.htm</result>
+			<result name="success" type="freemarker">/template/index.htm</result>
+		</action>
+		
+		<!-- UBB标签的转换，用于发帖时的预览 -->
+		<action name="ubb" class="ubbAction">
+			<result name="success" type="freemarker">/template/webservice/ubb/preview.htm</result>
+		</action>
+	</package>
+</xwork>

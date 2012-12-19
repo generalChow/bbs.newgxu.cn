@@ -1,0 +1,9 @@
+<%
+/*
+BBSChart.saveTopicStatPicFile(request.getRealPath("/bbs/stat/topic.jpg"),500,300);
+BBSChart.saveRegisterStatPicFile(request.getRealPath("/bbs/stat/register.jpg"),500,300);
+BBSChart.saveHitsStatPicFile(request.getRealPath("/bbs/stat/hits.jpg"),500,300);
+BBSChart.saveYesterdayHitsStatPicFile(request.getRealPath("/bbs/stat/yesterdayhits.jpg"),600,300);
+*/
+out.println("ÐéÄâÂ·¾¶£º"+request.getRealPath("/bbs/stat/stat.jpg"));
+%>

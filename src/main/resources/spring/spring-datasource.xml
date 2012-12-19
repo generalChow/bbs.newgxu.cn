@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName">
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://127.0.0.1/valhalla?useUnicode=true&amp;characterEncoding=utf8" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+		<property name="defaultAutoCommit" value="false" />
+	</bean>
+
+	<!-- <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" 
+		destroy-method="close"> <property name="url" value="jdbc:mysql://127.0.0.1/valhalla?useUnicode=true&amp;characterEncoding=utf8" 
+		/> <property name="username" value="root" /> <property name="password" value="root" 
+		/> <property name="filters" value="stat" /> <property name="maxActive" value="20" 
+		/> <property name="initialSize" value="1" /> <property name="maxWait" value="60000" 
+		/> <property name="minIdle" value="1" /> <property name="timeBetweenEvictionRunsMillis" 
+		value="60000" /> <property name="minEvictableIdleTimeMillis" value="300000" 
+		/> <property name="validationQuery" value="SELECT 'x'" /> <property name="testWhileIdle" 
+		value="true" /> <property name="testOnBorrow" value="false" /> <property 
+		name="testOnReturn" value="false" /> <property name="defaultAutoCommit" value="false" 
+		/> <property name="poolPreparedStatements" value="true" /> <property name="maxPoolPreparedStatementPerConnectionSize" 
+		value="20" /> </bean> -->
+
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" 
+		destroy-method="close"> <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" 
+		/> <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:newgxu" /> 
+		<property name="username" value="bbs4" /> <property name="password" value="bbs" 
+		/> <property name="defaultAutoCommit" value="false" /> </bean> -->
+	<!-- JPA EntityManagerFactoryBean for EntityManager -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="classpath:persistence.xml" />
+		<property name="persistenceUnitName" value="persistenceUnit" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- Transaction manager for JPA -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory">
+			<ref bean="entityManagerFactory" />
+		</property>
+	</bean>
+
+</beans>

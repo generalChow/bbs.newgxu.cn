@@ -1,0 +1,213 @@
+<#assign version = "雨无声社区V4.0">
+<#macro diaryheader title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>${title} -- ${version}</title>
+    <link href="/css/diary.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/global.css" rel="stylesheet" type="text/css"/>
+    <#nested/>
+<script language=javascript>
+function check()
+{
+if (form2.keyword.value==null || form2.keyword.value==""){alert("请输入关键字");return false}
+else {document.form2.submit();}
+}
+</script>
+<script src="js/diary.js"></script>
+</head>
+</#macro>
+<#setting number_format="0">
+<#macro diaryBody location="">
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+   <table width="1001" height="1025" border="0" align="center" cellpadding="0" cellspacing="0" id="__01">
+   <tr>
+		<td rowspan="10" background="/images/diary/index1_06.jpg">&nbsp;</td>
+		<td colspan="3">
+			<img src="/images/diary/index1_02.jpg" width="200" height="97" alt=""/></td>
+		<td colspan="4">
+			<img src="/images/diary/index1_03.jpg" alt="" width="564" height="97" border="0" usemap="#Map"/></td>
+		<td rowspan="10">
+			<img src="/images/diary/index1_04.jpg" width="20" height="1024" alt=""/></td>
+		<td rowspan="10" background="/images/diary/index1_06.jpg">&nbsp;</td>
+		<td rowspan="10">
+			<img src="/images/diary/index1_06.jpg" width="3" height="1024" alt=""/></td>
+		<td rowspan="10" background="/images/diary/index1_06.jpg">&nbsp;</td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="97" alt=""/></td>
+	</tr>
+	<tr>
+		<td colspan="7">
+			<img src="/images/diary/index1_08.jpg" width="764" height="17" alt=""/></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="17" alt=""/></td>
+	</tr>
+	<tr>
+		<td rowspan="8">
+			<img src="/images/diary/index1_09.jpg" width="67" height="910" alt=""/></td>
+		<td colspan="3">
+			<img src="/images/diary/index1_10.jpg" width="165" height="32" alt=""/></td>
+		<td colspan="2" rowspan="7" valign="top" bgcolor="#DEF4AB">
+		<#nested/>
+		</td>
+		<td rowspan="8">
+			<img src="/images/diary/index1_12.jpg" width="22" height="910" alt=""/></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="32" alt=""/></td>
+	</tr>
+	<tr>
+		<td colspan="3" align="center" valign="top" bgcolor="#DEF4AB"><form name="form1" method="post" action="/accounts/login_do.yws">
+		  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		   <#if status.login>
+		   <tr><td align="center">
+		   <br/>
+		   <br/>
+		   欢迎你:${status.nick}
+		   <br/>
+		   <br/>
+		   <a href="/diary/viewDiaryBook.yws?id=${user.id}" target="_blank">[我的日记本]</a>&nbsp;&nbsp;<a href="/accounts/logout.yws">[退出登陆]</a>
+		   <br/>
+		   <br/>
+		   <a href="../index.yws">返回到社区首页</a>
+		   </td></tr>
+		   <#else>
+            <tr>
+              <td width="32%" height="22" align="center"><span class="STYLE1">用户名：</span></td>
+              <td width="68%" align="left"><input name="username" type="text" class="login_input" id="username"/></td>
+            </tr>
+            <tr>
+              <td height="22" align="center" class="STYLE1">密 码 ：</td>
+              <td align="left"><input name="password" type="password" class="login_input" id="password"/></td>
+            </tr>
+            <tr>
+              <td height="22" align="center" class="STYLE1">验证码：</td>
+              <td align="left"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="42%"><input name="validCode" type="text" class="login_rand_input" id="validCode" autocomplete="off"/></td>
+                  <td width="58%" align="left" valign="bottom"><img src="/validImage_servlet" align="top" id="validImage" /></td>
+                </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td height="25" colspan="2" align="center"><br/>
+              <input name="Submit" type="submit" class="login_submit" value=" 登陆 "/>
+                &nbsp;
+                <input name="Submit2" type="reset" class="login_submit" value=" 取消 "/></td></tr>
+            </#if>
+          </table>
+         </form>
+   </td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="126" alt=""/></td>
+	</tr>
+	<tr>
+		<td rowspan="6">
+			<img src="/images/diary/index1_14.jpg" width="1" height="752" alt=""/></td>
+		<td colspan="2" rowspan="2" valign="top" bgcolor="#DEF4AB"><table width="94%" border="0" cellpadding="0" cellspacing="0" class="border-green">
+          <tr>
+            <td valign="top" bgcolor="#99D003"><img src="/images/diary/index1_15.jpg" width="162" height="24" alt=""/></td>
+          </tr>
+          <tr>
+            <td height="150" align="center"><marquee id="gonggao" direction="up" loop="-1"  behavior="scroll" scrollamount="1" onMouseOver="this.stop()" onMouseOut="this.start()" width="160" height="150">
+            　　<span class="STYLE2">由于某些原因，新版心情日记无法整合旧版心情日记数据，新版启用后将停用旧版，但仍然开放浏览，新版将继续开发更多功能，敬请关注！</span>
+            </marquee></td>
+          </tr>
+        </table></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="24" alt=""/></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="155" alt=""/></td>
+	</tr>
+	<tr>
+		<td colspan="2" bgcolor="#DEF4AB"><p><a href='http://www.newgxu.cn/diary/'>旧版心情日记数据入口>>></a></p>
+	    <p>&nbsp;</p></td>
+		<td><img src="/images/diary/分隔符.gif" width="1" height="122" alt=""/></td>
+	</tr>
+	<tr>
+		<td colspan="2" rowspan="3" valign="top" background="/images/diary/index1_18.jpg">
+		<form id="form2" name="form2" method="post" action="searchResult.yws" target="content">
+		  <table width="100%" align="center" background="/images/diary/diary_index_43.jpg">
+            <tr>
+              <td height="25" colspan="2"> <label></label></td>
+            </tr>
+            <tr>
+              <td width="11" height="18">&nbsp;</td>
+              <td width="141"><input name="keyword" type="text" id="keyword" size="14"/></td>
+            </tr> 
+            <tr>
+              <td height="82" colspan="2" valign="top"><table width="96%">
+                  <tr>
+                    <td width="70%"><input name="type" type="radio" id="dairytitle" value="title" checked="checked" />
+                      <span class="STYLE3"> 日记标题</span></td>
+                    <td width="30%" onClick="check()" style="CURSOR: hand">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><span class="STYLE3">
+                      <input type="radio" name="type" id="dairybookname" value="bookname" />
+                    日记本名称</span></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><span class="STYLE3">
+                      <input type="radio" name="type" id="dairyauthor" value="author" />
+                    日记作者</span></td>
+                  </tr>
+                </table></td>
+            </tr>
+          </table>
+		</form></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="122" alt=""/></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="272" alt=""/></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<img src="/images/diary/index1_21.jpg" width="510" height="57" alt=""/></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="57" alt=""/></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="70" height="1" alt=""/></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="67" height="1" alt=""/></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="1" height="1" alt=""/></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="132" height="1" alt=""/></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="32" height="1" alt=""/></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="333" height="1" alt=""/></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="177" height="1" alt=""/></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="22" height="1" alt=""/></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="20" height="1" alt=""/></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="69" height="1" alt=""/></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="3" height="1" alt=""/></td>
+		<td>
+			<img src="/images/diary/分隔符.gif" width="74" height="1" alt=""/></td>
+		<td></td>
+	</tr>
+</table>
+ 
+<map name="Map">
+<area shape="rect" coords="105,63,178,91" href="hotDiary.yws"/>
+<area shape="rect" coords="187,68,258,93" href="newDiary.yws"/>
+<area shape="rect" coords="264,66,355,90" href="hotDiaryBook.yws"/>
+<area shape="rect" coords="365,66,448,90" href="newDiaryBook.yws"/>
+<area shape="rect" coords="458,66,531,88" href="goodDiaryBook.yws"/>
+<area shape="rect" coords="16,63,91,89" href="index.yws" target="_parent"/>
+</map>
+</body>
+</html>
+</#macro>

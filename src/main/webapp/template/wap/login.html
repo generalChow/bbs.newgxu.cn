@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>雨无声论坛手机版</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=2.0" />
+		<meta name="MobileOptimized" content="240" />
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" href="/resources/css/wap/cmcc.css">
+		<style type="text/css">
+		* {
+			font-size: 1em;
+		}
+
+		#message {
+			color: red;
+			text-align: center;
+		}
+
+		#header {
+			text-align: center;
+			font-size: 1.3em;
+			background-color: #90c31f;
+			border-radius: 2px;
+			padding: 2px;
+			margin-bottom: 5px;
+		}
+
+		form {
+			text-align: center;
+			width: 240px;
+			margin: 0 auto;
+		}
+
+		fieldset {
+			border: 0;
+			border-radius: 2px;
+		}
+
+		#register {
+			text-align: center;
+		}
+
+		#wrap {
+			width: 240px;
+			margin: 20px auto;
+		}
+
+		input[type="text"], input[type="password"] {
+			height: 20px;
+			margin: 0 auto;
+		}
+		</style>
+	</head>
+	<body>
+
+		<#include "/template/wap/cmcc/header.jsp" />
+
+		<div id="wrap">
+			<div id="message">${message}</div>
+
+			<div id="header">欢迎来到雨无声论坛！</div>
+
+			<form action="/wap/login_submit.yws" method="post">
+				<fieldset>
+					<p>请先登录!</p><br />
+					<label for="username">用户名</label>	
+					<input type="text" name="username" /> <br /><br />
+					<label for="password">密&nbsp;&nbsp;&nbsp;码</label>
+					<input type="password" name="password" /> <br /> <br />
+					<input type="submit" value="提交" />
+				</fieldset>
+			</form>
+
+			<br />
+			<a href="/accounts/register.yws"><p id="register">没有账号？注册一个!</p></a>
+		</div>
+	<#include "/template/wap/cmcc/footer.jsp" />
+	</body>
+	</html>

@@ -1,0 +1,86 @@
+<@base.header title="升级中心"></@base.header>
+<@base.body location="个人服务区">
+	<@base.main location="个人服务区">
+		<@base.service_content>
+<form id="form1" name="form1" method="post" action="upgradeDo.yws">
+  <table width="98%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td height="25" align="center" class="uline"><strong>升级中心</strong></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFDF1"><table width="100%" border="0" align="center" cellpadding="2" cellspacing="2">
+        <tr>
+          <td height="23" colspan="3" class="uline2">您当前职务：[<font color="#FF0000">${userGroup.groupName}</font>] </td>
+        </tr>
+        <tr>
+          <td height="23" colspan="3" class="uline2">您拥有的西大币：${user.money}&nbsp;体力：${user.currentPower}</td>
+        </tr>
+        <tr>
+          <td height="23" colspan="3" class="uline2">灌水数：${user.numberOfReply} 新主题：${user.numberOfTopic} 折扣率：${userGroup.agio}% 增长率：% </td>
+        </tr>
+        <tr>
+          <td width="99" height="23" class="uline2">经验值状态：</td>
+          <td width="191" height="23" align="left" class="uline2"><table width="180" height="10" border="1" align="left" cellpadding="0" cellspacing="0" bordercolor="#000000">
+            <tr>
+              <td height="10"><img src="/images/bar1.gif" width="${expStatus * 180}" height="10" /></td>
+            </tr>
+          </table></td>
+          <td width="456" height="23" class="uline2">当前经验值：${user.exp}</td>
+        </tr>
+        <#if nextUserGroup?exists >
+        <tr>
+          <td height="23" colspan="3" class="uline2">升级所需经验值：${nextUserGroup.leavelUpExp}，升级奖励：${nextUserGroup.encouragement}</td>
+        </tr>
+        <tr>
+          <td height="25" colspan="3" align="center">
+              <input name="Submit" type="submit" class="submit_style" value="升级到下一级：${nextUserGroup.groupName}"/>
+         </td>
+        </tr>
+        <#else>
+        <tr>
+          <td height="23" colspan="3" class="uline2"><font color="#FF0000">您当前职务不能升级</font></td>
+        </tr>
+        </#if>
+      </table></td>
+    </tr>
+    <tr>
+      <td><table cellspacing="0" cellpadding="3" width="100%" align="center" 
+              border="0">
+        <tbody>
+          <tr bgcolor="#fafafa">
+            <td width="444" align="left" class="uline"><img height="20" src="/images/bullet4.gif" width="20" 
+                  align="absmiddle" /> <b>提示说明</b></td>
+          </tr>
+          <tr>
+            <td height="1" align="left" background="修改密码.files/dotline.gif"></td>
+          </tr>
+          <tr>
+            <td align="left">·每升一级都有相应的西大币奖励，详情请点击 <a href="bbshelp/subweb/shiyong.htm#a5" target="_blank"><font color="#FF0000">查看职务等级结构</font></a></td>
+          </tr>
+          <tr>
+            <td align="left"><hr size="0" /></td>
+          </tr>
+          <tr>
+            <td align="left"><table width="70%" border="0" align="center" cellspacing="0">
+              <tr>
+                <td width="50%" align="center">&nbsp;</td>
+                <td width="50%" align="center">&nbsp;</td>
+              </tr>
+              <tr>
+                <td align="center"><a href="../search_do.yws?type=1&amp;keywords=${status.nick}" target="_blank">我发表的主题</a></td>
+                <td width="50%" align="center"><a href="../search_do.yws?type=2&amp;keywords=${status.nick}" target="_blank">我参与的主题</a></td>
+              </tr>
+              <tr>
+                <td align="center">&nbsp;</td>
+                <td align="center">&nbsp;</td>
+              </tr>
+            </table></td>
+          </tr>
+        </tbody>
+      </table></td>
+    </tr>
+  </table>
+</form>
+		</@base.service_content>
+	</@base.main>
+</@base.body>

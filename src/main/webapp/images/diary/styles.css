@@ -1,0 +1,33 @@
+.input {
+	BORDER-RIGHT: #003366 1px solid; BORDER-TOP: #003366 1px solid; BORDER-LEFT: #003366 1px solid; BORDER-BOTTOM: #003366 1px solid
+}
+.button {
+	BORDER-RIGHT: #ffffff 1px solid; BORDER-TOP: #ffffff 1px solid; BORDER-LEFT: #ffffff 1px solid; BORDER-BOTTOM: #ffffff 1px solid
+}
+.button2 {
+	BORDER-RIGHT: #ffffff 1px solid; BORDER-TOP: #ffffff 1px solid; BORDER-LEFT: #ffffff 1px solid; BORDER-BOTTOM: #ffffff 1px solid
+}
+.input02 {
+	TABLE-LAYOUT: fixed; WORD-BREAK: break-all; WORD-WRAP: break-word
+}
+.diary {
+	FONT-SIZE: 12px; COLOR: #ffffff
+}
+.today {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: underline blink
+}
+UNKNOWN {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 14pt
+}
+A {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 14pt; TEXT-DECORATION: none
+}
+P {
+	FONT-SIZE: 10pt
+}
+TABLE {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 14pt
+}
+UL {
+	FONT-SIZE: 10pt; TEXT-DECORATION: none
+}

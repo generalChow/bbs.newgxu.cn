@@ -1,0 +1,75 @@
+<div class="pageHeader">
+	<form onsubmit="return navTabSearch(this);" action="search_user_do.yws" method="post">
+	<div class="searchBar">
+		  <label style="width:90px;"><input type="radio" name="type" value="0" <#if type??><#if type==0>checked</#if><#else>checked</#if>>ID查找</label>
+		  <label style="width:90px;"><input name="type" type="radio" value="1" <#if type??&&type==1>checked</#if>>昵称查找</label>
+		  <label style="width:110px;"><input name="type" type="radio" value="2" <#if type??&&type==2>checked</#if>>登录账号查找</label>
+		  <label style="width:90px;"><input type="radio" name="type" value="3" <#if type??&&type==3>checked</#if>>学号查找</label>
+		  <label style="width:140px;"><input type="text" name="keywords"  value="${keywords?default('')}"></label>
+		  <input type="submit" name="Submit" value="GO">
+		  <a href="users.yws" target="navTab" rel="user" title="Users概览">查看全部用户列表</a>
+	</div>
+	</form>
+	<form id="pagerForm" style="display:none;" action="${pagination.actionName}" method="get" onsubmit="return navTabSearch(this);">
+		<input type="hidden" name="page" value="1" /><!--【必须】value=1可以写死-->
+      	<input type="hidden" name="pageSize" value="20" />
+		<input type="hidden" name="type" value="${type?default('-1')}" />
+		<input type="hidden" name="keywords" value="${keywords?default('')}" />
+	</form>
+</div>
+<div class="pageContent">
+	<table class="table" width="100%" layoutH="85">
+		<thead>
+			<tr>
+				<th width="6%">ID号</th>
+				<th>登录账号</th>
+				<th width="10%">昵称</th>
+				<th width="5%">性别</th>
+				<th width="8%">用户组(职务)</th>
+				<th width="8%">学号</th>
+				<th width="7%">XDB</th>
+				<th width="7%">经验</th>
+				<th width="12%">注册时间</th>
+				<th width="8%">用户类型</th>
+				<th width="8%">用户状态</th>
+				<th width="8%">编辑</th>
+			</tr>
+		</thead>
+		<tbody>
+      <#setting number_format="0">
+      <#list users as user>
+        <tr bgcolor="#ffffff"> 
+          <td><div><font size="-1" face="verdana">${user.id}</font></div></td>
+          <td><font size="-1" face="verdana"><a href="user_info.yws?id=${user.id}" target="navTab" rel="user_info_${user.id}"  external="true" title="[查看]${user.username}">${user.username}</a></td>
+          <td><font size="-1" face="verdana">${user.nick}</font></td>
+          <td><font size="-1" face="verdana">${user.sexDisplay}</td>
+          <td><font size="-1" face="verdana">${user.userGroup.groupName}</font></td>
+		  <td><font size="-1" face="verdana">${user.studentid?default('')}</font></td>
+          <td><font size="-1" face="verdana">${user.money}</font></td>
+          <td><font size="-1" face="verdana">${user.exp}</font></td>
+          <td><font size="-1" face="verdana">${user.registerTime}</font></td>
+          <td><font size="-1" face="verdana"><#switch user.registerType>
+				<#case 1>本科<#break>
+				<#case 2>研博/成教<#break>
+				<#case 3>教师<#break>
+				<#case 4>校外<#break>
+				<#case 0>未知<#break>
+			 </#switch></font></td>
+	     <td><font size="-1" face="verdana"><#switch user.accountStatus>
+				<#case 1>正常<#break>
+				<#case 2>禁止登录<#break>
+				<#case 3>资料待审<#break>
+				<#case 4>未通过<#break>
+			 </#switch></font></td>
+         <td><font size="-1" face="verdana"><a href="edit_user.yws?id=${user.id}" rel="user_edit_${user.id}" target="navTab"  external="true" title="[编辑]${user.nick}"><img src="/image/button_edit.gif" width="17" height="17" border="0"></a></font></td>
+        </tr>
+        </#list>
+		</tbody>
+      </table>
+	 <div class="panelBar">
+		<div class="pages">
+			<span>共${pagination.recordSize}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="${pagination.recordSize}" numPerPage="${pagination.pageSize}" pageNumShown="16" currentPage="${pagination.page}"></div>
+	</div>
+</div>

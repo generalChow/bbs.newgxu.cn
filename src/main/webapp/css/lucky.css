@@ -1,0 +1,70 @@
+/*幸运帖样式*/
+.btn_lucky1, .btn_lucky2 {background: url("../image/lucky_btn.gif") no-repeat scroll 0 0 transparent;color: #999999;cursor: pointer;font-size: 10px;height: 46px;padding-top: 7px;text-align: center;width: 146px;margin:10px 0 10px 10px;display:block;}
+.btn_lucky2 { background-position: 0 -54px;color: #FFFFFF;}
+.btn_lucky2 a:hover { color: #FFFFFF !important;text-decoration:none;}
+.btn_lucky1 span, .btn_lucky2 span {display: block;font-family: "Tahoma";font-size: 15px;font-weight:bold;height: 20px;padding: 8px 0 0 58px;text-align: left;}
+
+.lucky_warp{ width:520px; height:420px; border:1px solid #92af28; margin:0px 20px 0 60px; background:#fff; overflow:hidden; position:relative;text-align:left; background:#f0f0f0; font-size:12px; }
+.lucky_warp img{ border:none;}
+.lucky_warp li{ list-style:none;}
+.lucky_warp a{ color:#92cf28; text-decoration:none;font-weight:700; display:inline-block; width:40px; height:22px; text-align:center; line-height:22px;}
+.lucky_warp a:hover{ background-color:#c8e18b; }
+
+.issue{ position:absolute; top:0; left:0px; width:520px; height:auto; z-index:99;}
+.issue div{ height:387px; padding-bottom:33px; background:#fff;}
+.issue h3{ line-height:1.4em; background-color:#c3de81; font-size:1.2em; color:#333; padding:.8em .5em .5em; border-bottom:1px solid #92af28; font-weight:100; margin:0px;}
+.issue ul{ padding:4px 10px;}
+.issue li{ margin-bottom:3px; line-height:24px; min-height:24px; padding:1px 0 4px; border:1px solid #fff;}
+.issue li:hover,
+.issue li.hover{ border:1px solid #90af08; background:#feffff;}
+.issue li input{ display:none;}
+.issue li span{ float:left; clear:left; width:22px; height:22px; overflow:hidden; margin:3px 3px 0 0; background:url(../image/lucky_bg.gif) 0 0 no-repeat;}
+.issue li:hover span,
+.issue li.hover span{ background:url(../image/lucky_bg.gif) 0 -22px no-repeat;}
+.issue li label{ float:left; width:370px; color:#555; font-size:12px; margin-top:3px;}
+.issue div.selected{ background:#fdfeff;}
+.issue div.selected li{ border:1px solid #fdfeff;}
+.issue div.selected li:hover,
+.issue div.selected li.hover{ background:none; border:1px solid #fdfeff;}
+.issue div.selected li:hover span,
+.issue div.selected li.hover span{background:url(../image/lucky_bg.gif) 0 0 no-repeat;}
+
+.issue div.selected li.sel{ border:1px solid #f1f1f1;}
+.issue li.sel span,
+.issue div.selected li.sel:hover span{ background:url(../image/lucky_bg.gif) 0 -44px no-repeat;}
+
+.issue div.result{}
+.issue div.result p{ line-height:20px; padding:0 16px; text-indent:2em; margin-top:4px;}
+
+
+.ctrl{ height:32px; border-top:1px solid #92af28; width:520px; position:absolute; bottom:0; left:0; background:url(../image/lucky_bg.gif) 0 -260px  repeat-x; z-index:100;}
+
+.btns{ float:right; width:56px; padding-left:5px; background:url(../image/lucky_bg.gif) -9px -319px no-repeat; height:32px;}
+.btns span{ float:left; width:22px; height:24px; margin:4px 3px; display:inline; text-indent:-10000px; cursor:pointer;}
+.btns span.prev{ background:url(../image/lucky_bg.gif) 0 -188px no-repeat;}
+.btns span.next{ background:url(../image/lucky_bg.gif) 0 -164px no-repeat;}
+.btns span.noprev{ background:url(../image/lucky_bg.gif) 0 -212px no-repeat; cursor:default;}
+.btns span.nonext{ background:url(../image/lucky_bg.gif) 0 -236px no-repeat; cursor:default;}
+.btns span.hvprev{ background:url(../image/lucky_bg.gif) 0 -68px no-repeat;}
+.btns span.hvnext{ background:url(../image/lucky_bg.gif) 0 -92px no-repeat;}
+.btns span.dwprev{ background:url(../image/lucky_bg.gif) 0 -116px no-repeat;}
+.btns span.dwnext{ background:url(../image/lucky_bg.gif) 0 -140px no-repeat;}
+
+.prog{position:relative; width:102px; float:right; height:14px; line-height:0; font-size:0; border:1px solid #8fb0fd; margin:7px 8px 0 0; background:#fff; display:inline;}
+.ress{  float:left; width:1px; height:12px; border:1px solid #ebf3fe;  background:url(../image/lucky_bg.gif) 0 -303px repeat-x;}
+.ptip{ position:absolute; width:auto; padding-bottom:13px; background:url(../image/lucky_ptip.gif) bottom center no-repeat #fff; bottom:18px; left:0; color:#333;}
+.ptip span{ display:block; padding:5px; font-size:12px; line-height:normal; white-space:nowrap; border:1px solid #8aadfd; text-align:center; border-bottom:none;}
+
+.temp{ float:left; padding-left:10px; line-height:32px; width:250px; color:#333;}
+.war{ position:absolute; text-align:center; width:120px; height:24px; line-height:24px; color:#c00; background:#F5E8E0; color:#c00; border:2px solid #f60; top:80px; left:150px; display:none;}
+.loader{ text-align:center; margin:140px auto 0;}
+.loader img{ margin:0 auto; display:block;}
+
+.info{ width:520px; margin:10px 20px;color:#555;}
+.info h4{ height:24px; line-height:24px; font-size:16px; border-bottom:2px solid #eee;  margin-bottom:8px;}
+.info p{ line-height:20px;}
+.info p cite{ float:right; font-size:11px; font-weight:100; font-style:normal;}
+
+/*彩蛋*/
+.lucky_egg1 ,.lucky_egg2 {background: url("../images/lucky_egg.gif") no-repeat scroll 0 0 transparent;display:inline-block; width:180px; height:220px;}
+.lucky_egg2 { background-position: 0 -220px;color: #FFFFFF;}

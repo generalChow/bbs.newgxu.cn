@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>用户组概览</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+    用户组概览 . <br>
+    管理员、荣誉舰长组： <br>
+	<table>
+      <tr>
+        <td>职务</td>
+        <td>体力</td>
+        <td>折扣</td>
+        <td>编辑</td>
+        <td>删除</td>
+      </tr>
+	<#list administratorGroups as group>		
+      <tr align="center">
+        <td><font color="${group.displayColor}">${group.groupName}</font></td>
+        <td>${group.maxPower}</td>
+        <td>${group.agio}</td>
+        <td><img src="/image/button_edit.gif" width="17" height="17" border="0"></td>
+        <td><img src="/image/button_delete.gif" width="17" height="17" border="0"></td>
+      </tr>
+	</#list>
+	<#list areaWebmasterGroups as group>		
+      <tr align="center">
+        <td><font color="${group.displayColor}">${group.groupName}</font></td>
+        <td>${group.maxPower}</td>
+        <td>${group.agio}</td>
+        <td><img src="/image/button_edit.gif" width="17" height="17" border="0"></td>
+        <td><img src="/image/button_delete.gif" width="17" height="17" border="0"></td>
+      </tr>
+	</#list>
+    </table>
+    版主： <br>
+	<table>
+      <tr>
+        <td>职务</td>
+        <td>体力</td>
+        <td>升级所需经验</td>
+        <td>升级奖励</td>
+        <td>折扣</td>
+        <td>编辑</td>
+        <td>删除</td>
+      </tr>
+	<#list forumWebmasterGroups as group>		
+      <tr align="center">
+        <td><font color="${group.displayColor}">${group.groupName}</font></td>
+        <td>${group.maxPower}</td>
+        <td>${group.leavelUpExp}</td>
+        <td>${group.encouragement}</td>
+        <td>${group.agio}</td>
+        <td><img src="/image/button_edit.gif" width="17" height="17" border="0"></td>
+        <td><img src="/image/button_delete.gif" width="17" height="17" border="0"></td>
+      </tr>
+	</#list>
+    </table>
+
+    普通用户组： <br>
+	<table>
+      <tr>
+        <td>职务</td>
+        <td>体力</td>
+        <td>升级所需经验</td>
+        <td>升级奖励</td>
+        <td>折扣</td>
+        <td>编辑</td>
+        <td>删除</td>
+      </tr>
+	<#list basicGroups as group>		
+      <tr align="center">
+        <td><font color="${group.displayColor}">${group.groupName}</font></td>
+        <td>${group.maxPower}</td>
+        <td>${group.leavelUpExp}</td>
+        <td>${group.encouragement}</td>
+        <td>${group.agio}</td>
+        <td><img src="/image/button_edit.gif" width="17" height="17" border="0"></td>
+        <td><img src="/image/button_delete.gif" width="17" height="17" border="0"></td>
+      </tr>
+	</#list>
+    </table>
+    
+  </body>
+</html>

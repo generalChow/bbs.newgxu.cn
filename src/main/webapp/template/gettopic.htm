@@ -1,0 +1,17 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>雨无声论坛4.0--精彩推存</title>
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+  </head>
+  
+ <body>
+<table width='100%' border='0' cellspacing='0' cellpadding='0'>
+<#list pubGoodTopics as t>
+<tr><td height='20'> <a href='http://bbs.newgxu.cn/topic.yws?forumId=${t.forum.id}&amp;topicId=${t.topic.id}' title='${t.title}(作者：${t.topic.topicUser.nick})' target='_blank'><#if t.title?length lt 15>${t.title}<#else>${t.title[0..14]}...</#if></a></td></tr>
+</#list>
+</table>
+  </body>
+</html>

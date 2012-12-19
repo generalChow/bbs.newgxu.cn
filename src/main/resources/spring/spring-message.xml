@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName">
+
+	<!-- 短消息 action BEGIN -->
+	<bean name="sendMessage"
+		class="cn.newgxu.bbs.web.action.message.SendMessageAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="messageService">
+			<ref bean="messageService" />
+		</property>
+	</bean>
+	<bean name="message"
+		class="cn.newgxu.bbs.web.action.message.MessageAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="messageService">
+			<ref bean="messageService" />
+		</property>
+	</bean>
+	<bean name="delMessage"
+		class="cn.newgxu.bbs.web.action.message.DelMessageAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="messageService">
+			<ref bean="messageService" />
+		</property>
+	</bean>
+	<!-- 短消息 action END -->
+	
+	<bean id="messageService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="messageServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="sendMessageDo">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="message">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="delMessage">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="saveMessage">PROPAGATION_REQUIRED, -Exception</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="messageServiceTarget"
+		class="cn.newgxu.bbs.service.proxy.MessageServiceProxy">
+		<property name="messageService">
+			<ref bean="realMessageService" />
+		</property>
+	</bean>
+
+	<bean id="realMessageService"
+		class="cn.newgxu.bbs.service.impl.MessageServiceImpl" />
+</beans>

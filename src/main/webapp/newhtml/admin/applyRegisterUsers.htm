@@ -1,0 +1,38 @@
+    用户概览 . <br>
+	<table>
+      <tr>
+        <td>ID号</td>
+        <td>登录账号</td>
+        <td>昵称</td>
+        <td>性别</td>
+        <td>注册时间</td>
+        <td>用户类型</td>
+        <td>用户状态</td>
+        <td>审查资料</td>
+      </tr>
+      <#setting number_format="0">
+      <#list users as user>
+      <tr align="center">
+        <td align="left">${user.id}</td>
+        <td><a href="user_info.yws?id=${user.id}">${user.username}</a></td>
+        <td>${user.nick}</td>
+        <td>${user.sexDisplay}</td>
+        <td>${user.registerDateDisplay}</td>
+        <td><#switch user.registerType>
+				<#case 1>本科<#break>
+				<#case 2>研博/成教<#break>
+				<#case 3>教师<#break>
+				<#case 4>校外<#break>
+				<#case 0>未知<#break>
+			 </#switch></td>
+        <td><#switch user.accountStatus>
+				<#case 1>正常<#break>
+				<#case 2>禁止登录<#break>
+				<#case 3>资料待审<#break>
+				<#case 4>未通过<#break>
+			 </#switch></td>
+        <td><a href="verifyRegisterUser.yws?id=${user.id}"><img src="/image/button_edit.gif" width="17" height="17" border="0"></a></td>
+      </tr>
+	</#list>
+    </table>
+	${pagination}

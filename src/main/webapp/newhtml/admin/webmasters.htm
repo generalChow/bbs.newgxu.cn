@@ -1,0 +1,47 @@
+  <form name="form1" method="post" action="webmasters.yws"> 
+  <label><input type="radio" name="searchType" value="id" checked>按ID查找</label>
+  <label><input name="searchType" type="radio" value="nick">按昵称查找</label>
+  <label><input name="searchType" type="radio" value="username">按登录账号查找</label>
+  <label><input type="radio" name="searchType" value="studentid">按学号查找</label>
+  <label><input type="text" name="searchValue" ></label>
+  <input type="submit" name="Submit" value="查	找"> 
+  </form>
+  <br>
+    用户概览 . <br>
+<div class="list_title_01">&nbsp;</div>
+		<div class="list_title_02">
+				<a href="?type=exp"><span class="style1">按经验排序</span></a> 
+				<a href="?type=money"><span class="style2">按XDB排序</span></a> 
+				<a href="?type=topics"><span class="style3">按发表主题数排序</span></a> 
+				<a href="?type=replys"><span class="style4">按发表回复数排序</span></a> 
+				<a href="?type=goods"><span class="style5">按发表精华数排序</span></a>
+		</div>
+		<div class="kuang">
+		  <table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" bgcolor="#FFFAD0" class="botom_line">
+			<tr align="center">
+			  <th width="118" class="right_line">昵称</th>
+			  <th width="85" class="right_line style1">经验值</th>
+			  <th width="68" class="right_line style2">西大币</th>
+			  <th width="70" class="right_line style3">发表主题数</th>
+			  <th width="100" class="right_line style4">发表回复数</th>
+			  <th width="50" class="right_line style5">发表精华数</th>
+			  <th width="50" class="right_line style5">操作数</th>
+			  <th width="148" class="right_line style5">最后上线时间</th>
+			</tr>
+		  </table>
+		  <#setting number_format="0">
+		  <#list webmasters as webmaster>
+		  <table width="100%" height="20"  border="0" align="center" cellpadding="2" cellspacing="0" class="botom_line">
+			<tr align="center">
+			  <td width="118" class="right_line"><a href="/user/user_info.yws?id=${webmaster.user.id}">${webmaster.user.nick}</a></td>
+			  <td width="85" class="right_line style1">${webmaster.user.exp}</td>
+			  <td width="68" class="right_line style2">${webmaster.user.money}</td>
+			  <td width="70" class="right_line style3">${webmaster.user.numberOfTopic}</td>
+			  <td width="100" class="right_line style4">${webmaster.user.numberOfReply}</td>
+			  <td width="50" class="right_line style5">${webmaster.user.numberOfGood}</td>
+			  <td width="50" class="right_line style5">${webmaster.numberOfManage}</td>
+			  <td width="148" class="right_line style5">${webmaster.user.lastLoginTime}</td>
+			</tr>
+		  </table>
+		  </#list>
+		</div>

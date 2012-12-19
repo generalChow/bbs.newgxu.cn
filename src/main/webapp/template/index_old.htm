@@ -1,0 +1,187 @@
+<@base.header title="雨无声论坛">
+	<link href="/css/index.css" rel="stylesheet" type="text/css" />
+</@base.header>
+<@base.body location="论坛首页">
+<#setting number_format="0">
+	<div class="index-container">
+	  <span class="left">
+			<table width="610" style="margin-left:50x " border="0" cellspacing="4" cellpadding="0">
+			  <#list model.areas as area>
+				<tr class="botom_line">
+					<td width="11%" height="13" align="center" valign="top" class="shadow area"><a href="#"><!--  <a href="area.yws?areaId=${area.id}">-->${area.name}</a></td>
+					  <td width="89%" align="left" valign="top" class="bbslm"><span class="bbslm">
+						<#list area.forums?sort_by(["compositorId"])  as forum>
+						  <a href="forum.yws?forumId=${forum.id}">${forum.name}</a>
+						</#list>
+					  </span></td>
+				</tr>
+			  </#list>
+			</table>
+			</span>
+			
+			<span class="right">
+				<table width="370" height="28" border="0" style="margin-right: 15px" cellpadding="0" cellspacing="0">
+				  <tr>
+					<td width="66" align="right"><span class="style3">论坛公告：</span></td>
+					<td width="241" valign="middle" class="t">		<MARQUEE  scrollAmount="2" scrollDelay="0" onmouseover="this.stop();" onmouseout="this.start();">
+						·欢迎光临雨无声论坛，新版使用的spring+jpa+webwork+模板技术在ie6浏览器下表现不佳，我们将会继续改进，在此向关心和支持过雨无声的各新老会员表示衷心的感谢！！
+					  </MARQUEE></td>
+				  </tr>
+				  <tr>
+				  	<td width="66" align="right"><span class="style3">	快速搜索：</span></td>
+				  	<td>
+						<div style="position:relative; width:160px;">
+							<form id="search" name="search" action="search_do.yws" method="post" onsubmit="return Jsearch(this)">
+							<input name="keywords" type="text" class="short_input" id="keywords" style="background-color:#ffffb0;" />
+								<input name="Submit" type="submit" class="submit_style" style="color:#407F00;cursor:pointer;border:1px solid #cccccc;" value=" 查找 " />
+								<input name="forumId" type="hidden" id="forumID" value="" />
+							</form>
+							<span class="NEW" style="top:-2px;"></span>
+						</div>
+				  	</td>
+				  </tr>
+				</table>
+				
+			<table width="370" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td height="48" background="images/index_hot2_1.gif"><table width="325" height="30" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td align="left"><table width="325" height="38" border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="40"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="38" height="40">
+                                <param name="movie" value="/images/flash/tree.swf"/>
+                                <param name="quality" value="high"/>
+                                <param name="wmode"   value="transparent"/>
+                                <embed src="/images/flash/tree.swf" quality="high" wmode="transparent"  pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="38" height="40"></embed>
+                            </object></td>
+                            <td height="43" align="left" valign="bottom"><table width="50%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td  width="3" >&nbsp;</td>
+                                  <td align="left"><strong>热门话题</strong></td>
+                                </tr>
+                                <tr>
+                                  <td height="2" colspan="2" align="left"></td>
+                                </tr>
+                            </table></td>
+                          </tr>
+                      </table></td>
+                    </tr>
+                </table></td>
+              </tr>
+              <tr>
+                <td background="images/index_hot2_2.gif"><table width="100%" height="12" border="0" cellpadding="0" cellspacing="0">
+                   <#list pubHotTopics as t>
+                    <tr>
+                      <td width="10" height="12" align="right">&nbsp;</td>
+                      <td width="10" align="right"><img src="images/q.gif" width="13" height="12"/></td>
+                      <td width="300" height="12" align="left">[<a href="/forum.yws?forumId=${t.forum.id}">${t.forum.name}</a>]<a href="/topic.yws?forumId=${t.forum.id}&amp;topicId=${t.topic.id}">${t.title}</a></td>
+                    </tr>
+                   </#list>
+                </table></td>
+              </tr>
+              <tr>
+                <td height="20" background="images/index_hot2_3.gif">&nbsp;</td>
+              </tr>
+              <tr>
+                <td background="images/index_hot2_3.gif"></td>
+              </tr>
+            </table>
+			<table width="370" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td height="48" background="images/index_hot2_1.gif"><table width="325" height="30" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td align="left"><table width="325" height="38" border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="40"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="38" height="40">
+                                <param name="movie" value="/images/flash/tree.swf"/>
+                                <param name="quality" value="high"/>
+                                <param name="wmode"   value="transparent"/>
+                                <embed src="/images/flash/tree.swf" quality="high" wmode="transparent"  pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="38" height="40"></embed>
+                            </object></td>
+                            <td height="43" align="left" valign="bottom"><table width="50%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td  width="3" >&nbsp;</td>
+                                  <td align="left"><strong>精彩推荐</strong></td>
+                                </tr>
+                                <tr>
+                                  <td height="2" colspan="2" align="left"></td>
+                                </tr>
+                            </table></td>
+                          </tr>
+                      </table></td>
+                    </tr>
+                </table></td>
+              </tr>
+              <tr>
+                <td background="images/index_hot2_2.gif"><table width="100%" height="12" border="0" cellpadding="0" cellspacing="0">
+                   <#list pubGoodTopics as t>
+                    <tr>
+                      <td width="10" height="12" align="right">&nbsp;</td>
+                      <td width="10" align="right"><img src="images/q.gif" width="13" height="12"/></td>
+                      <td width="300" height="12" align="left">[<a href="/forum.yws?forumId=${t.forum.id}">${t.forum.name}</a>]<a href="/topic.yws?forumId=${t.forum.id}&amp;topicId=${t.topic.id}">${t.title}</a></td>
+                    </tr>
+                   </#list>
+                </table></td>
+              </tr>
+              <tr>
+                <td height="20" background="images/index_hot2_3.gif">&nbsp;</td>
+              </tr>
+              <tr>
+                <td background="images/index_hot2_3.gif"></td>
+              </tr>
+            </table>
+            </span>
+	</div>
+	<div class="left">
+	 <table width="608" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+				  <td><table width="100%" height="40" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+					  <td width="38%" align="center" background="images/top_users_1.gif"><strong>用户排行榜</strong></td>
+					  <td width="53%" background="images/top_users_2.gif">&nbsp;</td>
+					  <td width="9%" background="images/top_users_4.gif">&nbsp;</td>
+					</tr>
+				  </table></td>
+				</tr>
+				<tr>
+				  <td><table width="100%" border="0" cellspacing="2" cellpadding="0">
+					<tr align="center" class="botom_line">
+					  <td width="20%" height="20"><a href="/user/users.yws?type=1">::最有价值TOP10::</a></td>
+					  <td width="20%"><a href="/user/users.yws?type=2">::最有钱力TOP10::</a></td>
+					  <td width="20%"><a href="/user/users.yws?type=3">::最有影响TOP10::</a></td>
+					  <td width="20%"><a href="/user/users.yws?type=4">::十大水鬼::</a></td>
+					  <td width="20%"><a href="/user/users.yws?type=5">::十大杰出水手::</a></td>
+					</tr>
+					  
+					<tr align="center">
+					  <td width="20%">
+						<#list topExpUsers as u>
+						  <a href="/user/user_info.yws?id=${u.id}">${u.colorNick}</a><br />
+						</#list>
+					  </td>
+					  <td width="20%">
+						<#list topMoneyUsers as u>
+						  <a href="/user/user_info.yws?id=${u.id}">${u.colorNick}</a><br />
+						</#list>
+					  </td>
+					  <td width="20%">
+						<#list topTopicUsers as u>
+						  <a href="/user/user_info.yws?id=${u.id}">${u.colorNick}</a><br />
+						</#list>
+					  </td>
+					  <td width="20%">
+						<#list topReplyUsers as u>
+						  <a href="/user/user_info.yws?id=${u.id}">${u.colorNick}</a><br />
+						</#list>
+					  </td>
+					  <td width="20%">
+						<#list topGoodUsers as u>
+						  <a href="/user/user_info.yws?id=${u.id}">${u.colorNick}</a><br />
+						</#list>
+					  </td>
+					</tr>
+				  </table></td>
+				</tr>
+		    </table>
+	</div>
+</@base.body>

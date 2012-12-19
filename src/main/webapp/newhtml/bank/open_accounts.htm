@@ -1,0 +1,17 @@
+<@base.header title="银行开户"></@base.header>
+<@base.body location="社区银行&nbsp;－&gt;&nbsp;银行开户">
+	<@base.main location="社区银行&nbsp;－&gt;&nbsp;银行开户">
+		<@base.bank_content>
+<@ww.actionerror/><br>
+<form id="form1" name="form1" method="post" action="open_accounts_do.yws">
+  存入金额：
+  <input name="money" type="text" id="money" onkeyup="if(/^\d+(\.)?(\d+)?$/.test(this.value)==false){alert('请输入数字！');this.value='';}"/> <br>
+  银行密码：
+  <input name="password" type="password" id="password" /> <br>
+  确认密码：
+  <input name="confirmPassword" type="password" id="confirmPassword" /> <br>
+  <input type="submit" name="Submit" value="开户" />
+</form>
+		</@base.bank_content>
+	</@base.main>
+</@base.body>

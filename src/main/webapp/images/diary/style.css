@@ -1,0 +1,81 @@
+BODY {
+	SCROLLBAR-FACE-COLOR: #e4f6d7; FONT-SIZE: 9pt; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #ffffff; COLOR: #666666; SCROLLBAR-3DLIGHT-COLOR: #7f7f7f; SCROLLBAR-ARROW-COLOR: #ffffff; SCROLLBAR-TRACK-COLOR: #ffffff; FONT-FAMILY: 宋体; SCROLLBAR-DARKSHADOW-COLOR: #7f7f7f; BACKGROUND-COLOR: #ffffff
+}
+TD {
+	FONT-SIZE: 9pt; FONT-FAMILY: "宋体", "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+SELECT {
+	FONT-SIZE: 9pt; FONT-FAMILY: "宋体", "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+TEXTAREA {
+	FONT-SIZE: 9pt; FONT-FAMILY: "宋体", "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+INPUT {
+	FONT-SIZE: 9pt; FONT-FAMILY: "宋体", "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+.edunet {
+	FONT-SIZE: 12pt; FONT-FAMILY: "宋体", "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+A:visited {
+	COLOR: #999999; TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #666666; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #0d8138; TEXT-DECORATION: underline
+}
+.mainSelect {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; FONT-WEIGHT: normal; FONT-SIZE: 12px; BACKGROUND: #ffffff; BORDER-LEFT: #999999 1px solid; COLOR: #333333; BORDER-BOTTOM: #999999 1px solid; FONT-FAMILY: "宋体", "Verdana", "Arial", "Helvetica", "sans-serif"; HEIGHT: 18px
+}
+.mainSearch {
+	BORDER-RIGHT: #f89207 1px dotted; BORDER-TOP: #f89207 1px dotted; FONT-SIZE: 12px; BORDER-LEFT: #f89207 1px dotted; BORDER-BOTTOM: #f89207 1px dotted; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"; BACKGROUND-COLOR: #ffffff
+}
+.textBox {
+	MARGIN: 5px
+}
+A.blue:visited {
+	FONT-SIZE: 9pt; COLOR: #0033cc; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+A.blue:link {
+	FONT-SIZE: 9pt; COLOR: #0033cc; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+A.blue:hover {
+	FONT-SIZE: 9pt; COLOR: #008ebd; TEXT-DECORATION: none
+}
+.blue {
+	FONT-SIZE: 9pt; COLOR: #0033cc; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+.footer {
+	FONT-SIZE: 8pt; COLOR: #333333; FONT-FAMILY: "宋体"
+}
+.box1 {
+	BORDER-RIGHT: 1px solid; BORDER-TOP: 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: 1px solid; COLOR: #29be63; BORDER-BOTTOM: 1px solid
+}
+.put {
+	BORDER-RIGHT: #cceeb4 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #cceeb4 1px solid; PADDING-LEFT: 1px; FONT-SIZE: 12px; BACKGROUND: #ffffff; PADDING-BOTTOM: 1px; BORDER-LEFT: #cceeb4 1px solid; COLOR: #cceeb4; PADDING-TOP: 1px; BORDER-BOTTOM: #cceeb4 1px solid; FONT-FAMILY: "宋体"
+}
+.put1 {
+	BORDER-RIGHT: #cceeb4 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #cceeb4 1px solid; PADDING-LEFT: 1px; FONT-SIZE: 12px; BACKGROUND: #cceeb4; PADDING-BOTTOM: 1px; BORDER-LEFT: #cceeb4 1px solid; COLOR: #31b157; PADDING-TOP: 1px; BORDER-BOTTOM: #cceeb4 1px solid; HEIGHT: 18px
+}
+.fstspan1 {
+	FONT-SIZE: 14px; PADDING-BOTTOM: 7px; WIDTH: 100%; LETTER-SPACING: 1px
+}
+.fstspan2 {
+	WIDTH: 100%; PADDING-TOP: 6px
+}
+.fst3 DIV {
+	MARGIN-BOTTOM: 1px; WIDTH: 95%; TEXT-ALIGN: left
+}
+.fst4 DIV {
+	MARGIN-BOTTOM: 1px; WIDTH: 95%; TEXT-ALIGN: left
+}
+.fst3 DIV.fstdiv1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 3px; PADDING-TOP: 5px; BORDER-BOTTOM: #666666 2px solid
+}
+.fst3 DIV.fstdiv2 {
+	PADDING-RIGHT: 0px; BORDER-TOP: #666666 2px solid; PADDING-LEFT: 0px; FONT-SIZE: 14px; PADDING-BOTTOM: 2px; PADDING-TOP: 6px; TEXT-ALIGN: center
+}
+.fst4 DIV {
+	PADDING-RIGHT: 0px; BORDER-TOP: #ccfe8f 1px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 9px; LINE-HEIGHT: 17px; PADDING-TOP: 9px; BORDER-BOTTOM: #d1fedf 1px solid
+}

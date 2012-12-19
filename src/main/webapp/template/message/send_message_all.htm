@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>发送群体短消息</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link href="/css/panel.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="/js/mootools.v1.00.js"></script>
+		<script type="text/javascript" src="/js/newgxu_common.js"></script>
+		<script type="text/javascript" src="/js/newgxu_ubb.js"></script>
+		<script language="javascript">
+			var msg;
+			function Select(flag){
+				if(flag){			
+				 document.getElementById("content").value=msg; 
+				 }else{
+					msg=document.getElementById("content").value;
+				  	document.getElementById("content").value="";
+				 }
+			}
+	</script>
+	</head>
+	<body>
+<form action="send_message_all_do.yws" method="post" name="frmAnnounce" onKeyDown="if(event.ctrlKey &amp;&amp; event.keyCode==13)this.submit()">
+  <table width="630" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td height="25" colspan="3" align="center"><strong>发送群体短消息</strong>
+	  <br />
+	  <span>标题后面的时间选择表示的是将当前短信息发送给选择时间数内登录过的用户，比如选择了 4 个月，那么您当前编辑的短信息将会发送到 4个月前至今登录过的用户</span>
+	  <br />${validMsg}</td>
+    </tr>
+    <tr>
+      <td colspan="3"><table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" bgcolor="#FFFDF6" style="border-collapse:collapse">
+          <tr>
+            <td width="20%" height="25" align="center">标&nbsp;题：</td>
+            <td width="80%"><table border="0" align="left" cellpadding="0">
+              <tr>
+                <td align="left">
+                    <input name="title" type="text" id="title" value="${title?default("")}" size="40" maxlength="30" />		
+					&nbsp;&nbsp;
+					时间选择:
+					<select name="monthBefore">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+					</select>
+					个月前
+                  </td>
+                <td align="left">&nbsp;</td>
+              </tr>
+            </table></td>
+            </tr>
+          <tr>
+            <td height="12" align="center">心&nbsp;情：<br />
+            可当UBB表情</td>
+            <td align="left"><table border="0" cellspacing="0">
+                <tr>
+                  <td height="10"><input name="face" type="radio" value="1" checked="checked" />
+                      <a href="javascript:faceAdd('21')"><img src="/images/face/1.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="2" />
+                      <a href="javascript:faceAdd('22')"><img src="/images/face/2.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="3" />
+                      <a href="javascript:faceAdd('23')"><img src="/images/face/3.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="4" />
+                      <a href="javascript:faceAdd('24')"><img src="/images/face/4.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="5" />
+                      <a href="javascript:faceAdd('25')"><img src="/images/face/5.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="32" />
+                      <a href="javascript:faceAdd('52')"><img src="/images/face/32.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="26" />
+                      <a href="javascript:faceAdd('56')"><img src="/images/face/26.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="8" />
+                      <a href="javascript:faceAdd('28')"><img src="/images/face/8.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="9" />
+                      <a href="javascript:faceAdd('29')"><img src="/images/face/9.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="10" />
+                      <a href="javascript:faceAdd('30')"><img src="/images/face/10.gif" width="20" height="20" border="0" /></a></td>
+                  </tr>
+                <tr>
+                  <td height="10"><input type="radio" name="face" value="11" />
+                      <a href="javascript:faceAdd('31')"><img src="/images/face/11.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="12" />
+                      <a href="javascript:faceAdd('32')"><img src="/images/face/12.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="13" />
+                      <a href="javascript:faceAdd('46')"><img src="/images/face/13.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="38" />
+                      <a href="javascript:faceAdd('58')"><img src="/images/face/38.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="15" />
+                      <a href="javascript:faceAdd('35')"><img src="/images/face/15.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="16" />
+                      <a href="javascript:faceAdd('36')"><img src="/images/face/16.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="21" />
+                    <a href="javascript:faceAdd('41')"><img src="/images/face/21.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="18" />
+                      <a href="javascript:faceAdd('38')"><img src="/images/face/18.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="27" />
+                    <a href="javascript:faceAdd('47')"><img src="/images/face/27.gif" width="20" height="20" border="0" /></a></td>
+                  <td><input type="radio" name="face" value="20" />
+                      <a href="javascript:faceAdd('40')"><img src="/images/face/20.gif" width="20" height="20" border="0" /></a></td>
+                  </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td height="25" align="center">UBB表情</td>
+            <td><table width="98%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="5%" align="center"><a href="javascript:emAdd('01')"><img src="/images/shortMessage/em01.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:emAdd('02')"><img src="/images/shortMessage/em02.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:emAdd('03')"><img src="/images/shortMessage/em03.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:emAdd('04')"><img src="/images/shortMessage/em04.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:emAdd('05')"><img src="/images/shortMessage/em05.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:emAdd('06')"><img src="/images/shortMessage/em06.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:emAdd('07')"><img src="/images/shortMessage/em07.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:emAdd('08')"><img src="/images/shortMessage/em08.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:emAdd('09')"><img src="/images/shortMessage/em09.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:emAdd('10')"><img src="/images/shortMessage/em10.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:emAdd('11')"><img src="/images/shortMessage/em11.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:emAdd('12')"><img src="/images/shortMessage/em12.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:emAdd('13')"><img src="/images/shortMessage/em13.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:emAdd('14')"><img src="/images/shortMessage/em14.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:emAdd('15')"><img src="/images/shortMessage/em15.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="5%" align="center"><a href="javascript:emAdd('16')"><img src="/images/shortMessage/em16.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="6%" align="center"><a href="javascript:emAdd('34')"><img src="/images/shortMessage/em34.gif" width="20" height="20" border="0" /></a></td>
+                  <td width="7%" align="left">更多...</td>
+                </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td align="center" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td align="center"><br />
+                    内&nbsp;容：</td>
+                </tr>
+                <tr>
+                  <td align="center">最多500字<br />
+                    UBB状态<br />
+                    ON</td>
+                </tr>
+            </table></td>
+            <td align="left"><table width="477" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="71%" height="180">
+  						<textarea style="width: 340px; height: 180px; font-size: 12px;" name="content" cols="40" rows="10" id="content">${content?default("")}</textarea>
+                  </td>
+                  <td width="29%" align="center"><table height="0%" border="0" align="left" cellspacing="0">
+                      <tr>
+                        <td height="46%"><a href="javascript:faceAdd('1')"><img src="/images/face/face1.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('2')"><img src="/images/face/face2.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('3')"><img src="/images/face/face3.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('4')"><img src="/images/face/face4.gif" border="0" /></a></td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td height="27%"><a href="javascript:faceAdd('7')"><img src="/images/face/face7.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('8')"><img src="/images/face/face8.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('13')"><img src="/images/face/face13.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('14')"><img src="/images/face/face14.gif" border="0" /></a></td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td height="13%"><a href="javascript:faceAdd('11')"><img src="/images/face/face11.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('12')"><img src="/images/face/face12.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('9')"><img src="/images/face/face9.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('10')"><img src="/images/face/face10.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('19')"></a><a href="javascript:faceAdd('18')"></a></td>
+                      </tr>
+                      <tr>
+                        <td height="14%"><a href="javascript:faceAdd('5')"><img src="/images/face/face5.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('15')"><img src="/images/face/face15.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('16')"><img src="/images/face/face16.gif" border="0" /></a></td>
+                        <td><a href="javascript:faceAdd('6')"><img src="/images/face/face6.gif" border="0" /></a></td>
+                        <td>&nbsp;</td>
+                      </tr>
+                  </table></td>
+                </tr>
+            </table></td>
+          </tr><tr>
+            <td width="20%" height="25" align="center">&nbsp;</td>
+            <td width="80%" align="left"><input name="track" type="checkbox" id="track" value="1" checked="checked"/>
+				<label for="track">发送后保存到已发送</label>&nbsp;&nbsp;
+  				<input name="draft" type="checkbox" id="draft" value="1" />
+				<label for="draft">只保存到草稿箱</label></td>
+          </tr>
+          <tr>
+            <td height="25" colspan="2" align="center">
+              <input name="smid" type="hidden" id="smid" value="${smid}" />
+              <input name="Submit" type="submit" class="submit_style" value=" 发 送 " />
+              &nbsp;
+            <input name="Submit2" type="reset" class="submit_style" value=" 清 除 " /></td>
+          </tr>
+      </table></td>
+    </tr>
+  </table>
+			<script language="javascript">
+				initUbb();
+			</script>
+</form>
+</body>
+</html>

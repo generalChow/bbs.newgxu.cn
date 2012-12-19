@@ -1,0 +1,360 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>cn.newgxu</groupId>
+	<artifactId>yws-bbs</artifactId>
+	<version>6.0</version>
+	<packaging>war</packaging>
+
+	<name>yws-bbs</name>
+	<url>http://bbs.newgxu.cn/index.yws</url>
+
+	<developers>
+		<developer>
+			<name>polly</name>
+			<roles>
+				<role>the founder of yws inc. since 2001.</role>
+			</roles>
+		</developer>
+		<developer>
+			<name>刘涛</name>
+			<roles>
+				<role>the master of the bbs in 2010.</role>
+			</roles>
+		</developer>
+		<developer>
+			<name>集成显卡</name>
+			<roles>
+				<role>the master of the bbs in 2011.</role>
+			</roles>
+		</developer>
+		<developer>
+			<name>龙凯</name>
+			<email>im.longkai@gmail.com</email>
+			<organization>newgxu-yws</organization>
+			<url>github.com/longkai</url>
+			<organizationUrl>http://www.newgxu.cn</organizationUrl>
+			<roles>
+				<role>the master of the bbs in 2012.</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>3.2.0.RELEASE</spring.version>
+		<aopalliance.version>1.0</aopalliance.version>
+		<inject.version>1</inject.version>
+		<freemarker.version>2.3.19</freemarker.version>
+
+		<hibernate.version>4.1.9.Final</hibernate.version>
+		<webwork.version>2.2.5</webwork.version>
+		
+		<commons-httpclient.version>3.1</commons-httpclient.version>
+		<commons-dbcp.version>1.3</commons-dbcp.version>
+		<commons-pool.version>1.6</commons-pool.version>
+		<commons-collections.version>3.2.1</commons-collections.version>
+		<commons-lang.version>2.2</commons-lang.version>
+		<commons-io.version>2.4</commons-io.version>
+		<commons-httpclient.version>3.1</commons-httpclient.version>
+		<commons-fileupload.version>1.2.2</commons-fileupload.version>
+		<poi.version>3.1-FINAL</poi.version>
+		<json-simple.version>1.1.1</json-simple.version>
+		<gson.version>2.2.2</gson.version>
+		<jaxen.version>1.1.1</jaxen.version>
+
+		<commons-logging.version>1.1.1</commons-logging.version>
+		<log4j.version>1.2.16</log4j.version>
+		<servlet-api.version>3.0.1</servlet-api.version>
+		<mysql.jdbc.version>5.1.22</mysql.jdbc.version>
+		<jetty.version>8.1.8.v20121106</jetty.version>
+		<java.version>1.6</java.version>
+		<javax.mail.version>1.4.5</javax.mail.version>
+		
+		<querytool.version>1.0-SNAPSHOT</querytool.version>
+	</properties>
+
+	<dependencies>
+		<!-- spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-struts</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-struts</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- aopalliance -->
+		<dependency>
+			<groupId>aopalliance</groupId>
+			<artifactId>aopalliance</artifactId>
+			<version>${aopalliance.version}</version>
+		</dependency>
+
+		<!-- freemarker -->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>${freemarker.version}</version>
+		</dependency>
+
+		<!-- inject -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>${inject.version}</version>
+		</dependency>
+		
+		<!-- hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+		<!-- webwork -->
+		<dependency>
+			<groupId>opensymphony</groupId>
+			<artifactId>webwork</artifactId>
+			<version>${webwork.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>freemarker</artifactId>
+					<groupId>freemarker</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<!-- javax.mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>${javax.mail.version}</version>
+		</dependency>
+		
+		<!-- commons-lang -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${commons-lang.version}</version>
+		</dependency>
+		
+		<!-- commons-dbcp -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>${commons-dbcp.version}</version>
+		</dependency>
+
+		<!-- commons-pool -->
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+			<version>${commons-pool.version}</version>
+		</dependency>
+
+		<!-- commons-collections-->
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>${commons-collections.version}</version>
+		</dependency>
+
+		<!-- commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.version}</version>
+		</dependency>
+
+		<!-- commons-httpclient -->
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>${commons-httpclient.version}</version>
+		</dependency>
+		
+		<!-- Fileupload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons-fileupload.version}</version>
+		</dependency>
+
+		<!-- poi -->
+		<dependency>
+			<groupId>poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+
+		<!-- json-simple -->
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>${json-simple.version}</version>
+		</dependency>
+
+		<!-- gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${gson.version}</version>
+		</dependency>
+
+		<!-- commons-loggin -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${commons-logging.version}</version>
+		</dependency>
+
+		<!-- log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+
+		<!-- servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- mysql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.jdbc.version}</version>
+		</dependency>
+
+		<!-- test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>querytool</groupId>
+			<artifactId>querytool</artifactId>
+			<version>${querytool.version}</version>
+		</dependency>
+		
+		<!-- Jaxen 这个在类中不会直接使用，但是其他类有依赖！ -->
+		<dependency>
+			<groupId>jaxen</groupId>
+			<artifactId>jaxen</artifactId>
+			<version>1.1.1</version>
+			<exclusions>
+				<!-- 
+					<exclusion> 
+						<groupId>xerces</groupId>
+						<artifactId>xercesImpl</artifactId> 
+					</exclusion>
+				-->
+				<!-- 这个在tomcat中启动会抛出异常 -->
+				<!-- 
+					<exclusion>
+						<artifactId>icu4j</artifactId>
+						<groupId>com.ibm.icu</groupId> 
+					</exclusion> -->
+				<!-- 去掉这个貌似jetty一开始不会跑数组越界的异常=.= -->
+				<!-- 这个异常在jetty重启后会发生，伴随着内存不足的异常，暂时没什么影响，以后要留意 -->
+				<!-- Exception in thread "online User listener!" org.springframework.transaction.CannotCreateTransactionException: 
+					Could not open JPA EntityManager for transaction; nested exception is org.hibernate.service.UnknownServiceException: 
+					Unknown service requested [org.hibernate.service.jdbc.connections.spi.ConnectionProvider] -->
+				<exclusion>
+					<groupId>xom</groupId>
+					<artifactId>xom</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- jetty -->
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
+				<configuration>
+					<scanIntervalSeconds>0</scanIntervalSeconds>
+					<webAppConfig>
+						<contextPath>/</contextPath>
+						<defaultsDescriptor>src/main/resources/config/webdefault.xml</defaultsDescriptor>
+					</webAppConfig>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

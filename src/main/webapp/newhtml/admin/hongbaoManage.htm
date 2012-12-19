@@ -1,0 +1,24 @@
+    红包概览 . <br>
+	<table>
+      <tr>
+        <td>ID号</td>
+        <td>红包名字</td>
+        <td>红包描述</td>
+        <td>是否开放</td>
+        <td>发放时间</td>
+        <td>编辑</td>
+        <td>删除</td>
+      </tr>
+      <#setting number_format="0">
+      <#list hongbaos as hongbao>
+      <tr align="center">
+        <td align="left">${hongbao.id}</td>
+        <td>${hongbao.name}</td>
+        <td>${hongbao.description}</td>
+        <td>${hongbao.valid}</td>
+        <td>${hongbao.time}</td>
+        <td><a href="edit_hongbao.yws?id=${hongbao.id}"><img src="/image/button_edit.gif" width="17" height="17" border="0"></a></td>
+        <td><a href="del_hongbao.yws?id=${hongbao.id}"  onclick="return confirm('是否确定删除?');"><img src="/image/button_delete.gif" width="17" height="17" border="0"></a></td> 
+      </tr>
+	</#list>
+    </table>

@@ -1,0 +1,61 @@
+<@base.header title="砸蛋现场">
+<link href="/css/lucky.css" rel="stylesheet" type="text/css" />
+</@base.header>
+<@base.body location="幸运砸蛋">
+	<@base.main location="幸运砸蛋">
+	<div>
+		<div class="list_title_01">&nbsp;</div>
+		<div style="text-align:center; width:100%;">
+			<p>
+				${user.nick?default('[雨无声网友]')}，欢迎来到<span style="color:#92af28;">‘雨无声’</span>砸蛋现场。请点击下方的彩蛋<br />
+				温馨提醒:该出手时就出手，中奖人数随时会达到最大值，赶快试试你的运气吧。
+			</p>
+			<a href="giftDo_lucky.yws?logId=${model.logId}" style="cursor:url('/template/lucky/link.ani');" class="lucky_egg1"></a>
+			<br /><br />
+			<a href="result_lucky.yws?lid=${lucky.id}" target="_blank">查看中奖信息 </a>
+			<p>
+				<br />
+				<b>关于这次砸蛋：</b>
+			</p>
+			<table border=0 style="width:700px; margin-left:160px;">
+					<tr>
+						<td width="140px" align="right"><b>砸蛋出处：</b></td>
+						<td align="left"><a href="/topic.yws?forumId=${lucky.topic.forum.id}&topicId=${lucky.topic.id}">${lucky.topic.title?default('')}</a></td>
+					</tr>
+					<tr>
+						<td align="right"><b>中奖率：</b></td>
+						<td align="left">20%</b></td>
+					</tr>
+					<tr>
+						<td align="right"><b>说明信息：</b></td>
+						<td align="left">${lucky.countInfo}</td>
+					</tr>
+					<tr>
+						<td align="right"><b>目前中奖人数：</b></td>
+						<td align="left">${lucky.count}</td>
+					</tr>
+					<tr>
+						<td align="right" valign="top"><b>奖品预览：</b></td>
+						<td align="left">
+							<#assign index=1>
+							<#list lucky.giftsInfo as gi>
+								${index}.${gi}<br />
+								<#assign index=index+1>
+							</#list>
+						</td>
+					</tr>
+				</table>
+		</div>
+		<div class="list_title_04" align="left"></div>
+	</div>
+	<script>
+		$j(document).ready(function(){
+			$j(".lucky_egg1").hover(
+				function(){$j(this).addClass("lucky_egg2")},
+				function(){$j(this).removeClass("lucky_egg2")}
+			);
+		});
+	
+	</script>
+	</@base.main>
+</@base.body>

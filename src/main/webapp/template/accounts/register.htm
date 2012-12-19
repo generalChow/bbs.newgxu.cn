@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>注册条款 -- 雨无声网站</title>
+	<meta name="author" content="longkai" />
+	<!-- Date: 2012-07-11 -->
+	<style type="text/css" media="screen">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		
+		p, h1, h2, h3 {
+			font-family: "微软雅黑", "新宋体", "宋体";
+			font-weight: normal;
+		}
+		
+		hr {
+			color: #e5e5e5;
+		}
+		
+		
+		#wrap {
+			width: 1340px;
+			margin: 0 auto;
+		}
+		
+		#header {
+			width: auto;
+			background-image: url('/images/accounts/bar.jpg');
+			background-repeat: repeat-x;
+		}
+		
+		#header img {
+			padding-left: 200px;
+		}
+
+		#content {
+			width: 960px;
+			margin: 0 auto;
+		}
+		
+		#content h2 {
+			clear: both;
+			text-align: center;
+			font-size: 24px;
+			margin: 50px 0 20px 0;
+			color: #90c31f;
+		}
+		
+		#rule {
+			border-radius: 5px;
+			width: 843px;
+			text-align: left;
+			font-family: "微软雅黑";
+			font-size: 18px;
+			border: 1px solid #d2d2d2;
+			margin: 0 auto;
+			padding: 10px;
+			color: #626262;
+			background-color: #f7f7f7;
+			margin-bottom: 40px;
+		}
+		
+		#content img {
+			margin: 8px auto;
+			display: block;
+			cursor: pointer;
+		}
+		
+		#register_type {
+			margin-top: 40px;
+		}
+		
+		hr {
+			margin: 30px auto 0 auto;
+			color: #e5e5e5;
+		}
+
+		#info {
+			color: #aeaeae;
+			padding: 10px;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div id="header">
+			<img src="/images/accounts/logo.png" alt="欢迎来到雨无声网站！" title="欢迎来到雨无声网站！" />
+	</div>
+
+	<div id="wrap">
+		<div id="content">
+			<h2>新用户注册条款</h2>
+			
+			<pre id="rule">
+一、请自觉遵守国家有关法律法规。
+二、任何人不得在论坛中发布含有下列内容之一的信息：
+    (一)反对宪法所确定的基本原则的；
+    (二)危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一的；
+    (三)损害国家荣誉和利益的；
+    (四)煽动民族仇恨、民族歧视，破坏民族团结的；
+    (五)破坏国家宗教政策，宣扬邪教和封建迷信的；
+    (六)散布谣言，扰乱社会秩序，破坏社会稳定的；
+    (七)散布淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的；
+    (八)侮辱或者诽谤他人，侵害他人合法权益的；
+    (九)含有法律、行政法规禁止的其他内容的。
+三、用户自行承担一切因您的行为而直接或间接导致的民事或刑事法律责任。
+四、在论坛中发帖纯属个人意见，与本网站立场无关。</pre>
+			
+				<img src="/images/accounts/type1.png" alt="在校成教生，行健生，硕士博士研究生" onclick="go(2);" />
+				<img src="/images/accounts/type2.png" alt="在校本科生注册" onclick="go(1)" />
+				<img src="/images/accounts/teachers.png" alt=教师注册"" onclick="go(3)" />
+				<img src="/images/accounts/outers.png" alt="校外人员注册" onclick="go(4)" />
+				<img src="/images/accounts/freshman.png" alt="新生注册" onclick="agreement();" />
+				<img src="/images/accounts/refuse.png" alt="拒绝，返回上一步" onclick="go(-1)" />
+			
+			<hr />
+		
+			<p id="info">
+				注：<br />
+　　 		因校园网站需要实行实名注册，我站为不同用户设置了相应的注册通道。由于没能拿到所有在校全日制学生的资料，部分在校生在注册时，系统自动认证可能会失败。教师和校外人员的注册需要人工认证，请您认真填写，我们将会在48小时之内认证您的注册信息。
+			</p>			
+		</div>
+	</div>
+</body>
+	<script type="text/javascript">
+	/* <![CDATA[ */
+		var agreement = function() {
+			var info = "现在开辟的新生注册通道不需要使用学号，但是为了您资料的完善和更好的服务，请您在获得学号之后修改个人信息，我们会通知您更改信息，逾期不改届时账号会被冻结。请您遵守此约定！";
+			if (confirm(info))
+				window.location.href = "register_input.yws?regType=100";
+		}
+
+		var go = function(where) {
+			switch (where) {
+				case 1:
+					window.location.href = "register_input.yws?regType=1";
+					break;
+				case 2:
+					window.location.href = "register_input.yws?regType=2";
+					break;
+				case 3:
+					window.location.href = "register_input.yws?regType=3";
+					break;
+				case 4:
+					window.location.href = "register_input.yws?regType=4";
+					break;
+				case -1:
+					history.go(-1);
+					break;
+				default:
+					break;
+			}
+		}
+	/* ]]> */
+	</script>	
+</html>

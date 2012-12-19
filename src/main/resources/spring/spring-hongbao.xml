@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName">
+
+	<bean id="hongbaoService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="hongbaoServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="createHongbaoType">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="createHongbao">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="editHongbao">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="recieveHongbaoToday">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="delHongbao">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="delHongbaoType">PROPAGATION_REQUIRED, -Exception</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="hongbaoServiceTarget" class="cn.newgxu.bbs.service.proxy.HongbaoServiceProxy">
+		<property name="hongbaoService">
+			<ref bean="realHongbaoServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="realHongbaoServiceTarget" class="cn.newgxu.bbs.service.impl.HongbaoServiceImpl" />
+
+</beans>

@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>欢迎来到雨无声论坛</title>
+<link href="/css/three1.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/js/mootools.v1.00.js"></script>
+	<script type="text/javascript" src="/js/newgxu_common.js"></script>
+	<script type="text/javascript" src="/js/newgxu_dropdownMenu.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_dialog.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_ubb.js"></script>
+  	<script type="text/javascript" src="/js/newgxu_upload.js"></script>
+</head>
+<body>
+<div class="whole">
+  <div class="topflash">
+  <object type="application/x-shockwave-flash" width="965" height="399" data="/flash/day.swf">
+    <param name="movie" value="/flash/day.swf" />
+   </object>
+  </div>
+  <div class="place">
+  			<table  height="35"  border="0" cellpadding="0" cellspacing="0" style="margin-top:30px;margin-left:20px;">
+				<tr>
+				  <td align="left" class="xlogo">
+					<div style="width:410px;">
+						<div style="float:left;"><img src="/images/home.gif" width="16" height="16"/>&nbsp;</div>
+					    <ul id="dropdownMenu" class="dropdownMenu">
+								<li><a href="/main.yws">雨无声社区</a>
+	  <ul>
+		<li><a href="/index.yws">雨无声论坛</a></li>
+		<li><a href="/user/upgrade.yws">个人服务区</a></li>
+		<li><a href="/bank/index.yws">社区银行</a></li>
+		<li><a href="/market/official.yws">商业中心</a></li>
+	  </ul>
+	</li>
+	<li>&nbsp;－&gt;&nbsp;</li>
+	
+	<#if model.areas?exists>
+	<li><a href="/index.yws">雨无声论坛</a>
+	  <ul>
+		<#list model.areas as area>
+		<li><a href="javascript:void(0);">&nbsp;${area.name}</a>
+		  <ul>
+			<#list area.forums as forum>
+			<li><a href="/forum.yws?forumId=${forum.id}">&nbsp;${forum.name}</a></li>
+			</#list>
+		  </ul>
+		</li>
+		</#list>
+	  </ul>
+	</li>
+	<li>&nbsp;－&gt;&nbsp;</li>
+	</#if>
+	
+	<#if model.forum?exists>
+	<li><a href="/area.yws?areaId=${model.forum.area.id}">${model.forum.area.name}</a>
+	  <ul>
+		<#list model.forum.area.forums as forum>
+		<li><a href="/forum.yws?forumId=${forum.id}">&nbsp;${forum.name}</a></li>
+		</#list>
+	  </ul>
+	</li>
+	<li>&nbsp;－&gt;&nbsp;</li>
+	</#if>
+	
+	<#if model.topic?exists>
+		<li>
+			<a href="/forum.yws?forumId=${model.topic.forum.id}">
+			${model.topic.forum.name}</a>
+		</li>
+		<li>&nbsp;－&gt;&nbsp;</li>
+	</#if>
+								<li>${model.forum.name?default("")}</li>
+							</ul>
+							<script language="javascript">new newgxu.DropdownMenu($('dropdownMenu'));</script>
+					</div>
+			      </td>
+				</tr>
+			  </table>
+  </div>
+  <div class="logo">
+  </div>
+    <#if status.login==false>
+  <div class="login_form">
+     <!-- 这里是登录表单 -->
+     <form id="form1" name="loginform" method="post" action="/accounts/login_do.yws"   style="width:150px;  margin-left:30px; margin-top:18px; ">
+        <input type="text" name="username" id="username" style=" width:150px; background-color:transparent; border:none; " />
+        <input type="password" name="password" id="password" style="margin-top:3px; width:150px; background-color:transparent;border:none;"/>
+        <input type="text"onFocus="javascript:$('validImage').src='/validImage_servlet';" name="validCode" style="margin-top:5px; width:70px; background-color:transparent;border:none;"  />&nbsp;<img src="images/default_valid_img.png" align="top" id="validImage" style="margin-top:-20px;margin-left:100px;"/>
+     </form>
+  </div>
+  </#if>
+  <#if status.login>
+  <div class="logined_form">
+  <div style="width:243px;margin-top:30px;">
+ <span >嘿！您好！${status.nick}</span>
+			<span  style="float:left;">
+				<#if status.login>
+				<ul class="userservice">
+				  <li>
+					<a href="/user/upgrade.yws" >个人服务区</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="/getdraftboxes.yws" target="_blank">草稿箱(${status.draftboxSize})</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="/diary/index.yws" target="_blank">心情日记</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="/user/log.yws" target="_blank">新手帮助</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="/accounts/logout.yws">退出</a>&nbsp;&nbsp;
+				  </li>
+				  <li>
+					<a href="#" onClick="messageList();">新消息：${status.messageNotRead}条</a>
+				</li>
+				</ul>
+				</#if>
+			</span>
+	 </div>
+  </div>
+  </#if>
+  <div class="img_1">
+  </div>
+    <div class="logan">
+    <table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td width="75" align="right">
+						<b><font color="#B8A974">版主：</font>
+						</b>
+					</td>
+					<td align="left">
+						<#list model.forum.webmasters as m>
+						<a href="/user/user_info.yws?id=${m.id}">${m.nick}</a> </#list>
+					</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top">
+						<b><font color="#B8A974">本版宣言：</font>						</b>					</td>
+	                <td align="left">
+						${model.forum.description?default("")}
+					</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top">
+						<a href="#" title="查看所有小字报"
+							onclick="wiewSmallNewsList(14);"><b><font
+								color="#B8A974">小字报：</font>
+						</b>
+						</a>
+					</td>
+					<td align="left">
+							<MARQUEE height="32" scrollAmount="2" scrollDelay="0" onmouseover="this.stop()" onmouseout="this.start()">
+						·  欢迎光临雨无声论坛，新版4.0使用的spring+hibernate+webword+模板技术，在firefox浏览器下还不能正常浏览，我们将会继续改进，在此向关心和支持过雨无声的各新老会员表示衷心的感谢！！
+					      </MARQUEE>
+					</td>
+				</tr>
+			</table>
+  </div>
+<div class="stat_login">
+     <#if status.login==false>
+    <div class="login"><img src="images_f/login.jpg" width="242" height="20" border="0" usemap="#Map" />
+<map name="Map" id="Map">
+<area shape="rect" coords="137,5,178,19" href="#" onclick="javascript:loginform.submit();"/>
+<area shape="rect" coords="185,4,225,20" href="#" onclick="window.location.href='/accounts/register.yws'"/></map>
+    </div>
+  </#if>
+  <#if status.login>
+  <div class="logined"></div>
+  </#if>
+    <div class="stat">
+     <table width="100%" height="96" border="0" cellpadding="0" cellspacing="0">
+     <tr>
+		<td width="120" style="padding-left:20px;">
+			<a href="/search.yws">检索中心</a>
+			<br />
+			<a href="/user/online_users.yws">查看在线用户</a>
+			<br />
+			<a href="/user/users.yws">查看所有用户</a>		
+		<br />
+		    <a href="boardState.yws?action=nowOnline&areaID=${forum.area.id}">版块在线状态</a>
+			<br />
+			论坛在线：${onlineStatus.total}人
+			<br />
+			此版在线：${onlineStatus.numberOfForum}人
+			<br />
+			<a href="http://sighttp.qq.com/cgi-bin/check?sigkey=5d2e139cf74d07c3acfe48d26f73d303d4267d9d41014630e6da018e64687876"; target=_blank;onclick="var tempSrc='http://sighttp.qq.com/wpa.js?rantime='+Math.random()+'&sigkey=5d2e139cf74d07c3acfe48d26f73d303d4267d9d41014630e6da018e64687876';var oldscript=document.getElementById('testJs');var newscript=document.createElement('script');newscript.setAttribute('type','text/javascript'); newscript.setAttribute('id', 'testJs');newscript.setAttribute('src',tempSrc);if(oldscript == null){document.body.appendChild(newscript);}else{oldscript.parentNode.replaceChild(newscript, oldscript);}return false;"><img border="0" SRC='http://wpa.qq.com/pa?p=1:774808046:41' alt="值班管理员QQ"></a>
+		</td>
+            </tr>
+		</table>
+    </div>
+  </div>
+  <div class="innermain">
+  <div class="main">
+ <div class="list_title_01">&nbsp;</div>
+      <div >
+	<form action="/create_small_news_do.yws" method="post" enctype="multipart/form-data" id="post_form"  onKeyDown="if(event.ctrlKey &amp;&amp; event.keyCode==13) {submitTopic(); return false;}">
+			<div class="list_title_01">&nbsp;</div>
+			<div class="list_title_02"><strong>发布小字报</strong><br />${validMsg}</div>
+		  	<div class="kuang">
+		  	  <table width="999" border="0" align="center" class="botom_line">
+		  	    <tr>
+		  	      <td width="230" height="50" align="center" class="right_line"><div align="center">标题：</div></td>
+		  	      <td width="759" align="left">&nbsp;&nbsp;
+		  	        <input name="title" class="input_new1" id="title" title='标题是必须填写的哦~' value="${model.title?default("")}" size="50" maxlength="30" /></td>
+	  	        </tr>
+	  	      </table>
+		  	  <label>
+<table width="999" height="323" border="0" align="center" class="botom_line">
+                  <tr>
+                    <td width="230" height="311" align="center" class="right_line">
+						内容： <br />            
+                       
+ 
+					</td>
+                    <td width="759" align="left">&nbsp;&nbsp;
+                    <textarea name="content" cols="70" rows="10">${model.content?default("")}</textarea></td>
+                  </tr>
+      </table>
+	  
+				
+    <table width="999" height="323" border="0" align="center" class="botom_line">
+       <tr>
+          <td width="444" align="left" class="uline" ><img height="20" src="images/bullet4.gif" width="20" 
+                  align="absmiddle" /> <b>提示说明</b></td>
+       </tr>
+      <tr>
+        <td width="1161">1.禁止发布含有广告、交易、交友、无意义类似灌水性质及一切违反相关法律法规及论坛规则等内容的小字报。</td>
+      </tr>
+      <tr>
+        <td align="left">2.经验值达到高级水手及以上级别（≥240），才有权限发表小字报。</td>
+      </tr>
+      <tr>
+        <td align="left">3.同一ID，48小时内只能存在一张小字报。&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="left">4. 论坛管理员以及发表小字报的本人具有删除权限，版主没有对本版的小字报的操作权限。&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="left">5.网管部将依据"小字报发布规则"对小字报进行严格的监督管理，一旦发现有违规者将给于警告或严重警告处罚，严重违规者将直接封ID处理。&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="left">6.本规定即2010年5月14日起开始实行，所有解释权归雨无声网站网管部所有。&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="left">7.在本版发布小字报将您将付1000XDB， 48小时内发表的小字报将随机抽取10条滚动显示于论坛上。&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="left">8.*HTML标签： 不可用。&nbsp; </td>
+      </tr>
+      <tr>
+        <td align="left">9.*UBB 标签： 不可用。&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="left">9.*内容不得超过500字。&nbsp;</td>
+      </tr>
+    </table>
+      </div>
+			  <div class="list_title_03">
+					<input name="forumId" type="hidden" id="forumId" value="${model.forumId}" />&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="submit" style="margin-left:200px;" class="newtopic_submit" name="Button3" value=" 提 交 "/>
+			    <input type="button" class="newtopic_submit" name="Button2" value="返回前页" onclick="javascript:history.go(-1)" />
+</div>		
+			<div class="list_title_04" align="left"></div>
+		</form>
+    </div>
+    <div style="float: left;width: 60px;">
+    </div>
+  </div>
+  <div class="img_2">
+   <table border="0" style="margin-left:20px;font-size:12;">
+              <tr>
+                <td width="682" height="23">	
+					<div style="width:410px;">
+						<div style="float:left;"><img src="/images/wz.gif" width="16" height="18"/> 位置：&nbsp;</div>
+  <ul id="dropdownMenu_foot" class="dropdownMenu">
+	 <li><a href="/main.yws">雨无声社区</a>
+	   <ul>
+	     <li><a href="/index.yws">雨无声论坛</a></li>
+	    <li><a href="/user/upgrade.yws">个人服务区</a>
+	      <form id="form2" name="form2" method="post" action="">
+	        <label for="shuo_ming"></label>
+	        </form>
+	      </li>
+	    <li><a href="/bank/index.yws">社区银行</a></li>
+	    <li><a href="/market/official.yws">商业中心</a></li>
+	    </ul>
+	</li>
+	<li>&nbsp;－&gt;&nbsp;</li>
+	
+	<#if model.areas?exists>
+	<li><a href="/index.yws">雨无声论坛</a>
+	  <ul>
+		<#list model.areas as area>
+		<li><a href="javascript:void(0);">&nbsp;${area.name}</a>
+		  <ul>
+			<#list area.forums as forum>
+			<li><a href="/forum.yws?forumId=${forum.id}">&nbsp;${forum.name}</a></li>
+			</#list>
+		  </ul>
+		</li>
+		</#list>
+	  </ul>
+	</li>
+	<li>&nbsp;－&gt;&nbsp;</li>
+	</#if>
+	
+	<#if model.forum?exists>
+	<li><a href="/area.yws?areaId=${model.forum.area.id}">${model.forum.area.name}</a>
+	  <ul>
+		<#list model.forum.area.forums as forum>
+		<li><a href="/forum.yws?forumId=${forum.id}">&nbsp;${forum.name}</a></li>
+		</#list>
+	  </ul>
+	</li>
+	<li>&nbsp;－&gt;&nbsp;</li>
+	</#if>
+	
+	<#if model.topic?exists>
+		<li>
+			<a href="/forum.yws?forumId=${model.topic.forum.id}">
+			${model.topic.forum.name}</a>
+		</li>
+		
+	</#if>
+							</ul>
+							<script language="javascript">new newgxu.DropdownMenu($('dropdownMenu_foot'));</script>
+					</div>
+				</td>
+            </tr>
+              <tr>
+                <td height="23"><img src="/images/home.gif" width="16" height="16"/> <a href="http://www.newgxu.cn" class="t">雨无声网站首页</a> </td>
+              </tr>
+              <tr>
+                <td height="23"><img src="/images/pp.gif" width="16" height="15"/> 在线人数：${onlineStatus.total} 总访问： ${status.totalHicount}&nbsp;今日访问：${status.todayHicount}</td>
+              </tr>
+              <tr>
+                <td height="23"><img src="/images/show2.gif" width="16" height="15"/> 建议使用：1024*768分辨率，16位以上颜色、IE6.0以上版本浏览器</td>
+              </tr>
+          </table>
+</div>
+  <div class="img_3"></div>
+  <div class="img_4"></div>
+  <div class="foot">
+   </div>
+   <div  style="height:54px; width:900px;margin-top:-30px;margin-left:35px;">
+      <table cellpadding="0" cellspacing="0" height="54" border="0">
+            <tr>
+              <td  align="left" valign="top">关于论坛 | 美术支持 | 免责声明 | 版权申明 | 合作伙伴 | 友情链接 |	桂ICP备05001920号 南宁网警备4501200373号  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雨无声 版权所有◎2003-2007</td>
+            </tr>
+      </table>
+  </div>
+</body>
+</html>

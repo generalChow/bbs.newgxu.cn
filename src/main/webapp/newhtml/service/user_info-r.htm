@@ -1,0 +1,101 @@
+<@base.header title="用户信息"></@base.header>
+<@base.body location="用户信息">
+	<@base.main location="用户信息">
+		<div class="list_title_01">&nbsp;</div>
+		<div class="list_title_02">&nbsp;</div>
+		<div class="kuang">
+		  <div class="kuang" style="width:70%">
+			<table border="0" align="center" cellpadding="3" cellspacing="1">
+              <tr>
+                <td height="25" colspan="3" align="center"><strong>用户信息</strong></td>
+              </tr>
+              <tr>
+                <td width="114" height="25" align="right">昵称：</td>
+                <td width="243" align="left">${pageUser.nick}</td>
+                <td width="198" rowspan="7" align="center">${pageUser.faceDisplay}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">QQ：</td>
+                <td align="left">${pageUser.qq?default(0)}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">头衔：</td>
+                <td align="left">${pageUser.titleDisplay?default("")}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">禁止登入：</td>
+                <td align="left">在${pageUser.loginmtDisplay}天内无法登入</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">经验/钱：</td>
+                <td align="left">${pageUser.exp} / ${pageUser.money}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right" >性别：</td>
+                <td align="left" >${pageUser.sexDisplay}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">生日：</td>
+                <td align="left">${pageUser.birthday}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">E-mail：</td>
+                <td colspan="2" align="left">${pageUser.email?default("")}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">主页：</td>
+                <td colspan="2" align="left"><a href="${pageUser.homepage?default("")}" target="_blank">${pageUser.homepage?default("")}</a></td>
+              </tr>
+              <tr>
+                <td height="25" align="right">注册时间：</td>
+                <td colspan="2" align="left">${pageUser.registerDateDisplay}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">登录次数：</td>
+                <td colspan="2" align="left">${pageUser.loginTimes}</td>
+              </tr>
+              <#if user.userGroup.authViewLastLogTime == true>
+              <tr>
+                <td height="25" align="right"><font color="#FF0000">最后登录：</font></td>
+                <td colspan="2" align="left">${pageUser.lastLoginTime}</td>
+              </tr>
+              </#if>
+              <#if user.userGroup.authViewTrueName == true>
+              <tr>
+                <td height="25" align="right"><font color="#FF0000">真实姓名：</font></td>
+                <td colspan="2" align="left">${pageUser.trueName}</td>
+              </tr>
+              </#if>
+              <tr>
+                <td height="25" align="right">新帖/回复/精华：</td>
+                <td colspan="2" align="left">${pageUser.numberOfTopic} / ${pageUser.numberOfReply} / ${pageUser.numberOfGood}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">最大/剩余体力：</td>
+                <td colspan="2" align="left">${pageUser.maxPower} / ${pageUser.currentPower}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">等级：</td>
+                <td colspan="2" align="left">${pageUser.groupNameDisplay}</td>
+              </tr>
+              <tr>
+                <td height="25" align="right">个人签名：</td>
+                <td colspan="2" align="left">${pageUser.idiographFilter?default("")}</td>
+              </tr>
+              <tr>
+                <td height="25" colspan="3" align="center">
+                    <#setting url_escaping_charset='utf8'> 
+					[<a href="search_do.yws?type=1&keywords=${pageUser.nick?url}">发表的主题</a>]&nbsp;&nbsp;
+					[<a href="#" onClick="MM_openBrWindow('send_message.yws?userID=${pageUser.id}','发送短消息','menubar=yes,scrollbars=yes,width=700,height=500')">发送短信</a>]&nbsp;&nbsp;
+					[<a href="/diary/index.yws?userID=${pageUser.id}" target="_blank">心情日记</a>]&nbsp;&nbsp;
+					[<a href="#" onClick="javascript:history.go(-1)">返回前页</a>]</td>
+              </tr>
+            </table>
+		  
+		  </div>
+		</div>
+		
+		<div class="list_title_03">&nbsp;</div>
+		<div class="list_title_04" align="left">&nbsp;</div>
+	</@base.main>
+</@base.body>

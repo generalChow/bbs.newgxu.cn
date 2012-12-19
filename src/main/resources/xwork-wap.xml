@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1//EN" 
+"http://www.opensymphony.com/xwork/xwork-1.1.dtd">
+<xwork>
+
+	<package name="mobile-apps" extends="default" namespace="/wap">
+	
+		<interceptors>
+			<interceptor name="hitsInterceptor" class="cn.newgxu.bbs.common.interceptor.HitsInterceptor" />
+			<interceptor name="loginInterceptor" class="cn.newgxu.bbs.common.interceptor.LoginInterceptor" />
+				
+			<interceptor-stack name="hits">
+				<interceptor-ref name="hitsInterceptor" />
+				<interceptor-ref name="valhallaStack" />
+			</interceptor-stack>
+			
+			<interceptor-stack name="login">
+				<interceptor-ref name="hitsInterceptor" />
+				<interceptor-ref name="loginInterceptor" />
+				<interceptor-ref name="valhallaStack" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="valhallaStack" />
+	
+		<!-- 登录 -->
+		<action name="login" class="accountController">
+			<result type="freemarker">/template/wap/login.html</result>
+			<interceptor-ref name="hits" />
+		</action>
+		<!-- 注销 -->
+		<action name="logout" class="accountController" method="logout">
+			<result type="freemarker">/template/wap/login.html</result>
+			<interceptor-ref name="hits" />
+		</action>
+		<!-- 登录提交 -->
+		<action name="login_submit" class="accountController" method="loginProcess">
+			<result type="redirect-action">
+				<param name="actionName">index</param>
+			</result>
+			<result name="error" type="freemarker">/template/wap/error.html</result>
+			<result name="input" type="freemarker">/template/wap/error.html</result>
+			<interceptor-ref name="hits" />
+		</action>
+		<!-- 首页 -->
+		<action name="index" class="indexController">
+			<result type="freemarker">/template/wap/index.html</result>
+			<interceptor-ref name="hits" />
+		</action>
+		<!-- 分区 -->
+		<action name="area" class="areaController">
+			<result type="freemarker">/template/wap/area.html</result>
+			<interceptor-ref name="hits" />
+		</action>
+		<!-- 板块 -->
+		<action name="forum" class="forumController">
+			<result type="freemarker">/template/wap/forum.html</result>
+			<result name="error" type="freemarker">/template/wap/error.html</result>
+			<interceptor-ref name="hits" />
+		</action>
+		<!-- 帖子 -->
+		<action name="topic" class="topicController">
+			<result type="freemarker">/template/wap/topic.html</result>
+			<result name="error" type="freemarker">/template/wap/error.html</result>
+			<interceptor-ref name="hits" />
+		</action>
+		<!-- 请求发帖 -->
+		<action name="new-topic" class="newTopicController">
+			<result type="freemarker">/template/wap/new-topic.html</result>
+			<result name="login" type="freemarker">/template/wap/login.html</result>
+			<result name="error" type="freemarker">/template/wap/error.html</result>
+			<interceptor-ref name="login" />
+		</action>
+		<!-- 发帖提交 -->
+		<action name="post" class="newTopicController" method="newTopic">
+			<result type="freemarker">/template/wap/success.html</result>
+			<result name="error" type="freemarker">/template/wap/error.html</result>
+			<interceptor-ref name="login" />
+		</action>
+		<!-- 请求回复主题 -->
+		<action name="feedback" class="replyController">
+			<result type="freemarker">/template/wap/feedback.html</result>
+			<result name="login" type="freemarker">/template/wap/login.html</result>
+			<result name="error" type="freemarker">/template/wap/error.html</result>
+			<interceptor-ref name="login" />
+		</action>
+		<!-- 回复主题处理 -->
+		<action name="feedback-process" class="replyController" method="feedbackProcess">
+			<result type="freemarker">/template/wap/success.html</result>
+			<result name="error" type="freemarker">/template/wap/error.html</result>
+			<result name="login" type="freemarker">/template/wap/login.html</result>
+			<interceptor-ref name="login" />
+		</action>
+		<!-- 请求回复 -->
+		<action name="reply" class="replyController" method="reply">
+			<result type="freemarker">/template/wap/reply.html</result>
+			<result name="error" type="freemarker">/template/wap/error.html</result>
+			<result name="login" type="freemarker">/template/wap/login.html</result>
+			<interceptor-ref name="login" />
+		</action>
+		<!-- 请求回复处理 -->
+		<action name="reply-process" class="replyController" method="replyProcess">
+			<result type="freemarker">/template/wap/success.html</result>
+			<result name="error" type="freemarker">/template/wap/error.html</result>
+			<result name="login" type="freemarker">/template/wap/login.html</result>
+			<interceptor-ref name="login" />
+		</action>
+	</package>
+</xwork>

@@ -1,0 +1,64 @@
+<@base.header title="论坛：世界杯 -- 主题列表"></@base.header>
+<#setting number_format="0">
+<@base.body location="世界杯">
+	<@base.main location="世界杯">
+		<div class="list_title_01">&nbsp;</div>
+		<div class="kuang">
+         <form name="cupoflife" method="post" action="savecupoflife.yws">
+			<#list footBallTeams as t>
+			<table width="100%" height="25" border="0" align="center" cellpadding="0" cellspacing="0" class="botom_line" style="table-layout:fixed;">
+			  <tr align="center">
+				<td width="30" height="35" class="right_line"></td>
+				<td width="402" align="left" height="35" class="right_line" style="word-wrap:break-all;" nowrap><input type="radio" name="id" value = "${t.id}" />${t.name}</td>
+			    <td width="47" height="35" class="right_line"><img src="/images/cup/${t.id}.gif"/></td>
+			  </tr>
+		  </table>
+		   </#list>
+		   <input type="submit" name="submit" value = "提交" />
+		 </form>
+		</div>
+		<div class="list_title_03">
+			<span class="left pages">
+			<object type="application/x-shockwave-flash" data="/js/audioplayer.swf" width="290" height="24" id="ID70554">
+			<param name="movie" value="/js/audioplayer.swf" />
+			<param name="FlashVars" value="playerID=ID70554&bg=0xCDDFF3&leftbg=0x357DCE&lefticon=0xF2F2F2&rightbg=0x357DCE&rightbghover=0x4499EE&righticon=0xF2F2F2&righticonhover=0xFFFFFF&text=0x357DCE&slider=0x357DCE&track=0xFFFFFF&border=0xFFFFFF&loader=0x8EC2F4&loop=no&autostart=yes&soundFile=http://www.go01.com/yule/UploadFiles_3256/200612/20061212181900117.mp3" />
+			<param name="qualit" value="high" />
+			<param name="menu" value="false" />
+			<param name="wmode" value="transparent" />
+			</object>
+			</span>
+			<span class="right">
+				<select name="menu1" class="select" onchange="javascript:parent.location=this.options[this.selectedIndex].value;">
+                    <option selected="selected">论坛跳转至.....</option>
+                        <option value="/area.yws?areaId=1" class="jMenu">╇站务管理</option>
+                        <option value="/forum.yws?forumId=1">&nbsp;├问题意见</option><option value="/forum.yws?forumId=2">&nbsp;├版主之家</option><option value="/forum.yws?forumId=14">&nbsp;├版主申请</option><option value="/forum.yws?forumId=66">&nbsp;├举报中心</option><option value="/forum.yws?forumId=93">&nbsp;├论坛投诉</option><option value="/forum.yws?forumId=105">&nbsp;├惩罚记录</option><option value="/forum.yws?forumId=113">&nbsp;├回收中心</option>
+<option value="/area.yws?areaId=2" class="jMenu">╇放眼西大</option>
+                        <option value="/forum.yws?forumId=10">&nbsp;├校园聚焦</option><option value="/forum.yws?forumId=26">&nbsp;├生命学院</option><option value="/forum.yws?forumId=27">&nbsp;├动科学院</option><option value="/forum.yws?forumId=28">&nbsp;├法学院</option><option value="/forum.yws?forumId=29">&nbsp;├文学院</option><option value="/forum.yws?forumId=30">&nbsp;├公管学院</option><option value="/forum.yws?forumId=31">&nbsp;├机械学院</option><option value="/forum.yws?forumId=32">&nbsp;├土木学院</option><option value="/forum.yws?forumId=34">&nbsp;├数信学院</option><option value="/forum.yws?forumId=35">&nbsp;├商学院</option><option value="/forum.yws?forumId=36">&nbsp;├轻工学院</option><option value="/forum.yws?forumId=37">&nbsp;├电气学院</option><option value="/forum.yws?forumId=38">&nbsp;├中加学院</option><option value="/forum.yws?forumId=39">&nbsp;├外语学院</option><option value="/forum.yws?forumId=40">&nbsp;├行健学院</option><option value="/forum.yws?forumId=41">&nbsp;├化工学院</option><option value="/forum.yws?forumId=42">&nbsp;├成教院</option><option value="/forum.yws?forumId=43">&nbsp;├计电学院</option><option value="/forum.yws?forumId=44">&nbsp;├物理学院</option><option value="/forum.yws?forumId=45">&nbsp;├资冶学院</option><option value="/forum.yws?forumId=46">&nbsp;├农学院</option><option value="/forum.yws?forumId=47">&nbsp;├林学院</option><option value="/forum.yws?forumId=48">&nbsp;├校报速递</option><option value="/forum.yws?forumId=86">&nbsp;├研究生院</option><option value="/forum.yws?forumId=89">&nbsp;├先教活动</option><option value="/forum.yws?forumId=110">&nbsp;├校友之家</option><option value="/forum.yws?forumId=131">&nbsp;├新生专版</option><option value="/forum.yws?forumId=142">&nbsp;├关工委论坛</option><option value="/forum.yws?forumId=149">&nbsp;├头雁论坛</option><option value="/forum.yws?forumId=145">&nbsp;├教育学院</option><option value="/forum.yws?forumId=150">&nbsp;├政治学院</option><option value="/forum.yws?forumId=151">&nbsp;├艺术学院</option><option value="/forum.yws?forumId=161">&nbsp;├材料学院</option><option value="/forum.yws?forumId=162">&nbsp;├环境学院</option><option value="/forum.yws?forumId=163">&nbsp;├新闻学院</option>
+<option value="/area.yws?areaId=51" class="jMenu">╇社团风采</option>
+                        <option value="/forum.yws?forumId=81">&nbsp;├社团人</option><option value="/forum.yws?forumId=132">&nbsp;├广告协会</option><option value="/forum.yws?forumId=133">&nbsp;├自行车协会</option><option value="/forum.yws?forumId=134">&nbsp;├音乐协会</option><option value="/forum.yws?forumId=135">&nbsp;├漫画研究社</option><option value="/forum.yws?forumId=139">&nbsp;├科技协会</option><option value="/forum.yws?forumId=137">&nbsp;├书画协会</option><option value="/forum.yws?forumId=146">&nbsp;├文学联社</option><option value="/forum.yws?forumId=160">&nbsp;├天文协会</option>
+<option value="/area.yws?areaId=3" class="jMenu">╇学术科学</option>
+                        <option value="/forum.yws?forumId=3">&nbsp;├思想前线</option><option value="/forum.yws?forumId=62">&nbsp;├英语角</option><option value="/forum.yws?forumId=115">&nbsp;├经济纵横</option><option value="/forum.yws?forumId=116">&nbsp;├农业科学</option><option value="/forum.yws?forumId=117">&nbsp;├工业技术</option>
+<option value="/area.yws?areaId=4" class="jMenu">╇电脑技术</option>
+                        <option value="/forum.yws?forumId=8">&nbsp;├软硬兼施</option><option value="/forum.yws?forumId=96">&nbsp;├操作系统</option><option value="/forum.yws?forumId=97">&nbsp;├图形图像</option><option value="/forum.yws?forumId=111">&nbsp;├网络纵横</option>
+<option value="/area.yws?areaId=43" class="jMenu">╇休闲娱乐</option>
+                        <option value="/forum.yws?forumId=5">&nbsp;├音乐天堂</option><option value="/forum.yws?forumId=11">&nbsp;├天下无图</option><option value="/forum.yws?forumId=9">&nbsp;├自由发帖</option><option value="/forum.yws?forumId=13">&nbsp;├精品时尚</option><option value="/forum.yws?forumId=20">&nbsp;├游戏东西</option><option value="/forum.yws?forumId=70">&nbsp;├手机数码</option><option value="/forum.yws?forumId=98">&nbsp;├驴行天下</option><option value="/forum.yws?forumId=99">&nbsp;├美食沙龙</option><option value="/forum.yws?forumId=108">&nbsp;├影视长廊</option><option value="/forum.yws?forumId=119">&nbsp;├摄影天地</option>
+<option value="/area.yws?areaId=5" class="jMenu">╇文化艺术</option>
+                        <option value="/forum.yws?forumId=4">&nbsp;├文行天下</option><option value="/forum.yws?forumId=57">&nbsp;├动漫天地</option><option value="/forum.yws?forumId=60">&nbsp;├科幻世界</option><option value="/forum.yws?forumId=107">&nbsp;├武侠江湖</option><option value="/forum.yws?forumId=164">&nbsp;├史海沉沙</option>
+<option value="/area.yws?areaId=45" class="jMenu">╇知性感性</option>
+                        <option value="/forum.yws?forumId=6">&nbsp;├生活空间</option><option value="/forum.yws?forumId=12">&nbsp;├心情故事</option><option value="/forum.yws?forumId=23">&nbsp;├单身部落</option>
+<option value="/area.yws?areaId=6" class="jMenu">╇体育健身</option>
+                        <option value="/forum.yws?forumId=21">&nbsp;├体育资讯</option><option value="/forum.yws?forumId=101">&nbsp;├玩转篮球</option><option value="/forum.yws?forumId=102">&nbsp;├绿茵场上</option>
+<option value="/area.yws?areaId=48" class="jMenu">╇综合信息</option>
+                        <option value="/forum.yws?forumId=24">&nbsp;├情牵广西</option><option value="/forum.yws?forumId=63">&nbsp;├考研咨询</option><option value="/forum.yws?forumId=72">&nbsp;├前程无忧</option><option value="/forum.yws?forumId=109">&nbsp;├热点时事</option><option value="/forum.yws?forumId=103">&nbsp;├寻人寻物</option><option value="/forum.yws?forumId=104">&nbsp;├考试认证</option><option value="/forum.yws?forumId=153">&nbsp;├家庭教育</option>
+<option value="/area.yws?areaId=49" class="jMenu">╇交易市场</option>
+                        <option value="/forum.yws?forumId=125">&nbsp;├新旧书市</option><option value="/forum.yws?forumId=124">&nbsp;├日用百货</option><option value="/forum.yws?forumId=126">&nbsp;├数码通讯</option><option value="/forum.yws?forumId=127">&nbsp;├电脑配件</option>
+<option value="/area.yws?areaId=7" class="jMenu">╇驻站写手</option>
+                        <option value="/forum.yws?forumId=50">&nbsp;├朱一刀</option><option value="/forum.yws?forumId=53">&nbsp;├雅瑞</option><option value="/forum.yws?forumId=73">&nbsp;├马萧萧</option><option value="/forum.yws?forumId=94">&nbsp;├echoo</option><option value="/forum.yws?forumId=112">&nbsp;├帕涅罗珀</option><option value="/forum.yws?forumId=114">&nbsp;├后羿</option>
+<option value="/area.yws?areaId=56" class="jMenu">╇在线交流</option>
+                        <option value="/forum.yws?forumId=167">&nbsp;├芙蓉学子一期</option><option value="/forum.yws?forumId=168">&nbsp;├芙蓉学子榜样</option>
+                </select>
+			</span>
+		</div>		
+	</@base.main>
+</@base.body>
+

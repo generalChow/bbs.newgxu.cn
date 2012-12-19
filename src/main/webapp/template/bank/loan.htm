@@ -1,0 +1,41 @@
+<@base.header title="贷款"></@base.header>
+<@base.body location="社区银行&nbsp;－&gt;&nbsp;贷款">
+	<@base.main location="社区银行&nbsp;－&gt;&nbsp;贷款">
+		<@base.bank_content>
+<br>
+<table cellspacing="0" cellpadding="0">
+  <tr>
+    <td>当前贷款利率为${bank.loanRate*1000}‰，欢迎使用贷款业务。</td>
+  </tr>
+  <tr>
+    <td><form action="new_loan.yws" method="post" name="name" id="name">
+      贷款金额:
+      <input size="15" name="money" />
+      天数:
+      <input size="5" name="days" />
+      <input name="banksubmit" type="submit"  value=" 提  交 " />
+    </form></td>
+  </tr>
+  <tr>
+    <td><strong>我的贷款记录</strong></td>
+  </tr>
+  <tr>
+    <td><table cellspacing="1" cellpadding="0"> 
+    	<#list myApplyLoans as loan>
+        <tr>
+          <td>金额: ${loan.money}   贷款利率: ${loan.loanRate*1000}‰   申请时间: ${loan.applyTime}　 贷款天数：${loan.days} </td>
+          <td align="middle" width="40">[<a href="deal_loan.yws?id=${loan.id}&action=1">取消</a>] </td>
+        </tr>
+		</#list>
+    	<#list myLoans as loan>
+        <tr>
+          <td>金额: ${loan.money}   贷款利率: ${loan.loanRate*1000}‰   生效时间: ${loan.beginTime}   贷款天数：${loan.days}   您需支付利息: ${loan.accrual} </td>
+          <td align="middle" width="40">[<a href="deal_loan.yws?id=${loan.id}&action=2">偿还</a>] </td>
+        </tr>
+		</#list>
+    </table></td>
+  </tr>
+</table>
+		</@base.bank_content>
+	</@base.main>
+</@base.body>

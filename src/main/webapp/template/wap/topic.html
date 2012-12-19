@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache"/>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=2.0" />
+<meta name="MobileOptimized" content="240" />
+<meta name="format-detection" content="telephone=no" />
+<title>帖子 - ${topic.title} - ${topic.forum.name}</title>
+<style type="text/css">
+	* {
+		font-size: 1em;
+	}
+	
+	img {
+		width: 20%;
+		height: 20%;
+	}
+	
+	h3 {
+		text-align: c
+	}
+	
+	#info {
+		text-align: center;
+	}
+	
+	.user {
+		background-color: orange;
+		color: white;
+		padding: 2px;
+	}
+	
+	.content {
+		border: 1px solid grey;
+		border-radius: 2px;
+	}
+	
+	.feedback {
+		/* background-color: yellow; */
+		/* text-align: right; */
+		float: right;
+	}
+	
+	.topic {
+		margin-top: 5px;
+	}
+	
+	#pagination {
+		margin-top: 5px;
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+	<!-- 头部 -->
+	<div id="header">
+		<#if status.login == true>
+			<div id="info">欢迎您，${status.nick}|我的微博|退出</div>
+		<#else>
+			<div id="info">游客，您好！请<a href="/wap/login.yws">登录</a>之后再发帖或者回复！</div>
+		</#if>
+		<h3>${topic.titleFilter}</h3>
+	</div>
+	
+	<!-- 内容 -->
+	<div id="main">
+		<#list replieLines as r>
+			<div class="topic">
+				<#if r.floor == 1>
+					<div class="content">
+						<div class="user">${r.reply.postUser.nick} @${r.reply.postTime}<#if status.login == true><span class="feedback"><a href="feedback.yws?topicId=${r.reply.topic.id}&forumId=${r.reply.topic.forum.id}">回复主题</a></span></#if><#--<span class="floor">${r.floor}楼</span>--></div>
+						${r.reply.contentBean.content}
+					</div>
+				<#else>
+				<div class="content">
+					<div class="user">${r.reply.postUser.nick} @${r.reply.postTime}<#if status.login == true><span class="feedback"><a href="reply.yws?topicId=${r.reply.topic.id}&forumId=${r.reply.topic.forum.id}&replyId=${r.reply.id}&page=${pagination.page}">回复Ta</a></span></#if><#--<span class="floor">${r.floor}楼</span>--></div>
+						${r.reply.contentBean.content}
+				</div>
+				</#if>
+			</div>
+		</#list>
+	</div>
+	
+	<!-- 页脚 -->
+	<div id="pagination">
+		${pagination} 
+	</div>
+	
+	<!-- 页脚 -->
+	<div id="footer">
+	</div>
+</body>
+</html>

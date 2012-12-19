@@ -1,0 +1,70 @@
+<@base.calendarHeader title="雨历--${year}年${month}月"/>
+<@base.calendarBody>
+  	<div class="main">
+  	<div class="calendar">
+  		<!--year&month div-->
+		<div id="year_div">
+  			<select id="currentYear">
+  				<#list 2000..2030 as y>
+					<option value="${y}">${y}</option>
+				</#list>
+  			</select>
+			<span class="month_ul" id="month_ul">
+				<#list 1..12 as m><a href="javascript:;" onclick="" month="${m}">${m}月</a></#list>
+			</span>
+  		</div><!--year&month div  **end-->
+		<table cellpadding="0" cellspacing="0" border="1" bordercolor="#3d7ee8" id="current_calendar">
+			<tr><th>星期天</th><th>星期一</th><th>星期二</th><th>星期三</th><th>星期四</th><th>星期五</th><th>星期六</th></tr>
+			${monthUnit.tableInfo}
+		</table>
+		<div>
+			<div id="control_div">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td width="50%"  id="cur_day_div"></td>
+						<td>
+							<a id="create_holiday" href="newUserHoliday.yws?method=create&year=${year}&month=${month}&day=${day}" target="_blank">创建我的节日</a>|
+							<a href="viewMyHoliday.yws?userId=70797" target="_blank">查看我的节日</a>
+						</td>
+					</tr>					
+				</table>
+			</div>
+			<div  id="day_div"></div>
+		</div>
+  	</div>
+	<!--信息面板-->
+	<div id="info_div">
+		<div id="coming_day">
+			<div class="title">即将到来的节日</div>
+			<#if comingHoliday?size gt 0>
+				<table cellpadding="0" cellspacing="0" border="0" width="70%">
+				<#list comingHoliday as cch>
+					<tr><td title='${cch.information}' style='color:${cch.color}; width:50%;' align="left">${cch.name}</td><td align="left">${cch.date}</td></tr>
+				</#list>
+				</table>
+			<#else>
+				暂无!			
+			</#if>
+		</div>
+		<div id="coming_day_user">
+			<div class="title">最近的网友节日</div>
+			<#if nearbyHoliday?size gt 0>
+				<table cellpadding="0" cellspacing="0" border="0" width="90%">
+				<#list nearbyHoliday as cch>
+					<tr><td title='${cch.information}' width="40%" align="left">${cch.name}</td><td width="40%"><a href="/user/user_info.yws?id=${cch.user.id}">${cch.user.nick}</a><td align="left">${cch.date}</td></tr>
+				</#list>
+				</table>
+			<#else>
+				暂无!			
+			</#if>
+		</div>
+	</div><!--end 信息面板-->
+	<div style="clear:both;"></div>
+	</div>
+  <script>
+  	$(document).ready(function(){
+		Calendar.bindClick(${year},${month});
+		//Calendar.getCalendar(2011,1);
+	});
+  </script>
+</@base.calendarBody>

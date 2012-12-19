@@ -1,0 +1,109 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1//EN" 
+"http://www.opensymphony.com/xwork/xwork-1.1.dtd">
+<xwork>
+	<package name="bank" namespace="/bank" extends="default">
+
+		<!-- 社区银行 -->
+		<action name="index" class="bank">
+			<result name="success" type="freemarker">/template/bank/bank.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 开户 -->
+		<action name="open_accounts" class="openAccounts">
+			<result name="success" type="freemarker">/template/bank/open_accounts.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 开户提交 -->
+		<action name="open_accounts_do" class="openAccounts" method="submit">
+			<result name="input" type="freemarker">/template/bank/open_accounts.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 活期储蓄 -->
+		<action name="current" class="current">
+			<result name="success" type="freemarker">/template/bank/current.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 存取款 -->
+		<action name="access" class="current" method="access">
+			<result name="input" type="freemarker">/template/bank/current.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 手动结算利息 -->
+		<action name="manual" class="current" method="manual">
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 定期储蓄 -->
+		<action name="fixed" class="fixed">
+			<result name="success" type="freemarker">/template/bank/fixed.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 新定期储蓄 -->
+		<action name="new_fixed" class="fixed" method="newFixed">
+			<result name="input" type="freemarker">/template/bank/fixed.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 新定期储蓄 -->
+		<action name="draw_fixed" class="fixed" method="drawFixed">
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 贷款 -->
+		<action name="loan" class="loan">
+			<result name="success" type="freemarker">/template/bank/loan.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 申请贷款 -->
+		<action name="new_loan" class="loan" method="newLoan">
+			<result name="input" type="freemarker">/template/bank/loan.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 处理贷款 -->
+		<action name="deal_loan" class="loan" method="dealLoan">
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 转帐 -->
+		<action name="virement" class="virement">
+			<result name="success" type="freemarker">/template/bank/virement.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 转帐提交 -->
+		<action name="virement_do" class="virement" method="submit">
+			<result name="success" type="freemarker">/template/bank/virement_result.htm</result>
+			<result name="input" type="freemarker">/template/bank/virement.htm</result>
+			<interceptor-ref name="login" />
+			<interceptor-ref name="token" />
+		    <result name="invalid.token" type="freemarker">/template/common/token.htm</result>
+		</action>
+
+		<!-- 更改银行密码 -->
+		<action name="edit_bankpwd" class="editBankPassword">
+			<result name="success" type="freemarker">/template/bank/edit_bankpwd.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 提交更改银行密码 -->
+		<action name="edit_bankpwd_do" class="editBankPassword" method="submit">
+			<result name="input" type="freemarker">/template/bank/edit_bankpwd.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 理财日志 -->
+		<action name="log" class="bankOperateLog">
+			<result name="success" type="freemarker">/template/bank/bank_operate_log.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+	</package>
+</xwork>

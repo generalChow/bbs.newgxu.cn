@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>创建新论坛</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+  创建新论坛. <br>
+  在以下表单中设置新论坛属性。 <br>
+  <form name="form1" method="post" action="create_forum_do.yws">
+    <table>
+      <tr>
+        <td>所属区论坛：</td>
+        <td><select name="areaId">
+			<#list areas as area>
+			  <#if area.id == model.areaId>
+			  	<option value="${area.id}" selected="selected">${area.name}</option>
+			  <#else>
+			  	<option value="${area.id}">${area.name}</option>
+			  </#if>
+			 </#list>
+        </select>
+        </td>
+      </tr>
+      <tr>
+        <td>名称：</td>
+        <td><input type="text" name="name"></td>
+      </tr>
+      <tr>
+        <td>简介：</td>
+        <td><textarea name="description" id="description"></textarea></td>
+      </tr>
+      <tr>
+        <td>权限：</td>
+        <td><label><input type="radio" name="secrecy" value="1">是</label>
+          <label><input name="secrecy" type="radio" value="0" checked>否</label></td>
+      </tr>
+      <tr>
+        <td>热门：</td>
+        <td><label><input type="radio" name="hot" value="1">是</label>
+          <label><input name="hot" type="radio" value="0" checked>否</label></td>
+      </tr>
+      <tr>
+        <td>内部论坛：</td>
+        <td><label><input type="radio" name="confrere" value="1">是</label>
+          <label><input name="confrere" type="radio" value="0" checked>否</label></td>
+      </tr>
+      <tr>
+        <td>排序：</td>
+        <td><input name="compositorId" type="text" size="5"></td>
+      </tr>
+      <tr>
+        <td>新主题 钱/经验：</td>
+        <td><input name="topicMoney" type="text" size="5">
+        /
+        <input name="topicExp" type="text" size="5"></td>
+      </tr>
+      <tr>
+        <td>回复 钱/经验：</td>
+        <td><input name="replyMoney" type="text" size="5">
+          /
+        <input name="replyExp" type="text" size="5"></td>
+      </tr>
+      <tr>
+        <td>精华 钱/经验：</td>
+        <td><input name="goodMoney" type="text" size="5">
+          /
+        <input name="goodExp" type="text" size="5"></td>
+      </tr>
+      <tr>
+        <td>加亮 钱/经验：</td>
+        <td><input name="lightMoney" type="text" size="5">
+          /
+        <input name="lightExp" type="text" size="5"></td>
+      </tr>
+      <tr>
+        <td>删除 钱/经验：</td>
+        <td><input name="delMoney" type="text" size="5">
+          /
+        <input name="delExp" type="text" size="5"></td>
+      </tr>
+      <tr>
+        <td>版主：</td>
+        <td><textarea name="nicks" rows="3" id="nicks"></textarea></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><input type="submit" name="Submit" value="创　建"></td>
+      </tr>
+    </table>
+  </form>
+  </body>
+</html>

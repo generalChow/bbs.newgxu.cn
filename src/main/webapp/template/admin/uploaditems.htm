@@ -1,0 +1,110 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<base target=_self>
+<title>我的上传资源--雨无声论坛</title>
+<link href='/css/myupload.css' rel="stylesheet" />
+</head>
+<script>
+//显示
+function show(o,obj){
+  var m=document.getElementById(obj);
+  m.style.pixelLeft=getL(o);
+  m.style.pixelTop=getT(o)+o.offsetHeight;
+  m.style.visibility='';
+}
+//隐藏
+function hide(obj){
+  document.getElementById(obj).style.visibility='hidden';
+}   
+//取得左边的位移
+function getL(e){
+  var l=e.offsetLeft;
+  while(e=e.offsetParent){
+    l+=e.offsetLeft;
+  }
+  return l;
+}
+//取得顶部的位移
+function getT(e){
+  var t=e.offsetTop;
+  while(e=e.offsetParent){
+    t+=e.offsetTop;
+  }
+  return t;
+}
+ function deleteUploadItem(id){
+ if(confirm("您确定要删除该条记录吗？")){
+   var tdid="#del"+id;
+   var trid="#tr"+id;
+   var url="/admin/deleteuploaditems.yws?id="+id;
+        $.ajax({
+            type: "post",
+            url: url,
+            beforeSend: function(){
+                $(tdid).html("正在删除数据...");
+            },
+            success: function(responseText){
+                 $(trid).css('display','none'); 
+            }
+        });
+    }
+} 
+</script>
+<body>
+<div class="pageHeader">
+	<form onsubmit="return navTabSearch(this);" action="searchuploaditems.yws" method="post">
+		<div class="searchBar">
+			  按照昵称搜索：<input type="text" name="nick" size="15" value="${model.nick?default('')}"/>
+			  <input type="submit" name="Submit" value="搜索"> 
+		</div>
+	</form>
+	<form id="pagerForm" style="display:none;" action="${pagination.actionName}" method="get">
+		<input type="hidden" name="page" value="1" /><!--【必须】value=1可以写死-->
+		<input type="hidden" name="nick" value="${model.nick?default('')}" />
+      	<input type="hidden" name="pageSize" value="20" /><!--【可选】每页显示多少条-->
+	</form>
+</div>
+  <div>
+	<table class="table tableBorder1" width="100%" border="0" layoutH="90" cellspacing="0">
+	  <thead>
+			<tr>
+				<th width="13%">昵称</th>
+				<th width="36%">名称</th>
+				<th width="36%">上传路径</th>
+				<th width="12%">上传时间</th>
+				<th width="3%">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+      <#list uploadItems as u>
+      <tr id="tr${u.id}">
+	      <td align="center" nowrap>${u.uploader.nick}</td>
+	      <#if u.uploadable.id lt 6>
+	        <td align="center" nowrap><a href="#" onmouseover="show(this,'img${u.id}')" onmouseout="hide('img${u.id}')">${u.filename}</a></td>
+	         <td align="center" nowrap>${u.uri}</td>
+	         <td align="center" nowrap>${u.uploadTime}</td>
+	         <td align="center" nowrap id="del${u.id}"><a href="javascript:deleteUploadItem('${u.id}');">删除</a></td>
+	        <div id="img${u.id}" style="VISIBILITY:hidden;POSITION:absolute;z-index:99999">
+	           <img src="${u.uri}"></img>
+	        </div>
+	        <#else>
+	        <td align="center" nowrap><a href="#" >${u.filename}</a></td>
+	        <td align="center" nowrap>${u.uri}</td>
+	        <td align="center" nowrap>${u.uploadTime}</td>
+	        <td align="center" nowrap id="del${u.id}"><a href="javascript:deleteUploadItem('${u.id}');">删除</a></td>
+	       </#if>
+	      </tr>
+	      </#list>
+	  </tbody>
+    </table>
+	<div class="panelBar">
+		<div class="pages">
+			<span>共${pagination.recordSize}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="${pagination.recordSize}" numPerPage="${pagination.pageSize}" pageNumShown="16" currentPage="${pagination.page}"></div>
+	</div>
+  </div>
+</body>
+</html>
+

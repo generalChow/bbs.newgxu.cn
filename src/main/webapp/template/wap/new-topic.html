@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="viewport"
+	content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=2.0" />
+<meta name="MobileOptimized" content="240" />
+<meta name="format-detection" content="telephone=no" />
+<title>发表新帖子</title>
+<style type="text/css">
+	* {
+		font-size: 1em;
+	}
+	
+	/* form {
+		border: 1px solid #4f4f4f;
+	} */
+	
+	field {
+		border: 1px solid #4f4f4f;
+		border-radius: 2px;
+	}
+	
+	textarea {
+		width: 95%;
+		text-align: center;
+	}
+	
+	#title {
+		width: 95%;
+	}
+	
+	#submit {
+		text-align: center;
+		color: red;
+	}
+</style>
+</head>
+<body>
+	<form action="/wap/post.yws?forumId=${forumId}" method="post">
+		<fieldset id="field">
+		<legend>发表新主题</legend>
+			<label for="title">标题</label> <br />
+			<input id="title" type="text" name="title" /> <br /> <br /> 
+			<label for="content">正文</label> <br />
+			<textarea rows="10" name="content"></textarea>
+			<p id="submit"><input type="submit" value="发表!" /></p>
+		</fieldset>
+	</form>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<@base.bookheader title="编辑日记本">
+<link href="diary.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    <!--
+ body,td,th {
+	font-family: 宋体;
+	font-size: 9pt;
+    }
+ -->
+</style>
+<script type="text/javascript">
+<!--
+function sumbit(){
+ if(document.form1.bookName.value.length== 0){
+   alert("你忘了填写日记本名称哦...");
+   return false;
+ }
+ if(document.form1.viewKey.value.length == 0){
+   alert("你忘了填写可阅读密码哦...");
+   return false;
+ }
+ if(document.form1.description.value.length == 0){
+   alert("你忘了填写开篇寄语哦...");
+   return false;
+ }
+ return true;
+}
+//-->
+</script>
+</@base.bookheader>
+<@base.bookBody>
+<form name="form1" method="post" action="edit_Book_Do.yws" onsubmit="return sumbit();">
+<table width="500" height="283"  border="1" align="center" cellspacing="0" bordercolor="#CCCCCC" style="border-collapse:collapse" >
+  <tr>
+    <td height="25" colspan="2" align="center"><strong>管理日记本<br/><font color="red" style="font-size: 12px;">${validMsg}</font></strong></td>
+  </tr>
+  <tr>
+    <td width="120" height="10" align="center">日记本名称:</td>
+    <td width="370" align="left"><input name ="bookName" value="${diaryBook.bookName?default("")}"><input type="hidden" name ="id" value="${diaryBook.id?default("")}"></td>
+  </tr>
+  <tr>
+    <td height="20" align="center">日记本风格：</td>
+    <td><select name="bookStyle" class="weather" id="bookstyle">
+      <option value="${diaryBook.diaryStyle?default("")}"><#if diaryBook.diaryStyle ==1>那些回忆<#elseif diaryBook.diaryStyle ==2>花样年华<#elseif diaryBook.diaryStyle ==3>聆听<#elseif diaryBook.diaryStyle ==4>感爱<#else>绿色心情</#if></option>
+      <option value="1">那些回忆</option>
+      <option value="2">花样年华</option>
+      <option value="3">聆听</option>
+      <option value="4">感爱</option>
+      <option value="5">绿色心情</option>
+      </select></td>
+  </tr>
+  <tr>
+    <td height="20" align="center"> &nbsp;阅读密码 ：</td>
+    <td><input name="viewKey" type="password" class="title_input" id="viewkey" value="${diaryBook.viewKey?default("")}">
+      可阅读半锁日记</td>
+  </tr>
+  <tr>
+    <td align="center">开篇寄语：</td>
+    <td><textarea name="description" cols="45" rows="10" class="short_text" id="bookdp">${diaryBook.description?default("")}</textarea></td>
+  </tr>
+  <tr align="center">
+    <td height="25" colspan="2">
+    <input name="Submit" type="submit" class="short_submit" value="确定"></td>
+  </tr>
+</table> 
+</form>
+</@base.bookBody>

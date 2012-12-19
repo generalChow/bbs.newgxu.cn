@@ -1,0 +1,140 @@
+.diary {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+}
+.short_input {
+	font-family: "宋体";
+	font-size: 9pt;
+	line-height: normal;
+	color: #666666;
+	border: 1px solid #CCCCCC;
+	width: 110px;
+	height: 18px;
+}
+.short_submit {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	line-height: normal;
+	height: 18px;
+}
+.line {
+	border-bottom-style: solid;
+	border-bottom-color: #999999;
+	border-bottom-width: 1px;
+	top: 10px;
+	bottom: 10px;
+}
+.listbottom {
+	background-image: url(/images/diary/listbotton.gif);
+	background-repeat: repeat-x;
+}
+.unline {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC;
+}
+.title_input {
+	font-family: "宋体";
+	font-size: 9pt;
+	border: 1px solid #CCCCCC;
+	height: 15px;
+	width: 200px;
+	line-height: normal;
+}
+.weather {
+	font-family: "宋体";
+	font-size: 9pt;
+	line-height: normal;
+	border: 1px solid #CCCCCC;
+	height: 16px;
+}
+.uline {
+	background-image: url(/images/diary/dotline.gif);
+	background-repeat: repeat-x;
+	background-position: right bottom;
+}.write_diary {
+	font-family: "宋体";
+	font-size: 9pt;
+	width: 470px;
+	border: 1px solid #CCCCCC;
+	color: #666666;
+}
+.short_text {
+	font-family: "宋体";
+	font-size: 9pt;
+	line-height: normal;
+	color: #666666;
+	border: 1px solid #CCCCCC;
+	height: 150px;
+	width: 326px;
+}
+.gonggao {
+	font-family: "宋体";
+	font-size: 9pt;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #C0E365;
+}
+
+.border-green {
+	font-family: "宋体";
+	font-size: 9pt;
+	border: 1px solid #92D003;
+}
+body,td,th {
+	font-family: 宋体;
+	font-size: 9pt;
+	color: #333333;
+}
+.login_input {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+	background-color: #DEF4AB;
+	height: 18px;
+	width: 100.px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #DEF4AB;
+	border-right-color: #DEF4AB;
+	border-bottom-color: #477920;
+	border-left-color: #DEF4AB;
+	width: 100px;
+}
+.login_rand_input {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+	background-color: #DEF4AB;
+	height: 18px;
+	width: 40px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #DEF4AB;
+	border-right-color: #DEF4AB;
+	border-bottom-color: #477920;
+	border-left-color: #DEF4AB;
+}
+.login_submit {
+	font-family: "宋体";
+	font-size: 9pt;
+	line-height: normal;
+	background-color: #DEF4AB;
+	border: 1px solid #228119;
+}

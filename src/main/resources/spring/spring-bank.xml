@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName">
+
+	<!-- 社区银行 action BEGIN -->
+	<bean name="bank" class="cn.newgxu.bbs.web.action.bank.BankAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="bankService">
+			<ref bean="bankService" />
+		</property>
+	</bean>
+
+	<bean name="openAccounts"
+		class="cn.newgxu.bbs.web.action.bank.OpenAccountsAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="bankService">
+			<ref bean="bankService" />
+		</property>
+	</bean>
+
+	<bean name="current"
+		class="cn.newgxu.bbs.web.action.bank.CurrentAction" scope="prototype"
+		parent="abstractBaseAction">
+		<property name="bankService">
+			<ref bean="bankService" />
+		</property>
+	</bean>
+
+	<bean name="fixed" class="cn.newgxu.bbs.web.action.bank.FixedAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="bankService">
+			<ref bean="bankService" />
+		</property>
+	</bean>
+
+	<bean name="loan" class="cn.newgxu.bbs.web.action.bank.LoanAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="bankService">
+			<ref bean="bankService" />
+		</property>
+	</bean>
+
+	<bean name="virement"
+		class="cn.newgxu.bbs.web.action.bank.VirementAction" scope="prototype"
+		parent="abstractBaseAction">
+		<property name="bankService">
+			<ref bean="bankService" />
+		</property>
+	</bean>
+
+	<bean name="editBankPassword"
+		class="cn.newgxu.bbs.web.action.bank.EditBankPasswordAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="bankService">
+			<ref bean="bankService" />
+		</property>
+	</bean>
+
+	<bean name="bankOperateLog"
+		class="cn.newgxu.bbs.web.action.bank.BankOperateLogAction"
+		scope="prototype" parent="abstractBaseAction">
+		<property name="bankService">
+			<ref bean="bankService" />
+		</property>
+	</bean>
+	<!-- 社区银行 action END -->
+	
+	<bean id="bankService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="bankServiceTarget" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="bank">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+				<prop key="openAccounts">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="current">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+				<prop key="access">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="manual">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="fixed">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+				<prop key="newFixed">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="drawFixed">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="loan">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+				<prop key="newLoan">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="dealLoan">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="virement">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+				<prop key="virementDo">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="editBankPasswordDo">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="operateLog">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
+				<prop key="bankModify">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="approachLoan">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="denyLoan">PROPAGATION_REQUIRED, -Exception</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="bankServiceTarget"
+		class="cn.newgxu.bbs.service.proxy.BankServiceProxy">
+		<property name="bankService">
+			<ref bean="realBankService" />
+		</property>
+	</bean>
+
+	<bean id="realBankService"
+		class="cn.newgxu.bbs.service.impl.BankServiceImpl" />
+
+</beans>

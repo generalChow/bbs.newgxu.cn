@@ -1,0 +1,304 @@
+ <!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1//EN"
+"http://www.opensymphony.com/xwork/xwork-1.1.dtd">
+
+<xwork>
+	<include file="valhalla-default.xml" />
+
+	<package name="default" extends="valhalla-default">
+		<interceptors>
+			<interceptor name="loginInterceptor"
+				class="cn.newgxu.bbs.common.interceptor.LoginInterceptor" />
+		<interceptor name="adminLoginInterceptor"
+				class="cn.newgxu.bbs.common.interceptor.AdminLoginInterceptor" />
+
+			<interceptor-stack name="login">
+				<interceptor-ref name="loginInterceptor" />
+				<interceptor-ref name="valhallaStack" />
+			</interceptor-stack>
+			<interceptor-stack name="adminLogin">
+				<interceptor-ref name="adminLoginInterceptor" />
+				<interceptor-ref name="valhallaStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="valhallaStack" />
+
+		<global-results>
+			<result name="login" type="freemarker">/template/accounts/login.htm</result>
+			<result name="nopermission" type="freemarker">/template/nopermission.htm</result>
+			<result name="adminLogin" type="freemarker">/template/admin/login.htm</result>
+			<result name="BBSException" type="freemarker">/template/exception.htm</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">success</param>
+				<param name="namespace">/</param>
+			</result>
+			<result name="error" type="redirect-action">
+				<param name="actionName">error</param>
+				<param name="namespace">/</param>
+			</result>
+		</global-results>
+		
+		<action name="more" class="more">
+			<result name="success" type="freemarker">/template/more.htm</result>
+		</action>
+
+		<!-- 操作错误页面 -->
+		<action name="error" class="messageActionSupport">
+			<result name="success" type="freemarker">/template/common/error.htm</result>
+		</action>
+
+		<!-- 操作成功页面 -->
+		<action name="success" class="messageActionSupport">
+			<result name="success" type="freemarker">/template/common/success.htm</result>
+		</action>
+		
+		<!-- 新加一个登录页面，这里可以看到一个临近事件的图片哦，2011-12-15 -->
+		<action name="login" class="index" method="login">
+			<result name="login" type="freemarker">/template/accounts/login.htm</result>
+		</action>
+		
+		<!-- 论坛首页 -->
+		<action name="index" class="index">
+			<!--
+			首页静态化
+			<result name="success" type="freemarker">/template/html/index.htm</result>
+			-->
+			<result name="success" type="freemarker">/template/index.htm</result>
+		</action>
+		
+		<!-- 论坛改版首页测试 -->
+		<action name="index_old" class="index">
+			<!--
+			首页静态化
+			<result name="success" type="freemarker">/template/html/index.htm</result>
+			-->
+			<result name="success" type="freemarker">/template/index_old.htm</result>
+		</action>
+		
+		<!--  -->
+		<action name="test" class="test">
+			<result name="success" type="freemarker">/template/test.html</result>
+		</action>
+		
+		<!-- 查看分区论坛列表 -->
+		<action name="area" class="area">
+			<result name="success" type="freemarker">/template/area.htm</result>
+		</action>
+
+		<!-- 查看某论坛内主题列表 -->
+		<action name="forum" class="forum">
+			<result name="success" type="freemarker">/template/forum.htm</result>
+		</action>
+
+		<!-- 查看主题 -->
+		<action name="topic" class="topic">
+			<result name="success" type="freemarker">/template/topic.htm</result>
+		</action>
+
+		<!-- 发表新贴 -->
+		<action name="create_topic" class="createTopic">
+			<result name="success" type="freemarker">/template/create_topic.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 发表新贴提交 -->
+		<action name="create_topic_do" class="createTopic"
+			method="submit">
+			<result name="input" type="freemarker">/template/create_topic.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 发表新投票 -->
+		<action name="create_vote" class="createVote">
+			<result name="success" type="freemarker">/template/create_vote.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 发表新投票提交 -->
+		<action name="create_vote_do" class="createVote"
+			method="submit">
+			<result name="input" type="freemarker">/template/create_vote.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 投票提交 -->
+		<action name="vote" class="vote">
+			<interceptor-ref name="login" />
+		</action>
+
+		<!--****************************幸运帖************************-->
+		<!-- 查看幸运帖子详细内容 -->
+		<action name="view_lucky" class="luckyAction">
+			<result name="success" type="freemarker">/template/lucky/view.htm</result>
+		</action>
+		<!-- 上传题目答案 -->
+		<action name="submit_lucky" class="luckyAction" method="submit">
+			<interceptor-ref name="login" />
+		</action>
+		<!-- 砸蛋页面 -->
+		<action name="gift_lucky" class="luckyAction" method="getGift">
+			<result name="success" type="freemarker">/template/lucky/choice.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<!-- 砸蛋处理 -->
+		<action name="giftDo_lucky" class="luckyAction" method="getGiftDo">
+			<interceptor-ref name="login" />
+		</action>
+		<!-- 查看砸蛋中奖信息 -->
+		<action name="result_lucky" class="luckyAction" method="viewResult">
+			<result name="success" type="freemarker">/template/lucky/result.htm</result>
+		</action>
+		<!-- 创建新的幸运帖 -->
+		<action name="create_lucky" class="createLucky">
+			<result name="success" type="freemarker">/template/lucky/create.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<!-- 新幸运帖提交 -->
+		<action name="create_lucky_do" class="createLucky" method="submit">
+			<result name="input" type="freemarker">/template/lucky/create.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<!--****************************end 幸运帖************************-->
+		
+		<!-- 回复 -->
+		<action name="reply" class="reply">
+			<result name="success" type="freemarker">/template/reply.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 回复提交 -->
+		<action name="reply_do" class="reply" method="submit">
+			<result name="input" type="freemarker">/template/exception.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<!-- 快速回复 -->
+		<action name="replyFast" class="reply" method="replyFast">
+			<result name="success" type="freemarker">/template/replyFast.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<action name="replyFastDo" class="reply" method="replyFastDo">
+			<result name="success" type="freemarker">/template/replyFast.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 修改帖子 -->
+		<action name="modify" class="modify">
+			<result name="topic" type="freemarker">/template/modify_topic.htm</result>
+			<result name="reply" type="freemarker">/template/modify_reply.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 修改帖子提交 -->
+		<action name="modify_do" class="modify" method="submit">
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 帖子操作管理 -->
+		<action name="manage" class="manage">
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 检索中心 -->
+		<action name="search" class="search">
+			<result name="success" type="freemarker">/template/search.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<action name="search_do" class="search" method="submit">
+			<result name="success" type="freemarker">/template/search_result.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 发布小字报 -->
+		<action name="create_small_news" class="createSmallNews">
+			<result name="success" type="freemarker">/template/create_small_news.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+		<action name="create_small_news_do" class="createSmallNews" method="submit">
+			<result name="input" type="freemarker">/template/create_small_news.htm</result>
+			<interceptor-ref name="login" />
+		</action>
+
+		<!-- 小字报 -->
+		<action name="small_news" class="smallNews">
+			<result name="success" type="freemarker">/template/small_news.htm</result>
+		</action>
+		<action name="small_news_list" class="smallNews" method="list">
+			<result name="success" type="freemarker">/template/small_news_list.htm</result>
+		</action>
+		<action name="del_small_news" class="smallNews" method="del">
+			<interceptor-ref name="login" />
+		</action>
+		
+		<!-- 在线图表 -->
+        <action name="boardState" class="boardState">
+            <result name="success" type="freemarker">/template/boardState.htm</result>
+            <interceptor-ref name="login" />
+        </action>
+        <!-- 草稿箱 -->
+       <action name="savedraftbox" class="draftBoxAction" method="saveDraftBox">
+            <result name="input" type="freemarker">/template/exception.htm</result>
+            <interceptor-ref name="login" />
+        </action>
+       <action name="getdraftboxes" class="draftBoxAction" method="getDraftBoxes">
+            <result name="success" type="freemarker">/template/draftbox/draftbox_list.htm</result>
+            <result name="input" type="freemarker">/template/exception.htm</result>
+            <interceptor-ref name="login" />
+       </action>
+       <action name="readdraftbox" class="draftBoxAction" method="readDraftBox">
+            <result name="success" type="freemarker">/template/draftbox/draftbox.htm</result>
+            <result name="input" type="freemarker">/template/exception.htm</result>
+            <interceptor-ref name="login" />
+       </action>
+       <action name="create_tp_from_db" class="draftBoxAction" method="createTpFromDb">
+            <result name="input" type="freemarker">/template/exception.htm</result>
+            <interceptor-ref name="login" />
+       </action>
+       <action name="save_again_db" class="draftBoxAction" method="saveAgainDraftBox">
+       	   <result name="getdraftboxes" type="redirect-action">
+				<param name="actionName">error</param>
+				<param name="namespace">/</param>
+			</result>
+            <result name="input" type="freemarker">/template/exception.htm</result>
+            <interceptor-ref name="login" />
+       </action>
+       <action name="del_draftboxes" class="draftBoxAction" method="delDraftBoxes">
+            <result name="input" type="freemarker">/template/exception.htm</result>
+            <interceptor-ref name="login" />
+       </action>
+      
+      		<!-- 论坛首页 -->
+		<action name="gettopic" class="getTopicAction">
+			<result name="success" type="freemarker">/template/gettopic.htm</result>
+		</action>
+      
+	</package>
+	<package name="webMaster" namespace="/webMaster" extends="default">
+	   <!-- 斑竹投票 -->
+       <action name="webMasterVote" class="voteWebmasterManage">
+            <result name="success" type="freemarker">/template/vote/vote.htm</result>
+       </action>
+       <action name="webMasterVoteDo" class="voteWebmasterManage" method="VoteDo">
+            <interceptor-ref name="login" />
+       </action>
+     </package>
+
+	<include file="xwork-admin.xml" />
+	<include file="xwork-accounts.xml" />
+	<include file="xwork-market.xml" />
+	<include file="xwork-message.xml" />
+	<include file="xwork-bank.xml" />
+	<include file="xwork-user.xml" />
+	<include file="xwork-diary.xml"/>
+	<include file="xwork-hongbao.xml"/>
+	<!--添加对外接口 by：集成显卡 2011.5.1-->
+	<include file="xwork-webservice.xml"/>
+	<!--雨无声日历-->
+	<include file="xwork-calendar.xml"/>
+	<!--雨无声论坛活动-->
+	<include file="xwork-activity.xml"/>
+	<!-- 论坛手机版 longkai@2012-07-31 -->
+	<include file="xwork-wap.xml" />
+	<!-- 其他 longkai@2012-09-14 -->
+	<include file="xwork-others.xml" />
+	
+</xwork>

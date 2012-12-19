@@ -1,0 +1,73 @@
+<@base.header title=" 发布小字报 -- 论坛：${model.forum.name}" />
+<@base.body location="发布小字报">
+  <div style="display:none;"><div id="submitWaiting"></div></div>
+	<@base.main location="发布小字报">
+		<@base.forum_info/>
+		<form method="post" id="post_form" action="/create_small_news_do.yws"  onKeyDown="if(event.ctrlKey &amp;&amp; event.keyCode==13) {submitTopic(); return false;}">
+			<div class="list_title_01">&nbsp;</div>
+			<div class="list_title_02"><strong>发布小字报</strong><br />${validMsg}</div>
+		  	<div class="kuang">
+				<table width="830" border="0" align="center" class="botom_line">
+					<tr>
+						<td width="250" height="30" align="center" class="right_line">标题：</td>
+					  <td width="570" align="left">&nbsp;&nbsp;
+					  <input name="title" class="input_new1" id="title" title='标题是必须填写的哦~' value="${model.title?default("")}" size="50" maxlength="30" /></td>
+				  </tr>
+				</table>
+			    <table width="830" border="0" align="center" class="botom_line">
+			    
+			   <tr>
+                    <td width="250" height="30" align="center" class="right_line">
+						内容： <br /> 
+					</td>
+                    <td width="570" align="left">&nbsp;&nbsp;
+                    <textarea style="width: 500px; height: 170px; font-size: 12px;" name="content" cols="60" rows="10">${model.content?default("")}</textarea></td>
+             </tr>
+                </table>
+          <table width="830" border="0" align="center" class="botom_line">
+                        <tr>
+          <td width="444" align="left" class="uline"><img height="20" src="images/bullet4.gif" width="20" 
+                  align="absmiddle" /> <b>提示说明</b></td>
+        </tr>
+        <tr>
+          <td align="left">1、禁止发布含有广告、交易、交友、无意义类似灌水性质及一切违反相关法律法规及论坛规则等内容的小字报。</td>
+        </tr>
+        <tr>
+          <td align="left">2.经验值达到高级水手及以上级别（≥240），才有权限发表小字报。</td>
+        </tr>
+        <tr>
+          <td align="left">3.同一ID，48小时内只能存在一张小字报。</td>
+        </tr>
+        <tr>
+          <td align="left">4. 论坛管理员以及发表小字报的本人具有删除权限，版主没有对本版的小字报的操作权限。</td>
+        </tr>
+        <tr>
+          <td align="left">5.网管部将依据“小字报发布规则”对小字报进行严格的监督管理，一旦发现有违规者将给于警告或严重警告处罚，严重违规者将直接封ID处理。</td>
+        </tr>
+        <tr>
+          <td align="left">6.本规定即2010年5月14日起开始实行，所有解释权归雨无声网站网管部所有。</td>
+        </tr>
+        <tr>
+          <td align="left">7.在本版发布小字报将您将付1000XDB， 48小时内发表的小字报将随机抽取10条滚动显示于论坛上。</td>
+        </tr>
+        <tr>
+          <td align="left">8.*HTML标签： 不可用。</td>
+        </tr>
+        <tr>
+          <td align="left">9.*UBB 标签： 不可用。</td>
+        </tr>
+        <tr>
+          <td align="left">9.*内容不得超过500字</td>
+        </tr>
+    </table>
+				</div>
+			  <div class="list_title_03">
+					<input name="forumId" type="hidden" id="forumId" value="${model.forumId}" />
+				<input type="submit" class="newtopic_submit" name="Button3" value=" 提 交 "/>&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="button" class="newtopic_submit" name="Button2" value="返回前页" onclick="javascript:history.go(-1)" />
+			  </div>		
+			<div class="list_title_04" align="left"></div>
+		</form>
+        
+	</@base.main>
+</@base.body>
