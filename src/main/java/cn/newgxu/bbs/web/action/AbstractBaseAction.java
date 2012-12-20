@@ -304,6 +304,19 @@ public abstract class AbstractBaseAction extends ActionSupport implements
 	}
 	
 	protected void activity() {
+		if (getRequest().getRequestURI().contains("forum.yws")) {
+			setAttrbute();
+			return;
+		}
+		
+		String activity = getRequest().getParameter("activity");
+		if (activity == null || activity.trim().equals("")) {
+			return;
+		}
+		setAttrbute();
+	}
+	
+	private void setAttrbute() {
 		if (Doomsday.rightnow()) {
 			getRequest().setAttribute("activity", Doomsday.getName());
 		} else if (Christmas.rightnow()) {

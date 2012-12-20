@@ -16,9 +16,9 @@
 
 			<span class="right">
 
-				<#if activity == 'Doomsday'>
+				<#if activity?exists && activity == 'Doomsday'>
 					<img src="image/grass2.gif" width="15" height="22"/><a href="/create_topic.yws?forumId=${forumId}&activity=Doomsday"><strong style="color:#92af28;">发【末日心语】帖</strong></a>
-				<#elseif activity == 'Christmas'>
+				<#elseif activity?exists && activity == 'Christmas'>
 					<img src="image/grass2.gif" width="15" height="22"/><a href="/create_topic.yws?forumId=${forumId}&activity=Christmas"><strong style="color:#92af28;">发【圣诞之情】帖</strong></a>
 				</#if>
 
