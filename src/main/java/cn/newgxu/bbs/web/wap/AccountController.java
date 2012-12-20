@@ -5,9 +5,8 @@ import static cn.newgxu.bbs.common.Constants.ACCOUNT_STATUS_NORMAL;
 import static cn.newgxu.bbs.common.Constants.ACCOUNT_STATUS_UNPAST;
 import static cn.newgxu.bbs.common.Constants.ACCOUNT_STATUS_WAIT;
 
-import java.lang.reflect.Field;
-
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -27,8 +26,8 @@ public class AccountController extends AbstractBaseAction {
 
 	private static final long serialVersionUID = 8989419100072388374L;
 	
-	private static Logger l = Logger.getLogger(AccountController.class);
-
+	private static final Logger l = LoggerFactory.getLogger(AccountController.class);
+	
 	private LoginModel model = new LoginModel();
 	private String message = "";
 
@@ -54,14 +53,7 @@ public class AccountController extends AbstractBaseAction {
 	}
 
 	public String loginProcess() throws IllegalArgumentException, IllegalAccessException {
-		l.debug("username: " + model.getUsername());
-		l.debug("password: " + model.getPassword());
-		Field[] fields = model.getClass().getDeclaredFields();
-		for (int i = 0; i < fields.length; i++) {
-			fields[i].setAccessible(true);
-			System.out.println(fields[i].getName() + ": " + fields[i].get(model));
-		}
-		l.debug(model == null);
+		l.debug("用户手机登录！ username: {}, password: {}", model.getUsername(), model.getPassword());
 		try {
 			model.setIp(getRequest().getRemoteAddr());
 			User user = super.userService.loginWithoutValidCode(model);

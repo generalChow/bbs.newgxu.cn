@@ -19,7 +19,9 @@ package cn.newgxu.bbs.common.interceptor;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 import cn.newgxu.bbs.common.Authorization;
 import cn.newgxu.bbs.common.AuthorizationManager;
@@ -39,7 +41,7 @@ public class HitsInterceptor implements Interceptor {
 
 	private static final long	serialVersionUID	= 1L;
 	
-	private static Logger		l					= Logger.getLogger(HitsInterceptor.class);
+	private static final Logger l = LoggerFactory.getLogger(HitsInterceptor.class);
 	
 	private UserService userService;
 
@@ -56,7 +58,7 @@ public class HitsInterceptor implements Interceptor {
 	}
 
 	public String intercept(ActionInvocation invocation) throws Exception {
-		l.info("hit++");
+		l.info("访问wap页面计数器+1");
 
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		Authorization auth = AuthorizationManager.getAuthorization(session);

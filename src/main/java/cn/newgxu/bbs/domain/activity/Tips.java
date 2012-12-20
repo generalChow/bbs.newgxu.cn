@@ -11,7 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import cn.newgxu.bbs.common.Pagination;
 import cn.newgxu.bbs.common.util.TimerUtils;
@@ -35,7 +36,7 @@ import cn.newgxu.jpamodel.JPAEntity;
 public class Tips extends JPAEntity{
 	private static final long serialVersionUID=2137273424343L;
 	
-	private static Logger l = Logger.getLogger(Tips.class);
+	private static final Logger l = LoggerFactory.getLogger(Tips.class);
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -143,9 +144,10 @@ public class Tips extends JPAEntity{
 			// 如果是过期了，就返回当前的
 			return getCurrent();
 		}
-		l.debug("距离" + pattern + "活动还有" + offset + "天！");
+		l.info("距离 ”{}“活动还有 {} 天！", pattern, offset);
 		String name = pattern + offset;
 		String hql = "from Tips t where t.ifLive = true and t.name like '%?%' order by t.addTime desc".replace("?", name);
 		return (Tips) Q(hql).setFirstResult(0).setMaxResults(1).getSingleResult();
 	}
+	
 }

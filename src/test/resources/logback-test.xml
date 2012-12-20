@@ -1,0 +1,135 @@
+<configuration debug="FALSE" scan="true">
+
+	<contextName>log</contextName>
+
+	<property name="logHome" value="src/test/resources/logs" />
+
+	<!-- 
+		Insert the current time formatted as "yyyyMMdd'T'HHmmss" under the 
+		key "bySecond" into the logger context. This value will be available to all 
+		subsequent configuration elements.
+	-->
+	<timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss" />
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- 
+			encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
+			by default
+		-->
+		<encoder>
+			<pattern>
+				%d{HH:mm:ss.SSS} %.-1level-> %-38msg %thread\(\)@%logger{13}:%line%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="STDERR" class="ch.qos.logback.core.ConsoleAppender">
+		<target>System.err</target>
+		<!-- 
+			encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
+			by default
+		-->
+		<encoder>
+			<pattern>
+				%d{HH:mm:ss.SSS} %.5level-> %-38msg %thread\(\)@%logger{13}:%line%n
+			</pattern>
+		</encoder>
+		
+		<!-- deny all events with a level below INFO, that is TRACE and DEBUG -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>WARN</level>
+		</filter>
+	</appender>
+
+	<!--
+		<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+			<file>${logHome}\${bySecond}.log</file> 
+			<encoder>
+				<pattern>
+					%date %level [%thread] %logger{10} [%file:%line] %msg%n 
+				</pattern> 
+			</encoder> 
+		</appender>
+	 -->
+	<!--
+	<appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+		<smtpHost>smtp.gmail.com</smtpHost>
+		<smtpPort>465</smtpPort>
+		<SSL>true</SSL>
+		<username>YOUR_USERNAME@gmail.com</username>
+		<password>YOUR_GMAIL_PASSWORD</password>
+
+		<to>EMAIL-DESTINATION</to>
+		<to>ANOTHER_EMAIL_DESTINATION</to> additional destinations are possible
+		<from>YOUR_USERNAME@gmail.com</from>
+		<subject>TESTING: %logger{20} - %m</subject>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%date %-5level %logger{35} - %message%n</pattern>
+		</layout>
+	</appender>
+	-->
+
+	<appender name="DAILYFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>
+				${logHome}/%d{yyyy/MM}/%d{dd}-%i.txt
+			</fileNamePattern>
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>30</maxHistory>
+
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 10MB -->
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+
+		<encoder>
+			<pattern>
+				%d{HH:mm:ss.SSS} %5level-> %-38msg %thread\(\)@%logger{38}:%line%n
+			</pattern>
+		</encoder>
+		
+		<!-- deny all events with a level below INFO, that is TRACE and DEBUG -->
+			<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+				<level>INFO</level>
+			</filter>
+
+		<!-- 
+			<filter class="ch.qos.logback.classic.filter.LevelFilter"> 
+				<level>ERROR</level> 
+				<onMatch>ACCEPT</onMatch>
+				<onMismatch>DENY</onMismatch>
+			</filter>
+		-->
+		<!-- 
+			<filter class="ch.qos.logback.classic.filter.LevelFilter">
+				<level>WARN</level> 
+				<onMatch>NEUTRAL</onMatch>
+				<onMismatch>DENY</onMismatch>
+			</filter>
+		-->
+	</appender>
+
+	<logger name="cn.newgxu" level="TRACE" additivity="true">
+		<!-- <appender-ref ref="FILE" /> -->
+	</logger>
+	
+	<!-- <logger name="com.foo.bar" level="DEBUG" /> -->
+	<logger name="org" level="INFO" />
+	<logger name="com.opensymphony" level="INFO" />
+	<!--
+		<logger name="org.hibernate" level="INFO" />
+		<logger name="org.springframework" level="INFO" />
+	-->
+	
+	<!-- <logger name="com.foo.bar" level="DEBUG" /> -->
+
+	<!-- Strictly speaking, the level attribute is not necessary since -->
+	<!-- the level of the root level is set to DEBUG by default. -->
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="DAILYFILE" />
+		<appender-ref ref="STDERR" />
+	</root>
+</configuration>

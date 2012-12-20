@@ -1,6 +1,7 @@
 package cn.newgxu.bbs.web.wap;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -15,8 +16,8 @@ public class IndexController extends AbstractBaseAction {
 
 	private static final long serialVersionUID = 7993653718783286621L;
 	
-	private static Logger l = Logger.getLogger(IndexController.class);
-
+	protected static final Logger l = LoggerFactory.getLogger(IndexController.class);
+	
 	private IndexModel model = new IndexModel();
 	
 	public void setModel(IndexModel model) {
@@ -29,8 +30,7 @@ public class IndexController extends AbstractBaseAction {
 
 	@Override
 	public String execute() throws Exception {
-		l.info("This is a info test!");
-		l.info("A user coming!");
+		l.info("访问论坛首页++！！！");
 		model.setAreas(Area.getAreas());
 		model.setLatestTopics(Topic.getLatesTopics(10));
 		return SUCCESS;

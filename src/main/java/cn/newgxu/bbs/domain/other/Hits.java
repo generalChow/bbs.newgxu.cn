@@ -26,7 +26,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import cn.newgxu.jpamodel.JPAEntity;
 
@@ -43,8 +44,8 @@ public class Hits extends JPAEntity {
 
 	private static final long	serialVersionUID	= 1L;
 	
-	private static Logger l = Logger.getLogger(Hits.class);
-
+	private static final Logger l = LoggerFactory.getLogger(Hits.class);
+	
 	private static Hits lastHits;
 	
 	@Id
@@ -99,8 +100,8 @@ public class Hits extends JPAEntity {
 		Calendar last = Calendar.getInstance();
 		last.setTime(lastHits.getDate());
 		
-		l.info("last time: " + last.getTime());
-		l.info("this time: " + now.getTime()); 
+		l.info("last time: {}", last.getTime());
+		l.info("this time: {}", now.getTime()); 
 		
 		if (now.get(Calendar.DATE) != last.get(Calendar.DATE)) {
 			lastHits = new Hits();
