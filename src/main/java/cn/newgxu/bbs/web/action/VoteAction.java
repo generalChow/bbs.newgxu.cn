@@ -28,7 +28,7 @@ public class VoteAction extends AbstractBaseAction {
 
 	@Override
 	public String execute() throws Exception {
-		signOnlineUser("Í¶Æ±Ìá½»ÖĞ...");
+		signOnlineUser("æŠ•ç¥¨æäº¤ä¸­...");
 		model.setUser(getUser());
 		MessageList m = new MessageList();
 		try {
@@ -36,15 +36,15 @@ public class VoteAction extends AbstractBaseAction {
 			m.setUrl("/topic.yws?forumId=${forumId}&topicId=${topicId}",
 					MessageList.P("${forumId}", model.getForumId()),
 					MessageList.P("${topicId}", model.getTopicId()));
-			m.addMessage("<b>Í¶Æ±³É¹¦£¡</b>");
-			m.addMessage("<a href='/forum.yws?forumId=${forumId}'>·µ»ØÖ÷ÌâÁĞ±í</a>",
+			m.addMessage("<b>æŠ•ç¥¨æˆåŠŸï¼</b>");
+			m.addMessage("<a href='/forum.yws?forumId=${forumId}'>è¿”å›ä¸»é¢˜åˆ—è¡¨</a>",
 					MessageList.P("${forumId}", model.getForumId()));
 			m.addMessage(
-							"<a href='/topic.yws?forumId=${forumId}&topicId=${topicId}'>²é¿´ÎÒ¸Õ²ÅÍ¶Æ±µÄÖ÷Ìâ</a>",
+							"<a href='/topic.yws?forumId=${forumId}&topicId=${topicId}'>æŸ¥çœ‹æˆ‘åˆšæ‰æŠ•ç¥¨çš„ä¸»é¢˜</a>",
 							MessageList.P("${forumId}", model.getForumId()),
 							MessageList.P("${topicId}", topic.getId()));
 			Util.putMessageList(m, getSession());
-			log.debug("Í¶Æ±³É¹¦£¡");
+			log.debug("æŠ•ç¥¨æˆåŠŸï¼");
 			return SUCCESS;
 		} catch (BBSException e) {
 			log.debug(e);

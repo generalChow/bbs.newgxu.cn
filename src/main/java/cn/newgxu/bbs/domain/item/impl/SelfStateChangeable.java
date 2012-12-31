@@ -2,6 +2,7 @@ package cn.newgxu.bbs.domain.item.impl;
 
 import cn.newgxu.bbs.common.exception.BBSException;
 import cn.newgxu.bbs.domain.item.StateBehavior;
+import cn.newgxu.bbs.domain.market.Item;
 import cn.newgxu.bbs.domain.market.ItemLine;
 import cn.newgxu.bbs.domain.user.User;
 
@@ -20,11 +21,16 @@ public class SelfStateChangeable implements StateBehavior {
 //		self.save();
 	/*2011-2-20注释*/	/**由于数据库字段标准为无符号整型，所以不能插入负数*/
 		User self = itemLine.getUser();
-		self.addPower(itemLine.getItem().getSelfPower());
-		self.addMoney(itemLine.getItem().getSelfMoney());
-		if(self.getCurrentPower()>self.getMaxPower()){
-			self.setCurrentPower(self.getMaxPower());
+//		2012-12-31，增加了用户体力清零功能。
+		if (itemLine.getItem().getObjectPower() == Item.TRUANCATE_POWER) {
+			self.setCurrentPower(0);
+		} else {
+			self.addPower(itemLine.getItem().getSelfPower());
+			if(self.getCurrentPower()>self.getMaxPower()){
+				self.setCurrentPower(self.getMaxPower());
+			}
 		}
+		self.addMoney(itemLine.getItem().getSelfMoney());
 		self.addExp(itemLine.getItem().getObjectExp());
 		self.addBadboy(itemLine.getItem().getObjectBadboy());
 		self.save();

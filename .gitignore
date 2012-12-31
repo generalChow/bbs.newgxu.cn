@@ -9,3 +9,4 @@ src/main/webapp/upload/*
 *swp
 *.~
 *.swp
+rebel.xml

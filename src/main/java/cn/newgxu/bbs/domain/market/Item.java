@@ -34,6 +34,9 @@ import cn.newgxu.jpamodel.ObjectNotFoundException;
 public class Item extends JPAEntity {
 
 	private static final long serialVersionUID = 7581594140505573073L;
+	
+	/** 一个特殊值，清零用户的体力（因为数据库为无符号整形不允许插入负值），so。。。 */
+	public static final int TRUANCATE_POWER = 1000;
 
 	@Id
 	@Column(name = "id")

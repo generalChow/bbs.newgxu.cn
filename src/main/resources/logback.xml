@@ -3,9 +3,9 @@
 	<contextName>log</contextName>
 
 	<!-- server -->
-	<property name="logHome" value="/newgxu/tomcat/logs/" />
+	<!-- <property name="logHome" value="/newgxu/tomcat/logs/" /> -->
 	<!-- local -->
-	<!-- <property name="logHome" value="src/test/resources/logs" /> -->
+	<property name="logHome" value="src/test/resources/logs" />
 
 	<!-- 
 		Insert the current time formatted as "yyyyMMdd'T'HHmmss" under the 
@@ -112,17 +112,17 @@
 	<!-- the level of the root level is set to DEBUG by default. -->
 	
 	<!-- local -->
-	<!--
+	
 		<root level="DEBUG">
 			<appender-ref ref="STDOUT" />
 			<appender-ref ref="DAILYFILE" />
 			<appender-ref ref="STDERR" />
 		</root>
-	-->
+	
 	<!-- server -->
 	<root level="INFO">
 		<!-- <appender-ref ref="STDOUT" /> -->
-		<appender-ref ref="DAILYFILE" />
+		<!-- <appender-ref ref="DAILYFILE" /> -->
 		<!-- <appender-ref ref="STDERR" /> -->
 	</root>
 </configuration>
