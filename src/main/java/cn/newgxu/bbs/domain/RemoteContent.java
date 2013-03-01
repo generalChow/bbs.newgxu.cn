@@ -335,7 +335,7 @@ public class RemoteContent {
 	}
 
 	public static void main(String[] args) throws Exception {
-		System.out.println(getTwitter("").size());
+		System.out.println(getTwitter("longkai").size());
 //		List<RemoteContent> twitters = getTwitter("longkai");
 //		for (RemoteContent content : twitters) {
 //			System.out.println(content.getUrl());

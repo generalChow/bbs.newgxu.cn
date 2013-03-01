@@ -30,11 +30,12 @@ public class TestAction extends AbstractBaseAction {
 //		Message.sendMessage("恭喜您成为上周最活跃榜单前十名", "恭喜您成为本周新星榜前三位，现给予”加苦王老吉”一杯，希望您再接再厉。欲了解“新星”排行榜的排名，<a href='/user/users.yws?type=6'>点我~</a>", 1, users.subList(3, 10), User.get(0), "亲爱的雨无声论坛网友！");
 		
 //		userService.updateLastWeekExp();
-		Calendar deadline = Calendar.getInstance();
-		deadline.set(Calendar.DAY_OF_MONTH, 22);
-		String pattern = "cet";
-		Tips.getRandomHolidayImage(deadline, pattern);
-		
+//		Calendar deadline = Calendar.getInstance();
+//		deadline.set(Calendar.DAY_OF_MONTH, 22);
+//		String pattern = "cet";
+//		Tips.getRandomHolidayImage(deadline, pattern);
+		System.out.println("hello");
+		model.setPage(100);
 		return SUCCESS;
 	}
 	

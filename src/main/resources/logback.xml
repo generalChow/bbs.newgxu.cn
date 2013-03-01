@@ -5,7 +5,7 @@
 	<!-- server -->
 	<!-- <property name="logHome" value="/newgxu/tomcat/logs/" /> -->
 	<!-- local -->
-	<property name="logHome" value="src/test/resources/logs" />
+	<property name="logHome" value="target/logs" />
 
 	<!-- 
 		Insert the current time formatted as "yyyyMMdd'T'HHmmss" under the 

@@ -2,10 +2,8 @@ package cn.newgxu.bbs.web.cache;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
 
 import cn.newgxu.bbs.common.Pagination;
 import cn.newgxu.bbs.common.config.ForumConfig;
@@ -264,10 +262,10 @@ public class BBSCache {
 	public static void buildTipCache() {
 		List<Tips> list = new ArrayList<Tips>();
 //		Tips tip = Tips.getCurrent();
-		Calendar deadline = Calendar.getInstance();
-		deadline.set(Calendar.DAY_OF_MONTH, 22);
-		String pattern = "cet";
-		Tips tip = Tips.getRandomHolidayImage(deadline, pattern);
+//		Calendar deadline = Calendar.getInstance();
+//		deadline.set(Calendar.DAY_OF_MONTH, 22);
+//		Tips tip = Tips.getRandomHolidayImage(deadline, pattern);
+		Tips tip = Tips.getTodayImage();
 
 		if (tip != null)
 			list.add(tip);

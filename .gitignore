@@ -9,4 +9,5 @@ src/main/webapp/upload/*
 *swp
 *.~
 *.swp
+.springBeans
 rebel.xml

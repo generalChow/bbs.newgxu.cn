@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.*;
 
 import java.util.Calendar;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class TimerUtilsTest {
@@ -20,6 +21,7 @@ public class TimerUtilsTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testBefore() {
 		Calendar c = Calendar.getInstance();
 		c.set(Calendar.DATE, 18);

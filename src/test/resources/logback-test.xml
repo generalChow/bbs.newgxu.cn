@@ -2,7 +2,7 @@
 
 	<contextName>log</contextName>
 
-	<property name="logHome" value="src/test/resources/logs" />
+	<property name="logHome" value="target/logs" />
 
 	<!-- 
 		Insert the current time formatted as "yyyyMMdd'T'HHmmss" under the 

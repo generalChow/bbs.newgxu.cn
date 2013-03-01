@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1//EN" 
+"http://www.opensymphony.com/xwork/xwork-1.1.dtd">
+<xwork>
+
+	<package name="mobile" extends="default" namespace="/m">
+		<global-results>
+			<result name="error" type="freemarker">/template/mobile/msg.html</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception" />
+		</global-exception-mappings>
+		
+		<action name="test" class="mAccountController">
+			<result type="freemarker">/template/mobile/test.jsp</result>
+		</action>
+		
+		<action name="login" class="mAccountController" method="loginPage">
+			<result type="freemarker">/template/mobile/login.html</result>
+		</action>
+		
+		<action name="do_login" class="mAccountController" method="login">
+			<result type="redirect-action">
+				<param name="actionName">index</param>
+			</result>
+			<result name="input">/template/mobile/msg.html</result>
+		</action>
+		
+		<action name="index" class="mIndexController">
+			<result type="freemarker">/template/mobile/index.html</result>
+		</action>
+	</package>
+		
+</xwork>

@@ -3,6 +3,9 @@ package cn.newgxu.bbs.web.action;
 import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import cn.newgxu.bbs.common.staticHtml.StaticManager;
 import cn.newgxu.bbs.common.util.Util;
 import cn.newgxu.bbs.domain.Area;
@@ -27,6 +30,8 @@ import com.opensymphony.webwork.ServletActionContext;
 public class IndexAction extends AbstractBaseAction {
 
 	private static final long serialVersionUID = -4853741132558481049L;
+	
+	private static final Logger l = LoggerFactory.getLogger(IndexAction.class);
 
 	private IndexModel model = new IndexModel();
 
@@ -82,6 +87,8 @@ public class IndexAction extends AbstractBaseAction {
 			List<RemoteContent> finds = BBSCache.getFindsCache();
 //			List<RemoteContent> twitters = BBSCache.getTwittersCache(userStatus.getUsername());
 			List<RemoteContent> twitters = RemoteContent.getTwitter(userStatus.getUsername());  // 微博更新快，不需要缓存
+			
+			l.debug("user's name: {}， twitters' length: {}", userStatus.getUsername(), twitters.size());
 			
 			List<User> lastWeekMostActiveUsers = userService.getUsers(6, null);
 			

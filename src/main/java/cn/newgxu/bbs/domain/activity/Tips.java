@@ -150,4 +150,42 @@ public class Tips extends JPAEntity{
 		return (Tips) Q(hql).setFirstResult(0).setMaxResults(1).getSingleResult();
 	}
 	
+	/**
+	 * 抓取当日的登陆页面显示图片，当日的图片名称包含yyyy-M-d这种模式，若没有，则显示默认的图片
+	 * @since 2013-01-27
+	 */
+	public static Tips getTodayImage() {
+		Calendar now = Calendar.getInstance();
+		int year = now.get(Calendar.YEAR);
+		int month = now.get(Calendar.MONTH) + 1;
+		int day = now.get(Calendar.DAY_OF_MONTH);
+		StringBuilder sb = new StringBuilder();
+		sb.append(year).append("-").append(month).append("-").append(day);
+		String hql = "from Tips t where t.imgPath like '%?%'".replace("?", sb.toString());
+		Tips tip = null;
+		try {
+			tip = (Tips) Q(hql).setFirstResult(0).setMaxResults(1).getSingleResult();
+		} catch (Exception e) {
+			l.error("查找当日图片失败!", e);
+			return fetchDefaultImage();
+		}
+		return tip;
+	}
+	
+	/**
+	 * 抓取默认的登陆显示图片
+	 * @since 2013-01-27
+	 */
+	public static Tips fetchDefaultImage() {
+//		把默认的图片名称设置为 _default_
+		String hql = "FROM Tips t where t.imgPath like '%_default_%'";
+		Tips tip = null;
+		try {
+			tip = (Tips) Q(hql).setFirstResult(0).setMaxResults(1).getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return tip;
+	}
+	
 }

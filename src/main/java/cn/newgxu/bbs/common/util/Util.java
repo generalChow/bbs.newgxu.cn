@@ -296,6 +296,10 @@ public class Util {
 	public static void setWebApplicationContext(WebApplicationContext context) {
 		wac = context;
 	}
+	
+	public static WebApplicationContext getWebApplicationContext() {
+		return wac;
+	}
 
 	public static Object getBean(String name) {
 		return wac.getBean(name);

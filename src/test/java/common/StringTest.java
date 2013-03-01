@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.junit.Test;
 
+import cn.newgxu.ng.util.RegexUtils;
+
 public class StringTest {
 
 	@Test
@@ -16,6 +18,15 @@ public class StringTest {
 	public void testSpilt() {
 		String s = "nice#!";
 		assertThat(s.split("#")[0], is("nice"));
+	}
+	
+	@Test
+	public void testCase() {
+		String s1 = "true";
+		String s2 = "TRUE";
+		String regex = "(?i)true";
+		assertThat(RegexUtils.matches(s1, regex), is(true));
+		assertThat(RegexUtils.matches(s2, regex), is(true));
 	}
 
 }

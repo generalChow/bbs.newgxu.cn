@@ -91,6 +91,15 @@ id="WebApp_ID" version="2.5">
 		<url-pattern>*.ajax</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>mvcRequest</servlet-name>
+		<servlet-class>cn.newgxu.ng.core.mvc.MVCRequest</servlet-class>		
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mvcRequest</servlet-name>
+		<url-pattern>/ng/*</url-pattern>
+	</servlet-mapping>
+	
 	<listener>
 		<listener-class>cn.newgxu.bbs.common.util.UpdateLastWeekExp</listener-class>
 	</listener>
