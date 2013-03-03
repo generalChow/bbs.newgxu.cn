@@ -79,6 +79,7 @@ public class HelloAjaxHandler {
 	@MVCMapping("/inject")
 //	@MVCParamMapping([],[])
 	public String injectParam(Bean b, @MVCParamMapping("bool") boolean bool) {
+		System.out.println(bool);
 		System.out.println(b);
 		return "t.jsp";
 	}

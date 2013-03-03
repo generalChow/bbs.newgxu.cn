@@ -70,7 +70,7 @@
 		<servlet-api.version>3.0.1</servlet-api.version>
 		<mysql.jdbc.version>5.1.22</mysql.jdbc.version>
 		<jetty.version>8.1.8.v20121106</jetty.version>
-		<java.version>1.7</java.version>
+		<java.version>1.6</java.version>
 		<javax.mail.version>1.4.5</javax.mail.version>
 		
 		<querytool.version>1.0-SNAPSHOT</querytool.version>

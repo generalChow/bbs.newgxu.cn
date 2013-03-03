@@ -54,12 +54,13 @@ public class StringUtils {
 	 * @return the converted object, or, you know, null.
 	 */
 	public static Object parse(Class<?> type, String str) {
+		L.debug("convert type: {}, value: {}", type, str);
 //		now, let' s jduge the type and converted!
 		Object value = null;
 		
 //		number...
 		if (real(str)) {
-			value = parseNumber(Integer.class, str);
+			value = parseNumber(type, str);
 		} else if (RegexUtils.matches(str, ".")) {
 			if (type.equals(char.class) || type.equals(Character.class)) {
 				value = str.charAt(0);
@@ -95,6 +96,7 @@ public class StringUtils {
 //			if the type is String and can' t be converted to date and time, do nothing!
 			value = str;
 		}
+		L.debug("return value: {}", value);
 		return value;
 	}
 	
@@ -112,6 +114,7 @@ public class StringUtils {
 				value = Integer.parseInt(str);
 			} catch (NumberFormatException e) {
 				value = new Integer(0);
+				L.debug("hear");
 			}
 		} else if (type.equals(long.class) || type.equals(Long.class)) {
 			try {
@@ -180,7 +183,6 @@ public class StringUtils {
 	 * @param name
 	 */
 	public static String setter(String name) {
-		L.debug("name: {}", name);
 		return "set" + RegexUtils.fetchFirst(name, "^.").toUpperCase() 
 				+ name.substring(1, name.length());
 	}

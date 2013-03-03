@@ -111,8 +111,12 @@ public class MVCProcess {
 					MVCMapping mapping = method.getAnnotation(MVCMapping.class);
 					String[] paths = mapping.value();
 					for (int j = 0; j < paths.length; j++) {
-						mappedMethods.put(paths[j], method.getName());
-						handlers.put(paths[j], handler);
+						String realPath = mapping.namespace() + paths[j];
+//						可能会出现两个斜杠的情况。
+						realPath = realPath.replace("//", "/");
+						mappedMethods.put(realPath, method.getName());
+						handlers.put(realPath, handler);
+						L.debug("path:{}, handled by {}' s {} method", realPath, handler, method.getName());
 					}
 					methodParams.put(handler + "." + method.getName(), method.getParameterTypes());
 //					请求参数注解映射
@@ -120,7 +124,6 @@ public class MVCProcess {
 					injectedParams.put(handler + "." + method.getName(), paramsMapping);
 					
 					L.debug("请求参数映射  方法：{} 映射：{}", method.getName(),  paramsMapping);
-					L.debug("path:{}, handled by {}' s {} method", paths, handler, method.getName());
 				} else {
 //				暂存异常处理器索引
 					stageExceptionHandlers(exceptionHandleMethods, method);
@@ -173,7 +176,7 @@ public class MVCProcess {
 		String path = request.getRequestURI();
 		L.info("ajax 请求映射：{} ", path);
 		try {
-			process(request, response, path.replaceFirst("/ng", ""));
+			process(request, response, path);
 		} catch (MVCException e) {
 			globalExceptionHandler(request, response, e);
 		}

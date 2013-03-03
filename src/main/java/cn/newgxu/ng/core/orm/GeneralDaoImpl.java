@@ -86,7 +86,7 @@ public abstract class GeneralDaoImpl<T> implements GenericDao<T> {
 
 	@Override
 	public Pagination<T> list(int NO, int howMany, Class<T> type) {
-		Pagination<T> p = new Pagination<>(NO, howMany, this.size(type));
+		Pagination<T> p = new Pagination<T>(NO, howMany, this.size(type));
 //		如果用户加载的页码已经超过了最大页码，那就不加载啦！
 		if (p.getTotal() < NO) {
 			return p;
@@ -111,7 +111,7 @@ public abstract class GeneralDaoImpl<T> implements GenericDao<T> {
 	protected <X> Pagination<X> list(String hql, int offset, int size, Class<X> type, Object...objects) {
 		l.debug("{}", objects);
 		int total = this.executeQuery("SELECT COUNT(t.id) " + hql, Long.class, objects).intValue();;
-		Pagination<X> p = new Pagination<>(offset, size, total);
+		Pagination<X> p = new Pagination<X>(offset, size, total);
 		return p.setList(this.queryForList(hql, type, p.getBeginRow(), size, objects));
 	}
 	
