@@ -326,6 +326,7 @@ public class MVCProcess {
 			} else if (type.equals(HttpServletResponse.class)) {
 				injectedParams[i] = response;
 			} else if (type.equals(HttpSession.class)) {
+//				注意，这个session，如果不存在，就会新建一个
 				injectedParams[i] = request.getSession();
 			} else if (type.equals(Model.class)) {
 //				注入模型
@@ -338,10 +339,10 @@ public class MVCProcess {
 			} else if (type.equals(ModelAndView.class)) {
 //				注入视图和模型
 				injectedParams[i] = mav;
-			} else if (type.isPrimitive() || WrapperUtils.isWrapper(type) 
-					|| type.equals(Date.class) || type.equals(String.class)
+			} else if (type.isPrimitive() || type.equals(String.class)
+					|| WrapperUtils.isWrapper(type) || type.equals(Date.class)
 					|| type.getSuperclass().equals(Date.class)) {
-//				如果是基本类型及其包装器类型，字符串，日期，时间等等。
+//				如果是基本类型及其包装器类型，字符串，日期，时间等等，基本类型及其包装器都会有默认值。
 				injectedParams[i] = injectParam(type, requestParams, paramMappings[i], tmpParams);
 			} else {
 //				注入自定义Javabean
@@ -366,7 +367,7 @@ public class MVCProcess {
 			obj = StringUtils.parse(paramType, requestParams.get(paramMapping.value())[0]);
 			L.debug("请求参数绑定 key:{}, value: {}", paramMapping.value(), obj);
 		} else {
-//			在参数类型不相同的时候可用, 因为此时是通过类型判断！
+//			在参数类型不相同的时候可用, 因为此时是通过类型判断！警告，这个算法不够完善，当出现true，flase，1，0，时间日期并且转换类型是字符串的时候容易出错！慎用！
 			for (String key : requestParams.keySet()) {
 				Object tmp = null;
 				if (!set.contains(key)) {

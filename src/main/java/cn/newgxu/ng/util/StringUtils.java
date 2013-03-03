@@ -81,10 +81,17 @@ public class StringUtils {
 					value = str.equalsIgnoreCase("true");
 				}
 			}
-		} else if (DateTime.parsable(str)) {
+		} 
+		
+		if (value != null) {
+			return value;
+		}
+		
+		if (DateTime.parsable(str)) {
 //			date
 			value = parseDateTime(type, str);
 		} else if (type.equals(String.class)) {
+			L.warn("转换类型是字符串：{}", str);
 //			if the type is String and can' t be converted to date and time, do nothing!
 			value = str;
 		}
