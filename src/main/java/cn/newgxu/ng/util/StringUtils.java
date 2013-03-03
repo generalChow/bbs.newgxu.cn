@@ -52,9 +52,14 @@ public class StringUtils {
 	 * @param type desired type.
 	 * @param str string to be converted.
 	 * @return the converted object, or, you know, null.
+	 * @deprecated for some reason(complixity and safety), do not use this, try the enumerated one.
 	 */
+	@Deprecated
 	public static Object parse(Class<?> type, String str) {
 		L.debug("convert type: {}, value: {}", type, str);
+		if (str == null) {
+			
+		}
 //		now, let' s jduge the type and converted!
 		Object value = null;
 		
@@ -97,6 +102,123 @@ public class StringUtils {
 			value = str;
 		}
 		L.debug("return value: {}", value);
+		return value;
+	}
+	
+	/**
+	 * convert the str to the desired type.
+	 * @param clazz
+	 * @param str
+	 * @return success, the obj, or null.
+	 */
+	public static Object convert(Class<?> clazz, String str) {
+		L.info("请求转换开始！type：{}，value：{}", clazz, str);
+		Object obj = null;
+		if (str != null) {
+			if (clazz.equals(String.class)) {
+				obj =  str;
+			} else if (clazz.isPrimitive()) {
+				obj = parsePremitive(clazz, str);
+			} else if (WrapperUtils.isWrapper(clazz)) {
+				obj = parseWrapper(clazz, str);
+			} else {
+				obj = parseDateTime(clazz, str);
+			}
+		} else if (clazz.isPrimitive()) {
+			obj = parsePremitive(clazz, str);
+		}
+		L.info("请求转换结束！结果：{}", obj);
+		return obj;
+	}
+	
+	/**
+	 * parse premitive, if not success, the default value will' be rendered.
+	 * @param clazz
+	 * @param str
+	 */
+	public static Object parsePremitive(Class<?> clazz, String str) {
+		Object value = null;
+		if (clazz.equals(int.class)) {
+			try {
+				value = Integer.parseInt(str);
+			} catch (NumberFormatException e) {
+				value = 0;
+			}
+		} else if (clazz.equals(long.class)) {
+			try {
+				value = Long.parseLong(str);
+			} catch (NumberFormatException e) {
+				value = 0L;
+			}
+		} else if (clazz.equals(boolean.class)) {
+			if (str.length() > 1) {
+				value = str.equalsIgnoreCase("true");
+			} else {
+				value = str.equals("1");
+			}
+		} else if (clazz.equals(float.class)) {
+			try {
+				value = Float.parseFloat(str);
+			} catch (NumberFormatException e) {
+				value = 0F;
+			}
+		} else if (clazz.equals(double.class)) {
+			try {
+				value = Double.parseDouble(str);
+			} catch (NumberFormatException e) {
+				value = 0F;
+			}
+		} else if (clazz.equals(char.class)) {
+			try {
+				value = str.charAt(0);
+			} catch (Exception e) {
+				value = '\0';
+			}
+		} else if (clazz.equals(short.class)) {
+			try {
+				value = Short.parseShort(str);
+			} catch (NumberFormatException e) {
+				value = 0;
+			}
+		} else if (clazz.equals(byte.class)) {
+			try {
+				value = Byte.parseByte(str);
+			} catch (NumberFormatException e) {
+				value = 0;
+			}
+		}
+		return value;
+	}
+	
+	/**
+	 * 解析包装类，注意，解析不了返回null，不会像基本类型那样有默认值。
+	 * @param clazz
+	 * @param str
+	 * @return 解析后的值，解析不了返回null
+	 */
+	private static Object parseWrapper(Class<?> clazz, String str) {
+		Object value = null;
+		if (clazz.equals(Integer.class)) {
+			value = Integer.parseInt(str);
+		} else if (clazz.equals(Long.class)) {
+			value = Long.parseLong(str);
+		} else if (clazz.equals(Boolean.class)) {
+			if (str.length() > 1) {
+				value = str.equalsIgnoreCase("true");
+			} else {
+				value = str.equals("1");
+			}
+		} else if (clazz.equals(Float.class)) {
+			value = Float.parseFloat(str);
+		} else if (clazz.equals(Double.class)) {
+			value = Double.parseDouble(str);
+		} else if (clazz.equals(Character.class)) {
+			value = str.charAt(0);
+		} else if (clazz.equals(Short.class)) {
+			value = Short.parseShort(str);
+		} else if (clazz.equals(Byte.class)) {
+			value = Byte.parseByte(str);
+		}
 		return value;
 	}
 	

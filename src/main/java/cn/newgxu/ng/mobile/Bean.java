@@ -97,17 +97,27 @@ public class Bean {
 //		System.out.println(is2);
 		System.out.println(Arrays.toString(is2));
 		
-		Method[] methods = Bean.class.getMethods();
-		System.out.println(methods.length);
-		List<Method> methods2 = new ArrayList<Method>();
-		for (int i = 0; i < methods.length; i++) {
-			methods2.add(methods[i]);
+//		Method[] methods = Bean.class.getMethods();
+//		System.out.println(methods.length);
+//		List<Method> methods2 = new ArrayList<Method>();
+//		for (int i = 0; i < methods.length; i++) {
+//			methods2.add(methods[i]);
+//		}
+//		
+//		methods = null;
+//		methods = methods2.toArray(new Method[0]);
+//		System.out.println(methods.length);
+//		System.out.println(Arrays.toString(methods));
+//		
+//		System.out.println("".charAt(0));
+		Integer i = null;
+		String s = "123a";
+		try {
+			i = Integer.parseInt(s);
+		} catch (NumberFormatException e) {
+			
 		}
-		
-		methods = null;
-		methods = methods2.toArray(new Method[0]);
-		System.out.println(methods.length);
-		System.out.println(Arrays.toString(methods));
+		System.out.println(i);
 	}
 	
 	

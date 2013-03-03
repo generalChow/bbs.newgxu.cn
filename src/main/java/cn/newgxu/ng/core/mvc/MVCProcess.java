@@ -22,9 +22,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -41,10 +41,12 @@ import org.springframework.web.context.WebApplicationContext;
 import cn.newgxu.bbs.common.util.Util;
 import cn.newgxu.ng.core.mvc.annotation.MVCExceptionpHandler;
 import cn.newgxu.ng.core.mvc.annotation.MVCHandler;
+import cn.newgxu.ng.core.mvc.annotation.MVCInterceptor;
 import cn.newgxu.ng.core.mvc.annotation.MVCMapping;
 import cn.newgxu.ng.core.mvc.annotation.MVCParamMapping;
 import cn.newgxu.ng.util.InfoLevel;
 import cn.newgxu.ng.util.Pigeon;
+import cn.newgxu.ng.util.RegexUtils;
 import cn.newgxu.ng.util.StringUtils;
 import cn.newgxu.ng.util.WrapperUtils;
 
@@ -71,6 +73,8 @@ public class MVCProcess {
 	private static Map<String, MVCParamMapping[]> injectedParams;
 	/** 处理器类与该类所包含异常处理器的映射 */
 	private static Map<String, Method[]> exceptionHandlers;
+	/** 路径与拦截器的映射 */
+	private static Map<String, Class<?>> interceptors;
 
 	private static WebApplicationContext	context;
 	
@@ -83,8 +87,10 @@ public class MVCProcess {
 		methodParams = new HashMap<String, Class<?>[]>();
 		injectedParams = new HashMap<String, MVCParamMapping[]>();
 		exceptionHandlers = new HashMap<String, Method[]>();
+		interceptors = new HashMap<String, Class<?>>();
 		getContext();
 		init();
+		interceptorInit();
 	}
 
 	private static WebApplicationContext getContext() {
@@ -104,14 +110,16 @@ public class MVCProcess {
 			Object obj = handlersBeans.get(handler);
 			Method[] methods = obj.getClass().getMethods();
 			List<Method> exceptionHandleMethods = new ArrayList<Method>();
+			MVCHandler mvcHandler = obj.getClass().getAnnotation(MVCHandler.class);
 			for (int i = 0; i < methods.length; i++) {
 				Method method = methods[i];
+				MVCMapping mapping = method.getAnnotation(MVCMapping.class);
 				if (method.isAnnotationPresent(MVCMapping.class)) {
 //					注册响应方法。
-					MVCMapping mapping = method.getAnnotation(MVCMapping.class);
 					String[] paths = mapping.value();
 					for (int j = 0; j < paths.length; j++) {
-						String realPath = mapping.namespace() + paths[j];
+//						String realPath = mapping.namespace() + paths[j];
+						String realPath = mvcHandler.namespace() + paths[j];
 //						可能会出现两个斜杠的情况。
 						realPath = realPath.replace("//", "/");
 						mappedMethods.put(realPath, method.getName());
@@ -135,6 +143,119 @@ public class MVCProcess {
 		}
 		L.info("控制器初始化完成！");
 	}
+	
+	/**
+	 * 拦截器初始化。
+	 */
+	private static void interceptorInit() {
+		L.info("拦截器初始化！");
+		Set<String> urls = mappedMethods.keySet();
+		Map<String, Object> interceptorBeans = getContext().getBeansWithAnnotation(MVCInterceptor.class);
+//		暂存所有被排除的url
+		List<String> excludes = new ArrayList<String>();
+		for (String beanName : interceptorBeans.keySet()) {
+			Class<?> interceptor = interceptorBeans.get(beanName).getClass();
+			MVCInterceptor tag = interceptor.getAnnotation(MVCInterceptor.class);
+			if (RegexUtils.contains(tag.url(), "[\\^\\$\\+\\?\\.\\*\\+]+")) {
+//				添加符合正则表达式的url。
+				for (String s : urls) {
+					if (RegexUtils.matches(s, tag.url())) {
+						interceptors.put(s, interceptor);
+					}
+				}
+			} else {
+				interceptors.put(tag.url(), interceptor);
+			}
+			excludes.addAll(Arrays.asList(tag.excludes()));
+			L.debug("拦截器：{}", interceptors);
+		}
+//		移除排除的东东
+		for (String s : excludes) {
+			L.debug("exclude url: {}", s);
+			interceptors.remove(s);
+		}
+		L.info("拦截器初始化完成！");
+	}
+	
+	/**
+	 * 在请求响应前进行拦截。
+	 * @param path
+	 * @param request
+	 * @param response
+	 * @return 拦截成功
+	 * @throws IOException
+	 * @throws ServletException
+	 */
+	private static Interceptor intercept(String path, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		Interceptor interceptor = null;
+//		interceptors.clear();
+//		interceptorInit();
+		
+		if (interceptors.containsKey(path)) {
+			interceptor = (Interceptor) context.getBean(interceptors.get(path));
+		}
+		
+		return interceptor;
+	}
+	
+	/**
+	 * 注解在控制器方法上的拦截器实现，为方法执行之前。
+	 * @param method
+	 * @param request
+	 * @param response
+	 * @return 放行 true, 拦截 false
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private static boolean interceptorBefore(Method method, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		默认放行。
+		boolean allow = true;
+		if (method.isAnnotationPresent(MVCInterceptor.class)) {
+			MVCInterceptor interceptors = method.getAnnotation(MVCInterceptor.class);
+			Class<? extends Interceptor>[] classes = interceptors.interceptors();
+			
+			for (int i = 0; i < classes.length; i++) {
+				Interceptor interceptor  = context.getBean(classes[i]);
+				allow = interceptor.before(request, response);
+				if (!allow) {
+					break;
+				}
+			}
+		}
+		return allow;
+	}
+	
+	/**
+	 * 注解在控制器方法上的拦截器实现，为方法执行之后。
+	 * @param method
+	 * @param request
+	 * @param response
+	 * @param mav
+	 * @return 放行 true, 拦截 false
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private static boolean interceptorAfter(Method method, HttpServletRequest request, HttpServletResponse response, ModelAndView mav) throws ServletException, IOException {
+//		默认放行。
+		boolean allow = true;
+		if (method.isAnnotationPresent(MVCInterceptor.class)) {
+			MVCInterceptor interceptors = method.getAnnotation(MVCInterceptor.class);
+			Class<? extends Interceptor>[] classes = interceptors.interceptors();
+			
+			for (int i = 0; i < classes.length; i++) {
+				Interceptor interceptor  = context.getBean(classes[i]);
+				allow = interceptor.after(request, response, mav);
+				if (!allow) {
+					break;
+				}
+			}
+		}
+		return allow;
+	}
+	
+//	private static Interceptor interceptorBefore(HttpServletRequest request, HttpServletResponse response) {
+//		
+//	}
 	
 	/**
 	 * 获取方法的参数所包含的注解。
@@ -174,12 +295,35 @@ public class MVCProcess {
 	 */
 	public static void mvc(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = request.getRequestURI();
-		L.info("ajax 请求映射：{} ", path);
+		L.info("请求映射：{} ", path);
+		
+//		准备拦截器
+		Interceptor interceptor = intercept(path, request, response);
+//		方法执行前进行拦截
+		if (interceptor != null) {
+			if (!interceptor.before(request, response)) {
+				return;
+			}
+		}
+		
+		
+		ModelAndView mav = null;
 		try {
-			process(request, response, path);
+			mav = process(request, response, path);
 		} catch (MVCException e) {
 			globalExceptionHandler(request, response, e);
 		}
+		
+//		解析试图返回模型前进行拦截
+		if (interceptor != null) {
+			if (!interceptor.after(request, response, mav)) {
+				return; 
+			}
+		}
+		
+		injectModel(request, mav.getModel());
+		render(request, response, mav.getView());
+		
 		L.info("请求：{} 处理结束...", path);
 	}
 
@@ -191,7 +335,7 @@ public class MVCProcess {
 	 * @throws IOException
 	 * @throws MVCException
 	 */
-	private static void process(HttpServletRequest request,
+	private static ModelAndView process(HttpServletRequest request,
 			HttpServletResponse response, String path) throws ServletException, IOException, MVCException {
 //		替换url为我们定义的。
 		if (mappedMethods.containsKey(path)) {
@@ -222,29 +366,35 @@ public class MVCProcess {
 			try {
 				method = controller.getClass()
 						.getMethod(methodName, paramTypes);
+//				方法执行之前进行拦截。
+				if (!interceptorBefore(method, request, response)) {
+					return mav;
+				}
 				result = method.invoke(controller, injectedParams);
 			} catch (InvocationTargetException e) {
 //					处理异常-。-，注意，是捕捉底层调用方法抛出的异常！
 				handleException(beanName, controller, e.getCause(), request, response, mav);
 				L.info("异常处理完毕！异常：{}", e.getCause());
-				return;
+				return mav;
 			} catch (Exception e) {
 //					其余的索性都一并扔这里了。
 				throw new MVCException("控制器方法调用异常", e);
 			}
 //				解析结果
 			resolveResult(method, result, mav);
+			
+//			解析结果前返回。
+			interceptorAfter(method, request, response, mav);
+			
+			return mav;
 //			分离模型和试图
 //			model = mav.getModel();
 //			view = mav.getView();
 				
 			// 注入模型
-			injectModel(request, mav.getModel());
-			
+//			injectModel(request, mav.getModel());
 //			返回客户端
-			render(request, response, mav.getView());
-
-			// finish it, stop here...
+//			render(request, response, mav.getView());
 		} else {
 			throw new MVCException("对不起，您所请求的资源不存在！");
 		}
@@ -315,10 +465,6 @@ public class MVCProcess {
 			ModelAndView mav) throws MVCException {
 		Object[] injectedParams = new Object[paramTypes.length];
 		Map<String, String[]> requestParams = request.getParameterMap();
-		Set<String> tmpParams = null; 
-		if (paramMappings != null && paramMappings.length > 0) {
-			tmpParams = new HashSet<String>();
-		}
 		
 		for (int i = 0; i < paramTypes.length; i++) {
 			// TODO: can we inject super class in the future if needed?
@@ -346,12 +492,11 @@ public class MVCProcess {
 					|| WrapperUtils.isWrapper(type) || type.equals(Date.class)
 					|| type.getSuperclass().equals(Date.class)) {
 //				如果是基本类型及其包装器类型，字符串，日期，时间等等，基本类型及其包装器都会有默认值。
-				injectedParams[i] = injectParam(type, requestParams, paramMappings[i], tmpParams);
+				injectedParams[i] = injectParam(type, requestParams, paramMappings[i]);
 			} else {
 //				注入自定义Javabean
 				injectedParams[i] = injectJavaBean(type, requestParams);
 			}
-			L.debug("暂存已注入查询参数keyset：{}", tmpParams);
 		}
 		return injectedParams;
 	}
@@ -364,26 +509,28 @@ public class MVCProcess {
 	 * @param index
 	 * @param set 暂存已经注入过的参数。
 	 */
-	private static Object injectParam(Class<?> paramType, Map<String, String[]> requestParams, MVCParamMapping paramMapping, Set<String> set) {
+	private static Object injectParam(Class<?> paramType, Map<String, String[]> requestParams, MVCParamMapping paramMapping) {
 		Object obj = null;
 		if (paramMapping != null) {
-			obj = StringUtils.parse(paramType, requestParams.get(paramMapping.value())[0]);
+//			obj = StringUtils.parse(paramType, requestParams.get(paramMapping.value())[0]);
+			obj = StringUtils.convert(paramType, requestParams.get(paramMapping.value())[0]);
 			L.debug("请求参数绑定 key:{}, value: {}", paramMapping.value(), obj);
 		} else {
 //			在参数类型不相同的时候可用, 因为此时是通过类型判断！警告，这个算法不够完善，当出现true，flase，1，0，时间日期并且转换类型是字符串的时候容易出错！慎用！
-			for (String key : requestParams.keySet()) {
-				Object tmp = null;
-				if (!set.contains(key)) {
-//					如果暂存set中没有这个的话，也就是说这个key的值还没有被注入过的话
-					tmp = StringUtils.parse(paramType, requestParams.get(key)[0]);
-				}
-				if (tmp != null) {
-					obj = tmp;
-					set.add(key);
-					break;
-				}
-			}
-			L.warn("系统绑定参数 type: {}, vlaue: {}", paramType.getName(), obj);
+//			for (String key : requestParams.keySet()) {
+//				Object tmp = null;
+//				if (!set.contains(key)) {
+////					如果暂存set中没有这个的话，也就是说这个key的值还没有被注入过的话
+//					tmp = StringUtils.parse(paramType, requestParams.get(key)[0]);
+//				}
+//				if (tmp != null) {
+//					obj = tmp;
+//					set.add(key);
+//					break;
+//				}
+//			}
+//			L.warn("系统绑定参数 type: {}, vlaue: {}", paramType.getName(), obj);
+			throw new RuntimeException("请指明查询参数的名字！");
 		}
 		return obj;
 	}
@@ -414,12 +561,12 @@ public class MVCProcess {
 //				这里，暂时没有考虑集合类型的注入。so，TODO，collections inject(注意集合类型的初始化）...
 				if (arrayType == null) {
 //					不是数组类型
-					field = StringUtils.parse(fieldType, values[0]);
+					field = StringUtils.convert(fieldType, values[0]);
 				} else {
 //					数组类型
 					Object[] arrayField = (Object[]) Array.newInstance(arrayType, values.length);
 					for (int k = 0; k < values.length; k++) {
-						arrayField[k] = StringUtils.parse(arrayType, values[k]);
+						arrayField[k] = StringUtils.convert(arrayType, values[k]);
 					}
 					field = arrayField;
 				}
@@ -494,8 +641,8 @@ public class MVCProcess {
 						paramst[0] = handleFor;
 						Object o = methods[i].invoke(handler, paramst);
 						resolveResult(methods[i], o, mav);
-						injectModel(request, mav.getModel());
-						render(request, response, mav.getView());
+//						injectModel(request, mav.getModel());
+//						render(request, response, mav.getView());
 					} catch (Throwable t) {
 //							这时再遇上异常，没办法了-/-
 						throw new MVCException("返回错误的时候出错！", t);

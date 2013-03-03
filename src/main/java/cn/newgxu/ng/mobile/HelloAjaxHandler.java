@@ -32,6 +32,7 @@ import cn.newgxu.ng.core.mvc.MVCProcess;
 import cn.newgxu.ng.core.mvc.View;
 import cn.newgxu.ng.core.mvc.annotation.MVCExceptionpHandler;
 import cn.newgxu.ng.core.mvc.annotation.MVCHandler;
+import cn.newgxu.ng.core.mvc.annotation.MVCInterceptor;
 import cn.newgxu.ng.core.mvc.annotation.MVCMapping;
 import cn.newgxu.ng.core.mvc.annotation.MVCParamMapping;
 import cn.newgxu.ng.util.StringUtils;
@@ -64,7 +65,8 @@ public class HelloAjaxHandler {
 	}
 	
 	@MVCMapping("/nima")
-	public View nima(HttpServletResponse response, Model model, int i, String str, Date birthday) throws IOException {
+	@MVCInterceptor(interceptors = {HelloInterceptor.class})
+	public View nima(HttpServletResponse response, Model model, @MVCParamMapping("i") int i, @MVCParamMapping("s") String str, @MVCParamMapping("d") Date birthday) throws IOException {
 //		response.getWriter().write("nima");
 		model.add("name", "longkai").add("i", i).add("s", str).add("day", birthday);
 		return new View().setType(ViewType.JSP).setViewName("t.jsp");

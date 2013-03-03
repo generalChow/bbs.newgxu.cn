@@ -28,5 +28,12 @@ public class StringTest {
 		assertThat(RegexUtils.matches(s1, regex), is(true));
 		assertThat(RegexUtils.matches(s2, regex), is(true));
 	}
+	
+	@Test
+	public void testRegex() {
+		String regex = "[\\^\\$\\+\\?\\.\\*\\+]+";
+		String pattern = "/ng/user/.+";
+		assertThat(RegexUtils.contains(pattern, regex), is(true));
+	}
 
 }

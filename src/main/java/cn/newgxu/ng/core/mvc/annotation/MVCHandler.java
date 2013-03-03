@@ -40,4 +40,9 @@ public @interface MVCHandler {
 	 */
 	String value() default "";
 	
+	/**
+	 * 控制器匹配路径的命名空间，默认是/ng/
+	 * @return
+	 */
+	String namespace() default "/ng/";
 }
