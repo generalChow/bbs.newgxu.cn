@@ -93,6 +93,7 @@ public class StringUtils {
 	
 	/**
 	 * parse the string to the specific numeric type.
+	 * warn: for there' re primitive type' s sake, if cannot convert well, the default value will be rendered.
 	 * @param type
 	 * @param str
 	 * @return if success, the parsed object, or null will be returned.
@@ -100,17 +101,41 @@ public class StringUtils {
 	public static Object parseNumber(Class<?> type, String str) {
 		Object value = null;
 		if (type.equals(int.class) || type.equals(Integer.class)) {
-			value = Integer.parseInt(str);
+			try {
+				value = Integer.parseInt(str);
+			} catch (NumberFormatException e) {
+				value = new Integer(0);
+			}
 		} else if (type.equals(long.class) || type.equals(Long.class)) {
-			value = Long.parseLong(str);
+			try {
+				value = Long.parseLong(str);
+			} catch (NumberFormatException e) {
+				value = new Long(0L);
+			}
 		} else if (type.equals(double.class) || type.equals(Double.class)) {
-			value = Double.parseDouble(str);
+			try {
+				value = Double.parseDouble(str);
+			} catch (NumberFormatException e) {
+				value = new Double(0F);
+			}
 		} else if (type.equals(float.class) || type.equals(Float.class)) {
-			value = Float.parseFloat(str);
+			try {
+				value = Float.parseFloat(str);
+			} catch (NumberFormatException e) {
+				value = new Float(0F);
+			}
 		} else if (type.equals(short.class) || type.equals(Short.class)) {
-			value = Short.parseShort(str);
+			try {
+				value = Short.parseShort(str);
+			} catch (NumberFormatException e) {
+				value = new Short((short) 0);
+			}
 		} else if (type.equals(byte.class) || type.equals(Byte.class)) {
-			value = Byte.parseByte(str);
+			try {
+				value = Byte.parseByte(str);
+			} catch (NumberFormatException e) {
+				value = new Byte((byte) 0);
+			}
 		}
 		return value;
 	}
