@@ -135,7 +135,8 @@ public class UserServiceImpl implements UserService {
 		user.addLoginTimes();
 		user.addPower();
 		user.setLastLoginTime(new Date());
-		user.save();
+//		user.save();
+		user.update();
 	}
 
 	/**

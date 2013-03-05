@@ -40,6 +40,10 @@ public class View {
 		this.viewName = viewName;
 		this.content = content;
 	}
+	
+	public View(String viewName) {
+		this.viewName = viewName;
+	}
 
 	public ViewType getType() {
 		return type;

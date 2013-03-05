@@ -300,7 +300,5 @@
 	<include file="xwork-wap.xml" />
 	<!-- 其他 longkai@2012-09-14 -->
 	<include file="xwork-others.xml" />
-	<!-- new bbs longkai@2013-02-27 -->
-	<include file="xwork-nbbs/mobile.xml" />
 	
 </xwork>

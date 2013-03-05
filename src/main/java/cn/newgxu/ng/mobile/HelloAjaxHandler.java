@@ -68,7 +68,8 @@ public class HelloAjaxHandler {
 	@MVCInterceptor(interceptors = {HelloInterceptor.class})
 	public View nima(HttpServletResponse response, Model model, @MVCParamMapping("i") int i, @MVCParamMapping("s") String str, @MVCParamMapping("d") Date birthday) throws IOException {
 //		response.getWriter().write("nima");
-		model.add("name", "longkai").add("i", i).add("s", str).add("day", birthday);
+		System.out.println("jdsfldsjl");
+		model.add("name", "longkai").add("i", i).add("s", str).add("day", birthday).add("base", "/resources");
 		return new View().setType(ViewType.JSP).setViewName("t.jsp");
 	}
 	

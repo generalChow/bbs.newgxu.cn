@@ -25,7 +25,7 @@ import cn.newgxu.bbs.common.Pagination;
 public abstract class JPAEntity implements Serializable {
 
 	protected Log log = LogFactory.getLog(this.getClass());
-
+	
 	public static final QueryTool QT = new QueryTool(new FilterTag("ignore",
 			"<", ">", "</", ">"));
 
@@ -39,7 +39,7 @@ public abstract class JPAEntity implements Serializable {
 		return q;
 
 	}
-
+	
 	public static List<?> getResultList(DynamicQResult dqr) {
 		return query(dqr).getResultList();
 	}
@@ -77,6 +77,7 @@ public abstract class JPAEntity implements Serializable {
 		try {
 			return Q(args).getSingleResult();
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new ObjectNotFoundException();
 		}
 	}
@@ -124,10 +125,10 @@ public abstract class JPAEntity implements Serializable {
 	final static EntityManager em() {
 		return ModelContext.getEntityManager();
 	}
-
+	
 	static Query _q(String qstr, List<Pair> params) 
 	{
-		//System.out.println(em());
+//		System.out.println(em());
 		Query q = em().createQuery(qstr);
 		for (Pair p : params) 
 		{

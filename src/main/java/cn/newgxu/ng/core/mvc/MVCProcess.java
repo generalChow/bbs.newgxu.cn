@@ -310,7 +310,7 @@ public class MVCProcess {
 		ModelAndView mav = null;
 		try {
 			mav = process(request, response, path);
-		} catch (MVCException e) {
+		} catch (Exception e) {
 			globalExceptionHandler(request, response, e);
 		}
 		
@@ -374,7 +374,7 @@ public class MVCProcess {
 			} catch (InvocationTargetException e) {
 //					处理异常-。-，注意，是捕捉底层调用方法抛出的异常！
 				handleException(beanName, controller, e.getCause(), request, response, mav);
-				L.info("异常处理完毕！异常：{}", e.getCause());
+				L.info("异常处理完毕！异常：{}", e.getCause().getClass());
 				return mav;
 			} catch (Exception e) {
 //					其余的索性都一并扔这里了。
@@ -665,7 +665,8 @@ public class MVCProcess {
 		L.error("全局异常抛出！{}", t);
 		Pigeon msg = new Pigeon().setLevel(InfoLevel.ERROR)
 						.setInfo(t.getMessage())
-						.setReason(t.getCause().getMessage())
+//						.setReason(t.getCause().getMessage())
+						.setReason(t.getMessage())
 						.setSolutions("请查看异常信息并检查您是否误操作！", "请稍后再试！", "请联系管理员！");
 		request.setAttribute("msg", msg);
 		request.getRequestDispatcher(viewPath + "error.jsp").forward(request, response);

@@ -15,4 +15,18 @@ public class EntityManagerProvider {
 		entityManager.createQuery(hql).executeUpdate();
 	}
 	
+	private static EntityManagerProvider entityManagerProvider = new EntityManagerProvider(); 
+	
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
+
+	public EntityManager getEntityManager() {
+		return this.getEntityManager();
+	}
+
+	public static EntityManager getEntityManager2() {
+		return entityManagerProvider.getEntityManager();
+	}
+	
 }

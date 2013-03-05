@@ -55,8 +55,10 @@ public class JPAEmlookupRegister implements ServletContextListener {
 					EntityManagerHolder holder = (EntityManagerHolder) TransactionSynchronizationManager.getResource(emf);
 					EntityManager s = holder.getEntityManager();
 					return s;
-				} else
+				} else {
+//					return lookupEntityManagerFactory(event.getServletContext()).createEntityManager();
 					return null;
+				}
 			}
 		};
 		ModelContext.registerEntityManagerLookup(eml);
