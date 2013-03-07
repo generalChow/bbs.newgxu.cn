@@ -37,6 +37,8 @@ import cn.newgxu.bbs.domain.Topic;
 import cn.newgxu.bbs.domain.user.User;
 import cn.newgxu.bbs.service.UserService;
 import cn.newgxu.bbs.web.action.AbstractBaseAction;
+import cn.newgxu.bbs.web.cache.BBSCache;
+import cn.newgxu.bbs.web.cache.Cache;
 import cn.newgxu.bbs.web.model.IndexModel;
 import cn.newgxu.bbs.web.model.accounts.LoginModel;
 import cn.newgxu.ng.core.mvc.Model;
@@ -80,14 +82,13 @@ public class AccountController {
 		L.info("用户：{} 试图从mobile登录论坛！", model.getUsername());
 		model.setIp(request.getRemoteAddr());
 		User user =  userService.loginWithoutValidCode(model);
+		request.getSession().setAttribute("_user", user);
 		switch (user.getAccountStatus()) {
 		case ACCOUNT_STATUS_NORMAL:
 			userService.deleteOnlineUser(AuthorizationManager.getAuthorization(request.getSession()));
-			AuthorizationManager.saveAuthorization(request.getSession(), user);
+//			AuthorizationManager.saveAuthorization(request.getSession(), user);
 			Util.saveCookie(response, user.getUsername(), user.getPassword(), true);
-//			交给首页处理！
-			mav = this.index(mav);
-			mav.addModel("u", user);
+			mav.setView(new View().setType(ViewType.REDIRECT).setViewName("/ng/m/home"));
 			break;
 		case ACCOUNT_STATUS_WAIT:
 			mav.setView(new View("mobile/login.jsp")).addModel("msg", "您的注册资料在等待审核中，请耐心等待！");
@@ -106,13 +107,4 @@ public class AccountController {
 		return mav;
 	}
 	
-	@MVCMapping({"index", "home"})
-	public ModelAndView index(ModelAndView mav) {
-		IndexModel index = new IndexModel();
-		index.setAreas(Area.getAreas());
-		index.setLatestTopics(Topic.getLatesTopics(10));
-		mav.addModel("index", index).setViewName("index.jsp");
-		return mav;
-	}
-
 }

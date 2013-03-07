@@ -32,7 +32,6 @@ public class TopicAction extends AbstractBaseAction {
 		model.getPagination().setParamMap(getParameterMap());
 		try {
 			forumService.topic(model);
-			System.out.println(model.getTopic().getActivityType()+"----------------");
 			super.setOnlineStatusForumId(model.getForumId());
 			signOnlineUser("查看主题：<a href=\"/topic.yws?forumId="
 					+ model.getForumId() + "&amp;topicId=" + model.getTopicId()

@@ -374,7 +374,7 @@ public class MVCProcess {
 			} catch (InvocationTargetException e) {
 //					处理异常-。-，注意，是捕捉底层调用方法抛出的异常！
 				handleException(beanName, controller, e.getCause(), request, response, mav);
-				L.info("异常处理完毕！异常：{}", e.getCause().getClass());
+				L.info("异常处理完毕！异常：{}，原因：{}", e.getCause().getClass(), e.getCause().getMessage());
 				return mav;
 			} catch (Exception e) {
 //					其余的索性都一并扔这里了。
@@ -412,6 +412,7 @@ public class MVCProcess {
 	private static void render(HttpServletRequest request,
 			HttpServletResponse response, View view) throws IOException,
 			ServletException {
+		L.debug("view:{}", view);
 		switch (view.getType()) {
 //		TODO: enable FREEMARKER!
 		// case FREEMARKER:
