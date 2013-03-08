@@ -36,6 +36,7 @@ public class MVCRequest extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		resp.setCharacterEncoding("utf-8");
 		long t1 = System.currentTimeMillis();
 		MVCProcess.mvc(req, resp);
 		System.out.println(System.currentTimeMillis() - t1);
@@ -44,6 +45,7 @@ public class MVCRequest extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		resp.setCharacterEncoding("utf-8");
 		MVCProcess.mvc(req, resp);
 	}
 	

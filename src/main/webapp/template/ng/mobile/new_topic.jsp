@@ -7,7 +7,7 @@
 		<jsp:include page="mobile-manifest.jsp" />		
 	</head>
 <body>
-	<div data-role="dialog">
+	<div data-role="page">
 		<div data-role="header">
 		  <h1>发表新帖子</h1>
 		</div>
@@ -19,7 +19,7 @@
 			        <select name="areaId" id="areaId" data-native-menu="false" data-overlay-theme="e">
 			        	<option value="0" data-placeholder="true">请选择主题所要发表在的分区</option>
 			        	<c:forEach items="${model.areas}" var="a">
-			        		<option value="">${a.name}</option>
+			        		<option value="${a.id}">${a.name}</option>
 			        	</c:forEach>
 			        </select>
 		        </div>
@@ -29,6 +29,7 @@
 			        <select name="forumId" id="forumId" data-native-menu="false" data-overlay-theme="e">
 			        	<option value="0" data-placeholder="true">请选择主题所要发表在的板块</option>
 			        	<!-- todo jason!!! -->
+
 			        </select>
 		        </div>
 
@@ -79,7 +80,26 @@
 		        </div>
 		        <input type="submit" value="Send" data-theme="a">
 		    </form>
+		    <div id="t"></div>
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	$(function() {
+		var person = {
+			"name": "longkai",
+			"age": "21"
+		}
+		$('#areaId').change(function() {
+			var areaId = $(this).val();
+
+			$.getJSON('/ng/m/topic/load_forums?areaId=' + areaId, function(data) {
+				$.each(data, function(i, item) {
+					$('<div>').html(item.name).appendTo('#t');
+				})
+			})
+			// $('#t').load('/ng/m/topic/load_forums?areaId=1');
+		});
+	})
+</script>
 </html>	

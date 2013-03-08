@@ -33,7 +33,7 @@
 					<div data-role="collapsible" data-collapsed="true">
 						<h2>${t.title}</h2>
 						<p><a href="/ng/m/user_info/view?id=${t.topic.user.id}">${t.topic.user.nick}</a></p>
-						<p class="digest">${t.content}</p>
+						<p class="digest">${t.content} [<a href="/ng/m/topic/view?topicId=${t.topic.id}&forumId=${t.forum.id}">详细</a>]</p>
 					</div>
 				</c:forEach>
 				<hr />
@@ -80,20 +80,40 @@
 			        <ul>
 				        <li><a href="#home" data-icon="arrow-l" data-transition="fade">上一页</a></li>
 				        <li><a href="#sessions" data-icon="arrow-r" data-transition="fade">下一页</a></li>
-				        <li><a href="#sessions" data-icon="home" data-transition="fade">首页</a></li>
+				        <li><a href="/ng/m/home" data-icon="home" data-transition="fade">首页</a></li>
 				        <c:if test="${not empty sessionScope._user}">
-				        	<li><a href="/ng/m/topic/create" data-icon="event">发帖</a></li>
+				        	<li><a href="/ng/m/topic/create?from=home" data-icon="event">发帖</a></li>
 				    	</c:if>
 				        <c:choose>
 				        	<c:when test="${not empty sessionScope._user}">
-				        		<li><a href="#sessions" data-icon="event" data-transition="fade">退出</a></li>
+				        		<li><a href="/ng/m/home" data-icon="event" data-transition="fade">退出</a></li>
 				        	</c:when>
 				        	<c:otherwise>
-				        		<li><a href="/ng/m/login" data-icon="grid" data-transition="fade">登陆</a></li>
+				        		<li><a href="#login_dialog" data-icon="grid" data-transition="fade">登陆</a></li>
 				        	</c:otherwise>
 				    	</c:choose>
 			        </ul>
 			    </div>
+			</div>
+		</div>
+
+		<div data-role="dialog" id="login_dialog">
+			<div data-role="header">
+				<h1>欢迎登陆雨无声社区论坛</h1>
+			</div>
+
+			<div data-role="content">
+				<form action="/ng/m/do_login" data-ajax="false" method="post">
+					<div data-role="fieldcontainer">
+							<label for="username">用户名:</label>
+							<input type="text" id="username" name="username" required />
+					</div>
+					<div data-role="fieldcontainer">
+							<label for="password">密码:</label>
+							<input type="password" id="password" name="password" required />
+					</div>
+					<input type="submit" value="登陆！" />
+				</form>
 			</div>
 		</div>
 	</body>
