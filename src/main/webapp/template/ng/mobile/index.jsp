@@ -4,7 +4,12 @@
 <!doctype html>
 <html>
 	<head>
-		<jsp:include page="mobile-manifest.jsp" />		
+		<jsp:include page="mobile-manifest.jsp" />
+		<style type="text/css">
+			.digest {
+				text-indent: 2em;
+			}
+		</style>
 	</head>
 <body>
 		<div data-role="page">
@@ -27,7 +32,8 @@
 				<c:forEach items="${index.pubGoodTopics}" var="t">
 					<div data-role="collapsible" data-collapsed="true">
 						<h2>${t.title}</h2>
-						<p>${t.content}</p>
+						<p><a href="/ng/m/user_info/view?id=${t.topic.user.id}">${t.topic.user.nick}</a></p>
+						<p class="digest">${t.content}</p>
 					</div>
 				</c:forEach>
 				<hr />
@@ -75,20 +81,19 @@
 				        <li><a href="#home" data-icon="arrow-l" data-transition="fade">上一页</a></li>
 				        <li><a href="#sessions" data-icon="arrow-r" data-transition="fade">下一页</a></li>
 				        <li><a href="#sessions" data-icon="home" data-transition="fade">首页</a></li>
-				        <c:if test="${not empty sessionScope.user}">
-				        	<li><a href="#">发帖</a></li>
+				        <c:if test="${not empty sessionScope._user}">
+				        	<li><a href="/ng/m/topic/create" data-icon="event">发帖</a></li>
 				    	</c:if>
 				        <c:choose>
-				        	<c:when test="${not empty sessionScope.user}">
+				        	<c:when test="${not empty sessionScope._user}">
 				        		<li><a href="#sessions" data-icon="event" data-transition="fade">退出</a></li>
 				        	</c:when>
 				        	<c:otherwise>
-				        		<li><a href="#sessions" data-icon="grid" data-transition="fade">登陆</a></li>
+				        		<li><a href="/ng/m/login" data-icon="grid" data-transition="fade">登陆</a></li>
 				        	</c:otherwise>
 				    	</c:choose>
 			        </ul>
 			    </div>
-
 			</div>
 		</div>
 	</body>

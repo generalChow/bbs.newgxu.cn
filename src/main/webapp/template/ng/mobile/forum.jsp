@@ -34,7 +34,7 @@
 				<ul data-role="listview">
 					<c:forEach items="${model.topics}" var="t" varStatus="i">
 						<li index="${i.count}" id="${t.id}">
-							<a href="/ng/m/topic?topicId=${t.id}&forumId=${t.forum.id}">${t.title}</a>
+							<a href="/ng/m/topic/view?topicId=${t.id}&forumId=${t.forum.id}">${t.title}</a>
 							[${t.user.nick}] 发表于 ${t.creationTime}
 							<span class="ui-li-count">${t.clickTimes}</span>
 						</li>

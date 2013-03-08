@@ -312,6 +312,7 @@ public class MVCProcess {
 			mav = process(request, response, path);
 		} catch (Exception e) {
 			globalExceptionHandler(request, response, e);
+			return;
 		}
 		
 //		解析试图返回模型前进行拦截
@@ -373,6 +374,7 @@ public class MVCProcess {
 				result = method.invoke(controller, injectedParams);
 			} catch (InvocationTargetException e) {
 //					处理异常-。-，注意，是捕捉底层调用方法抛出的异常！
+				L.error("异常处理", e.getCause());
 				handleException(beanName, controller, e.getCause(), request, response, mav);
 				L.info("异常处理完毕！异常：{}，原因：{}", e.getCause().getClass(), e.getCause().getMessage());
 				return mav;

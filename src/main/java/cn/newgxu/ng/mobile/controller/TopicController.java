@@ -17,6 +17,7 @@ package cn.newgxu.ng.mobile.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,10 +26,13 @@ import org.springframework.context.annotation.Scope;
 import cn.newgxu.bbs.common.exception.BBSException;
 import cn.newgxu.bbs.domain.user.User;
 import cn.newgxu.bbs.service.ForumService;
+import cn.newgxu.bbs.web.model.CreateTopicModel;
 import cn.newgxu.bbs.web.model.TopicModel;
 import cn.newgxu.ng.core.mvc.ModelAndView;
 import cn.newgxu.ng.core.mvc.annotation.MVCHandler;
+import cn.newgxu.ng.core.mvc.annotation.MVCInterceptor;
 import cn.newgxu.ng.core.mvc.annotation.MVCMapping;
+import cn.newgxu.ng.mobile.interceptor.LoginInterceptor;
 
 /**
  * 
@@ -36,7 +40,7 @@ import cn.newgxu.ng.core.mvc.annotation.MVCMapping;
  * @since 2013-3-7
  * @version 1.0
  */
-@MVCHandler(value = "mTopicController", namespace = "/ng/m/")
+@MVCHandler(value = "mTopicController", namespace = "/ng/m/topic/")
 @Scope("prototype")
 public class TopicController {
 
@@ -45,13 +49,22 @@ public class TopicController {
 	@Inject
 	private ForumService forumService;
 	
-	@MVCMapping("topic")
+	@MVCMapping("view")
 	public String view(TopicModel model, HttpServletRequest request, ModelAndView mav) throws BBSException {
 		User user = (User) request.getSession().getAttribute("_user");
 		model.setUser(user);
 		forumService.topic(model);
 		mav.addModel("model", model);
 		return "mobile/topic.jsp";
+	}
+	
+	@MVCMapping("create")
+	@MVCInterceptor(interceptors = LoginInterceptor.class)
+	public String create(CreateTopicModel model, ModelAndView mav, HttpSession session) throws BBSException {
+		model.setUser((User) session.getAttribute("_user"));
+		forumService.createTopic(model);
+		mav.addModel("model", model);
+		return "mobile/new_topic.jsp";
 	}
 	
 }
