@@ -1,0 +1,45 @@
+<@base.header title="红包信息">
+</@base.header> 
+<@base.main location="红包信息"> 
+<table align="center">
+	<tr align="center">
+		<td>
+			今天是${today}
+		</td>
+	</tr>
+	<#if isFestivalToday==1>
+	<tr align="center">
+		<td>
+			这个红包的说法：
+		</td>
+		<td>${hongbao.description}</td>
+	</tr>
+	</#if>
+	<tr align="center">
+		<td>
+		<#if isRecieveToday==0>
+			<#if isFestivalToday==1>
+			<a href="/user/recieve_hongbao_do.yws">领取红包</a>
+			</#if>
+		<#else>
+			你今天已经领过红包了
+		</#if>
+		</td>
+	</tr>
+	<tr align="center">
+		<td>
+			下次礼物领取时间是${nextFestival}
+		</td>
+	</tr>
+</table>
+<table cellspacing="0" cellpadding="3" width="100%" align="center" 
+              border="0">
+          <tr bgcolor="#fafafa" align="center">
+            <td width="444" class="uline"><img height="20" src="/images/bullet4.gif" width="20" 
+                  align="absmiddle" /> <b>提示说明</b>: 领取红包的网友经验值需达到200以上</td>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+      </table>
+</@base.main>

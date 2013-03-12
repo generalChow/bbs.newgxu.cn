@@ -1,0 +1,57 @@
+<@base.header title="更换头像"></@base.header>
+<@base.body location="个人服务区&nbsp;－&gt;&nbsp;更换头像">
+	<@base.main location="个人服务区&nbsp;－&gt;&nbsp;更换头像">
+		<@base.service_content>
+<form action="edit_face_do.yws" method="post" name="editForm" id="editForm">
+<table width="556" height="224" border="0" align="center">
+  <tr>
+    <td width="550" height="220" valign="top" bgcolor="#FFFFFF"><table width="500" height="1"  border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="1"></td>
+        </tr>
+      </table>
+      <table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0">
+        <tr>
+          <td align="center" class="uline"><strong>修改头像</strong></td>
+        </tr>
+      </table>
+      <table width="100%" height="20"  border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="27%" height="20" align="center" bgcolor="#FFFDF1">当前头像</td>
+          <td width="73%" rowspan="2" bgcolor="#FFFDF1"><table width="400" align="center" cellpadding="5" cellspacing="1">
+              <tr class="trBorder1">
+                <td width="400" colspan="2"><div align="center"> 请选择</div></td>
+              </tr>
+              <tr class="trBorder1">
+                <td colspan="2"><table border="0" cellspacing="0" cellpadding="1" align="center" width="301">
+                  <tr>
+                    <td width="327" height="25" align="left" bgcolor="#FFFDF6" class="p"><input name="t" type="radio" id="system" value="system" onclick="javascript:window.location.href = 'face.yws'" />
+                        <label for="system">使用系统默认头像</label></td>
+                  </tr>
+                  <tr>
+                    <td height="25" align="left" bgcolor="#FFFDF6" class="p"><input type="radio" name="t" value="upload" id="upload" onclick="javascript:window.location.href = 'uploadFace.yws'" />
+                        <label for="upload">上传相片</label></td>
+                  </tr>
+                </table></td>
+              </tr>
+              <tr class="trBorder2">
+                <td colspan="2" align="center">&nbsp;&nbsp;<input name="Button" type="button" class="submit_style" onclick="history.go(-1)" value="返回前页" /></td>
+              </tr>
+          </table></td>
+        </tr>
+        <tr>
+          <td align="center" bgcolor="#FFFDF1">${user.faceDisplay}</td>
+        </tr>
+      </table>
+      <table width="500" height="3"  border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="1"></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+</table>
+</form>
+		</@base.service_content>
+	</@base.main>
+</@base.body>

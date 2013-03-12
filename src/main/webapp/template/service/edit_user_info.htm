@@ -1,0 +1,253 @@
+<@base.header title="修改个人资料"></@base.header>
+<@base.body location="个人服务区&nbsp;－&gt;&nbsp;修改个人资料">
+	<@base.main location="个人服务区&nbsp;－&gt;&nbsp;修改个人资料">
+		<@base.service_content>
+<form id="form1" name="form1" method="post" action="edit_user_info_do.yws">
+<table width="581" height="373" border="0" align="center" cellspacing="0">
+  <tr>
+    <td width="580" bgcolor="#FFFFFF"><table width="560" height="1"  border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="1"></td>
+        </tr>
+      </table>
+      <table width="562" height="25"  border="0" align="center" cellpadding="2" cellspacing="0">
+        <tr>
+          <td align="center" class="uline"><strong>修改个人资料</strong></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td height="177" bgcolor="#FFFDF6"><table width="500" height="20"  border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><table width="508" border="0" align="center" cellpadding="1" cellspacing="0">
+            <tr>
+              <td colspan="3" align="left" class="p">&nbsp;</td>
+            </tr>
+	        <#if validMsg != "">
+	        <tr>
+	          <td height="30" colspan="3" align="center"><font color="#FF0000">${validMsg}</font></td>
+	        </tr>
+	        </#if>
+            <tr>
+              <td height="20"><div align="center">性　　别：<font color="#FF0000">**</font></div></td>
+              <td colspan="2" align="left">
+              	<#if sex == 1 >
+					<input name="sex" id="male"  type="radio" value="0"/>
+                    <label for="male">男</label>
+                    <input  type="radio" id="female" name="sex" value="1" checked="checked"/>
+                    <label for="female">女</label>
+                  <#else>
+                    <input name="sex" id="male" type="radio" value="0" checked="checked"/>
+                    <label for="male">男</label>
+                    <input  type="radio" id="female" name="sex" value="1"/>
+                    <label for="female">女</label>
+                  </#if>
+              </td>
+            </tr>
+            <tr>
+              <td bgcolor="#FFFDF6"><div align="center">出生年月：<font color="#FF0000">**</font></div></td>
+              <td colspan="2" align="left" bgcolor="#FFFDF6"><select name="year" class="select">
+                  <option selected="selected"><#setting number_format="0">${year}</option>
+                  <option>1919</option>
+                  <option>1920</option>
+                  <option>1921</option>
+                  <option>1922</option>
+                  <option>1923</option>
+                  <option>1924</option>
+                  <option>1925</option>
+                  <option>1926</option>
+                  <option>1927</option>
+                  <option>1928</option>
+                  <option>1929</option>
+                  <option>1930</option>
+                  <option>1931</option>
+                  <option>1932</option>
+                  <option>1933</option>
+                  <option>1934</option>
+                  <option>1935</option>
+                  <option>1936</option>
+                  <option>1937</option>
+                  <option>1938</option>
+                  <option>1939</option>
+                  <option>1940</option>
+                  <option>1941</option>
+                  <option>1942</option>
+                  <option>1943</option>
+                  <option>1945</option>
+                  <option>1946</option>
+                  <option>1947</option>
+                  <option>1948</option>
+                  <option>1949</option>
+                  <option>1950</option>
+                  <option>1951</option>
+                  <option>1952</option>
+                  <option>1953</option>
+                  <option>1954</option>
+                  <option>1955</option>
+                  <option>1956</option>
+                  <option>1957</option>
+                  <option>1958</option>
+                  <option>1959</option>
+                  <option>1960</option>
+                  <option>1961</option>
+                  <option>1962</option>
+                  <option>1963</option>
+                  <option>1964</option>
+                  <option>1965</option>
+                  <option>1966</option>
+                  <option>1967</option>
+                  <option>1968</option>
+                  <option>1969</option>
+                  <option>1970</option>
+                  <option>1971</option>
+                  <option>1972</option>
+                  <option>1973</option>
+                  <option>1974</option>
+                  <option>1975</option>
+                  <option>1976</option>
+                  <option>1977</option>
+                  <option>1978</option>
+                  <option>1979</option>
+                  <option>1980</option>
+                  <option>1981</option>
+                  <option>1982</option>
+                  <option>1983</option>
+                  <option>1984</option>
+                  <option>1985</option>
+                  <option>1986</option>
+                  <option>1987</option>
+                  <option>1988</option>
+                  <option>1989</option>
+                  <option>1990</option>
+            	<option>1991</option>
+            	<option>1992</option>
+            	<option>1993</option>
+            	<option>1994</option>
+            	<option>1995</option>
+            	<option>1996</option>
+            	<option>1997</option>
+            	<option>1998</option>
+            	<option>1999</option>
+            	<option>2000</option>
+                </select>
+                年
+                <select name="month" class="select">
+                  <option selected="selected">${month}</option>
+                  <option>01</option>
+                  <option>02</option>
+                  <option>03</option>
+                  <option>04</option>
+                  <option>05</option>
+                  <option>06</option>
+                  <option>07</option>
+                  <option>08</option>
+                  <option>09</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                </select>
+                月
+                <select name="day" class="select">
+                  <option selected="selected">${day}</option>
+                  <option>01</option>
+                  <option>02</option>
+                  <option>03</option>
+                  <option>04</option>
+                  <option>05</option>
+                  <option>06</option>
+                  <option>07</option>
+                  <option>08</option>
+                  <option>09</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                  <option>13</option>
+                  <option>14</option>
+                  <option>15</option>
+                  <option>16</option>
+                  <option>17</option>
+                  <option>18</option>
+                  <option>19</option>
+                  <option>20</option>
+                  <option>21</option>
+                  <option>22</option>
+                  <option>23</option>
+                  <option>24</option>
+                  <option>25</option>
+                  <option>26</option>
+                  <option>27</option>
+                  <option>28</option>
+                  <option>29</option>
+                  <option>30</option>
+                  <option>31</option>
+                </select>
+                日</td>
+            </tr>
+            <tr>
+              <td height="20" bgcolor=""><div align="center">电子邮件： &nbsp;</div></td>
+              <td colspan="2" align="left"><input name="email" class="input_style" value="${email?default("")}" size="27" maxlength="50"/>
+              </td>
+            </tr>
+            <tr>
+              <td height="20" bgcolor="#FFFDF6"><div align="center">个人主页：&nbsp;&nbsp;</div></td>
+              <td colspan="2" align="left" bgcolor="#FFFDF6"><input name="homepage" type="text" class="input_style" value="${homepage?default("")}" size="27" maxlength="50" />
+              </td>
+            </tr>
+            <tr>
+              <td height="20" bgcolor=""><div align="center">&nbsp;&nbsp;&nbsp;&nbsp;QQ：</div></td>
+              <td colspan="2" align="left"><input name="qq" type="text" class="input_style" value="${qq?default("")}" size="27" maxlength="11" />
+              </td>
+            </tr>
+            <tr>
+              <td height="20" bgcolor=""><div align="center">&nbsp;&nbsp;&nbsp;&nbsp;联系电话：</div></td>
+              <td colspan="2" align="left"><input name="tel" type="text" class="input_style" value="${tel?default("")}" size="27" maxlength="11" />
+              </td>
+            </tr>
+            <tr>
+              <td valign="top" bgcolor="#FFFDF6"><div align="center">个性签名：&nbsp;&nbsp;<br />
+                      <br />
+              </div></td>
+              <td colspan="2" align="left" bgcolor="#FFFDF6"><textarea class="tstyle" name="idiograph" rows="5" cols="40" wrap="physical">${idiograph?default("")}</textarea>
+              </td>
+            </tr>
+            <tr>
+              <td height="25" colspan="3" align="center"><table width="60%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="44%" align="right"><input name="Submit" type="submit" class="submit_style" value=" 确 定 " /></td>
+                    <td width="6%">&nbsp;</td>
+                    <td width="50%" align="left"><label>
+                      <input name="Submit2" type="reset" class="submit_style" value=" 取 消 " />
+                    </label></td>
+                  </tr>
+              </table></td>
+            </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF"><table cellspacing="0" cellpadding="3" width="100%" align="center" 
+              border="0">
+      <tbody>
+        <tr bgcolor="#fafafa">
+          <td width="444" align="left" class="uline"><img height="20" src="/images/bullet4.gif" width="20" 
+                  align="absmiddle" /> <b>提示说明</b></td>
+        </tr>
+        <tr>
+          <td height="1" align="left" background="/images/dotline.gif"></td>
+        </tr>
+        <tr>
+          <td align="left">·标记<font color="#FF0000">**</font>符号的为必填项目。</td>
+        </tr>
+        <tr>
+          <td align="left">·请不要使用空格和HTML标记。</td>
+        </tr>
+      </tbody>
+    </table></td>
+  </tr>
+</table>
+</form>
+		</@base.service_content>
+	</@base.main>
+</@base.body>

@@ -1,0 +1,75 @@
+<@base.header title="更换头像"></@base.header> <@base.body
+location="个人服务区&nbsp;－&gt;&nbsp;更换头像"> <@base.main
+location="个人服务区&nbsp;－&gt;&nbsp;更换头像"> <@base.service_content>
+<form action="edit_face_do.yws" method="post" name="editForm"
+	id="editForm">
+	<table width="556" height="224" border="0" align="center">
+		<tr>
+			<td width="550" height="220" valign="top" bgcolor="#FFFFFF">
+				<table width="500" height="1" border="0" align="center"
+					cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="1"></td>
+					</tr>
+				</table>
+				<table width="100%" height="25" border="0" align="center"
+					cellpadding="2" cellspacing="0">
+					<tr>
+						<td align="center" class="uline">
+							<strong>修改头像</strong>
+						</td>
+					</tr>
+				</table>
+				<table width="100%" height="20" border="0" align="center"
+					cellpadding="0" cellspacing="0">
+					<tr>
+						<td bgcolor="#FFFDF1" align="center">
+											请选择
+							<table align="center" cellpadding="5" cellspacing="1">
+								<tr class="trBorder1">
+									<td align="center">
+									</td>
+								</tr>
+								<script language="JavaScript"> 
+									var num=0;
+									<#if page!=0>
+									num=( ${page}-1)*18
+									</#if>
+									var k = 1+num;
+									for (var i = 0; i < 3; i++) {
+										document.write('<tr>');
+										for (var j = 0; j < 6; j++) {
+											document.write("<td><div align=\"center\"><a href=\"#\" onClick=\"window.opener.addFace("+k+");window.close()\"><img src=\"/images/de_face/"+k+".gif\" border=\"0\"></a></div><div align=\"center\"><input type=\"radio\" name=\"face\" value=\"<img name=face src=/images/de_face/"+k+".gif border=1>\" /></div></td>");
+											k++;
+										}
+										document.write('</tr>');
+									}
+								</script>
+							</table>
+								<tr><td align="center">
+								<span class="pages">
+								${model.pagination}
+								</span>								
+								</td></tr>
+								<tr class="trBorder2">
+									<td colspan="2" align="center">
+										&nbsp;&nbsp;
+										<input name="Submit" type="submit" class="submit_style"
+											value=" 确 定 ">
+										<input name="type" type="hidden" id="type" value="1">
+										<input name="Button" type="button" class="submit_style"
+											onClick="history.go(-1)" value="返回前页">
+									</td>
+								</tr>
+				</table>
+				<table width="500" height="3" border="0" align="center"
+					cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="1"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</form>
+</@base.service_content> </@base.main> </@base.body>

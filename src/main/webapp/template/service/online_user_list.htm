@@ -1,0 +1,43 @@
+<@base.header title="在线用户列表">
+	<style type="text/css">
+	<!--
+	.style${type} {color: #407F00}
+	-->
+	</style>
+</@base.header>
+<@base.body location="在线用户列表">
+	<@base.main location="在线用户列表">
+	<#setting number_format="0">
+		<div class="list_title_01">&nbsp;</div>
+		<div class="list_title_02"></div>
+		<div class="kuang">
+
+		  <table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" bgcolor="#FFFAD0" class="botom_line">
+			<tr align="center">
+			  <th width="126" class="right_line">昵称</th>
+			  <th width="280" class="right_line">位置</th>
+			  <th width="149" class="right_line">OS</th>
+			  <th width="92" class="right_line">IP</th>
+			  <th width="90" class="right_line">最后活动时间</th>
+			  <th width="66">短消息</th>
+			</tr>
+		  </table>
+		  <#list onlineUsers as online>
+		  <table width="100%" height="20"  border="0" align="center" cellpadding="2" cellspacing="0" class="botom_line" style="table-layout:fixed;">
+			<tr>
+			  <td width="126" height="25" class="right_line">${online.nick}</td>
+			  <td width="280" class="right_line" align="left" ><div class="os1"><li>${online.location}</li></div></td>
+			  <td width="149" class="right_line"><div class="os"><li><#if user.userGroup.canViewUserIp()>${online.os}<#else>隐藏</#if></li></div></td>
+			  <td width="92" class="right_line"><#if user.userGroup.canViewUserIp()>${online.ip}<#else>隐藏</#if></td>
+			  <td width="90" class="right_line">${online.lastAliveTime?datetime}</td>
+			  <td width="66">${online.action}</td>
+			</tr>
+		  </table>
+		  </#list>
+        
+		</div>
+		
+		<div class="list_title_03"><span class="left pages">${model.pagination}</span></div>
+		<div class="list_title_04" align="left">&nbsp;</div>
+	</@base.main>
+</@base.body>

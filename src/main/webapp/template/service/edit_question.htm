@@ -1,0 +1,84 @@
+<@base.header title="修改密码保护"></@base.header>
+<@base.body location="个人服务区&nbsp;－&gt;&nbsp;修改密码保护">
+	<@base.main location="个人服务区&nbsp;－&gt;&nbsp;修改密码保护">
+		<@base.service_content>
+<form action="edit_question_do.yws" method="post" name="editForm" id="editForm">
+<table width="577" height="313" border="0" align="center">
+  <tr>
+    <td width="571" valign="top" bgcolor="#FFFFFF"><table width="500" height="1"  border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="1"></td>
+        </tr>
+      </table>
+      <table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0">
+        <tr>
+          <td align="center" class="uline"><strong>修改密码保护</strong></td>
+        </tr>
+      </table>
+      <table width="100%" height="20"  border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td bgcolor="#FFFDF1"><table width="70%" align="center" cellpadding="5" cellspacing="1">
+                <tr class="trBorder1">
+                  <td width="602" colspan="2"><div align="center">
+                      <table width="100%" border="0" align="left" cellpadding="1" cellspacing="0">
+				        <#if validMsg != "">
+				        <tr>
+				          <td height="30" colspan="2" align="center"><font color="#FF0000">${validMsg}</font></td>
+				        </tr>
+				        </#if>
+                        <tr>
+                          <td width="105" height="28" align="right" bgcolor="#FFFDF6"><div align="right"> 密码提示问题：<font color="#FF0000">**</font></div></td>
+                          <td width="227" align="left" bgcolor="#FFFDF6"><input name="question" type="text" class="input_style" id="question" value="${question?default("")}" /></td>
+                        </tr>
+                        <tr>
+                          <td width="105" height="28" align="right" bgcolor="#FFFDF6"><div align="right">密码提示回答：<font color="#FF0000">**</font></div></td>
+                          <td width="227" align="left" bgcolor="#FFFDF6"><input name="answer" type="text" class="input_style" id="answer" value="${answer?default("")}"/></td>
+                        </tr>
+                      </table>
+                  </div></td>
+                </tr>
+                <tr class="trBorder2">
+                  <td colspan="2"><div align="center">
+                      <input name="tj2" type="submit" class="submit_style" id="tj2" value=" 确 定 " />
+                    &nbsp;&nbsp;
+                    <input name="Button2" type="button" class="submit_style" onclick="history.go(-1)" value="返回前页" />
+                  </div></td>
+                </tr>
+          </table></td>
+        </tr>
+        <tr>
+          <td><table cellspacing="0" cellpadding="3" width="100%" align="center" 
+              border="0">
+            <tbody>
+              <tr bgcolor="#fafafa">
+                <td width="444" align="left" class="uline"><img height="20" src="/images/bullet4.gif" width="20" 
+                  align="absmiddle" /> <b>提示说明</b></td>
+              </tr>
+              <tr>
+                <td height="1" align="left" background="/images/dotline.gif"></td>
+              </tr>
+              <tr>
+                <td align="left">·标记<font color="#FF0000">*</font><font color="#FF0000">*</font>符号的为必填项目。</td>
+              </tr>
+              <tr>
+                <td align="left">·请一定牢记您修改的资料以方便密码忘记时取回密码。</td>
+              </tr>
+              <tr>
+                <td align="left">&nbsp;</td>
+              </tr>
+            </tbody>
+          </table></td>
+        </tr>
+      </table>
+      <table width="500" height="3"  border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="1"></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+</table>
+</form>
+		</@base.service_content>
+	</@base.main>
+</@base.body>

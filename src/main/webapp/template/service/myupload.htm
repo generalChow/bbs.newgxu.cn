@@ -1,0 +1,28 @@
+<div class="top">
+	<#list uploadItems as u>
+		<div class="vote_cell">
+			<div class="vote_cell_son" rel="${u.uri}" onclick="SERVICE.selectResource(this);" title="${u.name}">
+				<#if u.uploadable.id lt 6>
+				<img class="vote_cell_img" rel="img" onload="BBS.fillImg(this,130,130,true);" src="${u.uri}" />
+				<#elseif u.uploadable.id ==8 >
+				<img class="vote_cell_img" rel="mp3" onload="BBS.fillImg(this,130,130,true);" src="/image/common/mp3.gif" />
+				<#else>
+				<img class="vote_cell_img" rel="file" onload="BBS.fillImg(this,130,130,true);" src="/image/common/file.gif" />
+				</#if>
+			</div>
+			<div class="name">${u.name}</div>
+		</div>
+	</#list>
+	<div class="CLEAR"></div>
+</div>
+<div class="CLEAR"></div>
+<div class="page">第&nbsp;${pagination.page}/${pagination.maxPage}&nbsp;页&nbsp;&nbsp;&nbsp;
+	<input type="button" onclick="javascript:SERVICE.prePage();" value="上一页" class="newtopic_submit">
+	<input type="text"  class="newtopic_submit" style="width:40px" id="resource_page"/>
+	<input type="button" onclick="javascript:SERVICE.loadPage();" value="GO" class="newtopic_submit">
+	<input type="button" onclick="javascript:SERVICE.nextPage();" value="下一页" class="newtopic_submit">&nbsp;&nbsp;&nbsp;
+	<input type="button" onclick="javascript:SERVICE.reload();" value="刷新本页" class="newtopic_submit">
+</div>
+<script>
+	$j(document).ready(function(){SERVICE.setMaxPage(${pagination.maxPage});});
+</script>

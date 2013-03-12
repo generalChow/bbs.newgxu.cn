@@ -1,0 +1,49 @@
+<@base.header title="周前三历史记录">
+	<style type="text/css">
+	<!--
+	.style1 {color: #407F00}
+	-->
+	</style>
+</@base.header>
+<@base.body location="每周榜单">
+	<@base.main location="每周打榜">
+	<#setting number_format="0">
+		<div class="list_title_01">&nbsp;</div>
+		<div class="list_title_02">
+				<a href="?type=0"><span class="style0">每周最活跃用户前三历史记录</span></a> 
+				<!-- <a href="?type=1"><span class="style1">按经验排序</span></a> 
+				<a href="?type=2"><span class="style2">按XDB排序</span></a> 
+				<a href="?type=3"><span class="style3">按发表主题数排序</span></a> 
+				<a href="?type=4"><span class="style4">按发表回复数排序</span></a> 
+				<a href="?type=5"><span class="style5">按发表精华数排序</span></a>
+				<a href="?type=6"><span class="style6">按本周最活跃用户排序</span></a> -->
+		</div>
+		<div class="kuang">
+		  <table width="100%" height="25"  border="0" align="center" cellpadding="2" cellspacing="0" bgcolor="#FFFAD0" class="botom_line">
+			<tr align="center">
+			  <th width="35" class="right_line">序号</th>
+			  <th width="120" class="right_line">周次</th>
+			  <th width="160" class="right_line style1">第一名</th>
+			  <th width="160" class="right_line style2">第二名</th>
+			  <th width="160" class="right_line style3">第三名</th>
+			  <th width="160" class="right_line style4">登榜日期</th>
+			</tr>
+		  </table>
+		  <#list topThrees as t>
+		  <table width="100%" height="20"  border="0" align="center" cellpadding="2" cellspacing="0" class="botom_line">
+			<tr align="center">
+			  <th width="35" height="25" class="right_line">${t_index+1+(pagination.page-1)*pagination.pageSize}</th>
+			  <td width="120" class="right_line">${t.weekly}</td>
+			  <td width="160" class="right_line style1">${t.first.nick}</td>
+			  <td width="160" class="right_line style2">${t.second.nick}</td>
+			  <td width="160" class="right_line style3">${t.thrid.nick}</td>
+			  <td width="160" class="right_line style4">${t.toppedTime?string("yyyy-MM-dd")}</td>
+			</tr>
+		  </table>
+		  </#list>
+		</div>
+		
+		<div class="list_title_03"><span class="left pages">${model.pagination}</span></div>
+		<div class="list_title_04" align="left">&nbsp;</div>
+	</@base.main>
+</@base.body>
