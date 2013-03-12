@@ -78,9 +78,9 @@
 			<div data-role="footer">
 				<div data-role="navbar" data-position="fixed" data-tap-toggle="false">
 			        <ul>
-				        <li><a href="#home" data-icon="arrow-l" data-transition="fade">上一页</a></li>
-				        <li><a href="#sessions" data-icon="arrow-r" data-transition="fade">下一页</a></li>
-				        <li><a href="/ng/m/home" data-icon="home" data-transition="fade">首页</a></li>
+				        <li><a href="#home" data-icon="arrow-l" data-transition="fade" id="last">上一页</a></li>
+				        <li><a href="#sessions" data-icon="arrow-r" data-transition="fade" id="next">下一页</a></li>
+				        <li><a href="/ng/m/home" data-icon="home" data-transition="slide">首页</a></li>
 				        <c:if test="${not empty sessionScope._user}">
 				        	<li><a href="/ng/m/topic/create?from=home" data-icon="event" data-ajax="false">发帖</a></li>
 				    	</c:if>
@@ -125,6 +125,14 @@
 
 			$('#refresh').click(function() {
 				window.location.reload();
+			})
+			
+			$('#last').click(function() {
+				history.go(-1);
+			})
+
+			$('#next').click(function() {
+				history.forward();
 			})
 		})
 	</script>

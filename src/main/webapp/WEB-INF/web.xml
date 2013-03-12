@@ -38,8 +38,11 @@ id="WebApp_ID" version="2.5">
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>entityManagerFilter</filter-name>
-		<!-- <url-pattern>*.yws</url-pattern> -->
-		<url-pattern>/*</url-pattern>
+		<url-pattern>*.yws</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>entityManagerFilter</filter-name>
+		<url-pattern>/ng/*</url-pattern>
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>autoLogin</filter-name>
@@ -104,6 +107,15 @@ id="WebApp_ID" version="2.5">
 	<listener>
 		<listener-class>cn.newgxu.bbs.common.util.UpdateLastWeekExp</listener-class>
 	</listener>
+
+	<error-page>  
+        <error-code>404</error-code>  
+        <location>/resources/html/404.html</location>  
+	</error-page>
+	<error-page>  
+        <error-code>500</error-code>  
+        <location>/resources/html/500.html</location>  
+	</error-page>
 	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

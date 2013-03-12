@@ -58,15 +58,15 @@
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- daily rollover -->
 			<fileNamePattern>
-				${logHome}/%d{yyyy/MM}/%d{dd}-%i.txt
+				${logHome}/%d{yyyy/MM}/%d{dd}.txt
 			</fileNamePattern>
 			<!-- keep 30 days' worth of history -->
 			<maxHistory>30</maxHistory>
 
-			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-				<!-- or whenever the file size reaches 10MB -->
+			<!-- <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				or whenever the file size reaches 10MB
 				<maxFileSize>10MB</maxFileSize>
-			</timeBasedFileNamingAndTriggeringPolicy>
+			</timeBasedFileNamingAndTriggeringPolicy> -->
 		</rollingPolicy>
 
 		<encoder>

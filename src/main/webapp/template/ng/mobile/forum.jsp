@@ -4,7 +4,13 @@
 <!doctype html>
 <html>
 	<head>
-		<jsp:include page="mobile-manifest.jsp" />		
+		<jsp:include page="mobile-manifest.jsp" />
+		<style type="text/css">
+			.nick {
+				color: purple;
+				font-size: 0.7px;
+			}
+		</style>	
 	</head>
 <body>
 		<div data-role="page" id="forum">
@@ -34,8 +40,8 @@
 				<ul data-role="listview" id="topics">
 					<c:forEach items="${model.topics}" var="t" varStatus="i">
 						<li index="${t.id}">
-							<a href="/ng/m/topic/view?topicId=${t.id}&forumId=${t.forum.id}">${t.title}</a>
-							[${t.user.nick}] 发表于 ${t.creationTime}
+							<a href="/ng/m/topic/view?topicId=${t.id}&forumId=${t.forum.id}" data-ajax="false" data-transition="slide">${t.title}</a>
+							<span class="nick">[${t.user.nick}]</span> 发表于 ${t.creationTime}
 							<span class="ui-li-count">${t.clickTimes}</span>
 						</li>
 					</c:forEach>
@@ -44,24 +50,24 @@
 				<button id="more" fid="${model.forum.id}" tid="0">点击查看更多。。。</button>
 			</div>
 			<div data-role="footer">
-				<!-- <div data-role="navbar" data-position="fixed">
+				<div data-role="navbar" data-position="fixed" data-tap-toggle="false">
 			        <ul>
-				        <li><a href="#home" data-icon="arrow-l" data-transition="fade">上一页</a></li>
-				        <li><a href="#sessions" data-icon="arrow-r" data-transition="fade">下一页</a></li>
-				        <li><a href="#sessions" data-icon="home" data-transition="fade">首页</a></li>
-				        <c:if test="${not empty sessionScope.user}">
-				        	<li><a href="#">发帖</a></li>
+				        <li><a href="#home" data-icon="arrow-l" data-transition="fade" id="last">上一页</a></li>
+				        <li><a href="#sessions" data-icon="arrow-r" data-transition="fade" id="next">下一页</a></li>
+				        <li><a href="/ng/m/home" data-icon="home" data-transition="slide">首页</a></li>
+				        <c:if test="${not empty sessionScope._user}">
+				        	<li><a href="/ng/m/topic/create?from=home" data-icon="event" data-ajax="false">发帖</a></li>
 				    	</c:if>
 				        <c:choose>
-				        	<c:when test="${not empty sessionScope.user}">
-				        		<li><a href="#sessions" data-icon="event" data-transition="fade">退出</a></li>
+				        	<c:when test="${not empty sessionScope._user}">
+				        		<li><a href="/ng/m/home" data-icon="event" data-transition="fade">退出</a></li>
 				        	</c:when>
 				        	<c:otherwise>
-				        		<li><a href="#sessions" data-icon="grid" data-transition="fade">登陆</a></li>
+				        		<li><a href="#login_dialog" data-icon="grid" data-transition="pop">登陆</a></li>
 				        	</c:otherwise>
 				    	</c:choose>
 			        </ul>
-			    </div> -->
+			    </div>
 			 </div>
 		</div>
 </body>
@@ -83,7 +89,7 @@
 			}, function(data) {
 				$.each(data, function(i, item) {
 					// $('<li>').attr('index', item.tid).append($('<a>').attr('href', '/ng/m/topic/view?topicId=' + item.tid + '&forumId=' + fid).text(item.title)).appendTo('#topics');
-					var html = '<li index={index}><a href="/ng/m/topic/view?topicId={tid}&forumId={fid}">{title}</a>[{nick}] 发表于 {ctime}<span class="ui-li-count">{clickTimes}</span></li>';
+					var html = '<li index={index}><a href="/ng/m/topic/view?topicId={tid}&forumId={fid}" data-ajax="false" data-transition="slide">{title}</a><span class="nick">[{nick}]</span> 发表于 {ctime}<span class="ui-li-count">{clickTimes}</span></li>';
 					$(html.replace('{index}', item.tid).replace('{tid}', item.tid).replace('{fid}', fid).replace('{title}', item.title).replace('{nick}', item.author).replace('{ctime}', item.ctime).replace('{clickTimes}', item.clickTimes)).appendTo('#topics');
 					lastTopicId = item.tid;
 				})
@@ -102,6 +108,14 @@
 
 			$('#refresh').click(function() {
 				window.location.reload();
+			})
+
+			$('#last').click(function() {
+				history.go(-1);
+			})
+
+			$('#next').click(function() {
+				history.forward();
 			})
 		})
 	</script>
