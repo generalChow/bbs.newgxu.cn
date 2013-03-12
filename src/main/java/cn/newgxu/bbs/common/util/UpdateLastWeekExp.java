@@ -118,4 +118,8 @@ public class UpdateLastWeekExp implements ServletContextListener {
 		System.out.println("contextDestroyed");
 	}
 	
+	public static void main(String[] args) {
+		
+	}
+	
 }

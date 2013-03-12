@@ -507,7 +507,8 @@ public class ForumServiceImpl implements ForumService {
 
 		topic.save();
 		reply.save();
-		user.save();
+//		user.save();
+		user.update();
 		bank.save();
 
 		return topic;
@@ -623,7 +624,8 @@ public class ForumServiceImpl implements ForumService {
 
 		reply.save();
 
-		user.save();
+//		user.save();
+		user.update();
 		bank.save();
 
 		topic.newReply(reply);

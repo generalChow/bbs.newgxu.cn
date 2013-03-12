@@ -78,10 +78,16 @@ public class AccountController {
 	}
 	
 	@MVCMapping("do_login")
-	public ModelAndView login(LoginModel model, ModelAndView mav, HttpServletRequest request, HttpServletResponse response) throws BBSException {
+	public ModelAndView login(LoginModel model, ModelAndView mav, HttpServletRequest request, HttpServletResponse response) {
 		L.info("用户：{} 试图从mobile登录论坛！", model.getUsername());
 		model.setIp(request.getRemoteAddr());
-		User user =  userService.loginWithoutValidCode(model);
+		User user = null;
+		try {
+			user = userService.loginWithoutValidCode(model);
+		} catch (BBSException e) {
+			L.error("用户登录失败!", e);
+			return mav.setViewName("mobile/login.jsp").addModel("msg", e.getMessage());
+		}
 		request.getSession().setAttribute("_user", user);
 		switch (user.getAccountStatus()) {
 		case ACCOUNT_STATUS_NORMAL:
@@ -102,7 +108,7 @@ public class AccountController {
 			mav.setView(new View()).addModel("msg", "抱歉，您的帐号已被禁止登录！");
 			break;
 		default:
-			throw new BBSException("出错啦！请稍后再试！");
+			throw new RuntimeException("出错啦！请稍后再试！");
 		}
 		return mav;
 	}

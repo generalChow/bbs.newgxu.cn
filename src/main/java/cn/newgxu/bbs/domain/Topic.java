@@ -1095,4 +1095,20 @@ public class Topic extends JPAEntity {
 		return Q("from Topic as t order by t.creationTime desc").setMaxResults(number).getResultList();
 	}
 	
+	/**
+	 * 获取帖子后续（more）的回复。
+	 * @param topicId
+	 * @param offset
+	 * @param number
+	 * @return
+	 */
+	public static List<Reply> getReples(int topicId, int offset, int number) {
+		return getEntityManager()
+				.createQuery("FROM Reply r WHERE r.topic.id = :tid and r.id > :rid and r.invalid = false order by r.id asc", Reply.class)
+				.setParameter("tid", topicId)
+				.setParameter("rid", offset)
+				.setMaxResults(number)
+				.getResultList();
+	}
+	
 }

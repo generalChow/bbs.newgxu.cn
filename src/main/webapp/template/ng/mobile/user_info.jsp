@@ -14,14 +14,14 @@
 <body>
 	<div data-role="page" id="user_info">
 		<div data-role="header">
-			<a href="#" data-icon="back">返回</a>
+			<a href="#" data-icon="back" id="back">返回</a>
 			<h1>用户信息</h1>
 			<a href="#" data-icon="refresh">刷新</a>
 		</div>
 		<div data-role="content">
 			<h2 id="title">${u.nick}' s 信息</h2>
 
-			<img src="/resources/images/mobile/logo.png" alt="欢迎登陆雨无声社区论坛！" />
+			${u.faceDisplay}
 
 			<section class="ui-grid-b">
 				<!-- Row 1 -->
@@ -76,4 +76,15 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+		$(function() {
+			$('#back').click(function() {
+				history.go(-1);
+			})
+
+			$('#refresh').click(function() {
+				window.location.reload();
+			})
+		})
+	</script>
 </html>

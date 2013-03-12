@@ -207,7 +207,7 @@ public class MVCProcess {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	private static boolean interceptorBefore(Method method, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private static boolean interceptorBefore(Method method, HttpServletRequest request, HttpServletResponse response, ModelAndView mav) throws ServletException, IOException {
 //		默认放行。
 		boolean allow = true;
 		if (method.isAnnotationPresent(MVCInterceptor.class)) {
@@ -216,7 +216,7 @@ public class MVCProcess {
 			
 			for (int i = 0; i < classes.length; i++) {
 				Interceptor interceptor  = context.getBean(classes[i]);
-				allow = interceptor.before(request, response);
+				allow = interceptor.before(request, response, mav);
 				if (!allow) {
 					break;
 				}
@@ -299,18 +299,18 @@ public class MVCProcess {
 		
 //		准备拦截器
 		Interceptor interceptor = intercept(path, request, response);
+		ModelAndView mav = new ModelAndView();
 //		方法执行前进行拦截
 		if (interceptor != null) {
-			if (!interceptor.before(request, response)) {
+			if (!interceptor.before(request, response, mav)) {
 				return;
 			}
 		}
 		
 		
-		ModelAndView mav = null;
 		try {
 			mav = process(request, response, path);
-		} catch (Exception e) {
+		} catch (Throwable e) {
 			globalExceptionHandler(request, response, e);
 			return;
 		}
@@ -368,7 +368,7 @@ public class MVCProcess {
 				method = controller.getClass()
 						.getMethod(methodName, paramTypes);
 //				方法执行之前进行拦截。
-				if (!interceptorBefore(method, request, response)) {
+				if (!interceptorBefore(method, request, response, mav)) {
 					return mav;
 				}
 				result = method.invoke(controller, injectedParams);
@@ -516,7 +516,12 @@ public class MVCProcess {
 		Object obj = null;
 		if (paramMapping != null) {
 //			obj = StringUtils.parse(paramType, requestParams.get(paramMapping.value())[0]);
-			obj = StringUtils.convert(paramType, requestParams.get(paramMapping.value())[0]);
+			String param = null;
+			try {
+				param = requestParams.get(paramMapping.value())[0];
+			} catch (Exception e) {}
+			
+			obj = StringUtils.convert(paramType, param);
 			L.debug("请求参数绑定 key:{}, value: {}", paramMapping.value(), obj);
 		} else {
 //			在参数类型不相同的时候可用, 因为此时是通过类型判断！警告，这个算法不够完善，当出现true，flase，1，0，时间日期并且转换类型是字符串的时候容易出错！慎用！
@@ -630,8 +635,10 @@ public class MVCProcess {
 	 * @param response
 	 * @param mav
 	 * @throws MVCException 异常处理的时候发生错误-.-
+	 * @throws ServletException 
+	 * @throws IOException 
 	 */
-	private static void handleException(String controllerName, Object handler, Throwable handleFor, HttpServletRequest request, HttpServletResponse response, ModelAndView mav) throws MVCException {
+	private static void handleException(String controllerName, Object handler, Throwable handleFor, HttpServletRequest request, HttpServletResponse response, ModelAndView mav) throws MVCException, IOException, ServletException {
 		Method[] methods = exceptionHandlers.get(controllerName);
 		for (int i = 0; i < methods.length; i++) {
 			MVCExceptionpHandler expHandler = methods[i].getAnnotation(MVCExceptionpHandler.class);
@@ -654,6 +661,8 @@ public class MVCProcess {
 				}
 			}
 		}
+//		globalExceptionHandler(request, response, handleFor);
+		throw new MVCException(handleFor);
 	}
 	
 	/**
@@ -672,7 +681,7 @@ public class MVCProcess {
 						.setReason(t.getMessage())
 						.setSolutions("请查看异常信息并检查您是否误操作！", "请稍后再试！", "请联系管理员！");
 		request.setAttribute("msg", msg);
-		request.getRequestDispatcher(viewPath + "error.jsp").forward(request, response);
+		request.getRequestDispatcher(viewPath + "mobile/error.jsp").forward(request, response);
 	}
-
+	
 }

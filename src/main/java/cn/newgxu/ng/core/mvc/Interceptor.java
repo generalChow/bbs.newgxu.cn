@@ -36,7 +36,7 @@ public interface Interceptor {
 	 * @param servletResponse
 	 * @return true，继续执行，false，停止执行
 	 */
-	boolean before(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	boolean before(HttpServletRequest request, HttpServletResponse response, ModelAndView mav) throws ServletException, IOException;
 	
 	/**
 	 * 响应结束之后进行拦截

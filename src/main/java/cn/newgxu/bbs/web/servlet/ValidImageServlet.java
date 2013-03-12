@@ -112,8 +112,8 @@ public class ValidImageServlet extends BaseServlet {
 		g.setColor(getRandColor(200, 250));
 		g.fillRect(0, 0, width, height);
 		// 设定字体
-		// g.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		g.setFont(new Font("宋体", Font.PLAIN, 18));
+		 g.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+//		g.setFont(new Font("宋体", Font.PLAIN, 18));
 		g.setColor(Color.black);// 黑色文字
 		g.drawString(content, 3, 13);
 		g.dispose();

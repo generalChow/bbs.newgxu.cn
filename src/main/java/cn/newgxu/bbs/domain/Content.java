@@ -52,6 +52,9 @@ public class Content extends JPAEntity {
 	}
 
 	public void setContent(String content) {
+		if (content == null || content.length() < 5) {
+			throw new RuntimeException("您的回复内容过短！");
+		}
 		/*
 		 * 考虑到 新旧 版本编辑器的兼容问题，这里需要将\r\n全部转换成无字符。
 		 */

@@ -4,7 +4,7 @@
 <!doctype html>
 <html>
 	<head>
-		<jsp:include page="mobile-manifest.jsp" />		
+		<jsp:include page="mobile-manifest.jsp" />	
 	</head>
 <body>
 	<div data-role="page">
@@ -13,29 +13,27 @@
 		</div>
   
 		<div data-role="content">
-	   		<form action="/ng/m/topic/submit" method="post" data-transition="none">
+	   		<form action="/ng/m/topic/submit" method="post" data-transition="flip" data-ajax="true" id="ajax_form">
 		    	<div data-role="fieldcontain">
 			        <label for="areaId">分区:</label>
-			        <select name="areaId" id="areaId" data-native-menu="false" data-overlay-theme="e">
-			        	<option value="0" data-placeholder="true">请选择主题所要发表在的分区</option>
+			        <select name="areaId" id="areaId">
+			        	<option value="0">请选择主题所要发表在的分区</option>
 			        	<c:forEach items="${model.areas}" var="a">
 			        		<option value="${a.id}">${a.name}</option>
 			        	</c:forEach>
 			        </select>
 		        </div>
 
-		        <div data-role="fieldcontain">
+		        <div data-role="fieldcontain" id="forums">
 			        <label for="forumId">板块:</label>
-			        <select name="forumId" id="forumId" data-native-menu="false" data-overlay-theme="e">
-			        	<option value="0" data-placeholder="true">请选择主题所要发表在的板块</option>
-			        	<!-- todo jason!!! -->
-
+			        <select name="forumId" id="forumId" data-overlay-theme="e">
+			        	<option value="0">请选择主题所要发表在的板块</option>
 			        </select>
 		        </div>
 
 		        <div data-role="fieldcontain">
 			        <label for="type">类型:</label>
-			        <select name="type" id="type"  data-native-menu="false" data-overlay-theme="e">
+			        <select name="type" id="type">
 			        	  <option value="0" data-placeholder="true">请选择帖子的类型</option>
 			        	  <option value="【原创】">【原创】</option>
                           <option value="【转帖】">【转帖】</option>
@@ -68,7 +66,7 @@
 		       
 				<div data-role="fieldcontain">
 				    <label for="content">帖子内容:</label>
-			        <textarea cols="40" rows="8" name="content" id="content"></textarea>
+			        <textarea name="content" id="content"></textarea>
 		        </div>
 
 			    <div data-role="fieldcontain">
@@ -78,28 +76,57 @@
 				        <option value="true">转帖</option>
 			        </select>
 		        </div>
-		        <input type="submit" value="Send" data-theme="a">
+		        <input type="submit" id="submit" value="发表！" data-theme="a">
 		    </form>
-		    <div id="t"></div>
 		</div>
 	</div>
 </body>
-<script type="text/javascript">
+<script defer="after" type="text/javascript">
 	$(function() {
-		var person = {
-			"name": "longkai",
-			"age": "21"
-		}
 		$('#areaId').change(function() {
-			var areaId = $(this).val();
-
+			var areaId = $(this).val();	
+			// 这个重新选择板块后修改标题非常蛋碎。
+			$('#forums span.ui-btn-text span').text("请选择主题所要发表在的板块");
+			$('#forumId').empty();
 			$.getJSON('/ng/m/topic/load_forums?areaId=' + areaId, function(data) {
 				$.each(data, function(i, item) {
-					$('<div>').html(item.name).appendTo('#t');
+					$('<option>').val(item.areaId).text(item.name).appendTo('#forumId');
 				})
 			})
-			// $('#t').load('/ng/m/topic/load_forums?areaId=1');
 		});
-	})
+
+		$('#type').change(function() {
+			var type = $(this).val();
+
+			$('#title').val(type + " " + $('#title').val());
+		})
+
+		$('#submit').click(function() {
+			var msg = "确定发表帖子吗？";
+			if (confirm(msg)) {
+				var params = $('#ajax_form').serialize();
+				$.ajax({
+					type: 'POST',
+					url: '/ng/m/topic/submit',
+					data: params,
+					dataType: 'json',
+					success: function(data) {
+						if (data.status === 'success') {
+							var msg = "发表新帖子成功!";
+							alert(msg);
+							window.location.href = '/ng/m/topic/view?topicId=' + data.topicId + '&forumId=' + data.forumId;
+						} else {
+							alert("发表新帖子失败！原因：" + data.info);
+						}
+					},
+					error: function() {
+						alert('出现了问题，请稍后再试！');
+					}
+				})
+			}
+			
+			return false;
+		})
+	});
 </script>
 </html>	

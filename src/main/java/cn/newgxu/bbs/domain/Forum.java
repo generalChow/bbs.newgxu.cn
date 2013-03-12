@@ -368,6 +368,25 @@ public class Forum extends JPAEntity {
 			return null;
 		}
 	}
+	
+	/**
+	 * 获取某个版块最新的帖子
+	 * @param offset 偏移
+	 * @param forumId 板块的id
+	 * @param number 每次获取的数量
+	 * @author longkai
+	 * @since 2013-03-10
+	 * @return list
+	 */
+	public static List<Topic> getLatestTopis(int offset, int forumId, int number) {
+//		SQ("FROM Topic t where t.forum.id = ?1 and t.id < ?2 order by t.id desc")
+		return getEntityManager()
+				.createQuery("FROM Topic t where t.forum.id = :forumId and t.id < :offfset order by t.id desc", Topic.class)
+				.setParameter("offfset", offset)
+				.setParameter("forumId", forumId)
+				.setMaxResults(number)
+				.getResultList();
+	}
 
 	public String getHotString() {
 		if (isHot()) {

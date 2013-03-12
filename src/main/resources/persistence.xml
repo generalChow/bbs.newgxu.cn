@@ -21,7 +21,7 @@
 		<properties>
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.MySQL5InnoDBDialect" />
-				<property name="hibernate.hbm2ddl.auto" value="update" />
+				<property name="hibernate.hbm2ddl.auto" value="none" />
 			<!-- 输出了太多的sql，意义不大，禁用 longkai@2012-10-10 -->
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.use_sql_comments" value="false" />

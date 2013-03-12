@@ -7,14 +7,12 @@
 		<jsp:include page="mobile-manifest.jsp" />
 	</head>
 <body>
-<div data-role="page">
-	<div data-role="header">
+	<div data-role="page">
 		<head>出错啦！</head>
 	</div>
 	<div data-role="content">
 		<div id="error">错误信息：${msg.info}</div>
-		<div id="reson">出错原因：${msg.reason}</div>
-		<hr />
+		<div id="reson">出错原因：${msg.resson}</div>
 		<div id="solutions">
 			<ul data-role="listview">
 				<c:forEach items="${msg.solutions}" var="s">
@@ -24,7 +22,6 @@
 		</div>
 		<button id="back">返回上一步</button>
 	</div>
-</div>
 </body>
 <script type="text/javascript">
 	$(function() {

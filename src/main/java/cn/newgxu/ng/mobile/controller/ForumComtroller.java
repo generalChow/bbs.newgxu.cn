@@ -15,18 +15,31 @@
  */
 package cn.newgxu.ng.mobile.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 
 import cn.newgxu.bbs.common.exception.BBSException;
+import cn.newgxu.bbs.domain.Forum;
+import cn.newgxu.bbs.domain.Topic;
 import cn.newgxu.bbs.domain.user.User;
 import cn.newgxu.bbs.service.ForumService;
 import cn.newgxu.bbs.web.model.ForumModel;
 import cn.newgxu.ng.core.mvc.ModelAndView;
+import cn.newgxu.ng.core.mvc.View;
 import cn.newgxu.ng.core.mvc.annotation.MVCHandler;
 import cn.newgxu.ng.core.mvc.annotation.MVCMapping;
+import cn.newgxu.ng.core.mvc.annotation.MVCParamMapping;
+import cn.newgxu.ng.util.ViewType;
 
 /**
  * 
@@ -38,6 +51,8 @@ import cn.newgxu.ng.core.mvc.annotation.MVCMapping;
 @Scope("prototype")
 public class ForumComtroller {
 
+	private static final Logger L = LoggerFactory.getLogger(ForumComtroller.class);
+	
 	@Inject
 	private ForumService forumService;
 	
@@ -47,6 +62,29 @@ public class ForumComtroller {
 		forumService.forum(model);
 		mav.addModel("model", model);
 		return "mobile/forum.jsp";
+	}
+	
+	@MVCMapping("/forum/more")
+	public View more(@MVCParamMapping("tid") int topicId, @MVCParamMapping("fid") int forumId) throws JSONException {
+		View view = new View().setType(ViewType.JSON);
+		List<Topic> latestTopics = Forum.getLatestTopis(topicId, forumId, 10);
+		L.debug("共有{}条记录！", latestTopics.size());
+		JSONArray jsonArray = new JSONArray();
+		
+		int i = 0;
+		for (Topic t : latestTopics) {
+			Map<String, Object> m = new HashMap<String, Object>();
+			m.put("tid", t.getId());
+			m.put("title", t.getTitle());
+			m.put("author", t.getUser().getNick());
+			m.put("uid", t.getUser().getId());
+			m.put("ctime", t.getCreationTime());
+			m.put("clickTimes", t.getClickTimes());
+			jsonArray.put(i++, m);
+		}
+		
+		
+		return view.setContent(jsonArray.toString());
 	}
 	
 }

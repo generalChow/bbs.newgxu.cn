@@ -31,20 +31,20 @@
 					<div class="ui-block-b">${model.forum.description}</div>
 				</section>
 				<hr />
-				<ul data-role="listview">
+				<ul data-role="listview" id="topics">
 					<c:forEach items="${model.topics}" var="t" varStatus="i">
-						<li index="${i.count}" id="${t.id}">
+						<li index="${t.id}">
 							<a href="/ng/m/topic/view?topicId=${t.id}&forumId=${t.forum.id}">${t.title}</a>
 							[${t.user.nick}] 发表于 ${t.creationTime}
 							<span class="ui-li-count">${t.clickTimes}</span>
 						</li>
 					</c:forEach>
-					<hr />
-					<li><a href="#" style="text-align: center;">点击查看更多。。。</a></li>
 				</ul>
+				<hr />
+				<button id="more" fid="${model.forum.id}" tid="0">点击查看更多。。。</button>
 			</div>
 			<div data-role="footer">
-				<div data-role="navbar" data-position="fixed">
+				<!-- <div data-role="navbar" data-position="fixed">
 			        <ul>
 				        <li><a href="#home" data-icon="arrow-l" data-transition="fade">上一页</a></li>
 				        <li><a href="#sessions" data-icon="arrow-r" data-transition="fade">下一页</a></li>
@@ -61,13 +61,48 @@
 				        	</c:otherwise>
 				    	</c:choose>
 			        </ul>
-			    </div>
+			    </div> -->
 			 </div>
 		</div>
 </body>
 <script>
 	$(function() {
+		$('#more').click(function() {
+			var fid = $(this).attr('fid');
+			// var lastTopicId = $('#topics li:last').attr('index');
+			var lastTopicId = 0;
+			if ($('#more').attr('tid') == 0) {
+				lastTopicId = $('#topics li:last').attr('index');
+			} else {
+				lastTopicId = $('#more').attr('tid');
+			}
 
+			$.getJSON('/ng/m/forum/more', {
+				tid: lastTopicId,
+				fid: fid
+			}, function(data) {
+				$.each(data, function(i, item) {
+					// $('<li>').attr('index', item.tid).append($('<a>').attr('href', '/ng/m/topic/view?topicId=' + item.tid + '&forumId=' + fid).text(item.title)).appendTo('#topics');
+					var html = '<li index={index}><a href="/ng/m/topic/view?topicId={tid}&forumId={fid}">{title}</a>[{nick}] 发表于 {ctime}<span class="ui-li-count">{clickTimes}</span></li>';
+					$(html.replace('{index}', item.tid).replace('{tid}', item.tid).replace('{fid}', fid).replace('{title}', item.title).replace('{nick}', item.author).replace('{ctime}', item.ctime).replace('{clickTimes}', item.clickTimes)).appendTo('#topics');
+					lastTopicId = item.tid;
+				})
+				$('#topics').listview('refresh');
+				$('#more').attr('tid', lastTopicId);
+			})
+
+		})
 	})
 </script>
+<script type="text/javascript">
+		$(function() {
+			$('#back').click(function() {
+				history.go(-1);
+			})
+
+			$('#refresh').click(function() {
+				window.location.reload();
+			})
+		})
+	</script>
 </html>

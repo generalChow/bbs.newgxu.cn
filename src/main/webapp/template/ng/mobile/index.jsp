@@ -14,11 +14,11 @@
 <body>
 		<div data-role="page">
 			<div data-role="header">
-				<a href="#" data-icon="back">返回</a>
+				<a href="#" data-icon="back" id="back">返回</a>
 				<h1>首页 - 论坛</h1>
-				<a href="#" data-icon="refresh">刷新</a>
+				<a href="#" data-icon="refresh" id="refresh">刷新</a>
 			</div>
-			<div data-role="content" data-theme="b">
+			<div data-role="content" data-theme="c">
 					<c:choose>
 						<c:when test="${not empty sessionScope._user}">
 							<h2>欢迎你，${sessionScope._user.nick}！</h2>
@@ -33,7 +33,7 @@
 					<div data-role="collapsible" data-collapsed="true">
 						<h2>${t.title}</h2>
 						<p><a href="/ng/m/user_info/view?id=${t.topic.user.id}">${t.topic.user.nick}</a></p>
-						<p class="digest">${t.content} [<a href="/ng/m/topic/view?topicId=${t.topic.id}&forumId=${t.forum.id}">详细</a>]</p>
+						<p class="digest">${t.content} [<a href="/ng/m/topic/view?topicId=${t.topic.id}&forumId=${t.forum.id}" data-ajax="false" data-transition="slide">详细</a>]</p>
 					</div>
 				</c:forEach>
 				<hr />
@@ -44,7 +44,7 @@
 							<h2>${a.name}</h2>
 							<ul data-role="listview" data-inset="true">
 								<c:forEach items="${a.forums}" var="f">
-									<li><a href="/ng/m/forum?forumId=${f.id}" data-transition="flip">${f.name}</a></li>
+									<li><a href="/ng/m/forum?forumId=${f.id}" data-ajax="false" data-transition="slide">${f.name}</a></li>
 								</c:forEach>
 							</ul>
 						</div>
@@ -54,7 +54,7 @@
 				<button>分区新帖</button>
 				<ul data-role="listview" data-inset="true">
 					<c:forEach items="${index.latestTopics}" var="t">
-						<li><a href="#">${t.title}</a></li>
+						<li><a href="/ng/m/topic/view?topicId=${t.id}&forumId=${t.forum.id}" data-ajax="false" data-transiton="slide">${t.title}</a></li>
 					</c:forEach>
 				</ul>
 				<hr />
@@ -76,20 +76,20 @@
 			</div>
 			<div></div>
 			<div data-role="footer">
-				<div data-role="navbar" data-position="fixed">
+				<div data-role="navbar" data-position="fixed" data-tap-toggle="false">
 			        <ul>
 				        <li><a href="#home" data-icon="arrow-l" data-transition="fade">上一页</a></li>
 				        <li><a href="#sessions" data-icon="arrow-r" data-transition="fade">下一页</a></li>
 				        <li><a href="/ng/m/home" data-icon="home" data-transition="fade">首页</a></li>
 				        <c:if test="${not empty sessionScope._user}">
-				        	<li><a href="/ng/m/topic/create?from=home" data-icon="event">发帖</a></li>
+				        	<li><a href="/ng/m/topic/create?from=home" data-icon="event" data-ajax="false">发帖</a></li>
 				    	</c:if>
 				        <c:choose>
 				        	<c:when test="${not empty sessionScope._user}">
 				        		<li><a href="/ng/m/home" data-icon="event" data-transition="fade">退出</a></li>
 				        	</c:when>
 				        	<c:otherwise>
-				        		<li><a href="#login_dialog" data-icon="grid" data-transition="fade">登陆</a></li>
+				        		<li><a href="#login_dialog" data-icon="grid" data-transition="pop">登陆</a></li>
 				        	</c:otherwise>
 				    	</c:choose>
 			        </ul>
@@ -117,4 +117,15 @@
 			</div>
 		</div>
 	</body>
+	<script type="text/javascript">
+		$(function() {
+			$('#back').click(function() {
+				history.go(-1);
+			})
+
+			$('#refresh').click(function() {
+				window.location.reload();
+			})
+		})
+	</script>
 </html>

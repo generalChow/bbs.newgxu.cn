@@ -20,6 +20,7 @@ import static org.hamcrest.CoreMatchers.*;
 
 import java.text.ParseException;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import cn.newgxu.ng.util.DateTime;
@@ -42,6 +43,7 @@ public class DateTimeTest {
 	}
 
 	@Test
+	@Ignore
 	public void testMatche() {
 		boolean matchs = RegexUtils.contains(str, DateTime.ISO_DATE_TIME_REGEX);
 		assertThat(matchs, is(true));

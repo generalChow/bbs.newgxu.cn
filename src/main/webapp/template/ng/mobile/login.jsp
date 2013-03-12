@@ -3,7 +3,13 @@
 <!doctype html>
 <html>
 	<head>
-		<jsp:include page="mobile-manifest.jsp" />		
+		<jsp:include page="mobile-manifest.jsp" />
+		<style type="text/css">
+			.error {
+				color: red;
+				text-align: center;
+			}
+		</style>
 	</head>
 <body>
 		<div data-role="page">
@@ -12,6 +18,9 @@
 			</div>
 			<div data-role="content">
 				<img src="/resources/images/mobile/logo.png" alt="欢迎登陆雨无声社区论坛！" />
+				<div id="info">
+					<span class="error">${msg}</span>
+				</div>
 				<form action="/ng/m/do_login" data-ajax="false" method="post">
 					<div data-role="fieldcontainer">
 							<label for="username">用户名:</label>
