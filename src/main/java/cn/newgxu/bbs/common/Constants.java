@@ -68,8 +68,8 @@ public class Constants {
 	public static final int FREE_MARKET_BUSINESS_TAX = 5;
 
 
-//	public static final String FILE_ROOT = "/newgxu/tomcat/webapps/ROOT"; //166服务器使用
-	public static final String FILE_ROOT = "D:/coding4fun/workspaces/sts_2.92@2012-08-26/newgxu-bbs/src/main/webapp";//本地测试用
+	public static final String FILE_ROOT = "/newgxu/tomcat/webapps/ROOT"; //166服务器使用
+//	public static final String FILE_ROOT = "D:/coding4fun/workspaces/sts_2.92@2012-08-26/newgxu-bbs/src/main/webapp";//本地测试用
 	public static final String FILE_FACE_ROOT = "/newgxu/tomcat/webapps/ROOT";
 	public static final int RANDOM_STRING_LENGTH = 4;
 
