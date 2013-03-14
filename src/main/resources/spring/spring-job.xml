@@ -9,7 +9,7 @@
 		lazy-init="false">
 		<property name="marketService" ref="marketService" />
 		<!-- 是否随服务器启动运行，设置为false则不运行 -->
-		<property name="autoRun" value="false" />
+		<property name="autoRun" value="true" />
 		<!-- 服务器启动多久以后开始运行，单位为秒 -->
 		<property name="lazyTime" value="30" />
 		<!-- 间隔多久检查一次，单位为分钟 -->
@@ -22,7 +22,7 @@
 		lazy-init="false">
 		<property name="statisticService" ref="statisticService" />
 		<!-- 是否随服务器启动运行，设置为false则不运行 -->
-		<property name="autoRun" value="false" />
+		<property name="autoRun" value="true" />
 		<!-- 服务器启动多久以后开始运行，单位为秒 -->
 		<property name="lazyTime" value="60" />
 		<!-- 间隔多久检查一次，单位为分钟 -->
@@ -35,7 +35,7 @@
 		lazy-init="false">
 		<property name="userService" ref="userService" />
 		<!-- 是否随服务器启动运行，设置为false则不运行 -->
-		<property name="autoRun" value="false" />
+		<property name="autoRun" value="true" />
 		<!-- 服务器启动多久以后开始运行，单位为秒 -->
 		<property name="lazyTime" value="20" />
 		<!-- 间隔多久检查一次，单位为分钟 -->
@@ -62,7 +62,7 @@
 		lazy-init="false">
 		<property name="userService" ref="userService" />
 		<!-- 是否随服务器启动运行，设置为false则不运行 -->
-		<property name="autoRun" value="false" />
+		<property name="autoRun" value="true" />
 		<!-- 服务器启动多久以后开始运行，单位为秒 -->
 		<property name="lazyTime" value="5" />
 		<!-- 间隔多久检查一次，单位为分钟 -->

@@ -298,7 +298,5 @@
 	<include file="xwork-activity.xml"/>
 	<!-- 论坛手机版 longkai@2012-07-31 -->
 	<include file="xwork-wap.xml" />
-	<!-- 其他 longkai@2012-09-14 -->
-	<include file="xwork-others.xml" />
 	
 </xwork>
