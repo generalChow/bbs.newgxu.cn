@@ -1102,9 +1102,10 @@ public class Topic extends JPAEntity {
 	 * @param number
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	public static List<Reply> getReples(int topicId, int offset, int number) {
 		return getEntityManager()
-				.createQuery("FROM Reply r WHERE r.topic.id = :tid and r.id > :rid and r.invalid = false order by r.id asc", Reply.class)
+				.createQuery("FROM Reply r WHERE r.topic.id = :tid and r.id > :rid and r.invalid = false order by r.id asc")
 				.setParameter("tid", topicId)
 				.setParameter("rid", offset)
 				.setMaxResults(number)

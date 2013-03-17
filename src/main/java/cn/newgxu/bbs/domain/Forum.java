@@ -378,10 +378,11 @@ public class Forum extends JPAEntity {
 	 * @since 2013-03-10
 	 * @return list
 	 */
+	@SuppressWarnings("unchecked")
 	public static List<Topic> getLatestTopis(int offset, int forumId, int number) {
 //		SQ("FROM Topic t where t.forum.id = ?1 and t.id < ?2 order by t.id desc")
 		return getEntityManager()
-				.createQuery("FROM Topic t where t.forum.id = :forumId and t.id < :offfset order by t.id desc", Topic.class)
+				.createQuery("FROM Topic t where t.forum.id = :forumId and t.id < :offfset order by t.id desc")
 				.setParameter("offfset", offset)
 				.setParameter("forumId", forumId)
 				.setMaxResults(number)

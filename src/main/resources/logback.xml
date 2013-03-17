@@ -3,9 +3,9 @@
 	<contextName>log</contextName>
 
 	<!-- server -->
-	<!-- <property name="logHome" value="/newgxu/tomcat/logs/" /> -->
+	<property name="LOG_HOME" value="/newgxu/tomcat/logs/logback/" />
 	<!-- local -->
-	<property name="logHome" value="target/logs" />
+	<!-- <property name="logHome" value="target/logs" /> -->
 
 	<!-- 
 		Insert the current time formatted as "yyyyMMdd'T'HHmmss" under the 
@@ -55,10 +55,11 @@
 	 -->
 
 	<appender name="DAILYFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<prudent>true</prudent>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- daily rollover -->
 			<fileNamePattern>
-				${logHome}/%d{yyyy/MM}/%d{dd}.txt
+				${LOG_HOME}/%d{yyyy-MM-dd}.txt
 			</fileNamePattern>
 			<!-- keep 30 days' worth of history -->
 			<maxHistory>30</maxHistory>
@@ -76,9 +77,9 @@
 		</encoder>
 		
 		<!-- deny all events with a level below INFO, that is TRACE and DEBUG -->
-			<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-				<level>INFO</level>
-			</filter>
+				<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+					<level>INFO</level>
+				</filter>
 
 		<!-- 
 			<filter class="ch.qos.logback.classic.filter.LevelFilter"> 
@@ -113,16 +114,16 @@
 	
 	<!-- local -->
 	
-		<root level="DEBUG">
+		<!-- <root level="DEBUG">
 			<appender-ref ref="STDOUT" />
 			<appender-ref ref="DAILYFILE" />
 			<appender-ref ref="STDERR" />
-		</root>
+		</root> -->
 	
 	<!-- server -->
 	<root level="INFO">
 		<!-- <appender-ref ref="STDOUT" /> -->
-		<!-- <appender-ref ref="DAILYFILE" /> -->
+		<appender-ref ref="DAILYFILE" />
 		<!-- <appender-ref ref="STDERR" /> -->
 	</root>
 </configuration>
