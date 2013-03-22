@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="广西 广西大学 广西大学论坛BBS 西大论坛BBS 雨无声论坛BBS 校园论坛BBS 广西论坛BBS 广西大学自考|招生|就业|招聘|考研|学院|图书馆|学生|交易|买卖|平台|新生|二手|跳楼|交友|平台" />
+    <meta name="description" content="广西 广西大学 广西大学论坛BBS 西大论坛BBS 雨无声论坛BBS 校园论坛BBS 广西论坛BBS 广西大学自考|招生|就业|招聘|考研|学院|图书馆|学生|交易|买卖|平台|新生|二手|跳楼|教务处交友|平台" />
+	<title>雨无声论坛|广西大学BBS|bbs.newgxu.cn</title>
+	<link href="/css/default.css" rel="stylesheet" type="text/css" />
+	<script src="/resources/js/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+	<style>
+	/*ECF4FD*/
+		body { background: none repeat scroll 0 0 #ECF4FD;font: normal 62.5% "Verdana,Arial,sans-serif";
+   			   font-size: 12px;line-height: 1.2;}
+    	img {border:none}
+		#wrap {width:100%;text-align:center;}
+		.text {width:95px;}
+		.IMG {height: 400px;margin: 40px auto 0;width: 640px;position:relative;}
+		.LOGIN {}
+		.LINK {margin-top:20px;}
+		.select {
+			border: 1px solid #CCCCCC;
+			font-family: "Verdana,Arial,sans-serif";
+			font-size: 12px;
+			vertical-align: bottom;
+			background-color: #c3e574;
+		}
+
+		button {
+			cursor: pointer;
+		}
+		
+		/*新年了哈！*/
+		.newyear {position:absolute; top:240px;color: #559C29; width:62px;
+    				font-family: Georgia,Tahoma;
+				    font-size: 32px;
+				    line-height: 35px;
+				    text-align: center;z-index:100}
+	</style>
+	<script type="text/javascript">
+
+	  // var _gaq = _gaq || [];
+	  // _gaq.push(['_setAccount', 'UA-33450357-1']);
+	  // _gaq.push(['_trackPageview']);
+
+	  // (function() {
+	  //   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	  //   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	  //   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  // })();
+
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<div class="IMG">
+			${holiday}
+		</div>
+		<div class="LOGIN">
+			<div style="text-align:center; height:13px; line-height:13px;">${firstMsg}</div>
+			<form action="/accounts/login_do.yws" method="post" id="login">
+				<input id="t" type="hidden" name="weibo" value="0"/>
+				用户:<input type="text" style="width:70px;" name="username" id="username" class="text" />
+				密码:<input type="password" style="width:70px;" name="password" id="password" class="text" />
+				验证码:<input style="width:35px;" name="validCode" type="text" id="validCode" size="6" class="input_rand" autocomplete="off" /><img src="/validImage_servlet" style="ma"/>
+				<input type="checkbox" name="autoLogin" value="true" id="autoLogin" /><label for="autoLogin">记住我</label>
+				
+				<button class="select" id="bbs">到论坛</button>&nbsp;
+				<button class="select" id="mobile">到手机版论坛</button>&nbsp;
+				<button class="select" id="weibo">到微雨无声</button>&nbsp;
+				<button class="select" id="vister">游客</button>&nbsp;
+				<button class="select" id="regedit">注册</button>
+				<button class="select" id="reset">找回密码</button>
+				<!--<img src="/images/zc1.gif" name="Image2" width="37" height="16" border="0" id="Image2" onclick="window.location.href='/accounts/register.yws'"/>-->
+			</form>
+		</div>
+		<div class="LINK">
+			<table style="width:530px; margin:0px auto;">
+				<tr>
+					<td valign="top">
+						<a href="http://www.newgxu.cn"><img width="88" height="31" src="/images/logo.gif"></a>
+					</td>
+					<td valign="top" align="left">
+						powered by YJ-Team
+						<br />
+						桂ICP备05001920号 南宁网警备4501200373号&nbsp;&nbsp;&nbsp;雨无声 版权所有◎2004-2012
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+<script>
+	$(document).ready(function(){
+		bindSelect();
+	});
+	
+	function bindSelect(){
+		$("#bbs").click(function(){
+			$("#login").submit();
+			return false;
+		});
+		$("#weibo").click(function(){
+			$("#t").val("1");
+			$("#login").submit();
+			return false;
+		});
+		$("#vister").click(function(){
+			window.location.href='/index.yws';
+			return false;
+		});
+		$("#regedit").click(function(){
+			window.location.href='/accounts/register.yws';
+			return false;
+		});
+		$("#reset").click(function(){
+			window.location.href='/template/accounts/reset_password.html';
+			return false;
+		});
+		$('#mobile').click(function() {
+			$('#login').attr('action', '/wap/login_submit.yws');
+			$("#login").submit();
+			return false;
+		})
+	}
+</script>
+</html>
