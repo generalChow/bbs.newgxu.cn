@@ -25,8 +25,8 @@ import javax.persistence.Transient;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.newgxu.bbs.common.Authorization;
@@ -71,8 +71,8 @@ import cn.newgxu.jpamodel.ObjectNotFoundException;
 @Table(name = "user")
 public class User extends JPAEntity implements Browser {
 
-	private static final Log	log					= LogFactory.getLog(User.class);
-
+	private static final Logger log = LoggerFactory.getLogger(User.class);
+	
 	private static final long	serialVersionUID	= 5166233887545932757L;
 
 	@Id
@@ -729,8 +729,7 @@ public class User extends JPAEntity implements Browser {
 		try {
 			return User.get(userId);
 		} catch (ObjectNotFoundException e) {
-			log.error(e);
-			log.error("严重错误：user 没有找到。 id=" + userId);
+			log.error("严重错误：user 没有找到。 id=" + userId, e);
 			throw new RuntimeException();
 		}
 	}
@@ -1503,24 +1502,27 @@ public class User extends JPAEntity implements Browser {
 	public String getFaceSource() {
 		String src = "";
 		src = getFace();
-		Pattern pattern = Pattern.compile("images.+\\.gif");
-		Matcher matcher = pattern.matcher(src);
-		if (matcher.find()) {
-			return matcher.group();
+		log.info("user' s face: {}", src);
+		try {
+			Pattern pattern = Pattern.compile("images.+\\.gif");
+			Matcher matcher = pattern.matcher(src);
+			if (matcher.find()) {
+				return matcher.group();
+			}
+			pattern = Pattern.compile("images.+\\.jpg");
+			matcher = pattern.matcher(src);
+			if (matcher.find()) {
+				return matcher.group();
+			}
+			pattern = Pattern.compile("images.+\\.png");
+			matcher = pattern.matcher(src);
+			if (matcher.find()) {
+				return matcher.group();
+			}
+		} catch (Exception e) {
+			log.error("获取用户头像是异常！", e);
+			return "";
 		}
-
-		pattern = Pattern.compile("images.+\\.jpg");
-		matcher = pattern.matcher(src);
-		if (matcher.find()) {
-			return matcher.group();
-		}
-
-		pattern = Pattern.compile("images.+\\.png");
-		matcher = pattern.matcher(src);
-		if (matcher.find()) {
-			return matcher.group();
-		}
-
 		return "";
 	}
 
