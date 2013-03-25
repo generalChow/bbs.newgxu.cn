@@ -55,6 +55,7 @@
 		<!-- 新加一个登录页面，这里可以看到一个临近事件的图片哦，2011-12-15 -->
 		<action name="login" class="index" method="login">
 			<result name="login" type="freemarker">/template/accounts/login.htm</result>
+			<result name="login_ie6" type="freemarker">/template/accounts/login_old.htm</result>
 		</action>
 		
 		<!-- 论坛首页 -->

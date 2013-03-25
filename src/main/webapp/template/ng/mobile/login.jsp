@@ -17,7 +17,7 @@
 				<h1>登陆 - 论坛</h1>
 			</div>
 			<div data-role="content">
-				<img src="/resources/images/mobile/logo.png" alt="欢迎登陆雨无声社区论坛！" />
+				<!-- <img src="/resources/images/mobile/logo.png" alt="欢迎登陆雨无声社区论坛！" /> -->
 				<div id="info">
 					<span class="error">${msg}</span>
 				</div>

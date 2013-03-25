@@ -3,6 +3,8 @@ package cn.newgxu.bbs.web.action;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -134,6 +136,11 @@ public class IndexAction extends AbstractBaseAction {
 	 * @return
 	 */
 	public String login(){
+		HttpServletRequest request = getRequest();
+		String header = request.getHeader("User-Agent");
+		if (header.contains("MSIE 6.0")) {
+			return "login_ie6";
+		}
 		return LOGIN;
 	}
 

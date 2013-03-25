@@ -8,7 +8,10 @@
 		<meta name="keywords" content="广西 广西大学 广西大学雨无声网站 广西大学雨无声新闻网 广西大学雨无声视界网 广西大学雨无声论坛 失物招领 服务小站 微雨无声 分享平台 雨信搜索 龙凯 爱因斯坦的狗" />
 		<meta name="description" content="广西 广西大学 广西大学雨无声网站 广西大学雨无声新闻网 广西大学雨无声视界网 广西大学雨无声论坛 失物招领 服务小站 微雨无声 分享平台 雨信搜索 龙凯 爱因斯坦的狗" />
 		<title>广西大学雨无声论坛 - YWS BBS</title>
-		<script type="text/javascript" src='/resources/js/jquery/1.8.2/jquery.min.js'></script>
+		<script src="//lib.sinaapp.com/js/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			!window.jQuery && document.write('<script src="js/jquery-1.4.2.min.js" type="text/javascript"><\/script>');
+		</script>
 		<style type="text/css">
 			* {
 				padding: 0;
@@ -68,10 +71,12 @@
 				text-align: center;
 			}
 			#footer {
-				font-size: 12px;
 				position: relative; width: 500px; margin: 0 auto; padding: 20px;
 				text-align: center;
 				color:#4f4f4f;
+			}
+			#footer p {
+				font-size: 12px;
 			}
 			#logo {
 				position: relative; width: 500px; margin: 10px auto; padding: 20px;
@@ -110,7 +115,7 @@
 			</div>
 			<div id="form">
 				<form action="/accounts/homelogin.yws" method="post" id="login_form" name="login_form">
-					<span id="error"></span>
+					<span id="error">${firstMsg}</span>
 					<input type="text" name="username" id="username" value="请输入您的用户名" />
 					<input type="text" id="password" value="请输入您的密码" />
 					<input type="password" name="password" id="password_hide" value="" />
@@ -126,13 +131,13 @@
 					</div>
 				</form>
 			</div>
-				<div id="footer">
-					<!-- <p id="weibo"><a target="_blank" href="//weibo.com/homeyws">@广西大学雨无声社区</a></p> -->
-					<p id="weibo"><p id="weibo_inner"><iframe height="30" src="http://widget.weibo.com/relationship/followbutton.php?language=zh_cn&height=24&uid=2205303825&style=3&btn=light&dpc=1" frameborder="0"></iframe></p></p>
-					<p>Powered by <a href="mailto:im.longkai@gmail.com">雨无声技术部</a></p>
-					<p id="icp">桂ICP备05001920号 南宁网警备4501200373号</p>
-					<p><a href="//www.newgxu.cn" target="_blank">雨无声newgxu.cn</a> ◎2002-2013 All Rights Reserved.</p>
-				</div>
+			<div id="footer">
+				<!-- <p id="weibo"><a target="_blank" href="//weibo.com/homeyws">@广西大学雨无声社区</a></p> -->
+				<p id="weibo"><p id="weibo_inner"><iframe height="30" src="http://widget.weibo.com/relationship/followbutton.php?language=zh_cn&height=24&uid=2205303825&style=3&btn=light&dpc=1" frameborder="0"></iframe></p></p>
+				<p>Powered by <a href="mailto:im.longkai@gmail.com">雨无声技术部</a></p>
+				<p id="icp">桂ICP备05001920号 南宁网警备4501200373号</p>
+				<p><a href="//www.newgxu.cn" target="_blank">雨无声newgxu.cn</a> ◎2002-2013 All Rights Reserved.</p>
+			</div>
 		</div>
 	</body>
 <script type="text/javascript">
@@ -162,14 +167,17 @@
 
 		$('#vistor').click(function() {
 			window.location.href = '/index.yws';
+			return false;
 		})
 
 		$('#register').click(function() {
 			window.location.href = '/accounts/register.yws';
+			return false;
 		})
 
 		$('#lose_pwd').click(function() {
 			window.location.href = '/template/accounts/reset_password.html';
+			return false;
 		})
 
 		$('#wap').click(function() {
