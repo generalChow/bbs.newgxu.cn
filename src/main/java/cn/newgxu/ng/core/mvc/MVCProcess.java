@@ -16,6 +16,7 @@
 package cn.newgxu.ng.core.mvc;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
@@ -423,7 +424,9 @@ public class MVCProcess {
 		// break;
 		case JSON:
 		case AJAX:
-			response.getWriter().write(view.getContent());
+			PrintWriter writer = response.getWriter();
+			writer.write(view.getContent());
+			writer.close();
 			break;
 		case HTML:
 		case REDIRECT:
