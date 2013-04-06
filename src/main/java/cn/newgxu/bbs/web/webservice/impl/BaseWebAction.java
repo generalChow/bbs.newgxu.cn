@@ -1,5 +1,7 @@
 package cn.newgxu.bbs.web.webservice.impl;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -64,10 +66,16 @@ public abstract class BaseWebAction extends ActionSupport {
 	 * @param info
 	 */
 	public void ajaxReturn(Object info) {
+		PrintWriter writer = null;
 		try {
-			this.getResponse().getWriter().print(info);
+			writer = this.getResponse().getWriter();
+			writer.print(info);
 		} catch (Exception e) {
 			l.error("ajax返回值时出错 " + e.toString());
+		} finally {
+			if (writer != null) {
+				writer.close();
+			}
 		}
 	}
 
