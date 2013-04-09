@@ -1502,7 +1502,7 @@ public class User extends JPAEntity implements Browser {
 	public String getFaceSource() {
 		String src = "";
 		src = getFace();
-		log.info("user' s face: {}", src);
+		log.debug("user' s face: {}", src);
 		try {
 			Pattern pattern = Pattern.compile("images.+\\.gif");
 			Matcher matcher = pattern.matcher(src);

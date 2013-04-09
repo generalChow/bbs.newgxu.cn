@@ -1728,7 +1728,9 @@ public class ForumServiceImpl implements ForumService {
 		db.setSavetime(savetime);
 		db.setZt(model.getZt());
 		db.update();
-
+		
+		this.createTopicDo(model);
+		
 	}
 
 	public void getDraftBoxes(CreateTopicModel model) throws BBSException {
