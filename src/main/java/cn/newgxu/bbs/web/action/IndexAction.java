@@ -84,13 +84,13 @@ public class IndexAction extends AbstractBaseAction {
 //			List<RemoteContent> notices = RemoteContent.getNoticeList();
 			List<RemoteContent> notices = BBSCache.getNoticesCache();
 //			List<RemoteContent> losts = RemoteContent.getLostList();
-			List<RemoteContent> losts = BBSCache.getLostsCache();
+//			List<RemoteContent> losts = BBSCache.getLostsCache();
 //			List<RemoteContent> finds = RemoteContent.getFindList();
 			List<RemoteContent> finds = BBSCache.getFindsCache();
 //			List<RemoteContent> twitters = BBSCache.getTwittersCache(userStatus.getUsername());
-			List<RemoteContent> twitters = RemoteContent.getTwitter(userStatus.getUsername());  // 微博更新快，不需要缓存
+//			List<RemoteContent> twitters = RemoteContent.getTwitter(userStatus.getUsername());  // 微博更新快，不需要缓存
 			
-			l.debug("user's name: {}， twitters' length: {}", userStatus.getUsername(), twitters.size());
+//			l.debug("user's name: {}， twitters' length: {}", userStatus.getUsername(), twitters.size());
 			
 			List<User> lastWeekMostActiveUsers = userService.getUsers(6, null);
 			
@@ -106,9 +106,9 @@ public class IndexAction extends AbstractBaseAction {
 			model.setSmallNews(smallNews);
 			model.setWishes(wishes);
 			model.setNotices(notices);
-			model.setLosts(losts);
+//			model.setLosts(losts);
 			model.setFinds(finds);
-			model.setTwitters(twitters);
+//			model.setTwitters(twitters);
 			model.setLastWeekMostActiveUsers(lastWeekMostActiveUsers);
 			//------------old
 		

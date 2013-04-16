@@ -335,7 +335,7 @@
 			<div id="header">
 				<div id="header_inner">
 					<div id="welcome">
-						<img id="welcome_image" src="/resources/images/index/headers/100_award.jpg" alt="亲，欢迎来到雨无声社区！" title="亲，欢迎来到雨无声社区！" />
+						<img id="welcome_image" src="/resources/images/index/headers/china_dream.jpg" alt="亲，欢迎来到雨无声社区！" title="亲，欢迎来到雨无声社区！" />
 					</div>
 					<div id="weather">
 						<iframe src="//m.weather.com.cn/m/pn12/weather.htm?id=101300101T" width="220" height="81" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" align="center"></iframe>
@@ -711,7 +711,7 @@
 											<a target="_blank" href="forum.yws?forumId=142">关工委论坛</a>
 										</li>
 										<li>
-											<a target="_blank" href="forum.yws?forumId=179">中国梦</a>
+											<a target="_blank" style="color: red;" href="forum.yws?forumId=179">中国梦</a>
 										</li>
 									</ul>
 								</li>
@@ -719,7 +719,7 @@
 									<a href="index_old.yws" target="_blank">旧版入口&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a>
 								</li>
 								<li>
-									<a href="/wap/index.yws" target="_blank">手机入口<img class="newly" src="/resources/images/common/newly.gif" alt="雨无声网站欢迎您！" title="最新更新，欢迎体验！" />&gt;</a>
+									<a href="/ng/m/home" target="_blank">移动入口<img class="newly" src="/resources/images/common/newly.gif" alt="雨无声网站欢迎您！" title="最新更新，欢迎体验！" />&gt;</a>
 								</li>
 							</ul>
 						</div>
@@ -730,14 +730,6 @@
 					</div>
 					
 					<div id="nav_image" style="margin-top: 10px; clear: both; float: left;">
-						<!-- <a href="/accounts/myTwitter.yws" target="_blank"> <img src="images/10_years_index/twitter.jpg" title="到微雨无声！" /> </a>
-						<a href="//share.newgxu.cn/" target="_blank"> <img src="images/10_years_index/share.jpg" title="到分享平台！" /> </a>
-						<a href="//www.newgxu.cn/7.0/bus/" target="_blank"> <img src="images/10_years_index/service.jpg" title="到服务小站！" /> </a>
-						<a href="//uthink.newgxu.cn/" target="_blank"> <img src="images/10_years_index/uthink.jpg" title="到雨信搜索！" /> </a>
-						<a href="//weibo.com/homeyws" target="_blank"> <img src="images/10_years_index/yws_weibo.jpg" title="到雨无声社区官方微博！" /> </a>
-						<a href="//weibo.com/newgxu2001" target="_blank"> <img src="images/10_years_index/sina_weibo.jpg" title="到雨无声官方新浪微博！" /> </a>
-						<a href="//weibo.com/ywsbianjibu" target="_blank"> <img src="images/10_years_index/visual_weibo.jpg" title="到雨无声视界网官方新浪微博！" /> </a>
-						<a href="//t.newgxu.cn/find/default.php" target="_blank"> <img src="images/10_years_index/lose_and_found.jpg" title="到失物招领！" /> </a> -->
 						<img src="/resources/images/common/yws_nav.jpg" alt="" usemap="#yws_nav" />
 						<map id="yws_nav" name="yws_nav">
 							<area alt="" coords="0, 0, 170, 57" href="/accounts/myTwitter.yws" title="到微雨无声" target="_blank" />
@@ -866,18 +858,10 @@
 				<div id="prome_inner">
 					<div id="hot_articles" style="margin: 0 0 10px 0;">
 						<p>
-							微雨无声
+							校园信息发布平台
 						</p>
 						<div>
-							<ul>
-								<#list model.twitters as t>
-								<li style="overflow: hidden; clear: both;" class="twitter">
-									<span style="float: left;"><a href="//t.newgxu.cn" target="_blank">${t.title}</a></span><span style="float: left; width: 210px; overflow: hidden;"><span class="twitter_user">${t.url}</span>:&nbsp;<a href="//t.newgxu.cn" target="_blank">${t.content}</a></span>
-								</li>
-								</#list>
-								<li>
-									<div style="text-align: right;"><a href="/accounts/myTwitter.yws" target="_blank">更多微博。。。</a></div>
-								</li>
+							<ul id="notices">
 							</ul>
 						</div>
 					</div>
@@ -1301,4 +1285,22 @@
 	<!--[if IE 6]>
 	<script src="js/10_years_index/kill-ie6.js"></script>
 	<![endif]-->
+	<script type="text/javascript">
+		window.onload =	function() {
+			var url = 'http://lab.newgxu.cn/info/notices.jsonp?latest&count=7';
+			$.ajax({
+				type: 'GET',
+				url: url,
+				dataType: 'jsonp',
+				success: function(data) {
+					$.each(data.notices, function(i, n) {
+						$('<li>').append($('<a>').attr({
+							'href': '//lab.newgxu.cn/info/notices/' + n.id,
+							'target': '_blank'
+						}).text(n.title)).appendTo('#notices');
+					})
+				}
+			})
+		}
+	</script>
 </html>
