@@ -46,7 +46,7 @@ public class HomeConctroller {
 		index.setPubGoodTopics(BBSCache.getGoodTopicCache());
 		index.setLatestTopics(Topic.getLatesTopics(10));
 		index.setPubHotTopics(BBSCache.getHotTopicCache());
-		index.setNotices(BBSCache.getNoticesCache());
+//		index.setNotices(BBSCache.getNoticesCache());
 		mav.addModel("index", index).setViewName("mobile/index.jsp");
 		return mav;
 	}

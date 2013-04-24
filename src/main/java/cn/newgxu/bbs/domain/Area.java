@@ -165,7 +165,7 @@ public class Area extends JPAEntity {
 	@SuppressWarnings("unchecked")
 	public List<Topic> getLatestTopics(int amount) {
 		if (amount == 0) {
-			return new ArrayList<Topic>();
+			return new ArrayList<Topic>(0);
 		}
 		
 		if (amount < 1) {
@@ -174,8 +174,8 @@ public class Area extends JPAEntity {
 		
 		// from Topic t where t.forum.area.id = ?1 and t.forum.secrecy = f
 		return (List<Topic>) Q(
-				"from Topic t where t.forum.area = ?1 and t.forum.secrecy = false and t.invalid = 0 order by t.creationTime desc",
-				P(1, this)).setMaxResults(amount).getResultList();
+				"from Topic t where t.forum.area.id = ?1 and t.forum.secrecy = false and t.invalid = 0 order by t.id desc",
+				P(1, this.getId())).setFirstResult(0).setMaxResults(amount).getResultList();
 	}
 	
 	

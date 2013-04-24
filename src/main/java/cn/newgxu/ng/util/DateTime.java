@@ -205,6 +205,53 @@ public class DateTime {
 		long gap = now - date.getTime();
 		return gap > 0 ? gap : -gap;
 	}
+	
+	/**
+	 * 将绝对时间转换为相对时间，相对于当前的系统时间。
+	 * @param time
+	 * @return 相对时间
+	 */
+	public static String getRelativeTime(long time) {
+		long now = System.currentTimeMillis();
+		long offset = now - time;
+//		如果大于当前时间，那么你就穿越了-.-
+		if (offset < 0) {
+			throw new IllegalArgumentException("你穿越了吗？");
+		}
+//		秒杀- -
+		long second = 1000;
+		if (offset < second * 10) {
+			return "刚刚~";
+		}
+//		xx秒前
+		long minute = 60 * second;
+		if (offset < minute) {
+			return (offset / second) + "秒前";
+		}
+//		xx分钟前
+		long hour = minute * 60;
+		if (offset < hour) {
+			return (offset / minute) + "分钟前";
+		}
+//		xx小时前
+		long day = hour * 24;
+		if (offset < day) {
+			return (offset / hour) + "小时前";
+		}
+//		xx天前，简单起见，每个月假设都为30天
+		long month = day * 30;
+		if (offset < month) {
+			return (offset / day) + "天前";
+		}
+//		xx月前
+		long year = month * 12;
+		if (offset < year) {
+			return (offset / month) + "个月前";
+		}
+//		xx年前
+		return (offset / year) + "年前";
+	}
+
 
 	/**
 	 * A thread-safe datatime format.

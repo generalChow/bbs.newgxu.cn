@@ -39,13 +39,13 @@ public class BBSCache {
 	public static Cache goodTopicCache;// 精彩推荐缓存
 
 	// 新添加的 论坛10周年主页改版
-	public static Cache diaryCache;// 心情日记
+//	public static Cache diaryCache;// 心情日记
 	public static Cache smallNewsCache;// 小字报
 	public static Cache wishesCache;// 祝福墙
-	public static Cache noticesCache;// 新闻网公告
-	public static Cache lostsCache;// 丢失物品信息
-	public static Cache findsCache;// 捡到物品信息
-	public static Cache twittersCache;// 微博信息
+//	public static Cache noticesCache;// 新闻网公告
+//	public static Cache lostsCache;// 丢失物品信息
+//	public static Cache findsCache;// 捡到物品信息
+//	public static Cache twittersCache;// 微博信息
 
 	public static Cache tipCache;// 登录页面中的图片缓存
 	
@@ -395,126 +395,126 @@ public class BBSCache {
 	 * 获取首页新闻网的缓存
 	 * @since 2012-04-24
 	 */
-	public static void buildNoticesCache() {
-		List<RemoteContent> list = new ArrayList<RemoteContent>();
-		try {
-			list = RemoteContent.getNoticeList();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		noticesCache = new Cache();
-		noticesCache.setDate(new Date());
-		noticesCache.setList(list);
-		noticesCache.setTimeout(getTimeOut());
-		noticesCache.setName("首页校园通告缓存");
-		System.out.println(noticesCache.getName()
-				+ "      build success!  ");
-	}
+//	public static void buildNoticesCache() {
+//		List<RemoteContent> list = new ArrayList<RemoteContent>();
+//		try {
+//			list = RemoteContent.getNoticeList();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		noticesCache = new Cache();
+//		noticesCache.setDate(new Date());
+//		noticesCache.setList(list);
+//		noticesCache.setTimeout(getTimeOut());
+//		noticesCache.setName("首页校园通告缓存");
+//		System.out.println(noticesCache.getName()
+//				+ "      build success!  ");
+//	}
 
 	/**
 	 * 新闻网公告缓存
 	 * @since 2012-04-24
 	 */
-	public static List<RemoteContent> getNoticesCache() {
-		if (noticesCache == null
-				|| noticesCache.isNeedUpdate())
-			buildNoticesCache();
-		return noticesCache.getList();
-	}
+//	public static List<RemoteContent> getNoticesCache() {
+//		if (noticesCache == null
+//				|| noticesCache.isNeedUpdate())
+//			buildNoticesCache();
+//		return noticesCache.getList();
+//	}
 	
 	/**
 	 * 失物招领丢失物品缓存
 	 * @since 2012-04-24
 	 */
-	public static void buildLostsCache() {
-		List<RemoteContent> list = new ArrayList<RemoteContent>();
-		try {
-			list = RemoteContent.getLostList();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		lostsCache = new Cache();
-		lostsCache.setDate(new Date());
-		lostsCache.setList(list);
-		lostsCache.setTimeout(getTimeOut());
-		lostsCache.setName("首页失物招领丢失物品缓存");
-		System.out.println(lostsCache.getName()
-				+ "      build success!  ");
-	}
+//	public static void buildLostsCache() {
+//		List<RemoteContent> list = new ArrayList<RemoteContent>();
+//		try {
+//			list = RemoteContent.getLostList();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		lostsCache = new Cache();
+//		lostsCache.setDate(new Date());
+//		lostsCache.setList(list);
+//		lostsCache.setTimeout(getTimeOut());
+//		lostsCache.setName("首页失物招领丢失物品缓存");
+//		System.out.println(lostsCache.getName()
+//				+ "      build success!  ");
+//	}
 
 	/**
 	 * 失物招领丢失物品缓存
 	 * @since 2012-04-24
 	 */
-	public static List<RemoteContent> getFindsCache() {
-		if (lostsCache == null
-				|| lostsCache.isNeedUpdate())
-			buildLostsCache();
-		return lostsCache.getList();
-	}
+//	public static List<RemoteContent> getFindsCache() {
+//		if (lostsCache == null
+//				|| lostsCache.isNeedUpdate())
+//			buildLostsCache();
+//		return lostsCache.getList();
+//	}
 	
 	/**
 	 * 失物招领捡到物品缓存
 	 * @since 2012-04-24
 	 */
-	public static void buildFindsCache() {
-		List<RemoteContent> list = new ArrayList<RemoteContent>();
-		try {
-			list = RemoteContent.getFindList();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		findsCache = new Cache();
-		findsCache.setDate(new Date());
-		findsCache.setList(list);
-		findsCache.setTimeout(getTimeOut());
-		findsCache.setName("首页失物招领捡到物品缓存");
-		System.out.println(findsCache.getName()
-				+ "      build success!  ");
-	}
+//	public static void buildFindsCache() {
+//		List<RemoteContent> list = new ArrayList<RemoteContent>();
+//		try {
+//			list = RemoteContent.getFindList();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		findsCache = new Cache();
+//		findsCache.setDate(new Date());
+//		findsCache.setList(list);
+//		findsCache.setTimeout(getTimeOut());
+//		findsCache.setName("首页失物招领捡到物品缓存");
+//		System.out.println(findsCache.getName()
+//				+ "      build success!  ");
+//	}
 
 	/**
 	 * 失物招领捡到物品缓存
 	 * @since 2012-04-24
 	 */
-	public static List<RemoteContent> getLostsCache() {
-		if (findsCache == null
-				|| findsCache.isNeedUpdate())
-			buildFindsCache();
-		return findsCache.getList();
-	}
+//	public static List<RemoteContent> getLostsCache() {
+//		if (findsCache == null
+//				|| findsCache.isNeedUpdate())
+//			buildFindsCache();
+//		return findsCache.getList();
+//	}
 	
 	/**
 	 * 微博缓存
 	 * @since 2012-05-09
 	 */
-	public static List<RemoteContent> buildTwittersCache(String userName) {
-		List<RemoteContent> list = new ArrayList<RemoteContent>();
-		try {
-			list = RemoteContent.getTwitter(userName);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		twittersCache = new Cache();
-		twittersCache.setDate(new Date());
-		twittersCache.setList(list);
-		twittersCache.setTimeout(getTimeOut());
-		twittersCache.setName("首页微博缓存");
-		System.out.println(twittersCache.getName()
-				+ "      build success!  ");
-		return list;
-	}
+//	public static List<RemoteContent> buildTwittersCache(String userName) {
+//		List<RemoteContent> list = new ArrayList<RemoteContent>();
+//		try {
+//			list = RemoteContent.getTwitter(userName);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		twittersCache = new Cache();
+//		twittersCache.setDate(new Date());
+//		twittersCache.setList(list);
+//		twittersCache.setTimeout(getTimeOut());
+//		twittersCache.setName("首页微博缓存");
+//		System.out.println(twittersCache.getName()
+//				+ "      build success!  ");
+//		return list;
+//	}
 
 	/**
 	 * 微博缓存
 	 * @since 2012-05-09
 	 */
-	public static List<RemoteContent> getTwittersCache(String userName) {
-		if (twittersCache == null
-				|| twittersCache.isNeedUpdate())
-			buildTwittersCache(userName);
-		return twittersCache.getList();
-	}
+//	public static List<RemoteContent> getTwittersCache(String userName) {
+//		if (twittersCache == null
+//				|| twittersCache.isNeedUpdate())
+//			buildTwittersCache(userName);
+//		return twittersCache.getList();
+//	}
 	
 	public static boolean isLatestTopicsNeedUpate() {
 		if (topicCount1 < topicCount2) {

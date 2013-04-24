@@ -22,7 +22,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.apache.commons.lang.StringUtils;
-//import org.hibernate.validator.Email;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import cn.newgxu.bbs.common.Constants;
 import cn.newgxu.bbs.common.Pagination;
@@ -39,6 +40,7 @@ import cn.newgxu.bbs.domain.vote.VoteOption;
 import cn.newgxu.bbs.web.activity.Activity;
 import cn.newgxu.jpamodel.JPAEntity;
 import cn.newgxu.jpamodel.ObjectNotFoundException;
+import cn.newgxu.ng.util.DateTime;
 
 /**
  * 
@@ -51,6 +53,7 @@ import cn.newgxu.jpamodel.ObjectNotFoundException;
 public class Topic extends JPAEntity {
 
 	private static final long serialVersionUID = 1L;
+	private static final Logger L = LoggerFactory.getLogger(Topic.class);
 
 	@Id
 	@Column(name = "id")
@@ -1078,9 +1081,9 @@ public class Topic extends JPAEntity {
 	public static int getLatestTopicId() {
 		int id = 0;
 		try {
-			id = (Integer) Q("select t.id from Topic t order by t.id desc").setFirstResult(0).setMaxResults(1).getSingleResult();
+			id = (Integer) Q("SELECT MAX(t.id) FROM Topic t WHERE t.invalid IS FALSE").getSingleResult();
 		} catch (Exception e) {
-			e.printStackTrace();
+			L.error("读取最大id值时异常！", e);
 			id = 0;
 		}
 		return id;
@@ -1093,6 +1096,10 @@ public class Topic extends JPAEntity {
 	@SuppressWarnings("unchecked")
 	public static List<Topic> getLatesTopics(int number) {
 		return Q("from Topic as t order by t.creationTime desc").setMaxResults(number).getResultList();
+	}
+	
+	public String getRelativeTime() {
+		return DateTime.getRelativeTime(this.creationTime.getTime());
 	}
 	
 	/**

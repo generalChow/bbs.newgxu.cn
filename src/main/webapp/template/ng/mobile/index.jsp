@@ -66,13 +66,6 @@
 					</c:forEach>
 				</ul>
 				<hr />
-				<button>校园公告</button>
-				<div></div>
-				<ul data-role="listview" data-inset="true">
-					<c:forEach items="${index.notices}" var="n">
-						<li><a href="${n.url}" data-ajax="fasle">${n.title}${sessionScope.user.username}</a></li>
-					</c:forEach>
-				</ul>
 			</div>
 			<div></div>
 			<div data-role="footer">

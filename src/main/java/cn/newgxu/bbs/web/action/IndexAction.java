@@ -53,7 +53,6 @@ public class IndexAction extends AbstractBaseAction {
 		signOnlineUser("论坛首页");
 		userService.updateLastWeekExp();
 		
-		long p = new Date().getTime();
 		UserStatus userStatus = super.getStatus();
 		
 		  //现在首页已经静态化，不需要加载这些内容了
@@ -82,11 +81,11 @@ public class IndexAction extends AbstractBaseAction {
 //			List<RemoteContent> wishes = RemoteContent.getWishesList(); // 祝福墙
 			List<RemoteContent> wishes = BBSCache.getWishesCache();
 //			List<RemoteContent> notices = RemoteContent.getNoticeList();
-			List<RemoteContent> notices = BBSCache.getNoticesCache();
+//			List<RemoteContent> notices = BBSCache.getNoticesCache();
 //			List<RemoteContent> losts = RemoteContent.getLostList();
 //			List<RemoteContent> losts = BBSCache.getLostsCache();
 //			List<RemoteContent> finds = RemoteContent.getFindList();
-			List<RemoteContent> finds = BBSCache.getFindsCache();
+//			List<RemoteContent> finds = BBSCache.getFindsCache();
 //			List<RemoteContent> twitters = BBSCache.getTwittersCache(userStatus.getUsername());
 //			List<RemoteContent> twitters = RemoteContent.getTwitter(userStatus.getUsername());  // 微博更新快，不需要缓存
 			
@@ -105,18 +104,17 @@ public class IndexAction extends AbstractBaseAction {
 //			model.setDiaries(diaries);
 			model.setSmallNews(smallNews);
 			model.setWishes(wishes);
-			model.setNotices(notices);
+//			model.setNotices(notices);
 //			model.setLosts(losts);
-			model.setFinds(finds);
+//			model.setFinds(finds);
 //			model.setTwitters(twitters);
 			model.setLastWeekMostActiveUsers(lastWeekMostActiveUsers);
 			//------------old
 		
 //		UserStatus userStatus = super.getStatus();   移动到上面去了，为了获取用户名去获取微博的信息
-		userStatus.setTotalHicount(HitsCounter.getTotalHitsCounter());
-		userStatus.setTodayHicount(HitsCounter.getTodayHitsCounter());
+		userStatus.setTotalHicount(super.statisticService.getTotalHitsCounter());
+		userStatus.setTodayHicount(super.statisticService.getTodayHitsCounter());
 		super.setStats(userStatus);
-		System.out.println(new Date().getTime() - p);
 		return SUCCESS;
 	}
 	

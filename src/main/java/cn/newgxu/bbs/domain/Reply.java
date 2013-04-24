@@ -22,6 +22,7 @@ import cn.newgxu.bbs.common.Pagination;
 import cn.newgxu.bbs.domain.user.User;
 import cn.newgxu.jpamodel.JPAEntity;
 import cn.newgxu.jpamodel.ObjectNotFoundException;
+import cn.newgxu.ng.util.DateTime;
 
 /**
  * 
@@ -237,5 +238,9 @@ public class Reply extends JPAEntity {
 				put("content", contentBean);
 			}
 		}.toString();
+	}
+	
+	public String getRelativeTime() {
+		return DateTime.getRelativeTime(this.postTime.getTime());
 	}
 }

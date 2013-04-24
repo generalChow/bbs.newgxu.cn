@@ -68,15 +68,15 @@ public class BBSCacheAction extends AbstractBaseAction{
 			case 10:
 				BBSCache.buildWishesCache();
 				break;
-			case 11:
-				BBSCache.buildNoticesCache();
-				break;
-			case 12:
-				BBSCache.buildFindsCache();
-				break;
-			case 13:
-				BBSCache.buildFindsCache();
-				break;
+//			case 11:
+//				BBSCache.buildNoticesCache();
+//				break;
+//			case 12:
+//				BBSCache.buildFindsCache();
+//				break;
+//			case 13:
+//				BBSCache.buildFindsCache();
+//				break;
 			case 14:
 				BBSCache.buildTipCache();
 				break;

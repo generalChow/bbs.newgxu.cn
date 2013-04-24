@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import cn.newgxu.bbs.common.util.TimerUtils;
 import cn.newgxu.jpamodel.JPAEntity;
 import cn.newgxu.jpamodel.ObjectNotFoundException;
@@ -25,6 +28,7 @@ import cn.newgxu.jpamodel.ObjectNotFoundException;
 public class HitsCounter extends JPAEntity {
 
 	private static final long serialVersionUID = -6707611077779314643L;
+	private static final Logger L = LoggerFactory.getLogger(HitsCounter.class);
 
 	@Id
 	@Column(name = "id")
@@ -113,12 +117,13 @@ public class HitsCounter extends JPAEntity {
 	}
 
 	public static int getTotalHitsCounter() {
-		try {
-			return ((Long) SQ("select sum(h.hitsCount) from HitsCounter h"))
-					.intValue();
-		} catch (ObjectNotFoundException e) {
-			return 0;
-		}
+			try {
+				Long count =  (Long) Q("select sum(h.hitsCount) from HitsCounter h").setFirstResult(0).setMaxResults(1).getSingleResult();
+				return count.intValue();
+			} catch (Exception e) {
+				L.error("初始化总点击数时异常", e);
+				return 0;
+			}
 	}
 
 	// ------------------------------------------------

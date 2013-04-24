@@ -16,6 +16,17 @@ import cn.newgxu.jpamodel.ObjectNotFoundException;
  * @version $Revision 1.1$
  */
 public class StatisticServiceImpl implements StatisticService {
+	
+	private int totalCount = 0;
+	private int todayCount = 0;
+	
+	public int getTotalCount() {
+		return totalCount;
+	}
+
+	public int getTodayCount() {
+		return todayCount;
+	}
 
 	public void addHit(int forumId) {
 		Date date = new Date();
@@ -44,7 +55,10 @@ public class StatisticServiceImpl implements StatisticService {
 	}
 
 	public int getTotalHitsCounter() {
-		return HitsCounter.getTotalHitsCounter();
+		if (this.totalCount == 0) {
+			this.totalCount = HitsCounter.getTotalHitsCounter();
+		}
+		return totalCount;
 	}
-
+	
 }

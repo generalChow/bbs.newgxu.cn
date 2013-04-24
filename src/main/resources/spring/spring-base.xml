@@ -5,6 +5,7 @@
 	<bean name="abstractBaseAction" abstract="true"
 		class="cn.newgxu.bbs.web.action.AbstractBaseAction">
 		<property name="userService" ref="userService" />
+		<property name="statisticService" ref="statisticService" />
 	</bean>
 
 	<bean name="actionSupport"

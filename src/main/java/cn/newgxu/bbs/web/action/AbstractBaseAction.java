@@ -16,6 +16,7 @@ import cn.newgxu.bbs.common.Authorization;
 import cn.newgxu.bbs.common.AuthorizationManager;
 import cn.newgxu.bbs.common.Pagination;
 import cn.newgxu.bbs.common.exception.BBSException;
+import cn.newgxu.bbs.common.staticHtml.StaticService;
 import cn.newgxu.bbs.common.util.HttpUtil;
 import cn.newgxu.bbs.common.util.Util;
 import cn.newgxu.bbs.domain.DraftBox;
@@ -23,6 +24,7 @@ import cn.newgxu.bbs.domain.activity.Christmas;
 import cn.newgxu.bbs.domain.activity.Doomsday;
 import cn.newgxu.bbs.domain.user.User;
 import cn.newgxu.bbs.service.HolidayService;
+import cn.newgxu.bbs.service.StatisticService;
 import cn.newgxu.bbs.service.UserService;
 import cn.newgxu.bbs.web.model.OnlineStatus;
 import cn.newgxu.bbs.web.model.OnlineUserModel;
@@ -46,6 +48,8 @@ public abstract class AbstractBaseAction extends ActionSupport implements
 	private static final Log log = LogFactory.getLog(AbstractBaseAction.class);
 
 	protected UserService userService;
+	
+	protected StatisticService statisticService;
 
 	private List<String> validateMsg = new ArrayList<String>();
 
@@ -323,4 +327,13 @@ public abstract class AbstractBaseAction extends ActionSupport implements
 			getRequest().setAttribute("activity", Christmas.getName());
 		}
 	}
+
+	public StatisticService getStatisticService() {
+		return statisticService;
+	}
+
+	public void setStatisticService(StatisticService statisticService) {
+		this.statisticService = statisticService;
+	}
+
 }

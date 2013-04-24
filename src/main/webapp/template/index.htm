@@ -335,7 +335,7 @@
 			<div id="header">
 				<div id="header_inner">
 					<div id="welcome">
-						<img id="welcome_image" src="/resources/images/index/headers/china_dream.jpg" alt="亲，欢迎来到雨无声社区！" title="亲，欢迎来到雨无声社区！" />
+						<img id="welcome_image" src="/resources/images/index/headers/7th_clients_festival.jpg" alt="亲，欢迎来到雨无声社区！" title="亲，欢迎来到雨无声社区！" />
 					</div>
 					<div id="weather">
 						<iframe src="//m.weather.com.cn/m/pn12/weather.htm?id=101300101T" width="220" height="81" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" align="center"></iframe>
@@ -726,7 +726,7 @@
 					</div>
 					
 					<div id="news" style="width: 100%; clear: both; float: left;border-radius: 4px;">
-						<a href="//www.newgxu.cn/html/subject/2012fresh_smiles/index.html" target="_blank"> <img src="images/10_years_index/fresh_smiles.jpg" style="width: 100%; border: 1px solid #dfdfdf; float: left; border-radius: 4px;" /> </a>
+						<a href="#" target="_blank"> <img src="/resources/images/index/7th_clients_festival.jpg" style="width: 100%; border: 1px solid #dfdfdf; float: left; border-radius: 4px;" /> </a>
 					</div>
 					
 					<div id="nav_image" style="margin-top: 10px; clear: both; float: left;">
@@ -857,7 +857,7 @@
 			<div id="prome">
 				<div id="prome_inner">
 					<div id="hot_articles" style="margin: 0 0 10px 0;">
-						<p>
+						<p id="notices_link">
 							校园信息发布平台
 						</p>
 						<div>
@@ -881,23 +881,6 @@
 						</div>
 					</div>
 
-					<div id="hot_articles"  style="margin: 10px 0 10px 0;">
-						<p>
-							校园公告
-						</p>
-						<div>
-							<ul>
-								<ul>
-									<#list model.notices as m>
-									<li>
-										<a target="_blank" href="${m.url}">${m.title}</a>
-									</li>
-									</#list>
-								</ul>
-							</ul>
-						</div>
-					</div>
-
 					<div id="hot_articles" style="margin-top: 10px;">
 						<p>
 							失物招领
@@ -914,20 +897,10 @@
 							</div>
 							<div class="info" id="infob1">
 								<table style="width: 100%;">
-									<#list model.finds as f>
-									<tr>
-										<td align="center"><a target="_blank" href="${f.url}">${f.title}&nbsp;&nbsp;&nbsp;&nbsp;${f.time?string("MM-dd")}</a></td>
-									</tr>
-									</#list>
 								</table>
 							</div>
 							<div class="h" id="infob2">
 								<table style="width: 100%;">
-									<#list model.losts as l>
-									<tr>
-										<td align="center"><a target="_blank" href="${l.url}">${l.title}&nbsp;&nbsp;&nbsp;&nbsp;${l.time?string("MM-dd")}</a></td>
-									</tr>
-									</#list>
 								</table>
 							</div>
 						</div>
@@ -1117,6 +1090,11 @@
 	<script type="text/javascript">
 	/* <![CDATA[ */
 		$(document).ready(function() {
+			$('#notices_link').click(function() {
+				window.open('http://lab.newgxu.cn/info/');
+			}).hover(function() {
+				$(this).css('cursor', 'pointer').attr('title', '去看看有什么新鲜事儿:-)');
+			})
 			$("#user_content").xdImage_smoothCloth({
 				sonDiv : "wrap",
 				kind : 'div',
@@ -1297,7 +1275,7 @@
 						$('<li>').append($('<a>').attr({
 							'href': '//lab.newgxu.cn/info/notices/' + n.id,
 							'target': '_blank'
-						}).text(n.title)).appendTo('#notices');
+						}).text(n.title + ' @' + n.user.authed_name + '「' + n.add_date + '」')).appendTo('#notices');
 					})
 				}
 			})
