@@ -866,6 +866,16 @@
 						</div>
 					</div>
 
+					<div id="hot_articles" style="margin: 0 0 10px 0;">
+						<p id="share_link">
+							最新上传资源 @分享平台
+						</p>
+						<div>
+							<ul id="latest_docs">
+							</ul>
+						</div>
+					</div>
+
 					<div id="hot_articles" style="margin: 10px 0 10px 0;">
 						<p>
 							推荐文章
@@ -1095,6 +1105,11 @@
 			}).hover(function() {
 				$(this).css('cursor', 'pointer').attr('title', '去看看有什么新鲜事儿:-)');
 			})
+			$('#share_link').click(function() {
+				window.open('http://share.newgxu.cn');
+			}).hover(function() {
+				$(this).css('cursor', 'pointer').attr('title', '去淘淘有什么新资源:-)');
+			})
 			$("#user_content").xdImage_smoothCloth({
 				sonDiv : "wrap",
 				kind : 'div',
@@ -1276,6 +1291,20 @@
 							'href': '//lab.newgxu.cn/info/notices/' + n.id,
 							'target': '_blank'
 						}).text(n.title + ' @' + n.user.authed_name + '「' + n.add_date + '」')).appendTo('#notices');
+					})
+				}
+			});
+			url = "http://share.newgxu.cn/api/docs?type=1&count=7";
+			$.ajax({
+				type: 'GET',
+				url: url,
+				dataType: 'jsonp',
+				success: function(data) {
+					$.each(data.docs, function(i, doc) {
+						$('<li>').append($('<a>').attr({
+							'href': '//share.newgxu.cn/document/view?id=' + doc.id,
+							'target': '_blank'
+						}).text(doc.title + ' @' + doc.user.nick + ' 「' + doc.upload_time + '」')).appendTo('#latest_docs');
 					})
 				}
 			})
