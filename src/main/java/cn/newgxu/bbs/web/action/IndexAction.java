@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import cn.newgxu.bbs.common.staticHtml.StaticManager;
 import cn.newgxu.bbs.common.util.Util;
 import cn.newgxu.bbs.domain.Area;
-import cn.newgxu.bbs.domain.HitsCounter;
 import cn.newgxu.bbs.domain.HotTopic;
 import cn.newgxu.bbs.domain.RemoteContent;
 import cn.newgxu.bbs.domain.SmallNews;
@@ -53,6 +52,7 @@ public class IndexAction extends AbstractBaseAction {
 		signOnlineUser("论坛首页");
 		userService.updateLastWeekExp();
 		
+		long p = new Date().getTime();
 		UserStatus userStatus = super.getStatus();
 		
 		  //现在首页已经静态化，不需要加载这些内容了
@@ -112,9 +112,10 @@ public class IndexAction extends AbstractBaseAction {
 			//------------old
 		
 //		UserStatus userStatus = super.getStatus();   移动到上面去了，为了获取用户名去获取微博的信息
-		userStatus.setTotalHicount(super.statisticService.getTotalHitsCounter());
-		userStatus.setTodayHicount(super.statisticService.getTodayHitsCounter());
+		userStatus.setTotalHicount(statisticService.getTotalHitsCounter());
+		userStatus.setTodayHicount(statisticService.getTodayHitsCounter());
 		super.setStats(userStatus);
+		System.out.println(new Date().getTime() - p);
 		return SUCCESS;
 	}
 	

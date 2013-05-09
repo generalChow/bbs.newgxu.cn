@@ -16,21 +16,20 @@ import cn.newgxu.jpamodel.ObjectNotFoundException;
  * @version $Revision 1.1$
  */
 public class StatisticServiceImpl implements StatisticService {
-	
-	private int totalCount = 0;
-	private int todayCount = 0;
-	
-	public int getTotalCount() {
-		return totalCount;
-	}
 
-	public int getTodayCount() {
-		return todayCount;
-	}
+//	这里如果给每日访问设置缓存的话就会造成每次刷新都会++
+	//	private static int todayCount = -1;
+	private static int totalCount = -1;
 
 	public void addHit(int forumId) {
 		Date date = new Date();
 		HitsManager.addHit(Util.getDate(date), Util.getHour(date), forumId);
+//		if (todayCount != -1) {
+//			todayCount++;
+//		}
+		if (totalCount != -1) {
+			totalCount++;
+		}
 	}
 
 	public void flushHitsManager() {
@@ -51,14 +50,18 @@ public class StatisticServiceImpl implements StatisticService {
 	}
 
 	public int getTodayHitsCounter() {
+//		if (todayCount == -1) {
+//			todayCount = HitsCounter.getTodayHitsCounter();
+//		}
+//		return todayCount;
 		return HitsCounter.getTodayHitsCounter();
 	}
 
 	public int getTotalHitsCounter() {
-		if (this.totalCount == 0) {
-			this.totalCount = HitsCounter.getTotalHitsCounter();
+		if (totalCount == -1) {
+			totalCount = HitsCounter.getTotalHitsCounter();
 		}
 		return totalCount;
 	}
-	
+
 }

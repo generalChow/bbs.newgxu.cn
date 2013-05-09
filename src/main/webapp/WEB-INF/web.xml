@@ -107,7 +107,7 @@ id="WebApp_ID" version="2.5">
 	<listener>
 		<listener-class>cn.newgxu.bbs.common.util.UpdateLastWeekExp</listener-class>
 	</listener>
-
+	
 	<error-page>  
         <error-code>404</error-code>  
         <location>/resources/html/404.html</location>  

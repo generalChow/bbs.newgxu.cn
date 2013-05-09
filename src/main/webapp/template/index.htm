@@ -1279,11 +1279,10 @@
 	<script src="js/10_years_index/kill-ie6.js"></script>
 	<![endif]-->
 	<script type="text/javascript">
-		window.onload =	function() {
-			var url = 'http://lab.newgxu.cn/info/notices.jsonp?latest&count=7';
+		$(function() {
 			$.ajax({
 				type: 'GET',
-				url: url,
+				url: 'http://lab.newgxu.cn/info/notices.jsonp?latest&count=7',
 				dataType: 'jsonp',
 				success: function(data) {
 					$.each(data.notices, function(i, n) {
@@ -1294,10 +1293,9 @@
 					})
 				}
 			});
-			url = "http://share.newgxu.cn/api/docs?type=1&count=7";
 			$.ajax({
 				type: 'GET',
-				url: url,
+				url: 'http://share.newgxu.cn/api/docs?type=1&count=7',
 				dataType: 'jsonp',
 				success: function(data) {
 					$.each(data.docs, function(i, doc) {
@@ -1308,6 +1306,6 @@
 					})
 				}
 			})
-		}
+		})
 	</script>
 </html>
