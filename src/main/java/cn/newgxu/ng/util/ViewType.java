@@ -24,5 +24,5 @@ package cn.newgxu.ng.util;
  */
 public enum ViewType {
 
-	HTML, JSP, FREEMARKER, AJAX, JSON, REDIRECT
+	HTML, JSP, FREEMARKER, AJAX, JSON, REDIRECT, JSONP
 }

@@ -49,6 +49,7 @@ import cn.newgxu.ng.util.InfoLevel;
 import cn.newgxu.ng.util.Pigeon;
 import cn.newgxu.ng.util.RegexUtils;
 import cn.newgxu.ng.util.StringUtils;
+import cn.newgxu.ng.util.ViewType;
 import cn.newgxu.ng.util.WrapperUtils;
 
 /**
@@ -415,16 +416,30 @@ public class MVCProcess {
 	private static void render(HttpServletRequest request,
 			HttpServletResponse response, View view) throws IOException,
 			ServletException {
+		String header = request.getHeader("Accept");
+		if (request.getParameterMap().containsKey("callback") || header.contains("application/javascript")
+			|| header.contains("text/javascript") || header.contains("application/jsonp")) {
+			view.setType(ViewType.JSONP);
+		}
 		L.debug("view:{}", view);
+		PrintWriter writer = response.getWriter();
 		switch (view.getType()) {
 //		TODO: enable FREEMARKER!
 		// case FREEMARKER:
 		// request.getRequestDispatcher(view.getViewName()).forward(request,
 		// response);
 		// break;
+		case JSONP:
+			String callback = request.getParameter("callback");
+			if (callback == null || callback.equals("")) {
+				writer.write(view.getContent());
+			} else {
+				writer.write("try{" + callback + "(" + view.getContent() + ")}catch(e){}");
+			}
+			writer.close();
+			break;
 		case JSON:
 		case AJAX:
-			PrintWriter writer = response.getWriter();
 			writer.write(view.getContent());
 			writer.close();
 			break;
@@ -514,8 +529,9 @@ public class MVCProcess {
 	 * @param paramMappings
 	 * @param index
 	 * @param set 暂存已经注入过的参数。
+	 * @throws MVCException 
 	 */
-	private static Object injectParam(Class<?> paramType, Map<String, String[]> requestParams, MVCParamMapping paramMapping) {
+	private static Object injectParam(Class<?> paramType, Map<String, String[]> requestParams, MVCParamMapping paramMapping) throws MVCException {
 		Object obj = null;
 		if (paramMapping != null) {
 //			obj = StringUtils.parse(paramType, requestParams.get(paramMapping.value())[0]);
@@ -526,6 +542,9 @@ public class MVCProcess {
 			
 			obj = StringUtils.convert(paramType, param);
 			L.debug("请求参数绑定 key:{}, value: {}", paramMapping.value(), obj);
+			if (obj == null) {
+				throw new MVCException("请求参数 " + paramMapping.value() + " 不能为空！");
+			}
 		} else {
 //			在参数类型不相同的时候可用, 因为此时是通过类型判断！警告，这个算法不够完善，当出现true，flase，1，0，时间日期并且转换类型是字符串的时候容易出错！慎用！
 //			for (String key : requestParams.keySet()) {
@@ -568,10 +587,16 @@ public class MVCProcess {
 			if (requestParams.containsKey(fieldName)) {
 				Class<?> fieldType = fields[i].getType();
 				String[] values = requestParams.get(fieldName);
+				if (values == null) {
+					throw new MVCException("请求参数 " + fieldName + " 不能为空！");
+				}
 				Class<?> arrayType = fieldType.getComponentType();
 //				这里，暂时没有考虑集合类型的注入。so，TODO，collections inject(注意集合类型的初始化）...
 				if (arrayType == null) {
 //					不是数组类型
+					if (values[0] == null) {
+						throw new MVCException("请求参数 " + fieldName + " 不能为空！");
+					}
 					field = StringUtils.convert(fieldType, values[0]);
 				} else {
 //					数组类型
@@ -615,6 +640,7 @@ public class MVCProcess {
 		} else if (returnType.equals(String.class)) {
 			// string, 那视图就是一般的请求（非ajax），返回值代表viewname
 			mav.setViewName(result.toString());
+			mav.getView().setContent(result.toString());
 		} else if (returnType.equals(View.class)) {
 			// 直接返回view
 			mav.setView((View) result);
