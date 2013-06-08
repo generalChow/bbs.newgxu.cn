@@ -121,7 +121,7 @@ public class Topic extends JPAEntity {
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "vote_id")
 	private Vote vote;
-	
+
 	//............
 //	@Column(name = "activity_decoration")
 //	private String activityDecoration;
@@ -157,7 +157,7 @@ public class Topic extends JPAEntity {
 	public void setPubType(int pubType) {
 		this.pubType = pubType;
 	}
-	
+
 	public void setVoteTopic(boolean voteTopic) {
 		this.voteTopic = voteTopic;
 	}
@@ -247,7 +247,7 @@ public class Topic extends JPAEntity {
 			return getUser();
 		return topicUser;
 	}
-	
+
 	/**
 	 * 获取帖子的作者，用于10周年的改版
 	 * @since 2012-04-19
@@ -969,8 +969,16 @@ public class Topic extends JPAEntity {
 	 * 判断topic中是否含有图片
 	 */
 	public String getImageString() {
-		Reply reply = getReplies(new Pagination(), false).get(0);
+		Reply reply = null;
+		try {
+			reply = getReplies(new Pagination(), false).get(0);
+		} catch (Exception e) {
+			return "";
+		}
 		String content = reply.getContentFilter();
+		if (content == null || content.length() < 1) {
+			return "";
+		}
 		String img = "<img style='border: 0;' src='image/image.gif' />";
 
 		Pattern p = Pattern.compile("<img.+src=\"/upload/");
@@ -978,9 +986,9 @@ public class Topic extends JPAEntity {
 		if (m.find()) {
 			return img;
 		}
-		
+
 		m.reset();
-		
+
 		p = Pattern.compile("<img.+src=\"images/upload_files/");
 		m = p.matcher(content);
 		if (m.find()) {
@@ -989,7 +997,7 @@ public class Topic extends JPAEntity {
 
 		return "";
 	}
-	
+
 	/**
 	 * 获取活动的图片信息。
 	 * @since 2012-12-19
@@ -1002,7 +1010,7 @@ public class Topic extends JPAEntity {
 		}
 		return "";
 	}
-	
+
 	public String getImageString(String content) {
 //		Reply reply = getReplies(new Pagination(), false).get(0);
 //		String content = reply.getContentFilter();
@@ -1012,9 +1020,9 @@ public class Topic extends JPAEntity {
 		if (m.find()) {
 			return "<img src=\"image/image.gif\" />";
 		}
-		
+
 		m.reset();
-		
+
 		p = Pattern.compile("<img.+src=.*images/upload_files/");
 		m = p.matcher(content);
 		if (m.find()) {
@@ -1024,21 +1032,21 @@ public class Topic extends JPAEntity {
 		return "nothing!";
 	}
 
-	
+
 	public String getImageStringTest(String content) {
 //		System.out.println(content);
 		String result = "";
 //		Pattern p = Pattern.compile("upload/mp3/.+\\.mp3");
 		Pattern p = Pattern.compile("upload/mp3/");
 		Matcher m = p.matcher(content);
-		
+
 		if (m.find()) {
 			System.out.println(1);
 			result += "<img src=\"image/music.gif\" />";
 		}
-		
+
 		m.reset();
-		
+
 		p = Pattern.compile("<img.+src=.*/upload/");
 		m = p.matcher(content);
 		if (m.find()) {
@@ -1046,9 +1054,9 @@ public class Topic extends JPAEntity {
 			result += "<img src=\"image/image.gif\" />";
 			return result;
 		}
-		
+
 		m.reset();
-		
+
 		p = Pattern.compile("<img.+src=.*images/upload_files/");
 		m = p.matcher(content);
 		if (m.find()) {
@@ -1058,7 +1066,7 @@ public class Topic extends JPAEntity {
 		}
 		return "nothing!";
 	}
-	
+
 	/**
 	 * 获取帖子中既是加亮主题，又是推荐主题，也是好贴（good_topic = 1, light_topic = 1, pub_type = 1)的帖子，用于主页的文章推荐版块
 	 * @since 2012-04-17
@@ -1071,7 +1079,7 @@ public class Topic extends JPAEntity {
 				P(1, pubType), P(2, goodTopic), P(3, lightTopic)).setFirstResult(0).setMaxResults(number)
 				.getResultList();
 	}
-	
+
 	/**
 	 * 获取最新的帖子的id，用于判断是否有新帖被发表,处于效率和语句的灵活性原因，使用了mysql方言。
 	 * @since 2012-05-10
@@ -1088,7 +1096,7 @@ public class Topic extends JPAEntity {
 		}
 		return id;
 	}
-	
+
 	/**
 	 * 获取最新的帖子, 暂时用于wap
 	 * @return
@@ -1097,11 +1105,11 @@ public class Topic extends JPAEntity {
 	public static List<Topic> getLatesTopics(int number) {
 		return Q("from Topic as t order by t.creationTime desc").setMaxResults(number).getResultList();
 	}
-	
+
 	public String getRelativeTime() {
 		return DateTime.getRelativeTime(this.creationTime.getTime());
 	}
-	
+
 	/**
 	 * 获取帖子后续（more）的回复。
 	 * @param topicId
@@ -1118,5 +1126,94 @@ public class Topic extends JPAEntity {
 				.setMaxResults(number)
 				.getResultList();
 	}
+	
+	
+	/*****************************************************************************
+		REST API 接口的实现 2013 longkai
+	/*****************************************************************************/
+	
+	/**
+	 * 直接获得本帖子的主题内容
+	 */
+	public String resolveContent() {
+		Reply reply = (Reply) getEntityManager().createQuery("FROM Reply r where r.firstReply IS TRUE and r.topic.id = " + this.id).getSingleResult();
+		return reply.getContentFilter();
+	}
+	
+	/**
+	 * 抓取某个forum的最新的帖子。
+	 * @param fid
+	 * @param count
+	 */
+	public static List<Topic> fetchLatestTopics(int fid, int count) {
+		String hql = String.format("FROM Topic t WHERE t.forum.id = %d AND t.invalid IS FALSE ORDER BY t.id DESC", fid);
+		return getEntityManager().createQuery(hql).setFirstResult(0).setMaxResults(count).getResultList();
+	}
+	
+	/**
+	 * 刷新最新的 
+	 * @param topTid
+	 * @param count
+	 * @return
+	 */
+	public static List<Topic> refresh(int topTid, int count) {
+		String hql = String.format("FROM Topic t WHERE t.id > %d AND t.invalid IS FALSE ORDER BY t.id DESC", topTid);
+		return getEntityManager().createQuery(hql).setFirstResult(0).setMaxResults(count).getResultList();
+	}
+	
+	/**
+	 * 加载更多。。。
+	 * @param lastTid
+	 * @param count
+	 * @return
+	 */
+	public static List<Topic> fetchMore(int lastTid, int count) {
+		String hql = String.format("FROM Topic t WHERE t.id < %d AND t.invalid IS FALSE ORDER BY t.id DESC", lastTid);
+		return getEntityManager().createQuery(hql).setFirstResult(0).setMaxResults(count).getResultList();
+	}
+	
+	/**
+	 * 刷新最新帖子的列表。
+	 * @param fid
+	 * @param topTid
+	 * @param count
+	 * @return
+	 */
+	public static List<Topic> refresh(int fid, int topTid, int count) {
+		String hql = String.format("FROM Topic t WHERE t.id > %d AND t.forum.id = %d AND t.invalid IS FALSE ORDER BY t.id DESC", topTid, fid);
+		return getEntityManager().createQuery(hql).setFirstResult(0).setMaxResults(count).getResultList();
+	}
+	
+	/**
+	 * 加载某个版块中的更多。。。
+	 * @param fid
+	 * @param lastId
+	 * @param count
+	 * @return
+	 */
+	public static List<Topic> fetchMore(int fid, int lastId, int count) {
+		String hql = String.format("FROM Topic t WHERE t.id < %d AND t.forum.id = %d AND t.invalid IS FALSE ORDER BY t.id DESC", lastId, fid);
+		return getEntityManager().createQuery(hql).setFirstResult(0).setMaxResults(count).getResultList();
+	}
+	
+	/**
+	 * 随机抓取论坛经典的帖子^_^，类似于挖坟啦。
+	 * 经典的定义，暂时根据以下的规则
+	 * 点击数 > 5000
+	 * 回复数 > 200
+	 * 热门帖子（pubType = 1)
+	 * 精彩帖子（pubType = 2)
+	 * @param fid
+	 * @param count
+	 * @author longkai
+	 */
+	public static List<Topic> fetchClassics(int fid, int count) {
+		String hql = String.format("FROM Topic t WHERE t.forum.id = %d AND (t.clickTimes > 200 OR t.replyTimes > 200 OR t.pubType = 1 OR t.pubType = 2) ORDER BY rand()", fid);
+		return getEntityManager().createQuery(hql).setFirstResult(0).setMaxResults(count).getResultList();
+	}
+	
+	/*****************************************************************************
+		REST API 接口的实现 2013 longkai
+	/*****************************************************************************/
 	
 }

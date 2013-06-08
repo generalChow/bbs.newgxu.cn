@@ -17,6 +17,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import cn.newgxu.bbs.common.Constants;
 import cn.newgxu.bbs.common.Pagination;
 import cn.newgxu.bbs.common.util.Util;
@@ -35,6 +38,7 @@ import cn.newgxu.jpamodel.ObjectNotFoundException;
 public class Forum extends JPAEntity {
 
 	private static final long serialVersionUID = 1L;
+	private static final Logger L = LoggerFactory.getLogger(Forum.class);
 
 	@Id
 	@Column(name = "id")
@@ -364,7 +368,7 @@ public class Forum extends JPAEntity {
 			return (Long) SQ("select count(*) from Topic where forum=?1", P(1,
 					this));
 		} catch (ObjectNotFoundException e) {
-			e.printStackTrace();
+			L.error("get topics count from forum error!", e);
 			return null;
 		}
 	}
@@ -438,5 +442,24 @@ public class Forum extends JPAEntity {
 		}
 		return false;
 	}
+	
+	/*****************************************************************************
+		REST API 接口的实现 2013 longkai
+	/*****************************************************************************/
+	
+	/**
+	 * 获取该板块下的精彩帖子的数量。
+	 */
+	public int getFantasyCount() {
+		String hql = String.format("SELECT COUNT(t.id) FROM Topic t WHERE t.forum.id = %d AND (t.pubType = 1 OR t.pubType = 2)", this.getId());
+		return ((Long) getEntityManager().createQuery(hql).getSingleResult()).intValue();
+	}
+	
+	
+	
+	/*****************************************************************************
+		REST API 接口的实现 2013 longkai
+	/*****************************************************************************/
+	
 
 }

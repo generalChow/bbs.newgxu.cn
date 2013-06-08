@@ -89,7 +89,7 @@ public class BBSCache {
 			}
 			
 			// 后台控制标题过长 用css控制@2012-09-23
-//			for (Topic topic : a.getLatestTopics()) {
+//			for (TopicProvider topic : a.getLatestTopics()) {
 //				String title = topic.getTitle();
 //				if (title.length() > 35) {
 //					title = title.substring(0, 33) + "...";
@@ -327,7 +327,7 @@ public class BBSCache {
 	 * 心情日记缓存
 	 * @since 2012-04-17
 	 */
-//	public static List<Topic> getDiaryCache() {
+//	public static List<TopicProvider> getDiaryCache() {
 //		if (diaryCache == null
 //				|| diaryCache.isNeedUpdate())
 //			buildDiaryCache();

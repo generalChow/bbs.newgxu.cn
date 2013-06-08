@@ -45,6 +45,10 @@ id="WebApp_ID" version="2.5">
 		<url-pattern>/ng/*</url-pattern>
 	</filter-mapping>
 	<filter-mapping>
+		<filter-name>entityManagerFilter</filter-name>
+		<url-pattern>/api/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
 		<filter-name>autoLogin</filter-name>
 		<url-pattern>*.yws</url-pattern>
 	</filter-mapping>
@@ -102,6 +106,15 @@ id="WebApp_ID" version="2.5">
 	<servlet-mapping>
 		<servlet-name>mvcRequest</servlet-name>
 		<url-pattern>/ng/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RESTAPI</servlet-name>
+		<servlet-class>org.springframework.web.context.support.HttpRequestHandlerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RESTAPI</servlet-name>
+		<url-pattern>/api/*</url-pattern>
 	</servlet-mapping>
 	
 	<listener>

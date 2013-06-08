@@ -417,10 +417,13 @@ public class MVCProcess {
 			HttpServletResponse response, View view) throws IOException,
 			ServletException {
 		String header = request.getHeader("Accept");
-		if (request.getParameterMap().containsKey("callback") || header.contains("application/javascript")
-			|| header.contains("text/javascript") || header.contains("application/jsonp")) {
+		if (request.getParameterMap().containsKey("callback") || header.contains("application/jsonp")) {
 			view.setType(ViewType.JSONP);
+		} else if (header.contentEquals("application/json") || header.contains("application/javascript")
+			|| header.contains("text/javascript")) {
+			view.setType(ViewType.JSON);
 		}
+		
 		L.debug("view:{}", view);
 		PrintWriter writer = response.getWriter();
 		switch (view.getType()) {
@@ -486,7 +489,6 @@ public class MVCProcess {
 			ModelAndView mav) throws MVCException {
 		Object[] injectedParams = new Object[paramTypes.length];
 		Map<String, String[]> requestParams = request.getParameterMap();
-		
 		for (int i = 0; i < paramTypes.length; i++) {
 			// TODO: can we inject super class in the future if needed?
 			Class<?> type = paramTypes[i];

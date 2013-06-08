@@ -243,4 +243,23 @@ public class Reply extends JPAEntity {
 	public String getRelativeTime() {
 		return DateTime.getRelativeTime(this.postTime.getTime());
 	}
-}
+	
+	/*****************************************************************************
+		REST API 接口的实现 2013 longkai
+	/*****************************************************************************/
+
+	/** 目前只是单向的 */
+	public static List<Reply> fetchReplies(int tid, int lastReplyId, int count) {
+		String hql = null;
+		if (lastReplyId == 0) {
+			hql = String.format("FROM Reply r WHERE r.topic.id = %d AND r.firstReply IS FALSE AND r.invalid IS FALSE ORDER BY r.id DESC", tid);
+		} else {
+			hql = String.format("FROM Reply r WHERE r.topic.id = %d AND r.id < %d AND r.firstReply IS FALSE AND r.invalid IS FALSE ORDER BY r.id DESC", tid, lastReplyId);
+		}
+		return getEntityManager().createQuery(hql).setFirstResult(0).setMaxResults(count).getResultList();
+	}
+
+	/*****************************************************************************
+		REST API 接口的实现 2013 longkai
+	/*****************************************************************************/
+}		

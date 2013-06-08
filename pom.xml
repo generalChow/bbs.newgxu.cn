@@ -63,6 +63,7 @@
 		<json-simple.version>1.1.1</json-simple.version>
 		<json.version>20090211</json.version>
 		<gson.version>2.2.2</gson.version>
+		<jackson.version>1.9.12</jackson.version>
 		<jaxen.version>1.1.1</jaxen.version>
 
 		<slf4j.version>1.7.3</slf4j.version>
@@ -147,6 +148,12 @@
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>${json.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 
 		<!-- inject -->

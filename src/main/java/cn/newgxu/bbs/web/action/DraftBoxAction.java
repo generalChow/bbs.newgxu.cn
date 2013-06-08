@@ -114,7 +114,7 @@ public class DraftBoxAction extends AbstractBaseAction {
 		model.setUser(getUser());
 		MessageList m = new MessageList();
 		try {
-//			Topic topic = forumService.createTopicDo(model);
+//			TopicProvider topic = forumService.createTopicDo(model);
 			forumService.saveAgainDraftBox(model, 1);
 			m.setUrl("/forum.yws?forumId=${forumId}", MessageList.P(
 					"${forumId}", model.getForumId()));

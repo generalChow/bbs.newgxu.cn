@@ -74,7 +74,7 @@ public class IndexAction extends AbstractBaseAction {
 			List<HotTopic> pubHotTopics = BBSCache.getHotTopicCache();
 //			List<User> topExpUsers = userService.getUsers(1, null);
 			List<User> topExpUsers = BBSCache.getExpUserCache();
-//			List<Topic> recommendedTopics = Topic.getRecomendedTopic(7, 1, true, true);
+//			List<TopicProvider> recommendedTopics = TopicProvider.getRecomendedTopic(7, 1, true, true);
 //			List<Diary> diaries = Diary.getDiarys(1, 7);
 //			List<SmallNews> smallNews = SmallNews.getSmallNews(3);
 			List<SmallNews> smallNews = BBSCache.getSmallNewsCache();

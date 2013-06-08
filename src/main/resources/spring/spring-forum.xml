@@ -154,7 +154,7 @@
 				<prop key="vote">PROPAGATION_REQUIRED, -Exception</prop>
 				<prop key="createTopic">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
 				<prop key="createVote">PROPAGATION_REQUIRED, readOnly, -Exception</prop>
-				<prop key="createTopicDo">PROPAGATION_REQUIRED, -Exception</prop>
+				<prop key="createTopicDo">PROPAGATION_REQUIRED, -Throwable</prop>
 				<prop key="createVoteDo">PROPAGATION_REQUIRED, -Throwable</prop>
 				<prop key="createReply">PROPAGATION_REQUIRED, -Exception</prop>
 				<prop key="modifyDo">PROPAGATION_REQUIRED, -Exception</prop>

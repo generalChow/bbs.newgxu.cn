@@ -505,7 +505,11 @@ public class ForumServiceImpl implements ForumService {
 		reply.setTopic(topic);
 		reply.setPostUser(user);
 
-		topic.save();
+		try {
+			topic.save();
+		} catch (Exception e) {
+			topic.delete();
+		}
 		reply.save();
 //		user.save();
 		user.update();

@@ -114,16 +114,16 @@
 	
 	<!-- local -->
 	
-		<!-- <root level="DEBUG">
+		<root level="DEBUG">
 			<appender-ref ref="STDOUT" />
 			<appender-ref ref="DAILYFILE" />
-			<appender-ref ref="STDERR" />
-		</root> -->
+			<!-- <appender-ref ref="STDERR" /> -->
+		</root>
 	
 	<!-- server -->
-	<root level="INFO">
+	<!-- <root level="INFO"> -->
 		<!-- <appender-ref ref="STDOUT" /> -->
-		<appender-ref ref="DAILYFILE" />
+		<!-- <appender-ref ref="DAILYFILE" /> -->
 		<!-- <appender-ref ref="STDERR" /> -->
-	</root>
+	<!-- </root> -->
 </configuration>
