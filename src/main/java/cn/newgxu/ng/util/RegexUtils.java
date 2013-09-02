@@ -27,19 +27,19 @@ import java.util.regex.Pattern;
  */
 public class RegexUtils {
 	
-	private static Pattern pattern;
-	private static Matcher matcher; 
+//	private static Pattern pattern;
+//	private static Matcher matcher; 
 	
 	/**
 	 * 初始化，稍微考虑到了一点效率。
 	 * @param regex
 	 */
-	private static void init(String regex, String text) {
-		if (pattern == null || !pattern.pattern().equals(regex)) {
-			pattern = Pattern.compile(regex);
-		}
-		matcher = pattern.matcher(text);
-	}
+//	private static void init(String regex, String text) {
+//		if (pattern == null || !pattern.pattern().equals(regex)) {
+//			pattern = Pattern.compile(regex);
+//		}
+//		matcher = pattern.matcher(text);
+//	}
 	
 	/**
 	 * 是否包含此串。
@@ -48,7 +48,9 @@ public class RegexUtils {
 	 * @return true or false.
 	 */
 	public static boolean contains(String text, String regex) {
-		init(regex, text);
+//		init(regex, text);
+		Pattern p = Pattern.compile(regex);
+		Matcher matcher = p.matcher(text);
 		return matcher.find();
 	}
 	
@@ -59,7 +61,8 @@ public class RegexUtils {
 	 * @return true or false.
 	 */
 	public static boolean matches(String text, String regex) {
-		init(regex, text);
+		Pattern p = Pattern.compile(regex);
+		Matcher matcher = p.matcher(text);
 		return matcher.matches();
 	}
 	
@@ -70,7 +73,8 @@ public class RegexUtils {
 	 * @return 捕捉到的第一个匹配串，否则返回null。
 	 */
 	public static String fetchFirst(String text, String regex) {
-		init(regex, text);
+		Pattern p = Pattern.compile(regex);
+		Matcher matcher = p.matcher(text);
 		if (matcher.find()) {
 			return matcher.group();
 		}

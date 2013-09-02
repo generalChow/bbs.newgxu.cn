@@ -45,6 +45,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.HttpRequestHandler;
 
+import com.sun.mail.util.QEncoderStream;
+
+import cn.newgxu.bbs.common.util.Util;
 import cn.newgxu.bbs.domain.Forum;
 import cn.newgxu.bbs.domain.Reply;
 import cn.newgxu.bbs.domain.Topic;
@@ -271,6 +274,9 @@ public class RESTAPIServlet implements HttpRequestHandler {
 				}
 			}
 		} else if (RegexUtils.contains(uri, "/users")) {
+			if (uri.contains("/users/login")) {
+				return user2Json(request);
+			}
 			int id = resolveId(uri);
 			if (id < 0) {
 //				集合操作
@@ -459,6 +465,24 @@ public class RESTAPIServlet implements HttpRequestHandler {
 		json.put(STATUS, 1);
 		json.put("user", m);
 		return json.toString();
+	}
+	
+	private static final String user2Json(HttpServletRequest request) {
+		String username = request.getParameter("username");
+		User u;
+		try {
+			u = User.getByUsername(username);
+		} catch (ObjectNotFoundException e) {
+			return "{\"status\":0}";
+		}
+		String password = request.getParameter("password");
+		if (u == null || !u.getPassword().equals(Util.hash(password))) {
+			return "{\"status\":0}";
+		} else {
+			Map<String, Object> map = R.resolveUser2Map(u);
+			map.put("status", 1);
+			return new JSONObject(map).toString();
+		}
 	}
 	
 }
