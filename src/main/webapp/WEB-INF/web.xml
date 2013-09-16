@@ -6,7 +6,10 @@ id="WebApp_ID" version="2.5">
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
+		<param-value>
 		<param-value>classpath*:spring/spring-*.xml</param-value>
+		<param-value>classpath*:api/applicationContext.xml</param-value>
+		</param-value>
 	</context-param>
 	<filter>
 		<filter-name>Spring Encoding Filter</filter-name>
@@ -107,7 +110,7 @@ id="WebApp_ID" version="2.5">
 		<servlet-name>mvcRequest</servlet-name>
 		<url-pattern>/ng/*</url-pattern>
 	</servlet-mapping>
-	
+	<!--  
 	<servlet>
 		<servlet-name>RESTAPI</servlet-name>
 		<servlet-class>org.springframework.web.context.support.HttpRequestHandlerServlet</servlet-class>
@@ -116,10 +119,28 @@ id="WebApp_ID" version="2.5">
 		<servlet-name>RESTAPI</servlet-name>
 		<url-pattern>/api/*</url-pattern>
 	</servlet-mapping>
+	-->
 	
 	<listener>
 		<listener-class>cn.newgxu.bbs.common.util.UpdateLastWeekExp</listener-class>
 	</listener>
+	
+	
+	
+	<servlet>
+		<servlet-name>restapi</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:api/dispatcher-servlet.xml</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>restapi</servlet-name>
+		<url-pattern>/api/*</url-pattern>
+	</servlet-mapping>
 	
 	<error-page>  
         <error-code>404</error-code>  
