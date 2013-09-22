@@ -8,7 +8,7 @@ id="WebApp_ID" version="2.5">
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 		<param-value>classpath*:spring/spring-*.xml</param-value>
-		<param-value>classpath*:api/applicationContext.xml</param-value>
+		
 		</param-value>
 	</context-param>
 	<filter>
@@ -127,20 +127,7 @@ id="WebApp_ID" version="2.5">
 	
 	
 	
-	<servlet>
-		<servlet-name>restapi</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-		  <init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:api/dispatcher-servlet.xml</param-value>
-		</init-param>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>restapi</servlet-name>
-		<url-pattern>/api/*.json</url-pattern>
-	</servlet-mapping>
+	
 	
 	<error-page>  
         <error-code>404</error-code>  

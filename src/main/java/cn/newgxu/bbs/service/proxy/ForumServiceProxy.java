@@ -293,8 +293,9 @@ public class ForumServiceProxy implements ForumService {
 	public void deleteTopic(int id) throws ObjectNotFoundException {
 		// TODO Auto-generated method stub
 		System.out.println("到了代理层了");
-		Topic topic = Topic.get(id);
-		topic.delete();
+		//Topic topic = Topic.get(id);
+		//topic.delete();
+		forumService.deleteTopic(id);
 	}
 
 }
