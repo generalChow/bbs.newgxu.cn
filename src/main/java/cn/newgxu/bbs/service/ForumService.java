@@ -158,4 +158,7 @@ public interface ForumService {
 	public void getFourmTime(ForumTimeModel model) throws ObjectNotFoundException;
 	
 	public void modifyFourmTime(ForumTimeModel model) throws Exception;
+	
+	public Topic getTopicById(int id) throws ObjectNotFoundException;
+	public void deleteTopic(int id) throws ObjectNotFoundException;
 }

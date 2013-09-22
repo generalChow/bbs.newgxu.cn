@@ -57,7 +57,17 @@
 			<result name="login" type="freemarker">/template/accounts/login.htm</result>
 			<result name="login_ie6" type="freemarker">/template/accounts/login_old.htm</result>
 		</action>
+		<!-- 获取单一帖子，2013-09-21 -->
+		<action name="getTopicBI" class="cn.newgxu.bbs.web.action.TopicAction" method="getTopicById">
+			<result name="success" type="freemarker">/template/accounts/login.htm</result>
+			<result name="login_ie6" type="freemarker">/template/accounts/login_old.htm</result>
+		</action>
 		
+		<!-- 删除单一帖子，2013-09-21 -->
+		<action name="deleteTopic" class="cn.newgxu.bbs.web.action.TopicAction" method="deleteTopicById">
+			<result name="success" type="freemarker">/template/accounts/login.htm</result>
+			<result name="login_ie6" type="freemarker">/template/accounts/login_old.htm</result>
+		</action>
 		<!-- 论坛首页 -->
 		<action name="index" class="index">
 			<!--
@@ -271,6 +281,8 @@
 		<action name="gettopic" class="getTopicAction">
 			<result name="success" type="freemarker">/template/gettopic.htm</result>
 		</action>
+		
+		
       
 	</package>
 	<package name="webMaster" namespace="/webMaster" extends="default">

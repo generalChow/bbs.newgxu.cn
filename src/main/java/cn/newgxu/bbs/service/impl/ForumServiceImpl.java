@@ -2115,6 +2115,18 @@ public class ForumServiceImpl implements ForumService {
 		}
 	}
 	
+	public Topic getTopicById(int id) throws ObjectNotFoundException{
+		Topic topic = Topic.get(id);
+		return topic;
+	}
+	
+	public void deleteTopic(int id) throws ObjectNotFoundException{
+		System.out.println("到这层了");
+		Topic topic = Topic.get(id);
+		System.out.println(topic.toString());
+		topic.delete();
+	}
+	
 	public void giftLucky(LuckyActionModel model) throws Exception {
 	}
 	public void viewLucky(LuckyActionModel model) throws Exception {
@@ -2130,6 +2142,7 @@ public class ForumServiceImpl implements ForumService {
 	}
 	public void editLucky(LuckyTopicModel model) throws Exception {
 	}
+	
 
 	/**
 	 *----------------------------------------------------------------

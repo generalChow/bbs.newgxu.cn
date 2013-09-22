@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class TestController {
 
-	@RequestMapping("/api/test")
+	@RequestMapping("/api/test.json")
 	@ResponseBody
 	public ModelAndView test(ModelAndView model){
 		model.addObject("test", "yes");

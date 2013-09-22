@@ -139,7 +139,7 @@ id="WebApp_ID" version="2.5">
 
 	<servlet-mapping>
 		<servlet-name>restapi</servlet-name>
-		<url-pattern>/api/*</url-pattern>
+		<url-pattern>/api/*.json</url-pattern>
 	</servlet-mapping>
 	
 	<error-page>  
