@@ -281,7 +281,10 @@
 		<action name="gettopic" class="getTopicAction">
 			<result name="success" type="freemarker">/template/gettopic.htm</result>
 		</action>
-		
+		<!-- 检验用户接口 -->
+		<action name="checkAccout" class="cn.newgxu.bbs.web.action.accounts.CheckAccoutAction">
+		   <result name="success" type="freemarker">/template/gettopic.htm</result>
+		</action>
 		
       
 	</package>
