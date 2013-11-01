@@ -277,13 +277,13 @@ public class UserServiceImpl implements UserService {
 			if (RegisterWordFilter.LoginStringFilter(model.getStudentid())) {
 				throw new BBSException(BBSExceptionMessage.ONLY_NUMBER);
 			}
-			ValidationUtil.checkStudentIdAndMima(model.getStudentid(),
-					model.getMima());
+			//ValidationUtil.checkStudentIdAndMima(model.getStudentid(),
+				//	model.getMima());
 			user.setRegisterType(Constants.REG_TYPE_STUDENT);
 			user.setAccountStatus(Constants.ACCOUNT_STATUS_NORMAL);
 			user.setStudentid(model.getStudentid());
 			System.out.println(user.getStudentid());
-			checkStudentid(user.getStudentid(), model.getMima());
+			//checkStudentid(user.getStudentid(), model.getMima());
 			break;
 		case 2: // 研究生、博士生
 			if (RegisterWordFilter.LoginStringFilter(model.getStudentid())) {

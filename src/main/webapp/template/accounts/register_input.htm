@@ -1,150 +1,297 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>register</title>
-	<meta name="author" content="longkai" />
-	<!-- Date: 2012-07-13 -->
-	<style type="text/css">
-		* {
-			padding: 0;
-			margin: 0;
-			font-family: "微软雅黑", "新宋体";
-		}
-
-		#header img {
-			width: 100%;
-			height: 100%;
-		}
-
-		#main {
-			width: 960px;
-			margin: 0 auto;
-		}
-
-		#register {
-			margin: 30px 120px;
-		}
-
-		.left {
-			font-size: 18px;
-			color: #434343;
-			padding-right: 15px;
-			padding-bottom: 20px;
-			text-align: justify;
-		}
-
-		.right {
-			height: 40px;
-			width: 300px;
-			background-color: #f7f7f7;
-			border: 1px solid #d2d2d2;
-			font-size: 18px;
-			color: #434343;
-			margin: 0 20px 20px 0;
-		}
-
-		.error {
-			color: red;
-		}
-
-		.info {
-			width: 300px;
-			padding-bottom: 20px;
-			/*color: #a0a0a0;*/
-		}
-
-		#validate {
-			padding-bottom: 20px;
-		}
-
-		#validCode {
-			width: 140px; 
-			height: 35px;
-			margin-right: 10px;
-		}
-
-		#submit {
-			margin: 60px 200px;
-			cursor: pointer;
-		}
-
-		.validError {
-			padding: 20px 0;
-			text-align: center;
-			margin: 0 auto;
-			color: red;
-			list-style-type: none;
-		}
-
-		#birthday {
-			padding-bottom: 20px;
-		}
-
-	</style>
-	<script type="text/javascript">
-		var flag = ${regType};
-		if (flag === 100) {
-			window.onload = function() {
-				alert("现在开辟的新生注册通道不需要使用学号，但是为了您资料的完善和更好的服务，请您在获得学号之后修改个人信息，我们会通知您更改信息，逾期不改届时账号会被冻结。请您遵守此约定！");
-			}
-		}
-	</script>
-	<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
-</head>
-<body>
-	<div id="header">
-		<img src="/images/accounts/register_page.jpg" />
-	</div>
-	
-	<div id="main">
-		<hr size="1" align="middle" style="color: #dcdcdc;" />
-		${validMsg}
-		<div id="register">
-			<form name="register_field" action="/accounts/register_do.yws" method="post">
-				<input name="regType" type="hidden" id="regType" value="${regType}" />
-				<table>
-					<tr>
-						<td class="left">真实姓名</td>
-						<td><input class="right" id="trueName" type="text" name="trueName" value='${trueName?default("")}' /></td>
-						<td class="info _trueName">请填写您的真实姓名，以便我们为您提供各种服务。我们不会透露您的个人信息。</td>
-					</tr>
-					<tr>
-						<td class="left">登录账号</td>
-						<td><input class="right" id="username" type="text" name="username" maxlength="16" value='${username?default("")}' /></td>
-						<td class="info _username">3-16个字符，必须以字母开头，这是您的登录账号，不允许汉字和特殊字符。</td>
-					</tr>
-					<tr>
-						<td class="left">用户昵称</td>
-						<td><input class="right" id="nick" type="text" name="nick" maxlength="8" value='${nick?default("")}' /></td>
-						<td class="info _nick">3-8个字符，您在社区论坛，微雨无声，分享平台等服务的显示昵称。</td>
-					</tr>
-					<tr>
-						<td class="left">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</td>
-						<td><input class="right" id="password" type="password" name="password" maxlength="14" value='${password?default("")}' /></td>
-						<td class="info _password">6-14个字符。</td>
-					</tr>
-					<tr>
-						<td class="left">确认密码</td>
-						<td><input class="right" id="confirmPassword" type="password" name="confirmPassword" maxlength="14" value='${confirmPassword?default("")}' /></td>
-						<td class="info _confirmPassword"></td>
-					</tr>
-					<tr>
-						<#if sex == false>
-						<td class="left">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</td>
-						<td clsaa="right" style="padding-bottom: 20px;"><input type="radio" name="sex" value="0" checked="checked" />&nbsp;男&nbsp;&nbsp;<input type="radio" name="sex" value="1" />&nbsp;&nbsp;女&nbsp;</td>
-						<td class="info"></td>
-						<#else>
-						<td class="left">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</td>
-						<td clsaa="right" style="padding-bottom: 20px;"><input type="radio" name="sex" value="0" />&nbsp;男&nbsp;&nbsp;<input type="radio" name="sex" value="1" checked="checked" />&nbsp;&nbsp;女&nbsp;</td>
-						<td class="info"></td>
-						</#if>
-					</tr>
-					<tr>
-						<td class="left">出生年月</td>
-						<td id="birthday">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>register</title>
+
+	<meta name="author" content="longkai" />
+
+	<!-- Date: 2012-07-13 -->
+
+	<style type="text/css">
+
+		* {
+
+			padding: 0;
+
+			margin: 0;
+
+			font-family: "微软雅黑", "新宋体";
+
+		}
+
+
+
+		#header img {
+
+			width: 100%;
+
+			height: 100%;
+
+		}
+
+
+
+		#main {
+
+			width: 960px;
+
+			margin: 0 auto;
+
+		}
+
+
+
+		#register {
+
+			margin: 30px 120px;
+
+		}
+
+
+
+		.left {
+
+			font-size: 18px;
+
+			color: #434343;
+
+			padding-right: 15px;
+
+			padding-bottom: 20px;
+
+			text-align: justify;
+
+		}
+
+
+
+		.right {
+
+			height: 40px;
+
+			width: 300px;
+
+			background-color: #f7f7f7;
+
+			border: 1px solid #d2d2d2;
+
+			font-size: 18px;
+
+			color: #434343;
+
+			margin: 0 20px 20px 0;
+
+		}
+
+
+
+		.error {
+
+			color: red;
+
+		}
+
+
+
+		.info {
+
+			width: 300px;
+
+			padding-bottom: 20px;
+
+			/*color: #a0a0a0;*/
+
+		}
+
+
+
+		#validate {
+
+			padding-bottom: 20px;
+
+		}
+
+
+
+		#validCode {
+
+			width: 140px; 
+
+			height: 35px;
+
+			margin-right: 10px;
+
+		}
+
+
+
+		#submit {
+
+			margin: 60px 200px;
+
+			cursor: pointer;
+
+		}
+
+
+
+		.validError {
+
+			padding: 20px 0;
+
+			text-align: center;
+
+			margin: 0 auto;
+
+			color: red;
+
+			list-style-type: none;
+
+		}
+
+
+
+		#birthday {
+
+			padding-bottom: 20px;
+
+		}
+
+
+
+	</style>
+
+	<script type="text/javascript">
+
+		var flag = ${regType};
+
+		if (flag === 100) {
+
+			window.onload = function() {
+
+				alert("现在开辟的新生注册通道不需要使用学号，但是为了您资料的完善和更好的服务，请您在获得学号之后修改个人信息，我们会通知您更改信息，逾期不改届时账号会被冻结。请您遵守此约定！");
+
+			}
+
+		}
+
+	</script>
+
+	<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
+
+</head>
+
+<body>
+
+	<div id="header">
+
+		<img src="/images/accounts/register_page.jpg" />
+
+	</div>
+
+	
+
+	<div id="main">
+
+		<hr size="1" align="middle" style="color: #dcdcdc;" />
+
+		${validMsg}
+
+		<div id="register">
+
+			<form name="register_field" action="/accounts/register_do.yws" method="post">
+
+				<input name="regType" type="hidden" id="regType" value="${regType}" />
+
+				<table>
+
+					<tr>
+
+						<td class="left">真实姓名</td>
+
+						<td><input class="right" id="trueName" type="text" name="trueName" value='${trueName?default("")}' /></td>
+
+						<td class="info _trueName">请填写您的真实姓名，以便我们为您提供各种服务。我们不会透露您的个人信息。</td>
+
+					</tr>
+
+					<tr>
+
+						<td class="left">登录账号</td>
+
+						<td><input class="right" id="username" type="text" name="username" maxlength="16" value='${username?default("")}' /></td>
+
+						<td class="info _username">3-16个字符，必须以字母开头，这是您的登录账号，不允许汉字和特殊字符。</td>
+
+					</tr>
+
+					<tr>
+
+						<td class="left">用户昵称</td>
+
+						<td><input class="right" id="nick" type="text" name="nick" maxlength="8" value='${nick?default("")}' /></td>
+
+						<td class="info _nick">3-8个字符，您在社区论坛，微雨无声，分享平台等服务的显示昵称。</td>
+
+					</tr>
+
+					<tr>
+
+						<td class="left">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</td>
+
+						<td><input class="right" id="password" type="password" name="password" maxlength="14" value='${password?default("")}' /></td>
+
+						<td class="info _password">6-14个字符。</td>
+
+					</tr>
+
+					<tr>
+
+						<td class="left">确认密码</td>
+
+						<td><input class="right" id="confirmPassword" type="password" name="confirmPassword" maxlength="14" value='${confirmPassword?default("")}' /></td>
+
+						<td class="info _confirmPassword"></td>
+
+					</tr>
+
+					<tr>
+
+						<#if sex == false>
+
+						<td class="left">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</td>
+
+						<td clsaa="right" style="padding-bottom: 20px;"><input type="radio" name="sex" value="0" checked="checked" />&nbsp;男&nbsp;&nbsp;<input type="radio" name="sex" value="1" />&nbsp;&nbsp;女&nbsp;</td>
+
+						<td class="info"></td>
+
+						<#else>
+
+						<td class="left">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</td>
+
+						<td clsaa="right" style="padding-bottom: 20px;"><input type="radio" name="sex" value="0" />&nbsp;男&nbsp;&nbsp;<input type="radio" name="sex" value="1" checked="checked" />&nbsp;&nbsp;女&nbsp;</td>
+
+						<td class="info"></td>
+
+						</#if>
+
+					</tr>
+
+					<tr>
+
+						<td class="left">出生年月</td>
+
+						<td id="birthday">
+
 							<select name="year">
 								  <option>1950</option>
 								  <option>1951</option>
@@ -175,510 +322,1018 @@
 								  <option>1976</option>
 								  <option>1977</option>
 								  <option>1978</option>
-								  <option>1979</option>
-								  <option>1980</option>
-								  <option>1981</option>
-								  <option>1982</option>
-								  <option>1983</option>
-								  <option>1984</option>
-								  <option>1985</option>
-								  <option>1986</option>
-								  <option>1987</option>
-								  <option>1988</option>
-								  <option>1989</option>
-								  <option selected="selected">1990</option>
-								  <option>1991</option>
-								  <option>1992</option>
-								  <option>1993</option>
-								  <option>1994</option>
-								  <option>1995</option>
-								  <option>1996</option>
-								  <option>1997</option>
-								  <option>1998</option>
-								  <option>1999</option>
-								  <option>2000</option>
-							</select>&nbsp;年
-							<select name="month">
-								<option>01</option>
-								<option>02</option>
-								<option>03</option>
-								<option>04</option>
-								<option>05</option>
-								<option>06</option>
-								<option>07</option>
-								<option>08</option>
-								<option>09</option>
-								<option>10</option>
-								<option>11</option>
-								<option>12</option>
-							</select>&nbsp;月
-							<select name="day">
-								<option>01</option>
-								<option>02</option>
-								<option>03</option>
-								<option>04</option>
-								<option>05</option>
-								<option>06</option>
-								<option>07</option>
-								<option>08</option>
-								<option>09</option>
-								<option>10</option>
-								<option>11</option>
-								<option>12</option>
-								<option>13</option>
-								<option>14</option>
-								<option>15</option>
-								<option>16</option>
-								<option>17</option>
-								<option>18</option>
-								<option>19</option>
-								<option>20</option>
-								<option>21</option>
-								<option>22</option>
-								<option>23</option>
-								<option>24</option>
-								<option>25</option>
-								<option>26</option>
-								<option>27</option>
-								<option>28</option>
-								<option>29</option>
-								<option>30</option>
-								<option>31</option>
-							</select>&nbsp;日
-						</td>
-						<td class="info"></td>
-					</tr>
-					<tr>
-						<td class="left">电子邮件</td>
-						<td><input class="right" id="email" type="text" name="email" value='${email?default("")}' /></td>
-						<td class="info _email">请填写您的真实邮件地址，以便于密码找回。</td>
-					</tr>
-					<tr>
-						<td class="left">身份证号</td>
-						<td><input class="right" id="idcode" type="text" name="idcode" value='${idcode?default("")}' /></td>
-						<td class="info _idcode">请填写真实身份证号，填写后将不能修改。</td>
-					</tr>
-					<#switch regType>
-						<#case 2>
-							<!-- 研究生注册 -->
-							<tr>
-								<td class="left">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</td>
-								<td><input class="right" id="studentid" type="text" name="studentid" value="${studentid?default("")}" /></td>
-								<td class="info _studentid">您登录图书馆（http://www.lib.gxu.edu.cn/）的用户名</td>
-							</tr>
-							<tr>
-								<td class="left">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</td>
-								<td><input class="right" id="mima" type="password" name="mima" value="${mima?default("")}" /></td>
-								<td class="info _mima">登录图书馆的密码</td>
-							</tr>
-						<#break>
-
-						<#case 3>
-							<!-- 教师注册 -->
-							<tr>
-								<td class="left">联系电话</td>
-								<td><input class="right" id="tel" type="text" name="tel" value="${tel?default("")}" /></td>
-								<td class="info _tel">您的注册信息经确认后，我们将电话通知您。座机不需要加区号</td>
-							</tr>
-							<tr>
-								<td class="left">工作单位</td>
-								<td><input class="right" id="units" type="text" name="units" value="${units?default("")}" /></td>
-								<td class="info _units">教务处选课系统登录密码</td>
-							</tr>
-						<#break>
-
-						<#case 4>
-							<!-- 校外人员注册 -->
-							<#-- 没用的 -->
-							<tr>
-								<td class="left">居住地址</td>
-								<td><input class="right" id="blank" type="text" name="blank" value="" /></td>
-								<td class="info _blankField">请填写真实居住地。</td>
-							</tr>
-						<#break>
-
-						<#case 5>
-							<!-- 行健学院 注册 -->
-							<tr>
-								<td class="left">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</td>
-								<td><input class="right" id="studentid" type="text" name="studentid" value='${studentid?default("")}' /></td>
-								<td class="info _studentid">行健学院图书馆登录用户名</td>
-							</tr>
-							<tr>
-								<td class="left">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</td>
-								<td><input class="right" id="mima" type="password" name="mima" value='${mima?default("")}' /></td>
-								<td class="info _mima">行健学院图书馆登录密码</td>
-							</tr>
-						<#break>
-
-						<#case 100>
-							<!-- 新生注册 -->
-							<#-- 实际上也是一个摆设 -->
-							<tr>
-								<td class="left">录取学院</td>
-								<td><input class="right" id="blank" type="text" name="blank" value="" /></td>
-								<td class="info _blank">请填入您所被录取的学院（可选）</td>
-							</tr>
-						<#break>
-
-						<#default>
-							<!-- 本科生注册 -->
-							<tr>
-								<td class="left">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</td>
-								<td><input class="right" id="studentid" type="text" name="studentid" value='${studentid?default("")}' /></td>
-								<td class="info _studentid">您的真实学号</td>
-							</tr>
-							<tr>
-								<td class="left">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</td>
-								<td><input class="right" id="mima" type="password" name="mima" value='${mima?default("")}' /></td>
-								<td class="info _mima">教务处选课系统登录密码</td>
-							</tr>
-							<#break>
-					</#switch>
-					
-					<tr>
-						<td class="left">验&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;证</td>
-						<td id="validate">
-							<input id="validCode" type="text" name="validCode" />
-							<input type="image" src="/validImage_servlet" /></td>
-						<td class="info _validCode"></td>
-					</tr>
-				</table>
-				<div id="submit">
-					<input type="image" src="/images/accounts/submit.png" onclick="return validateInfo()" />
-					<!-- <img id="submit_logo" src="/images/accounts/submit.png" onclick="return test();" /> -->
-					<img id="reset_logo" src="/images/accounts/reset.png" onclick="return formReset();" />
-				</div>
-			</form>
-		</div>
-	</div>
-</body>
-	<script type="text/javascript">
-	/* <![CDATA[ */
-		$(document).ready(function() {
-			
-
-			// $('#submit_logo').click(function() {
-			// 	if (check(registerType)) {
-			// 		document.register_field.submit();	
-			// 	}
-			// });
-
-			// 阻止重复提交
-			$('form').submit(function() {
-				$(':submit', this).attr('disabled', 'disabled')
-			});
-		});
-
-		var validateInfo = function() {
-			var registerType = ${regType};
-
-			if (check(registerType)) {
-				document.register_field.submit();	
-				return true;
-			}
-			return false;
-		}
-
-		/**
-		 * 全局的表单检查
-		 * @param  {[type]} type [description]
-		 * @return {[type]}      [description]
-		 */
-		var check = function(type) {
-			switch (type) {
-				case 1:
-					if (!checkUndergraduate()) {
-						return false;
-					}
-					break;
-				case 4:
-					if(!checkOuters()) {
-						return false;	
-					}
-					break;
-				case 3:
-					if (!checkTeacher()) {
-						return false;
-					}
-					break;
-				case 2:
-					if (!checkOthers()) {
-						return false;
-					}
-					break;
-				case 100:
-					if (!checkOuters()) {
-						return false;
-					}
-					break;
-				default:
-					return false;
-			}
-			return true;
-		}
-
-		/**
-		 * 验证本科生信息
-		 * @return {[type]} [description]
-		 */
-		var checkUndergraduate = function() {
-			return checkValdateCode() && checkTrueName() && checkUsername() && checkNick() && checkPassword() && checkEmai() && checkIdCode() && checkStudentId() && checkMima();
-		}
-
-		/**
-		 * 验证校外人士
-		 * @return {[type]} [description]
-		 */
-		var checkOuters = function() {
-			return checkValdateCode() && checkTrueName() && checkUsername() && checkNick() && checkPassword() && checkEmai() && checkIdCode();
-		}
-
-		/**
-		 * 验证教师信息
-		 * @return {[type]} [description]
-		 */
-		var checkTeacher = function() {
-			return checkValdateCode() && checkTrueName() && checkUsername() && checkNick() && checkPassword() && checkEmai() && checkIdCode() && checkContactPhone() && checkAddress();
-		}
-
-		/**
-		 * 在校成教生，行健生，硕士博士研究生
-		 * @return {[type]} [description]
-		 */
-		var checkOthers = function() {
-			return checkValdateCode() && checkTrueName() && checkUsername() && checkNick() && checkPassword() && checkEmai() && checkIdCode() && checkStudentId() && checkMima();
-		}
-
-
-		var isValid = function() {
-			// 检测单选
-			// var checkedValue = $('[name="sex"]:radio:checked').val();
-			// alert(checkedValue);
-			alert("fdsfds");
-			return false;
-		}
-
-		var checkTrueName = function() {
-			// 验证真实姓名
-			var trueName = $('#trueName').val().trim();
-			if (!validate(trueName)) {
-				$('._trueName').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的姓名有误！');
-				$('#trueName').focus();
-				return false;
-			} else {
-				$('._trueName').html('<img src="/images/accounts/nice.png" />');
-				return true;
-			}
-		}
-
-		var checkUsername = function() {
-			// 验证用户账号
-			var username = $('#username').val().trim();
-			if (!validate(username)) {
-				$('._username').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的账号信息有误！');
-				$('#username').focus();
-				return false;
-			}
-			if (username.length < 3 || username.length > 16) {
-				$('._username').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的账户长度不符合要求3-16个要求！');
-				$('#username').focus();
-				return false;
-			} else {
-				$('._username').html('<img src="/images/accounts/nice.png" />');
-				return true;
-			}
-		}
-
-		var checkNick = function() {
-			// 验证用户昵称
-			var nick = $('#nick').val().trim();
-			if (!validate(nick)) {
-				$('._nick').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的昵称有误！');
-				$('#nick').focus();
-				return false;
-			}
-			if (nick.length < 3 || nick.length > 8) {
-				$('._nick').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的昵称长度不符合要求3-8个要求！');
-				$('#nick').focus();
-				return false;
-			} else {
-				$('._nick').html('<img src="/images/accounts/nice.png" />');
-				return true;
-			}
-		}
-
-		var checkPassword = function() {
-			// 验证密码
-			var password = $('#password').val();
-			if (!validate(password)) {
-				$('._password').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的密码有误！');
-				$('#password').focus();
-				return false;
-			}
-			if (password.length < 6 || password.length > 14) {
-				$('._password').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的昵称长度不符合要求6-14个要求！');
-				$('#password').focus();
-				return false;
-			}
-
-			// 验证密码是否一致
-			var confirmPassword = $('#confirmPassword').val();
-			if (confirmPassword != password) {
-				$('._password').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您两次输入的密码不一致！');
-				$('#password').focus();
-				return false;
-			} else {
-				$('._password, .info:eq(4)').html('<img src="/images/accounts/nice.png" />');
-				return true;
-			}
-		}
-
-		var checkEmai = function() {
-			// 验证电子邮件
-			var email = $('#email').val().trim();
-			if (!validate(email)) {
-				$('._email').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的电子邮件有误！');
-				$('#email').focus();
-				return false;
-			}  else {
-				$('._email').html('<img src="/images/accounts/nice.png" />');
-				return true;
-			}
-		}
-
-		var checkIdCode = function() {
-			// 验证身份证
-			var idcode = $('#idcode').val().trim();
-			if (!validate(idcode)) {
-				$('._idcode').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的身份证有误！');
-				$('#idcode').focus();
-				return false;
-			}  else {
-				$('._idcode').html('<img src="/images/accounts/nice.png" />');
-				return true;
-			}
-		}
-
-<#if regType == 1 || regType == 2>
-		var checkStudentId = function() {
-			// 验证学号
-			var studentid = $('#studentid').val().trim();
-			if (!validate(studentid)) {
-				$('._studentid').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的学号有误！');
-				$('#studentid').focus();
-				return false;
-			} else {
-				$('._studentid').html('<img src="/images/accounts/nice.png" />');
-				return true;
-			}
-		}
-
-		var checkMima = function() {
-			// 验证选课系统密码
-			var mima = $('#mima').val().trim();
-			if (!validate(mima)) {
-				$('._mima').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的选课系统密码有误！');
-				$('#mima').focus();
-				return false;
-			} else {
-				$('._mima').html('<img src="/images/accounts/nice.png" />');
-				return true;
-			}
-		}
-</#if>
-
-		var checkValdateCode = function() {
-			// 验证验证码是否为空
-			var validCode = $('#validCode').val();
-			if (!validate(validCode)) {
-				$('._validCode').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;请输入正确的验证码！');
-				$('#validCode').focus();
-				return false;
-			} else {
-				$('._validCode').html('<img src="/images/accounts/nice.png" />');
-				return true;
-			}
-		}
-
-<#if regType == 3>
-		var checkContactPhone = function() {
-			var phone = $('#tel').val().trim();
-			
-			if (!checkPhone(phone) && !checkCellPhone(phone)) {
-				$('._tel').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;请输入正确的电话号码！');
-				$('#tel').focus();
-				return false;
-			} else {
-				$('._tel').html("<img src='/images/accounts/nice.png' />");
-			}
-			
-			return true;
-		}
-
-		var checkAddress = function() {
-			// 验证工作单位
-			var address = $('#units').val().trim();
-
-			if (!validate(address)) {
-				$('._units').addClass('error').html("<img src='/images/accounts/alert.jpg' />&nbsp;&nbsp;您输入的工作单位有误！");
-				return false;
-			} else {
-				$('._units').html("<img src='/images/accounts/nice.png' />");
-				return true;
-			}
-		}
-</#if>
-
-<#if regType == 4 || regType == 100>
-		var checkAddress2 = function() {
-			// 验证校外人员的住址
-			var blank = $('#blank').val().trim();
-
-
-			if (!validate(blank)) {
-				$('._blankField').addClass('error').html("<img src='/images/accounts/alert.jpg' /> &nbsp;&nbsp;此处不能为空！");
-				return false;
-			} else {
-				$('._blankField').html("<img src='/images/accounts/nice.png' />");
-				return true;
-			}
-		}
-</#if>		
-		
-		var checkPhone = function(arg) {
-			// 验证办公座机
-			var pattern = /^\d{7}$/;
-			if (!pattern.test(arg)) {
-				return false;
-			}
-			return true;
-		}
-
-		var checkCellPhone = function(arg) {
-			// 验证手机
-			var pattern = /^1[3458]\d{9}$/;
-			if (!pattern.test(arg)) {
-				return false;
-			}
-			return true;
-		}
-
-		var validate = function(e) {
-			return !isEmpty(e);
-		};
-
-		var isEmpty = function(e) {
-			if (e === '' || e.length === 0)
-				return true;
-			return false;
-		}
-
-		var formReset = function() {
-			$('form')[0].reset();
-			return false;
-		}
-		
-	/* ]]> */
-	</script>
+								  <option>1979</option>
+
+								  <option>1980</option>
+
+								  <option>1981</option>
+
+								  <option>1982</option>
+
+								  <option>1983</option>
+
+								  <option>1984</option>
+
+								  <option>1985</option>
+
+								  <option>1986</option>
+
+								  <option>1987</option>
+
+								  <option>1988</option>
+
+								  <option>1989</option>
+
+								  <option selected="selected">1990</option>
+
+								  <option>1991</option>
+
+								  <option>1992</option>
+
+								  <option>1993</option>
+
+								  <option>1994</option>
+
+								  <option>1995</option>
+
+								  <option>1996</option>
+
+								  <option>1997</option>
+
+								  <option>1998</option>
+
+								  <option>1999</option>
+
+								  <option>2000</option>
+
+							</select>&nbsp;年
+
+							<select name="month">
+
+								<option>01</option>
+
+								<option>02</option>
+
+								<option>03</option>
+
+								<option>04</option>
+
+								<option>05</option>
+
+								<option>06</option>
+
+								<option>07</option>
+
+								<option>08</option>
+
+								<option>09</option>
+
+								<option>10</option>
+
+								<option>11</option>
+
+								<option>12</option>
+
+							</select>&nbsp;月
+
+							<select name="day">
+
+								<option>01</option>
+
+								<option>02</option>
+
+								<option>03</option>
+
+								<option>04</option>
+
+								<option>05</option>
+
+								<option>06</option>
+
+								<option>07</option>
+
+								<option>08</option>
+
+								<option>09</option>
+
+								<option>10</option>
+
+								<option>11</option>
+
+								<option>12</option>
+
+								<option>13</option>
+
+								<option>14</option>
+
+								<option>15</option>
+
+								<option>16</option>
+
+								<option>17</option>
+
+								<option>18</option>
+
+								<option>19</option>
+
+								<option>20</option>
+
+								<option>21</option>
+
+								<option>22</option>
+
+								<option>23</option>
+
+								<option>24</option>
+
+								<option>25</option>
+
+								<option>26</option>
+
+								<option>27</option>
+
+								<option>28</option>
+
+								<option>29</option>
+
+								<option>30</option>
+
+								<option>31</option>
+
+							</select>&nbsp;日
+
+						</td>
+
+						<td class="info"></td>
+
+					</tr>
+
+					<tr>
+
+						<td class="left">电子邮件</td>
+
+						<td><input class="right" id="email" type="text" name="email" value='${email?default("")}' /></td>
+
+						<td class="info _email">请填写您的真实邮件地址，以便于密码找回。</td>
+
+					</tr>
+
+					<tr>
+
+						<td class="left">身份证号</td>
+
+						<td><input class="right" id="idcode" type="text" name="idcode" value='${idcode?default("")}' /></td>
+
+						<td class="info _idcode">请填写真实身份证号，填写后将不能修改。</td>
+
+					</tr>
+
+					<#switch regType>
+
+						<#case 2>
+
+							<!-- 研究生注册 -->
+
+							<tr>
+
+								<td class="left">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</td>
+
+								<td><input class="right" id="studentid" type="text" name="studentid" value="${studentid?default("")}" /></td>
+
+								<td class="info _studentid">您登录图书馆（http://www.lib.gxu.edu.cn/）的用户名</td>
+
+							</tr>
+
+							<tr>
+
+								<td class="left">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</td>
+
+								<td><input class="right" id="mima" type="password" name="mima" value="${mima?default("")}" /></td>
+
+								<td class="info _mima">登录图书馆的密码</td>
+
+							</tr>
+
+						<#break>
+
+
+
+						<#case 3>
+
+							<!-- 教师注册 -->
+
+							<tr>
+
+								<td class="left">联系电话</td>
+
+								<td><input class="right" id="tel" type="text" name="tel" value="${tel?default("")}" /></td>
+
+								<td class="info _tel">您的注册信息经确认后，我们将电话通知您。座机不需要加区号</td>
+
+							</tr>
+
+							<tr>
+
+								<td class="left">工作单位</td>
+
+								<td><input class="right" id="units" type="text" name="units" value="${units?default("")}" /></td>
+
+								<td class="info _units">教务处选课系统登录密码</td>
+
+							</tr>
+
+						<#break>
+
+
+
+						<#case 4>
+
+							<!-- 校外人员注册 -->
+
+							<#-- 没用的 -->
+
+							<tr>
+
+								<td class="left">居住地址</td>
+
+								<td><input class="right" id="blank" type="text" name="blank" value="" /></td>
+
+								<td class="info _blankField">请填写真实居住地。</td>
+
+							</tr>
+
+						<#break>
+
+
+
+						<#case 5>
+
+							<!-- 行健学院 注册 -->
+
+							<tr>
+
+								<td class="left">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</td>
+
+								<td><input class="right" id="studentid" type="text" name="studentid" value='${studentid?default("")}' /></td>
+
+								<td class="info _studentid">行健学院图书馆登录用户名</td>
+
+							</tr>
+
+							<tr>
+
+								<td class="left">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</td>
+
+								<td><input class="right" id="mima" type="password" name="mima" value='${mima?default("")}' /></td>
+
+								<td class="info _mima">行健学院图书馆登录密码</td>
+
+							</tr>
+
+						<#break>
+
+
+
+						<#case 100>
+
+							<!-- 新生注册 -->
+
+							<#-- 实际上也是一个摆设 -->
+
+							<tr>
+
+								<td class="left">录取学院</td>
+
+								<td><input class="right" id="blank" type="text" name="blank" value="" /></td>
+
+								<td class="info _blank">请填入您所被录取的学院（可选）</td>
+
+							</tr>
+
+						<#break>
+
+
+
+						<#default>
+
+							<!-- 本科生注册 -->
+
+							<tr>
+
+								<td class="left">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</td>
+
+								<td><input class="right" id="studentid" type="text" name="studentid" value='${studentid?default("")}' /></td>
+
+								<td class="info _studentid">您的真实学号</td>
+
+							</tr>
+
+							<tr>
+
+								<td class="left">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</td>
+
+								<td><input class="right" id="mima" type="password" name="mima" value='${mima?default("")}' /></td>
+
+								<td class="info _mima">教务处选课系统登录密码</td>
+
+							</tr>
+
+							<#break>
+
+					</#switch>
+
+					
+
+					<tr>
+
+						<td class="left">验&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;证</td>
+
+						<td id="validate">
+
+							<input id="validCode" type="text" name="validCode" />
+
+							<input type="image" src="/validImage_servlet" /></td>
+
+						<td class="info _validCode"></td>
+
+					</tr>
+
+				</table>
+
+				<div id="submit">
+
+					<input type="image" src="/images/accounts/submit.png" onclick="return validateInfo()" />
+
+					<!-- <img id="submit_logo" src="/images/accounts/submit.png" onclick="return test();" /> -->
+
+					<img id="reset_logo" src="/images/accounts/reset.png" onclick="return formReset();" />
+
+				</div>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</body>
+
+	<script type="text/javascript">
+
+	/* <![CDATA[ */
+
+		$(document).ready(function() {
+
+			
+
+
+
+			// $('#submit_logo').click(function() {
+
+			// 	if (check(registerType)) {
+
+			// 		document.register_field.submit();	
+
+			// 	}
+
+			// });
+
+
+
+			// 阻止重复提交
+
+			$('form').submit(function() {
+
+				$(':submit', this).attr('disabled', 'disabled')
+
+			});
+
+		});
+
+
+
+		var validateInfo = function() {
+
+			var registerType = ${regType};
+
+
+
+			if (check(registerType)) {
+
+				document.register_field.submit();	
+
+				return true;
+
+			}
+
+			return false;
+
+		}
+
+
+
+		/**
+
+		 * 全局的表单检查
+
+		 * @param  {[type]} type [description]
+
+		 * @return {[type]}      [description]
+
+		 */
+
+		var check = function(type) {
+
+			switch (type) {
+
+				case 1:
+
+					if (!checkUndergraduate()) {
+
+						return false;
+
+					}
+
+					break;
+
+				case 4:
+
+					if(!checkOuters()) {
+
+						return false;	
+
+					}
+
+					break;
+
+				case 3:
+
+					if (!checkTeacher()) {
+
+						return false;
+
+					}
+
+					break;
+
+				case 2:
+
+					if (!checkOthers()) {
+
+						return false;
+
+					}
+
+					break;
+
+				case 100:
+
+					if (!checkOuters()) {
+
+						return false;
+
+					}
+
+					break;
+
+				default:
+
+					return false;
+
+			}
+
+			return true;
+
+		}
+
+
+
+		/**
+
+		 * 验证本科生信息
+
+		 * @return {[type]} [description]
+
+		 */
+
+		var checkUndergraduate = function() {
+
+			return checkValdateCode() && checkTrueName() && checkUsername() && checkNick() && checkPassword() && checkEmai() && checkIdCode() && checkStudentId() && checkMima();
+
+		}
+
+
+
+		/**
+
+		 * 验证校外人士
+
+		 * @return {[type]} [description]
+
+		 */
+
+		var checkOuters = function() {
+
+			return checkValdateCode() && checkTrueName() && checkUsername() && checkNick() && checkPassword() && checkEmai() && checkIdCode();
+
+		}
+
+
+
+		/**
+
+		 * 验证教师信息
+
+		 * @return {[type]} [description]
+
+		 */
+
+		var checkTeacher = function() {
+
+			return checkValdateCode() && checkTrueName() && checkUsername() && checkNick() && checkPassword() && checkEmai() && checkIdCode() && checkContactPhone() && checkAddress();
+
+		}
+
+
+
+		/**
+
+		 * 在校成教生，行健生，硕士博士研究生
+
+		 * @return {[type]} [description]
+
+		 */
+
+		var checkOthers = function() {
+
+			return checkValdateCode() && checkTrueName() && checkUsername() && checkNick() && checkPassword() && checkEmai() && checkIdCode() && checkStudentId() && checkMima();
+
+		}
+
+
+
+
+
+		var isValid = function() {
+
+			// 检测单选
+
+			// var checkedValue = $('[name="sex"]:radio:checked').val();
+
+			// alert(checkedValue);
+
+			alert("fdsfds");
+
+			return false;
+
+		}
+
+
+
+		var checkTrueName = function() {
+
+			// 验证真实姓名
+
+			var trueName = $('#trueName').val().trim();
+
+			if (!validate(trueName)) {
+
+				$('._trueName').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的姓名有误！');
+
+				$('#trueName').focus();
+
+				return false;
+
+			} else {
+
+				$('._trueName').html('<img src="/images/accounts/nice.png" />');
+
+				return true;
+
+			}
+
+		}
+
+
+
+		var checkUsername = function() {
+
+			// 验证用户账号
+
+			var username = $('#username').val().trim();
+
+			if (!validate(username)) {
+
+				$('._username').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的账号信息有误！');
+
+				$('#username').focus();
+
+				return false;
+
+			}
+
+			if (username.length < 3 || username.length > 16) {
+
+				$('._username').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的账户长度不符合要求3-16个要求！');
+
+				$('#username').focus();
+
+				return false;
+
+			} else {
+
+				$('._username').html('<img src="/images/accounts/nice.png" />');
+
+				return true;
+
+			}
+
+		}
+
+
+
+		var checkNick = function() {
+
+			// 验证用户昵称
+
+			var nick = $('#nick').val().trim();
+
+			if (!validate(nick)) {
+
+				$('._nick').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的昵称有误！');
+
+				$('#nick').focus();
+
+				return false;
+
+			}
+
+			if (nick.length < 3 || nick.length > 8) {
+
+				$('._nick').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的昵称长度不符合要求3-8个要求！');
+
+				$('#nick').focus();
+
+				return false;
+
+			} else {
+
+				$('._nick').html('<img src="/images/accounts/nice.png" />');
+
+				return true;
+
+			}
+
+		}
+
+
+
+		var checkPassword = function() {
+
+			// 验证密码
+
+			var password = $('#password').val();
+
+			if (!validate(password)) {
+
+				$('._password').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的密码有误！');
+
+				$('#password').focus();
+
+				return false;
+
+			}
+
+			if (password.length < 6 || password.length > 14) {
+
+				$('._password').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的昵称长度不符合要求6-14个要求！');
+
+				$('#password').focus();
+
+				return false;
+
+			}
+
+
+
+			// 验证密码是否一致
+
+			var confirmPassword = $('#confirmPassword').val();
+
+			if (confirmPassword != password) {
+
+				$('._password').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您两次输入的密码不一致！');
+
+				$('#password').focus();
+
+				return false;
+
+			} else {
+
+				$('._password, .info:eq(4)').html('<img src="/images/accounts/nice.png" />');
+
+				return true;
+
+			}
+
+		}
+
+
+
+		var checkEmai = function() {
+
+			// 验证电子邮件
+
+			var email = $('#email').val().trim();
+
+			if (!validate(email)) {
+
+				$('._email').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的电子邮件有误！');
+
+				$('#email').focus();
+
+				return false;
+
+			}  else {
+
+				$('._email').html('<img src="/images/accounts/nice.png" />');
+
+				return true;
+
+			}
+
+		}
+
+
+
+		var checkIdCode = function() {
+
+			// 验证身份证
+
+			var idcode = $('#idcode').val().trim();
+
+			if (!validate(idcode)) {
+
+				$('._idcode').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的身份证有误！');
+
+				$('#idcode').focus();
+
+				return false;
+
+			}  else {
+
+				$('._idcode').html('<img src="/images/accounts/nice.png" />');
+
+				return true;
+
+			}
+
+		}
+
+
+
+<#if regType == 1 || regType == 2>
+
+		var checkStudentId = function() {
+
+			// 验证学号
+
+			var studentid = $('#studentid').val().trim();
+
+			if (!validate(studentid)) {
+
+				$('._studentid').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的学号有误！');
+
+				$('#studentid').focus();
+
+				return false;
+
+			} else {
+
+				$('._studentid').html('<img src="/images/accounts/nice.png" />');
+
+				return true;
+
+			}
+
+		}
+
+
+
+		var checkMima = function() {
+
+			// 验证选课系统密码
+			alert("yes");
+            return true;
+			var mima = $('#mima').val().trim();
+
+			if (!validate(mima)) {
+
+				$('._mima').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;您输入的选课系统密码有误！');
+
+				$('#mima').focus();
+
+				return false;
+				//return true;
+
+			} else {
+
+				$('._mima').html('<img src="/images/accounts/nice.png" />');
+
+				return true;
+
+			}
+
+		}
+
+</#if>
+
+
+
+		var checkValdateCode = function() {
+
+			// 验证验证码是否为空
+
+			var validCode = $('#validCode').val();
+
+			if (!validate(validCode)) {
+
+				$('._validCode').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;请输入正确的验证码！');
+
+				$('#validCode').focus();
+
+				return false;
+
+			} else {
+
+				$('._validCode').html('<img src="/images/accounts/nice.png" />');
+
+				return true;
+
+			}
+
+		}
+
+
+
+<#if regType == 3>
+
+		var checkContactPhone = function() {
+
+			var phone = $('#tel').val().trim();
+
+			
+
+			if (!checkPhone(phone) && !checkCellPhone(phone)) {
+
+				$('._tel').addClass('error').html('<img src="/images/accounts/alert.jpg" />&nbsp;&nbsp;请输入正确的电话号码！');
+
+				$('#tel').focus();
+
+				return false;
+
+			} else {
+
+				$('._tel').html("<img src='/images/accounts/nice.png' />");
+
+			}
+
+			
+
+			return true;
+
+		}
+
+
+
+		var checkAddress = function() {
+
+			// 验证工作单位
+
+			var address = $('#units').val().trim();
+
+
+
+			if (!validate(address)) {
+
+				$('._units').addClass('error').html("<img src='/images/accounts/alert.jpg' />&nbsp;&nbsp;您输入的工作单位有误！");
+
+				return false;
+
+			} else {
+
+				$('._units').html("<img src='/images/accounts/nice.png' />");
+
+				return true;
+
+			}
+
+		}
+
+</#if>
+
+
+
+<#if regType == 4 || regType == 100>
+
+		var checkAddress2 = function() {
+
+			// 验证校外人员的住址
+
+			var blank = $('#blank').val().trim();
+
+
+
+
+
+			if (!validate(blank)) {
+
+				$('._blankField').addClass('error').html("<img src='/images/accounts/alert.jpg' /> &nbsp;&nbsp;此处不能为空！");
+
+				return false;
+
+			} else {
+
+				$('._blankField').html("<img src='/images/accounts/nice.png' />");
+
+				return true;
+
+			}
+
+		}
+
+</#if>		
+
+		
+
+		var checkPhone = function(arg) {
+
+			// 验证办公座机
+
+			var pattern = /^\d{7}$/;
+
+			if (!pattern.test(arg)) {
+
+				return false;
+
+			}
+
+			return true;
+
+		}
+
+
+
+		var checkCellPhone = function(arg) {
+
+			// 验证手机
+
+			var pattern = /^1[3458]\d{9}$/;
+
+			if (!pattern.test(arg)) {
+
+				return false;
+
+			}
+
+			return true;
+
+		}
+
+
+
+		var validate = function(e) {
+
+			return !isEmpty(e);
+
+		};
+
+
+
+		var isEmpty = function(e) {
+
+			if (e === '' || e.length === 0)
+
+				return true;
+
+			return false;
+
+		}
+
+
+
+		var formReset = function() {
+
+			$('form')[0].reset();
+
+			return false;
+
+		}
+
+		
+
+	/* ]]> */
+
+	</script>
+
 </html>
